@@ -1,13 +1,14 @@
 import { sync } from "glob";
 
 export default {
-  appType: "mpa",
-  root: "./src",
+  base: './',  // This ensures that paths are relative to the index.html
+  appType: 'mpa',
+  root: './src',
   build: {
-    outDir: "../dist",
+    outDir: '../dist',
     emptyOutDir: true,
     rollupOptions: {
-      input: sync("./src/**/*.html".replace(/\\/g, "./")),
+      input: sync('./src/**/*.html').map(path => path.replace(/\\/g, '/'))
     },
   },
 };
