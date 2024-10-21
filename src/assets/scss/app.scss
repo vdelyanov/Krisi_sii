@@ -1,0 +1,40 @@
+
+/* Tailwind */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+
+// Responsive
+@import 'base/respon';
+
+/* Core variables */
+@import 'base/vars';
+
+/* CSS Reset */
+@import 'base/reset';
+
+/* Browser specific styles */
+@import 'base/hacks';
+
+/* Fonts */
+@import 'base/fonts';
+
+/* Typography */
+@import 'base/typography';
+
+// Mixins
+@import 'base/mixins';
+
+// Pages  
+@import 'pages/homepage';
+
+/* Components */
+@import 'components/buttons'; 
+
+// Partials
+@import 'partials/header';
+@import 'partials/footer';
+
+// Globals 
+@import 'globals'
