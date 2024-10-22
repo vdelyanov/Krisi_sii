@@ -1,7 +1,7 @@
 import { sync } from "glob";
 
 export default {
-  base: './',  // This ensures that paths are relative to the index.html
+  base: './', 
   appType: 'mpa',
   root: './src',
   build: {
