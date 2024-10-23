@@ -11,7 +11,12 @@ export default {
         'pink': '#FFF3D4',
         'gray': '#C4C7C7',
     },
+    corePlugins: {
+      preflight: false, // Disables the preflight entirely
+    },
     },
   },
-  plugins: [],
+  plugins: [
+    
+  ],
 };
