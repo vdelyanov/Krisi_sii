@@ -14,13 +14,14 @@ function raf(time) {
 
 requestAnimationFrame(raf)
 
-gsap.to(".box", {
-    duration: 1,   
-    rotation: 360,  
-    scale: 1.5, 
-});
 
+function disableClicks() {
+  document.body.classList.add('disable-clicks');
+}
 
+function enableClicks() {
+  document.body.classList.remove('disable-clicks');
+}
 
 const transition = {
   element: document.querySelector('.transition'),
@@ -29,23 +30,29 @@ const transition = {
 };
 
 const initTransition = () => {
-  gsap.set(transition.wrapper, { yPercent: -125, opacity: 1 });
-  gsap.set(transition.figures, { rotateY: 5, rotateX: 5, yPercent: -50 });
+  gsap.set(transition.wrapper, { yPercent: -125, filter: "blur(10px)", opacity: 1, immediateRender: false });
+  gsap.set(transition.figures, { rotateY: 5, rotateX: 5, yPercent: -50, immediateRender: false });
+  console.log('reset')
+
 };
 
 const enterTransition = () => {
-  const tl = gsap.timeline({ defaults: { duration: 1.8, ease: 'expo.out' } });
+  const tl = gsap.timeline({
+    defaults: { duration: 1.2, ease: 'expo.out' },
+    onComplete: enableClicks // Re-enable clicks once the animation completes
+  });
 
   //-> Returns a Promise that resolves when the "transition.wrapper" animation is complete
   return new Promise((resolve) => {
       tl.to(transition.wrapper, {
           yPercent: 25,
+          filter: "blur(0px)",
           onComplete: resolve,
       })
           .to(
               transition.figures,
               {
-                  duration: 2.4,
+                  duration: 2,
                   rotateY: -5,
                   rotateX: -5,
                   yPercent: 100,
@@ -61,13 +68,21 @@ const enterTransition = () => {
   });
 };
 
+
 const leaveTransition = () => {
-  const tl = gsap.timeline({ defaults: { duration: 1.8, ease: 'expo.inOut' } });
+  console.log('leave')
+
+  disableClicks(); // Disable clicks at the start of the transition
+
+  const tl = gsap.timeline({ defaults: { duration: 1.2, ease: 'expo.inOut' } });
+  
 
   tl.to(transition.wrapper, {
-      yPercent: 120,
+      yPercent: 100,
+      filter: "blur(10px)",
       onComplete: () => {
         initTransition(); //-> Calls the init function to reset the elements for the next transition
+        enableClicks(); // 
     },
   })
 };
