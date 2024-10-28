@@ -81,3 +81,39 @@ body {
     height: 100%;
     object-fit: cover;
 }
+
+.preload {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: $accent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+    transition: clip-path 1.2s cubic-bezier(0.87, 0, 0.13, 1);
+    border-left: 2px solid $cream;
+    // border-right: 2px solid $cream;
+    #name {
+        span {
+            font-size: 96px;
+            color: $cream;
+            font-family: 'Phenomena-Regular', sans-serif;
+        }
+    }
+}
+
+
+body::-webkit-scrollbar {
+    width: 0px; /* Set the width of the scrollbar */
+    background-color: transparent; /* Hide scrollbar background */
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: $black; /* Initial thumb color */ 
+    &:hover {
+        background-color: $cream; /* Initial thumb color */
+    }
+}

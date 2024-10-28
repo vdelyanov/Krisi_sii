@@ -6,10 +6,12 @@ export default {
     extend: {
       colors: {
         'primary': '#C83030',
-        'accent': '#5893AE',
+        'accent': '#5688C7',
         'yellow': '#F7F86A',
-        'pink': '#FFF3D4',
+        'cream': '#FFF3D4',
         'gray': '#C4C7C7',
+        'black': '#000000',
+        'white': '#ffffff',
     },
     corePlugins: {
       preflight: false, // Disables the preflight entirely

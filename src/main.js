@@ -111,4 +111,99 @@ barba.init({
   ],
 });
 
-window.addEventListener('load', initTransition);
+
+
+  const item = document.querySelector('#name');
+
+  function animateScale(element, scaleValue) {
+    gsap.fromTo(element, { scale: 1 }, { scale: scaleValue, duration: 2, ease: "power1.out" });
+  }
+
+  function wrapLetters(text) {
+    item.innerHTML = '';  // Clear existing text
+    [...text].forEach(letter => {
+      const span = document.createElement('span');
+      span.style.filter = 'blur(8px)';
+      span.textContent = letter;
+      item.appendChild(span);
+    });
+  }
+
+  function fadeanim() {
+    gsap.to('#preloader', {
+      clipPath: "polygon(0 100%, 100% 100%, 100% 100%, 0 100%)",
+    });
+  }
+
+  function animateBlurEffect() {
+    const letters = item.children;
+    let index = 0;
+
+    function clearNextLetter() {
+      if (index < letters.length) {
+        gsap.to(letters[index], { filter: 'blur(0px)', duration: 0.5 });
+        index++;
+        if (index < letters.length) {
+          setTimeout(clearNextLetter, 100);
+        }
+      }
+    }
+
+    setTimeout(clearNextLetter, 0);
+
+    fadeanim()
+  }
+
+  function shuffleLetters(finalText) {
+    wrapLetters('');
+    wrapLetters(finalText.replace(/./g, ' '));  // Initial blurred letters
+
+    let textArray = finalText.split('');
+    let shufflingCounter = 0;
+    let intervalHandles = [];
+
+    function shuffle(index) {
+      if (shufflingCounter < 30) {
+        textArray[index] = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'[Math.floor(Math.random() * 26)];
+        item.children[index].textContent = textArray[index];
+      } else {
+        item.children[index].textContent = finalText.charAt(index);
+        clearInterval(intervalHandles[index]);
+      }
+    }
+
+    for (let i = 0; i < finalText.length; i++) {
+      intervalHandles[i] = setInterval(shuffle, 80, i);
+    }
+
+    setTimeout(() => {
+      shufflingCounter = 30;
+      for (let i = 0; i < finalText.length; i++) {
+        item.children[i].textContent = finalText.charAt(i);
+        clearInterval(intervalHandles[i]);
+      }
+      animateBlurEffect();
+    }, 1000);
+  }
+  
+  const newText = item.textContent.toUpperCase();
+  animateScale(item, 1.25);
+  shuffleLetters(newText);
+  initTransition()
+
+  // document.addEventListener("DOMContentLoaded", function () {
+  
+  //   const hasVisitedBefore = localStorage.getItem("hasVisitedBefore");
+  //   if (!hasVisitedBefore) {
+  //     const preloader = document.getElementById("preloader")
+  //     if(preloader) {
+  //       preloader.style.display = "flex";
+  //     }
+  //     const newText = item.textContent.toUpperCase();
+  //     animateScale(item, 1.25);
+  //     shuffleLetters(newText);
+  //     initTransition()
+  //     localStorage.setItem("hasVisitedBefore", "true");
+  //   }
+
+  // });
