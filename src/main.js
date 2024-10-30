@@ -1,9 +1,15 @@
 import './assets/scss/app.scss';
 
-import { gsap } from "gsap";
 import Lenis from 'lenis'
 import barba from '@barba/core';
+
 import $ from "jquery"
+
+import { gsap } from "gsap";
+import { SplitText } from 'gsap/SplitText';
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger, SplitText);
 
 const lenis = new Lenis()
 
@@ -11,7 +17,6 @@ function raf(time) {
   lenis.raf(time)
   requestAnimationFrame(raf)
 }
-
 requestAnimationFrame(raf)
 
 
@@ -68,7 +73,6 @@ const enterTransition = () => {
   });
 };
 
-
 const leaveTransition = () => {
   console.log('leave')
 
@@ -112,6 +116,7 @@ barba.init({
 });
 
 
+// Preload animation 
 
   const item = document.querySelector('#name');
 
@@ -120,7 +125,7 @@ barba.init({
   }
 
   function wrapLetters(text) {
-    item.innerHTML = '';  // Clear existing text
+    item.innerHTML = '';
     [...text].forEach(letter => {
       const span = document.createElement('span');
       span.style.filter = 'blur(8px)';
@@ -164,7 +169,7 @@ barba.init({
 
     function shuffle(index) {
       if (shufflingCounter < 30) {
-        textArray[index] = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'[Math.floor(Math.random() * 26)];
+        textArray[index] = 'abcdefghijklmnopqrstuvwxyz'[Math.floor(Math.random() * 26)];
         item.children[index].textContent = textArray[index];
       } else {
         item.children[index].textContent = finalText.charAt(index);
@@ -186,24 +191,139 @@ barba.init({
     }, 1000);
   }
   
-  const newText = item.textContent.toUpperCase();
-  animateScale(item, 1.25);
-  shuffleLetters(newText);
+
+  document.addEventListener("DOMContentLoaded", function () {
+  
+    const hasVisitedBefore = localStorage.getItem("hasVisitedBefore");
+    if (!hasVisitedBefore) {
+      const preloader = document.getElementById("preloader")
+      if(preloader) {
+        preloader.style.display = "flex";
+      }
+      const newText = item.textContent.charAt(0).toUpperCase() + item.textContent.slice(1).toLowerCase();
+      animateScale(item, 1.25);
+      shuffleLetters(newText);
+      initTransition()
+      localStorage.setItem("hasVisitedBefore", "true");
+    }
+
+  });
+
+  // const newText = item.textContent.charAt(0).toUpperCase() + item.textContent.slice(1).toLowerCase();
+  // animateScale(item, 1.25);
+  // shuffleLetters(newText);
+
+
+  document.addEventListener("DOMContentLoaded", () => {
+
   initTransition()
 
-  // document.addEventListener("DOMContentLoaded", function () {
-  
-  //   const hasVisitedBefore = localStorage.getItem("hasVisitedBefore");
-  //   if (!hasVisitedBefore) {
-  //     const preloader = document.getElementById("preloader")
-  //     if(preloader) {
-  //       preloader.style.display = "flex";
-  //     }
-  //     const newText = item.textContent.toUpperCase();
-  //     animateScale(item, 1.25);
-  //     shuffleLetters(newText);
-  //     initTransition()
-  //     localStorage.setItem("hasVisitedBefore", "true");
-  //   }
 
-  // });
+    const menuToggle = document.querySelector(".menu-toggle");
+    const menu = document.querySelector(".menu");
+    const links = document.querySelectorAll(".link");
+    const socialLinks = document.querySelectorAll(".socials a");
+    let isAnimating = false;
+
+
+var splitTitle = new SplitText(".logo-heading h2", { type: "chars" });
+
+    menuToggle.addEventListener("click", () => {
+      if (isAnimating) return;
+
+      if (menuToggle.classList.contains("closed")) {
+        menuToggle.classList.remove("closed");
+        menuToggle.classList.add("opened");
+
+        isAnimating = true;
+
+        gsap.to(menu, {
+          clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+          ease: "expo.inOut",
+          duration: 1.5,
+          onStart: () => {
+            menu.style.pointerEvents = "all";
+          },
+          onComplete: () => {
+            isAnimating = false;
+          },
+        });
+
+        // Animate main links when opening
+        gsap.to(links, {
+          y: 0,
+          opacity: 1,
+          stagger: 0.1,
+          delay: 0.85,
+          duration: 1,
+          ease: "power3.out",
+        });
+
+        // Animate social links when opening
+        gsap.to(socialLinks, {
+          y: 0,
+          opacity: 1,
+          stagger: 0.05,
+          delay: 0.85,
+          duration: 1,
+          ease: "power3.out",
+        });
+
+        const tl = gsap.timeline();
+
+        tl.to(".video-wrapper", {
+          clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+          ease: "expo.inOut",
+          duration: 1.5,
+          delay: 0.5,
+        }).to(".video-wrapper", {
+          duration: 0.1, // Add a slight delay before toggling class
+          onComplete: () => document.querySelector(".video-wrapper").classList.add("inner-border-active")
+        });
+      
+        // Animate header text rotation
+        gsap.from(splitTitle.chars, {
+          translateY: 200, 
+          rotateY: 25,
+          scale: 0.8,
+          stagger: 0.05,
+          delay: 0.75,
+          duration: 1.5,
+          ease: "power4.out",
+        });
+      } else {
+
+        menuToggle.classList.remove("opened");
+        menuToggle.classList.add("closed");
+
+        isAnimating = true;
+
+        gsap.to(menu, {
+          clipPath: "polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)",
+          ease: "expo.inOut",
+          duration: 1.5,
+          onComplete: () => {
+            menu.style.pointerEvents = "none";
+            gsap.set(menu, {
+              clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
+            });
+
+            gsap.set(links, { y: 30, opacity: 0 });
+            gsap.set(socialLinks, { y: 30, opacity: 0 });
+            gsap.set(".video-wrapper", {
+              clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
+            });
+            gsap.set(".logo-heading h2 span", {
+              y: 500,
+              rotateY: 90,
+              scale: 0.8,
+            });
+
+            isAnimating = false;
+          },
+        });
+      }
+      
+    });
+  });
+  

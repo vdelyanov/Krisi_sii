@@ -88,18 +88,18 @@ body {
     right: 0;
     left: 0;
     bottom: 0;
-    background-color: $accent;
-    display: flex;
+    z-index: 999;
+    background-color: $black;
     align-items: center;
     justify-content: center;
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
     transition: clip-path 1.2s cubic-bezier(0.87, 0, 0.13, 1);
-    border-left: 2px solid $cream;
-    // border-right: 2px solid $cream;
+    border-left: 2px solid $white;
+    border-right: 2px solid $white;
     #name {
         span {
-            font-size: 96px;
-            color: $cream;
+            font-size: 64px;
+            color: $white;
             font-family: 'Phenomena-Regular', sans-serif;
         }
     }
