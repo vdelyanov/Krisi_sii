@@ -8,11 +8,26 @@
     <link rel="stylesheet" href="./style.css" />
   </head>
   
-  <body data-barba="wrapper">
+  <body data-barba="wrapper" class="bg-black">
+
+    <div class="cursor-follow">
+      <svg class="absolute bottom-0 left-0" width="32" height="25" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2 15.6318V23.73L9.73653 23.73" stroke="white" stroke-width="2"/>
+      </svg>        
+      <svg class="absolute top-0 right-0" width="32" height="25" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M30 9.09814L30 0.999995L22.2635 0.999993" stroke="white" stroke-width="2"/>
+      </svg>        
+      <svg class="absolute top-0 left-0" width="32" height="25" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10 1L1.90185 1L1.90185 8.73653" stroke="white" stroke-width="2"/>
+      </svg>        
+      <svg class="absolute bottom-0 right-0" width="32" height="25" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M22 23.73L30.0981 23.73L30.0982 15.9935" stroke="white" stroke-width="2"/>
+      </svg>        
+    </div>
 
     <header> 
-      <a class="logo" href="./index.html">.sii</a>
-      <div class="menu-toggle closed">
+      <a class="logo hover-link" href="./index.html">.sii</a>
+      <div class="menu-toggle hover-link closed">
         <div class="menu-toggle-icon">
           <div class="hamburger">
             <div class="menu-bar" data-position="top"></div>
@@ -20,7 +35,8 @@
           </div>
         </div>
         <div class="menu-copy">
-          <p>Меню</p>
+          <p class="close-text opacity-0">Затвори</p>
+          <p class="open-text absolute top-0">Меню</p>
         </div>
       </div>
     </header>
@@ -41,20 +57,20 @@
               </div>
           </div>
 
-          <div class="video-wrapper">
+          <!-- <div id="video-wrapper" class="video-wrapper">
             <video autoplay muted loop>
               <source src="./assets//images/video.mp4" type="video/mp4" />
             </video>
-          </div>
+          </div> -->
 
         </div>
 
         <div class="col-span-6 flex flex-col justify-between">
           <nav class="links">
-            <div class="link"><a href="#">Homepage</a></div>
-            <div class="link"><a href="#">Gallery</a></div>
-            <div class="link"><a href="./about.html">About</a></div>
-            <div class="link"><a href="#">Contacts</a></div>
+            <div class="link"><a href="#">Начало</a></div>
+            <div class="link"><a href="#">Галерия</a></div>
+            <div class="link"><a href="#">За мен</a></div>
+            <div class="link"><a href="#">Контакти</a></div>
           </nav>
 
           <div class="logo-heading flex justify-end">
@@ -110,13 +126,51 @@
       <div id="name">Photo.sii</div>
     </div>
 
-    <main data-barba="container" data-barba-namespace="home" class="flex h-dvh h-[200vh] items-center flex-col justify-center">
-      <h1 class="">Homepage</h1>
-      <h2 class="mb-3 mb-8">Kристиана Симеонова</h2>
-      <a href="./about.html">About</a>
-    </main>
+    <main data-barba="container" data-barba-namespace="home" class="">
+        <div class="heading fixed bottom-[20px] left-[20px]">
+          <h1 class="mb-4 h3 uppercase">Кристиана <br> Симеонова</h1>
+        </div>
+        <div class="content">
+          <figure class="item">
+            <figcaption class="item__caption">
+              <h2 class="item__caption-title magnet-wrapper oh"><a href="javascript:;" class="oh__inner magnet hover-link">Behind The Scenes</a></h2>
+            </figcaption>
+            <div class="item__image-wrap"><div class="item__image"><a href="javascript:;" class="item__image-inner hover-link" style="background-image:url(./assets/images//img/1.jpg)"></a></div></div>
+          </figure>
+          <figure class="item">
+            <figcaption class="item__caption">
+              <h2 class="item__caption-title oh"><span class="oh__inner">Портретa <br> Фотография</span></h2>
+            </figcaption>
+            <div class="item__image-wrap"><div class="item__image"><div class="item__image-inner" style="background-image:url(./assets/images//img/2.jpg)"></div></div></div>
+          </figure>
+          <figure class="item">
+            <figcaption class="item__caption">
+              <h2 class="item__caption-title oh"><span class="oh__inner">Интериорна <br> Фотография</span></h2>
+            </figcaption>
+            <div class="item__image-wrap"><div class="item__image"><div class="item__image-inner" style="background-image:url(./assets/images//img/3.jpg)"></div></div></div>
+          </figure>
+          <figure class="item">
+            <figcaption class="item__caption">
+              <h2 class="item__caption-title oh"><span class="oh__inner">Събитийна <br> Фотография</span></h2>
+            </figcaption>
+            <div class="item__image-wrap"><div class="item__image"><div class="item__image-inner" style="background-image:url(./assets/images//img/4.jpg)"></div></div></div>
+          </figure>
+          <figure class="item">
+            <figcaption class="item__caption">
+              <h2 class="item__caption-title oh"><span class="oh__inner">Артистична <br> Фотография</span></h2>
+            </figcaption>
+            <div class="item__image-wrap"><div class="item__image"><div class="item__image-inner" style="background-image:url(./assets/images//img/5.jpg)"></div></div></div>
+          </figure>
+          <figure class="item">
+            <figcaption class="item__caption">
+              <h2 class="item__caption-title oh"><span class="oh__inner">Black & White</span></h2>
+            </figcaption>
+            <div class="item__image-wrap"><div class="item__image"><div class="item__image-inner" style="background-image:url(./assets/images//img/6.jpg)"></div></div></div>
+          </figure>
+        </div>
+
+      </main>
 
     <script type="module" src="./main.js"></script>
-
   </body>
 </html>

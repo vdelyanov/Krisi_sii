@@ -27,6 +27,10 @@ header {
     z-index: 2;
   }
   
+  .menu-toggle.opened {
+    width: 60px;
+  }
+
   .menu-copy p {
     text-transform: uppercase;
     font-weight: 500;
@@ -36,9 +40,13 @@ header {
     mix-blend-mode: difference;
   }
   
-  // .menu-toggle.opened .menu-copy {
-  //   opacity: 0;
+  // .menu-toggle:hover .menu-copy {
+  //   left: 20px;
   // }
+  
+  .menu-toggle.opened .menu-copy {
+    opacity: 0;
+  }
   /* Keyframes for blink effect */
 @keyframes blink {
     0%, 100% {
@@ -61,14 +69,16 @@ header {
     overflow: hidden;
     animation: blink 2s infinite;
   }
-
-  /* Blink animation */
+    /* Blink animation */
+  
   .menu-toggle:hover .menu-toggle-icon {
+    // clip-path: circle(35% at 50% 50%);
     animation: none;
 }
 
 .menu-toggle.opened .menu-toggle-icon {
-
+    // clip-path: circle(50% at 50% 50%);
+    // transform: scale(1.125);
     animation: none;
   }
 
@@ -88,6 +98,39 @@ header {
     padding: 0;
     mix-blend-mode: difference;
     color: $white;
+  }
+  
+  // .menu-toggle:hover .menu-copy {
+  //   left: 20px;
+  // }
+  
+  .menu-toggle.opened .menu-copy {
+    opacity: 0;
+  }
+  
+  .hamburger {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+    opacity: 0;
+  }
+  
+  .menu-toggle:hover .hamburger,
+  .menu-toggle.opened .hamburger {
+    top: 50%;
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+  
+  .menu-toggle.opened .hamburger {
+    transform: translate(-50%, -50%) rotate(-45deg);
   }
   
   .menu-bar {
@@ -112,11 +155,11 @@ header {
 
 .menu {
     width: 100vw;
-    height: auto;
+    height: 100vh;
     position: fixed;
     z-index: 9;
     background-color: $white;
-    bottom: 0;
+    top: 0;
     clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%);
     .logo {
         font-size: 36px;
@@ -167,7 +210,7 @@ header {
         }
     }
     .grid {
-        height: auto;
+        height: 100vh;
         padding: 24px;
     }
     .socials {
@@ -175,27 +218,4 @@ header {
         color: $black;
        }
     }
-}
-
-.menu-copy {
-  &.move {
-    left: 0;
-  }
-}
-.close-text {
-  &.show {
-    opacity: 1;
-  }
-}
-.open-text {
-  &.hide {
-    opacity: 0;
-  }
-}
-main {
-  transition: filter 0.4s;
-  &.blur {
-    filter: blur(10px);
-    transition: filter 1s;
-  }
 }
