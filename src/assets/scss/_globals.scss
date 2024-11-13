@@ -127,6 +127,11 @@ body::-webkit-scrollbar-thumb {
     height: 28px;
     mix-blend-mode: difference;
     z-index: 999;
+    opacity: 0;
+    &.show {
+        transition: opacity 0.3s;
+        opacity: 1;
+    }
     &.hover-active {
         svg {
             path {

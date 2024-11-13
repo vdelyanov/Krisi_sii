@@ -193,31 +193,31 @@ function shuffleLetters(finalText) {
 }
 
 
-// document.addEventListener("DOMContentLoaded", function () {
-
-//   const hasVisitedBefore = localStorage.getItem("hasVisitedBefore");
-//   if (!hasVisitedBefore) {
-//     const preloader = document.getElementById("preloader")
-//     if(preloader) {
-//       preloader.style.display = "flex";
-//     }
-//     const newText = item.textContent.charAt(0).toUpperCase() + item.textContent.slice(1).toLowerCase();
-//     animateScale(item, 1.25);
-//     shuffleLetters(newText);
-//     initTransition()
-//     localStorage.setItem("hasVisitedBefore", "true");
-//   }
-
-// });
-
 document.addEventListener("DOMContentLoaded", function () {
+
+  const hasVisitedBefore = localStorage.getItem("hasVisitedBefore");
+  if (!hasVisitedBefore) {
     const preloader = document.getElementById("preloader")
-    preloader.style.display = "flex";
+    if(preloader) {
+      preloader.style.display = "flex";
+    }
     const newText = item.textContent.charAt(0).toUpperCase() + item.textContent.slice(1).toLowerCase();
     animateScale(item, 1.25);
     shuffleLetters(newText);
     initTransition()
+    localStorage.setItem("hasVisitedBefore", "true");
+  }
+
 });
+
+// document.addEventListener("DOMContentLoaded", function () {
+//     const preloader = document.getElementById("preloader")
+//     preloader.style.display = "flex";
+//     const newText = item.textContent.charAt(0).toUpperCase() + item.textContent.slice(1).toLowerCase();
+//     animateScale(item, 1.25);
+//     shuffleLetters(newText);
+//     initTransition()
+// });
 
 
 
@@ -238,6 +238,75 @@ document.addEventListener("DOMContentLoaded", function () {
 
     var splitTitle = new SplitText(".logo-heading h2", { type: "chars" });
 
+    document.addEventListener('click', function(event) {
+      
+      if (!menu.contains(event.target) && !menuToggle.contains(event.target)) {
+        menuToggle.classList.remove("opened");
+        menuToggle.classList.add("closed");
+        menuCloseText.classList.remove("hide");
+        menuOpenText.classList.remove("show");
+        menuCopy.classList.remove("move");
+        main.classList.remove("bg-blur");
+        isAnimating = true;
+
+        gsap.to(menu, {
+          clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
+          ease: "expo.inOut",
+          duration: 1.5,
+          onComplete: () => {
+            menu.style.pointerEvents = "none";
+            gsap.set(menu, {
+              clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
+            });
+            // document.querySelector(".video-wrapper").classList.remove("inner-border-active")
+            gsap.set(links, { y: 30, opacity: 0 });
+            gsap.set(socialLinks, { y: 30, opacity: 0 });
+            gsap.set(".logo-heading h2 span", {
+              y: 500,
+              rotateY: 90,
+              scale: 0.8,
+            });
+            isAnimating = false;
+          },
+        });
+      }
+    });
+    
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+        
+        menuToggle.classList.remove("opened");
+        menuToggle.classList.add("closed");
+        menuCloseText.classList.remove("hide");
+        menuOpenText.classList.remove("show");
+        menuCopy.classList.remove("move");
+        main.classList.remove("bg-blur");
+        isAnimating = true;
+
+        gsap.to(menu, {
+          clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
+          ease: "expo.inOut",
+          duration: 1.5,
+          onComplete: () => {
+            menu.style.pointerEvents = "none";
+            gsap.set(menu, {
+              clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
+            });
+            // document.querySelector(".video-wrapper").classList.remove("inner-border-active")
+            gsap.set(links, { y: 30, opacity: 0 });
+            gsap.set(socialLinks, { y: 30, opacity: 0 });
+            gsap.set(".logo-heading h2 span", {
+              y: 500,
+              rotateY: 90,
+              scale: 0.8,
+            });
+            isAnimating = false;
+          },
+        });
+
+      }
+    })
+
     menuToggle.addEventListener("click", () => {
       if (isAnimating) return;
 
@@ -254,7 +323,7 @@ document.addEventListener("DOMContentLoaded", function () {
           duration: 1.5,
           onStart: () => {
             menu.style.pointerEvents = "all";
-            main.classList.add("blur");
+            main.classList.add("bg-blur");
           },
           onComplete: () => {
             isAnimating = false;
@@ -299,13 +368,12 @@ document.addEventListener("DOMContentLoaded", function () {
           ease: "power4.out",
         });
       } else {
-
         menuToggle.classList.remove("opened");
         menuToggle.classList.add("closed");
         menuCloseText.classList.remove("hide");
         menuOpenText.classList.remove("show");
         menuCopy.classList.remove("move");
-        main.classList.remove("blur");
+        main.classList.remove("bg-blur");
         isAnimating = true;
 
         gsap.to(menu, {
@@ -375,6 +443,7 @@ const cursorElement = document.querySelector('.cursor-follow');
 const hoverLinks = document.querySelectorAll('.hover-link, a');
 // Add mousemove event listener
 document.addEventListener('mousemove', (e) => {
+  cursorElement.classList.add('show')
   // Get the current window width and height
   const windowWidth = window.innerWidth;
   const windowHeight = window.innerHeight;

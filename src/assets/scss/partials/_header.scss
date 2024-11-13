@@ -125,6 +125,7 @@ header {
         h2 {
             font-size: 172px;
             color: $black;
+            line-height: 1;
             span {
               color: $black;
               font-family: 'Phenomena-Regular', sans-serif;
@@ -193,9 +194,15 @@ header {
   }
 }
 main {
-  transition: filter 0.4s;
-  &.blur {
-    filter: blur(10px);
-    transition: filter 1s;
+  div, nav {
+    transition: filter 0.4s;
+  }
+  &.bg-blur {
+    cursor: pointer;
+    div, nav {
+      filter: blur(10px);
+      pointer-events: none;
+      transition: filter 1s;
+    }
   }
 }

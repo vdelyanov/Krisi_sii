@@ -73,3 +73,50 @@ preloadImages('.item__image-inner').then(() => {
     animateOnScroll();
 });
 
+
+function scrollToMiddle(targetElement) {
+    const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY;
+    const viewportHeight = window.innerHeight;
+    const offsetPosition = targetPosition - (viewportHeight * 0.3);
+  
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: 'smooth'
+    });
+  }
+  
+  // Usage: Call this function on the target element when you want to scroll to it
+  document.querySelectorAll('.scroll-link').forEach(link => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetId = link.getAttribute('href').substring(1);
+      const targetElement = document.getElementById(targetId);
+  
+      if (targetElement) {
+        scrollToMiddle(targetElement);
+      }
+    });
+  });
+  
+
+  // Initialize GSAP and ScrollTrigger
+  gsap.registerPlugin(ScrollTrigger);
+
+  const indicator = document.querySelector('.scroll-indicator');
+  
+  // Set up ScrollTrigger for smooth scrolling
+  ScrollTrigger.create({
+    trigger: document.body,
+    start: "top top",
+    end: "bottom bottom",
+    onUpdate: (self) => {
+      const scrollPercentage = self.progress * 90; // Convert progress to a percentage (0 to 100)
+  
+      // Apply smooth animation to the indicator
+      gsap.to(indicator, {
+        y: scrollPercentage, // Use scrollPercentage as yPercent to move the indicator smoothly
+        duration: 0.1, // Small duration for a smoother follow effect
+        ease: "power1.out"
+      });
+    }
+  });

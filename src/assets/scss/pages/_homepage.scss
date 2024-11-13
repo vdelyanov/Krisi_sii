@@ -68,3 +68,52 @@
     grid-template-columns: 0vw 1fr;
     grid-template-areas: 'caption img' ;
 }
+
+
+.scroll-nav {
+  position: fixed;
+  top: 50%;
+  left: 20px;
+  z-index: 1;
+  transform: translateY(-50%);
+  height: 100px;
+}
+
+.scroll-nav ul {
+  display: flex;
+  flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+}
+
+.scroll-item {
+  width: 24px;
+  cursor: pointer;
+}
+
+.scroll-link {
+  display: block;
+  width: 100%;
+  height: 10px;
+  border: 2px solid $white;
+  border-radius: 2px;
+  opacity: 0.2;
+  transition: opacity 0.25s ease;
+}
+
+.scroll-link:hover {
+  opacity: 0.5;
+}
+
+.scroll-indicator {
+  position: absolute;
+  top: -5px;
+  left: -6px;
+  width: 36px;
+  height: 20px;
+  border: 2px solid $white;
+  border-radius: 2px;
+  opacity: 0.65;
+  transform: translateY(0);
+  transition: transform 0.3s ease;
+}
