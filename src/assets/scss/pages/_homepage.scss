@@ -55,7 +55,6 @@
 	font-size: 96px;
 	font-weight: 300;
 	margin: 0;
-  // transform: translateY(-100px);
 	color: $white;
   margin-left: -100px;
   .oh__inner {
@@ -116,4 +115,25 @@
   opacity: 0.65;
   transform: translateY(0);
   transition: transform 0.3s ease;
+}
+
+.item__image-wrap {
+  clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%);
+  transform: scaleY(2);
+}
+.item__caption {
+  filter: blur(100px);
+  transform: translateY(-150px);
+  display: block;
+  visibility: hidden;
+}
+
+.popup-wrapper {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  max-width: 240px;
+  padding: 16px;
+  background: $black;
+  cursor: none !important;
 }

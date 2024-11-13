@@ -74,6 +74,8 @@ preloadImages('.item__image-inner').then(() => {
 });
 
 
+
+// Scroll bar function
 function scrollToMiddle(targetElement) {
     const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY;
     const viewportHeight = window.innerHeight;
@@ -85,7 +87,6 @@ function scrollToMiddle(targetElement) {
     });
   }
   
-  // Usage: Call this function on the target element when you want to scroll to it
   document.querySelectorAll('.scroll-link').forEach(link => {
     link.addEventListener('click', (e) => {
       e.preventDefault();
@@ -99,23 +100,21 @@ function scrollToMiddle(targetElement) {
   });
   
 
-  // Initialize GSAP and ScrollTrigger
   gsap.registerPlugin(ScrollTrigger);
 
   const indicator = document.querySelector('.scroll-indicator');
   
-  // Set up ScrollTrigger for smooth scrolling
   ScrollTrigger.create({
     trigger: document.body,
     start: "top top",
     end: "bottom bottom",
     onUpdate: (self) => {
-      const scrollPercentage = self.progress * 90; // Convert progress to a percentage (0 to 100)
+      const scrollPercentage = self.progress * 90;
   
       // Apply smooth animation to the indicator
       gsap.to(indicator, {
-        y: scrollPercentage, // Use scrollPercentage as yPercent to move the indicator smoothly
-        duration: 0.1, // Small duration for a smoother follow effect
+        y: scrollPercentage, 
+        duration: 0.1,
         ease: "power1.out"
       });
     }

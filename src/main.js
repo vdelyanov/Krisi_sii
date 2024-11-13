@@ -137,7 +137,12 @@ function wrapLetters(text) {
 function fadeanim() {
   gsap.to('#preloader', {
     clipPath: "polygon(0 100%, 100% 100%, 100% 100%, 0 100%)",
-    delay: 0.5
+    delay: 0.5,
+    onComplete: () => {
+      setTimeout(() => {
+        heroAnim()
+      }, 500)
+    }
   });
 }
 
@@ -192,6 +197,25 @@ function shuffleLetters(finalText) {
   }, 1000);
 }
 
+ function heroAnim() {
+  gsap.to('.item__image-wrap', {
+    clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+    ease: "power4",
+    duration: 1.2,
+    delay: 0.5,
+    scaleY: 1,
+})
+gsap.to('.item__caption', {
+    ease: "power4",
+    duration: 1,
+    autoAlpha: 1,
+    delay: 1,
+    y: 0,
+    filter: "blur(0px)",
+})
+ } 
+
+
 
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -206,6 +230,8 @@ document.addEventListener("DOMContentLoaded", function () {
     shuffleLetters(newText);
     initTransition()
     localStorage.setItem("hasVisitedBefore", "true");
+  } else {
+    heroAnim()
   }
 
 });
@@ -441,6 +467,10 @@ document.addEventListener("DOMContentLoaded", function () {
 // GSAP animation for the cursor
 const cursorElement = document.querySelector('.cursor-follow');
 const hoverLinks = document.querySelectorAll('.hover-link, a');
+const hoverLinksText = document.querySelectorAll('.show-text-trigger');
+const text = document.querySelector(".desc-text");
+const popup = document.querySelector(".popup-wrapper");
+
 // Add mousemove event listener
 document.addEventListener('mousemove', (e) => {
   cursorElement.classList.add('show')
@@ -481,4 +511,61 @@ hoverLinks.forEach(link => {
       });
       cursorElement.classList.remove('hover-active');
   });
+});
+
+let split = new SplitText(text, {
+  type: "lines,words,chars"
+});
+
+gsap.set(split.chars, {     
+  filter: "blur(10px)",  
+  autoAlpha: 0,       
+});
+
+hoverLinksText.forEach(link => {
+  link.addEventListener('mouseenter', () => {
+      gsap.to(popup, {
+        duration: 0.01,
+        filter: "blur(0px)",
+        ease: "power2.out",
+      });
+      gsap.to(split.chars, {
+        autoAlpha: 1,
+        duration: 0.1,
+        filter: "blur(0px)",
+        ease: "power3",
+        scale:1,
+        stagger: 0.01,
+        delay: 0.4
+      });
+      cursorElement.classList.add('hide');
+      popup.classList.add('show-text');
+    });
+    
+    link.addEventListener('mouseleave', () => {
+      gsap.to(popup, {
+        duration: 0.3,
+        filter: "blur(500px)",
+        ease: "power2.out",
+        onComplete: () => {
+          gsap.to(split.chars, {
+            autoAlpha: 0,       
+            filter: "blur(10px)",  
+            duration: 0.1,
+            delay: 0.3
+          });
+          cursorElement.classList.remove('hide');
+          popup.classList.remove('show-text');
+        }
+      });
+      gsap.to(cursorElement, {
+        duration: 0.3,
+        scale: 1,  
+        width: '34px',         
+        height: '28px',         
+        rotation: 0,         
+        ease: "power2.out"   
+      });
+  
+    });
 });

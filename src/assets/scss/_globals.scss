@@ -120,14 +120,52 @@ body::-webkit-scrollbar-thumb {
     }
 }
 
-.cursor-follow {
+// cursor and popup
+
+.show-text-trigger {
+    cursor: none;
+
+}
+.popup-wrapper {
+    pointer-events: none;
+    cursor: none;
+    opacity: 0;
+    transform-origin: left bottom;
+    .desc-text {
+        cursor: none;
+    }
+    &.show-text {
+        width: auto !important;
+        height: auto !important;
+        padding: 16px;
+        mix-blend-mode: normal;
+        background: $black !important;
+        opacity: 1;
+        transform-origin: left bottom;
+        cursor: none !important;
+        p {
+            cursor: none !important;
+            max-width: 220px;
+            display: inline;
+        }
+    }
+}
+
+.cursor-follow {        
     position: fixed;
-    pointer-events: none; /* Prevents interaction with other elements */
-    width: 34px;  /* Adjust size as necessary */
+    pointer-events: none; 
+    width: 34px;
     height: 28px;
     mix-blend-mode: difference;
     z-index: 999;
     opacity: 0;
+    &.hide {
+        cursor: none !important;
+        opacity: 0;
+        svg {
+            opacity: 0;
+        }
+    }
     &.show {
         transition: opacity 0.3s;
         opacity: 1;
