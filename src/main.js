@@ -525,9 +525,9 @@ gsap.set(split.chars, {
 hoverLinksText.forEach(link => {
   link.addEventListener('mouseenter', () => {
       gsap.to(popup, {
-        duration: 0.01,
-        filter: "blur(0px)",
-        ease: "power2.out",
+        duration: 0.2,
+        ease: "power3.out",
+        clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)',
       });
       gsap.to(split.chars, {
         autoAlpha: 1,
@@ -539,14 +539,15 @@ hoverLinksText.forEach(link => {
         delay: 0.4
       });
       cursorElement.classList.add('hide');
-      popup.classList.add('show-text');
     });
     
     link.addEventListener('mouseleave', () => {
+      cursorElement.classList.remove('hide');
+      gsap.killTweensOf(split.chars);
       gsap.to(popup, {
-        duration: 0.3,
-        filter: "blur(500px)",
-        ease: "power2.out",
+        duration: 0.2,
+        ease: "power3.out",
+        clipPath: 'polygon(0 0, 0 0, 0 100%, 0 100%)',
         onComplete: () => {
           gsap.to(split.chars, {
             autoAlpha: 0,       
@@ -554,8 +555,6 @@ hoverLinksText.forEach(link => {
             duration: 0.1,
             delay: 0.3
           });
-          cursorElement.classList.remove('hide');
-          popup.classList.remove('show-text');
         }
       });
       gsap.to(cursorElement, {

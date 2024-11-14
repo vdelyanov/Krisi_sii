@@ -129,25 +129,18 @@ body::-webkit-scrollbar-thumb {
 .popup-wrapper {
     pointer-events: none;
     cursor: none;
-    opacity: 0;
-    transform-origin: left bottom;
+    transform-origin: left;
+    clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+    width: auto !important;
+    height: auto !important;
+    padding: 16px;
+    mix-blend-mode: normal;
+    background: $black !important;
+    transition: clip-path 0.2s cubic-bezier(0.4, 0, 0.68, 0.06);
     .desc-text {
         cursor: none;
-    }
-    &.show-text {
-        width: auto !important;
-        height: auto !important;
-        padding: 16px;
-        mix-blend-mode: normal;
-        background: $black !important;
-        opacity: 1;
-        transform-origin: left bottom;
-        cursor: none !important;
-        p {
-            cursor: none !important;
-            max-width: 220px;
-            display: inline;
-        }
+        max-width: 220px;
+        display: inline;
     }
 }
 
