@@ -5,6 +5,8 @@
   margin-left: auto;
   width: 60%;
   padding-top: 40vh;
+  pointer-events: none;
+  z-index: 2;
 }
 
 .item {
@@ -32,6 +34,7 @@
 	position: relative;
 	overflow: hidden;
 	will-change: transform;
+  pointer-events: all;
 }
 
 .item__image-inner, img {
@@ -64,6 +67,7 @@
 	margin: 0;
 	color: $white;
   margin-left: -100px;
+  pointer-events: all;
   .oh__inner {
     line-height: 0;
     font-family: 'Phenomena-Regular', sans-serif;
@@ -80,7 +84,7 @@
   position: fixed;
   top: 50%;
   left: 20px;
-  z-index: 1;
+  z-index: 3;
   transform: translateY(-50%);
   height: 100px;
 }
@@ -143,4 +147,5 @@
   padding: 16px;
   background: $black;
   cursor: none !important;
+  z-index: 3;
 }

@@ -5,12 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Krisi.sii</title>
     <link rel="icon" type="image/svg+xml" href="./vite.svg" />
-    <script type="module" crossorigin src="./main.DZNrUFdj.js"></script>
-    <link rel="stylesheet" crossorigin href="./css/main._3DV0Igt.css">
+    <script type="module" crossorigin src="./main.CsYGteqY.js"></script>
+    <link rel="stylesheet" crossorigin href="./css/main.BuQxd-wS.css">
     <link rel="stylesheet" crossorigin href="./css/style.DgDAhKUh.css">
   </head>
   
   <body data-barba="wrapper" class="bg-black">
+
+    <img src="./images/sii.0TPrsMl-.png" id="logo" alt="Logo" />
 
     <div class="cursor-follow">
       <svg class="absolute bottom-0 left-0" width="32" height="25" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -225,5 +227,24 @@
 
       </main>
 
+    <script src="https://nextparticle.nextco.de/nextparticle.min.js"></script>
+    <script>
+      nextParticle = new NextParticle({
+        image: document.all.logo,
+        width: window.innerWidth,
+        height: window.innerHeight,
+        maxWidth: window.innerWidth * 0.5,
+        particleGap: 2,
+        dataNoise: 10,
+        mouseForce: 0
+      });
+      window.onresize = function () {
+        if (window.innerWidth > 600) {
+          nextParticle.width = window.innerWidth - 20;
+          nextParticle.height = window.innerHeight - 20;
+          nextParticle.start();
+        }
+      };
+    </script>
   </body>
 </html>

@@ -124,7 +124,7 @@ body::-webkit-scrollbar-thumb {
 
 .show-text-trigger {
     cursor: none;
-
+    z-index: 3;
 }
 .popup-wrapper {
     pointer-events: none;
@@ -173,5 +173,8 @@ body::-webkit-scrollbar-thumb {
 }
 
 canvas {
-    filter: blur(4px);
+    filter: blur(8px);
+    z-index: 1;
+    position: fixed;
+    top: 0;
 }

@@ -199,10 +199,15 @@ main {
   }
   &.bg-blur {
     cursor: pointer;
+    z-index: 3;
+    pointer-events: none;
     div, nav {
       filter: blur(10px);
       pointer-events: none;
       transition: filter 1s;
+      .item__image, .item__caption-title {
+        pointer-events: none;
+      }
     }
   }
 }

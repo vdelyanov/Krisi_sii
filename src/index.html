@@ -10,6 +10,8 @@
   
   <body data-barba="wrapper" class="bg-black">
 
+    <img src="./assets/images/sii.png" id="logo" alt="Logo" />
+
     <div class="cursor-follow">
       <svg class="absolute bottom-0 left-0" width="32" height="25" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M2 15.6318V23.73L9.73653 23.73" stroke="white" stroke-width="2"/>
@@ -224,5 +226,24 @@
       </main>
 
     <script type="module" src="./main.js"></script>
+    <script src="https://nextparticle.nextco.de/nextparticle.min.js"></script>
+    <script>
+      nextParticle = new NextParticle({
+        image: document.all.logo,
+        width: window.innerWidth,
+        height: window.innerHeight,
+        maxWidth: window.innerWidth * 0.5,
+        particleGap: 2,
+        dataNoise: 10,
+        mouseForce: 0
+      });
+      window.onresize = function () {
+        if (window.innerWidth > 600) {
+          nextParticle.width = window.innerWidth - 20;
+          nextParticle.height = window.innerHeight - 20;
+          nextParticle.start();
+        }
+      };
+    </script>
   </body>
 </html>
