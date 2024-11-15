@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@barba/core": "^2.10.3",
+    "freezeframe": "^5.0.2",
     "gsap": "npm:@gsap/shockingly@^3.12.5",
     "imagesloaded": "^5.0.0",
     "jquery": "^3.7.1",

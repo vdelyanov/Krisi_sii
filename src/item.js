@@ -14,6 +14,8 @@ export class Item {
         image: null,
         // imageInner (.item__image > .item__image-inner)
         imageInner: null,
+        // imageInner (.item__image > .item__image-inner > img)
+        imageInnerItem: null,
         // title (.item__caption-title)
         title: null,
         // titleInner (.item__caption-title > .oh__inner)
@@ -34,6 +36,7 @@ export class Item {
         this.DOM.imageWrap = this.DOM.el.querySelector('.item__image-wrap');
         this.DOM.image = this.DOM.el.querySelector('.item__image');
         this.DOM.imageInner = this.DOM.image.querySelector('.item__image-inner');
+        this.DOM.imageInnerItem = this.DOM.image.querySelector('.item__image-inner_image');
         this.DOM.title = this.DOM.el.querySelector('.item__caption-title');
         this.DOM.titleInner = this.DOM.title.querySelector('.oh__inner');
         // this.DOM.number = this.DOM.el.querySelector('.item__caption-number');

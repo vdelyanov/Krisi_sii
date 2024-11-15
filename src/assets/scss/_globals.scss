@@ -1,5 +1,5 @@
 body {
-    background-color: $cream;
+    background-color: $black;
 }
 .disable-clicks {
     pointer-events: none;
@@ -172,3 +172,6 @@ body::-webkit-scrollbar-thumb {
     }
 }
 
+canvas {
+    filter: blur(4px);
+}

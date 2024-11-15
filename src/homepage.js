@@ -15,8 +15,7 @@ const items = [];
 const animateOnScroll = () => {
 
 	for (const item of items) {
-        
-            // scale up the inner image
+
             gsap.from(item.DOM.image, {
                 ease: 'none',
                 scaleY: 2.4,
@@ -28,20 +27,34 @@ const animateOnScroll = () => {
                     start: 'top 120%',
                     end: 'center 80%',
                     scrub: true,
-                    markers: false
+                    markers: false,
+                    onLeave: () => {
+                        item.DOM.imageInnerItem.classList.add('show');
+                    },
+                    onEnterBack: () => {
+                        item.DOM.imageInnerItem.classList.remove('show');
+                    }
                 }
             },)
+
             gsap.fromTo(item.DOM.image, {
                 scaleY: 1,
                 filter: "blur(0px)",
                 opacity: 1,
                 yPercent: 0,
+           
             }, {
                 ease: 'none',
                 filter: "blur(10px)",
                 scaleY: 2.4,
                 opacity: 0,
                 yPercent: -100,
+                onStart: () => {
+                    item.DOM.imageInnerItem.classList.remove('show');
+                },
+                onReverseComplete: () => {
+                    item.DOM.imageInnerItem.classList.add('show');
+                },
                 scrollTrigger: {
                     trigger: item.DOM.el,
                     start: 'center 20%',
@@ -62,9 +75,8 @@ const animateOnScroll = () => {
                },
                filter: "blur(0px)",
                yPercent: 0,
-           })
-        
-	}
+           })  
+    	}
 
 };
 
@@ -119,3 +131,12 @@ function scrollToMiddle(targetElement) {
       });
     }
   });
+
+//   import Freezeframe from 'freezeframe';
+
+//   new Freezeframe();
+
+//   const logo = new Freezeframe('.item__image-inner', {
+//   });
+  
+// logo.start(); 
