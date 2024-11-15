@@ -281,15 +281,14 @@ document.addEventListener("DOMContentLoaded", function () {
           duration: 1.5,
           onComplete: () => {
             menu.style.pointerEvents = "none";
-            gsap.set(menu, {
+            gsap.to(menu, {
               clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
             });
             // document.querySelector(".video-wrapper").classList.remove("inner-border-active")
-            gsap.set(links, { y: 30, opacity: 0 });
-            gsap.set(socialLinks, { y: 30, opacity: 0 });
-            gsap.set(".logo-heading h2 span", {
+            gsap.to(links, { y: 30, opacity: 0 });
+            gsap.to(socialLinks, { y: 30, opacity: 0 });
+            gsap.to(splitTitle.chars, {
               y: 500,
-              rotateY: 90,
               scale: 0.8,
             });
             isAnimating = false;
@@ -315,15 +314,14 @@ document.addEventListener("DOMContentLoaded", function () {
           duration: 1.5,
           onComplete: () => {
             menu.style.pointerEvents = "none";
-            gsap.set(menu, {
+            gsap.to(menu, {
               clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
             });
             // document.querySelector(".video-wrapper").classList.remove("inner-border-active")
-            gsap.set(links, { y: 30, opacity: 0 });
-            gsap.set(socialLinks, { y: 30, opacity: 0 });
-            gsap.set(".logo-heading h2 span", {
+            gsap.to(links, { y: 30, opacity: 0 });
+            gsap.to(socialLinks, { y: 30, opacity: 0 });
+            gsap.to(splitTitle.chars, {
               y: 500,
-              rotateY: 90,
               scale: 0.8,
             });
             isAnimating = false;
@@ -333,7 +331,20 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     })
 
+    gsap.set(menu, {
+      clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
+    });
+    // document.querySelector(".video-wrapper").classList.remove("inner-border-active")
+    gsap.set(links, { y: 30, opacity: 0 });
+    gsap.set(socialLinks, { y: 30, opacity: 0 });
+    gsap.set(splitTitle.chars, {
+      y: 500,
+      scale: 0.8,
+    });
+
     menuToggle.addEventListener("click", () => {
+
+
       if (isAnimating) return;
 
       if (menuToggle.classList.contains("closed")) {
@@ -378,20 +389,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const tl = gsap.timeline();
 
-        // tl.to(".video-wrapper", {
-        //   duration: 1,
-        //   onComplete: () => document.querySelector(".video-wrapper").classList.add("inner-border-active")
-        // });
-      
         // Animate header text rotation
-        gsap.from(splitTitle.chars, {
-          translateY: 200, 
-          rotateY: 25,
-          scale: 0.8,
+        
+        gsap.to(splitTitle.chars, {
+          y: 0,
+          rotateY: 0,
+          scale: 1,
           stagger: 0.05,
           delay: 0.75,
           duration: 1.5,
           ease: "power4.out",
+          
         });
       } else {
         menuToggle.classList.remove("opened");
@@ -408,15 +416,14 @@ document.addEventListener("DOMContentLoaded", function () {
           duration: 1.5,
           onComplete: () => {
             menu.style.pointerEvents = "none";
-            gsap.set(menu, {
+            gsap.to(menu, {
               clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
             });
             // document.querySelector(".video-wrapper").classList.remove("inner-border-active")
-            gsap.set(links, { y: 30, opacity: 0 });
-            gsap.set(socialLinks, { y: 30, opacity: 0 });
-            gsap.set(".logo-heading h2 span", {
+            gsap.to(links, { y: 30, opacity: 0 });
+            gsap.to(socialLinks, { y: 30, opacity: 0 });
+            gsap.to(splitTitle.chars, {
               y: 500,
-              rotateY: 90,
               scale: 0.8,
             });
             isAnimating = false;
@@ -427,42 +434,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
   
-
-  // Video interaction  
-  // const video = document.getElementById('video-wrapper');
-  // const maxWidth = 100; // Max width as a percentage
-  // const minWidth = 50; // Minimum width percentage when the mouse is far away
-  
-  // // Set maxDistance to the viewport width in pixels
-  // let maxDistance = window.innerWidth;
-  
-  // document.addEventListener('mousemove', (event) => {
-  //   const rect = video.getBoundingClientRect();
-  //   const videoX = rect.left;
-  //   const videoY = rect.bottom;
-  
-  //   // Calculate the distance from the mouse to the bottom-left corner of the video
-  //   const dx = event.clientX - videoX;
-  //   const dy = event.clientY - videoY;
-  //   const distance = Math.sqrt(dx * dx + dy * dy);
-  
-  //   // Calculate width percentage based on distance
-  //   const widthPercent = Math.max(minWidth, maxWidth - (distance / maxDistance) * (maxWidth - minWidth));
-  
-  //   // Animate the width using GSAP
-  //   gsap.to(video, {
-  //     width: `${widthPercent}%`,
-  //     duration: 0.8,
-  //     ease: "power3.out"
-  //   });
-  // });
-  
-  // // Update maxDistance if the viewport is resized
-  // window.addEventListener('resize', () => {
-  //   maxDistance = window.innerWidth;
-  // });
-
-  // Select the cursor-follow element
 
 // GSAP animation for the cursor
 const cursorElement = document.querySelector('.cursor-follow');

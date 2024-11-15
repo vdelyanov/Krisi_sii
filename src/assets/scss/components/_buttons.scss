@@ -1,0 +1,7 @@
+.text-blur {
+    transition: filter 0.3s;
+    &:hover, &:focus {
+        filter: blur(0.6px);
+        transition: filter 0.3s;
+    }
+}
