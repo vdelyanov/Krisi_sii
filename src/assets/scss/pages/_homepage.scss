@@ -149,3 +149,77 @@
   cursor: none !important;
   z-index: 3;
 }
+
+ form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 5vh;
+  label {
+    width: 40%;
+    transition: width 0.4s;
+    svg {
+      transition: transform 0.4s, stroke 0.4s;
+      path {
+        transition: transform 0.4s, stroke 0.4s;
+      }
+    }
+  }
+  label:has(input:not(:placeholder-shown)), label:has(textarea:not(:placeholder-shown)) {
+    width: 60%;
+  }
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover, 
+  input:-webkit-autofill:focus,
+  textarea:-webkit-autofill,
+  textarea:-webkit-autofill:hover,
+  textarea:-webkit-autofill:focus,
+  select:-webkit-autofill,
+  select:-webkit-autofill:hover,
+  select:-webkit-autofill:focus {
+    -webkit-text-fill-color: white;
+    -webkit-box-shadow: 0 0 0px 1000px #000 inset;
+    transition: background-color 5000s ease-in-out 0s;
+  }
+
+  .hover-link:focus-within {
+    width: 60%;
+    transition: width 0.4s;
+    svg {
+    transition: transform 0.4s, stroke 0.4s;
+    transform: scale(1.2);
+      path {
+        stroke: $primary;
+        transition: transform 0.4s, stroke 0.4s;
+        }
+      }
+    }
+    
+  input, textarea {
+    color: $white !important;
+    background-color: transparent;
+    height: 10vh;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    font-size: 48px;
+    line-height: 1;
+    &:not(:placeholder-shown) {
+      background-color: $black;
+    }
+    &::placeholder {
+      font-size: 48px;
+      line-height: 1;
+      white-space: nowrap;
+      padding: 0;
+      color: $white;
+    }
+  }
+  textarea {
+    padding: calc(10vh - 24px)  20px;
+    height: 20vh;
+    resize: none;
+  }
+ }

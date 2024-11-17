@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body data-barba="wrapper">
-    
 
-    <div class="cursor-follow">
+
+    <div style="opacity: 0;" class="cursor-follow">
       <svg class="absolute bottom-0 left-0" width="32" height="25" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M2 15.6318V23.73L9.73653 23.73" stroke="white" stroke-width="2"/>
       </svg>        
@@ -25,9 +25,9 @@
       </svg>        
     </div>
 
-    <header> 
-      <a class="logo hover-link" href="./index.html">.sii</a>
-      <div class="menu-toggle hover-link closed">
+    <header style="opacity: 0"> 
+      <a class="logo hover-link text-blur" href="./index.html">.sii</a>
+      <div class="menu-toggle hover-link text-blur closed">
         <div class="menu-toggle-icon">
           <div class="hamburger">
             <div class="menu-bar" data-position="top"></div>
@@ -41,36 +41,30 @@
       </div>
     </header>
 
-    <div class="menu">
+    <div style="opacity: 0;" class="menu">
 
       <div class="grid grid-cols-12">
         <div class="col-span-6 flex flex-col justify-between">
           <div class="menu-logo">
           </div>
 
-          <div class="socials flex flex-col gap-1">
-              <a class="text-[20px]" href="javascript:;">Instagram</a>
-              <a class="text-[20px]" href="javascript:;">LinkedIn</a>
+          <div class="socials flex flex-col gap-2">
+              <a class="text-[20px] text-blur" href="javascript:;">Instagram</a>
+              <a class="text-[20px] text-blur" href="javascript:;">LinkedIn</a>
               <div class="flex gap-4 mt-4">
-                <a href="tel:+359898373968">+359898373968</a>
-                <a href="mailto:kriisiisii@gmail.com">kriisiisii@gmail.com</a>
+                <a class="text-blur" href="tel:+359898373968">+359898373968</a>
+                <a class="text-blur" href="mailto:kriisiisii@gmail.com">kriisiisii@gmail.com</a>
               </div>
           </div>
-
-          <!-- <div id="video-wrapper" class="video-wrapper">
-            <video autoplay muted loop>
-              <source src="./assets//images/video.mp4" type="video/mp4" />
-            </video>
-          </div> -->
 
         </div>
 
         <div class="col-span-6 flex flex-col justify-between">
           <nav class="links">
-            <div class="link"><a href="#">Начало</a></div>
-            <div class="link"><a href="#">Галерия</a></div>
-            <div class="link"><a href="#">За мен</a></div>
-            <div class="link"><a href="#">Контакти</a></div>
+            <div class="link text-blur"><a href="./index.html">Начало</a></div>
+            <div class="link text-blur"><a href="./gallery.html">Галерия</a></div>
+            <div class="link text-blur"><a href="./about.html">За мен</a></div>
+            <div class="link text-blur"><a href="./contacts.html">Контакти</a></div>
           </nav>
 
           <div class="logo-heading flex justify-end">
@@ -82,53 +76,22 @@
 
     </div>
 
-    <div class="transition">
-      <div class="transition_wrapper">
-          <figure class="transition_figure">
-              <img
-                  class="transition_image"
-                  src="https://assets.lummi.ai/assets/QmQTpXmZP7n5QBAppvijbbm4LL69nR3rRKQTkjXNa4UPYZ?auto=format&w=1500"
-                  alt=""
-              />
-          </figure>
-          <figure class="transition_figure">
-              <img
-                  src="https://assets.lummi.ai/assets/QmNLp8R9b71HLTLBJkGssbJWCqo4LWZ3vkqpLsjZgxW7R7?auto=format&w=1500"
-                  alt=""
-                  class="transition_image"
-              />
-          </figure>
-          <figure class="transition_figure">
-              <img
-                  src="https://assets.lummi.ai/assets/QmTv7Cv4ZTrFGGtBYByfMME9feFqAbHo2ZQH5BdETGPq9A?auto=format&w=1500"
-                  alt=""
-                  class="transition_image"
-              />
-          </figure>
-          <figure class="transition_figure">
-              <img
-                  src="https://assets.lummi.ai/assets/QmNaeHZVH4xCEKVW39YN2Uzgs437iYSWiN9Bjf5hEQwgd2?auto=format&w=1500"
-                  alt=""
-                  class="transition_image"
-              />
-          </figure>
-          <figure class="transition_figure">
-              <img
-                  src="https://assets.lummi.ai/assets/QmT6DGxzW2WvPe6ecuKX5WDtwttXocJ8e1dxV3qndT6ak7?auto=format&w=1500"
-                  alt=""
-                  class="transition_image"
-              />
-          </figure>
-      </div>
-    </div>
-
     <div id="preloader" class="preload hidden">
       <div id="name">Photo.sii</div>
     </div>
 
-    <main data-barba="container" data-barba-namespace="about" class="flex h-dvh items-center flex-col justify-center">
-      <img src="./assets/images/camera.png" id="logo" alt="Logo" />
+    <main style="opacity: 0;" data-barba="container" data-barba-namespace="about" class="flex h-dvh items-center flex-col justify-center">
+      <img style="opacity: 0;" src="./assets/images/camera.png" id="logo" alt="Logo" />
     </main>
+
+    <div id="cookie-box" style="opacity: 0;" class="cookie-consent hidden">
+      <div class="flex flex-col md:flex-row items-center">
+        <p class="md:mr-20 my-4 md:my-0 text-center md:text-left md:mb-0 pt-1">Този сайт използва бисквитки.<br>
+      </div>
+      <div class="button-container">
+        <button tabindex="-1" id="btn-position" class="primary-btn hover-link" type="click">Окей</button>
+      </div>
+    </div>
 
     <script type="module" src="./main.js"></script>
     <script src="https://nextparticle.nextco.de/nextparticle.min.js"></script>

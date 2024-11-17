@@ -126,9 +126,9 @@ header {
             font-size: 172px;
             color: $black;
             line-height: 1;
-            span {
+            div {
               color: $black;
-              font-family: 'Phenomena-Regular', sans-serif;
+              font-family: 'Phenomena-Bold', sans-serif;
             }
         }
     }
@@ -153,8 +153,6 @@ header {
             opacity: 0; 
             pointer-events: none; 
             transition: opacity 1s ease-out;
-            }
-        .video-wrapper.inner-border-active {
             }
     .links {
         display: flex;

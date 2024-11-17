@@ -10,9 +10,7 @@
   
   <body data-barba="wrapper" class="bg-black">
 
-    <img src="./assets/images/sii.png" id="logo" alt="Logo" />
-
-    <div class="cursor-follow">
+    <div  style="opacity: 0;" class="cursor-follow">
       <svg class="absolute bottom-0 left-0" width="32" height="25" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M2 15.6318V23.73L9.73653 23.73" stroke="white" stroke-width="2"/>
       </svg>        
@@ -27,7 +25,7 @@
       </svg>        
     </div>
 
-    <header> 
+    <header style="opacity: 0"> 
       <a class="logo hover-link text-blur" href="./index.html">.sii</a>
       <div class="menu-toggle hover-link text-blur closed">
         <div class="menu-toggle-icon">
@@ -43,7 +41,7 @@
       </div>
     </header>
 
-    <div class="menu">
+    <div style="opacity: 0;" class="menu">
 
       <div class="grid grid-cols-12">
         <div class="col-span-6 flex flex-col justify-between">
@@ -63,10 +61,10 @@
 
         <div class="col-span-6 flex flex-col justify-between">
           <nav class="links">
-            <div class="link text-blur"><a href="#">Начало</a></div>
-            <div class="link text-blur"><a href="#">Галерия</a></div>
-            <div class="link text-blur"><a href="#">За мен</a></div>
-            <div class="link text-blur"><a href="#">Контакти</a></div>
+            <div class="link text-blur"><a href="./index.html">Начало</a></div>
+            <div class="link text-blur"><a href="./gallery.html">Галерия</a></div>
+            <div class="link text-blur"><a href="./about.html">За мен</a></div>
+            <div class="link text-blur"><a href="./contacts.html">Контакти</a></div>
           </nav>
 
           <div class="logo-heading flex justify-end">
@@ -78,51 +76,13 @@
 
     </div>
 
-    <div class="transition">
-      <div class="transition_wrapper">
-          <figure class="transition_figure">
-              <img
-                  class="transition_image"
-                  src="https://assets.lummi.ai/assets/QmQTpXmZP7n5QBAppvijbbm4LL69nR3rRKQTkjXNa4UPYZ?auto=format&w=1500"
-                  alt=""
-              />
-          </figure>
-          <figure class="transition_figure">
-              <img
-                  src="https://assets.lummi.ai/assets/QmNLp8R9b71HLTLBJkGssbJWCqo4LWZ3vkqpLsjZgxW7R7?auto=format&w=1500"
-                  alt=""
-                  class="transition_image"
-              />
-          </figure>
-          <figure class="transition_figure">
-              <img
-                  src="https://assets.lummi.ai/assets/QmTv7Cv4ZTrFGGtBYByfMME9feFqAbHo2ZQH5BdETGPq9A?auto=format&w=1500"
-                  alt=""
-                  class="transition_image"
-              />
-          </figure>
-          <figure class="transition_figure">
-              <img
-                  src="https://assets.lummi.ai/assets/QmNaeHZVH4xCEKVW39YN2Uzgs437iYSWiN9Bjf5hEQwgd2?auto=format&w=1500"
-                  alt=""
-                  class="transition_image"
-              />
-          </figure>
-          <figure class="transition_figure">
-              <img
-                  src="https://assets.lummi.ai/assets/QmT6DGxzW2WvPe6ecuKX5WDtwttXocJ8e1dxV3qndT6ak7?auto=format&w=1500"
-                  alt=""
-                  class="transition_image"
-              />
-          </figure>
-      </div>
-    </div>
-
     <div id="preloader" class="preload hidden">
       <div id="name">Photo.sii</div>
     </div>
 
-    <main data-barba="container" data-barba-namespace="home" class="">
+    <main style="opacity: 0;" data-barba="container" data-barba-namespace="home" class="">
+      <img src="./assets/images/sii.png" id="logo" alt="Logo" />
+
       <nav class="scroll-nav">
         <ul>
           <li class="scroll-item group">
@@ -146,6 +106,7 @@
         </ul>
         <div class="scroll-indicator"></div>
       </nav>
+
       <div class="heading show-text-trigger fixed bottom-[0px] p-[20px] left-[0px]">
         <h1 class="mb-4 h3 uppercase">Кристиана <br> Симеонова</h1>
       </div>
@@ -219,6 +180,16 @@
 
       </main>
 
+
+    <div id="cookie-box" style="opacity: 0;" class="cookie-consent hidden">
+      <div class="flex flex-col md:flex-row items-center">
+        <p class="md:mr-20 my-4 md:my-0 text-center md:text-left md:mb-0 pt-1">Този сайт използва бисквитки.<br>
+      </div>
+      <div class="button-container">
+        <button tabindex="-1" id="btn-position" class="primary-btn hover-link" type="click">Окей</button>
+      </div>
+    </div>
+
     <script type="module" src="./main.js"></script>
     <script src="https://nextparticle.nextco.de/nextparticle.min.js"></script>
     <script>
@@ -240,4 +211,5 @@
       };
     </script>
   </body>
+  
 </html>

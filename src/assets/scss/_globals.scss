@@ -18,69 +18,9 @@ body {
     position: relative;
     width: 100%;
     height: 100%;
-    opacity: 0;
-}
-.transition_figure {
-    position: absolute;
-    border: 4px solid black;
+    background-color: $primary;
 }
 
-.transition_figure:nth-child(1) {
-    left: 85vh;
-    top: -10vh;
-    width: auto;
-    height: 80vh; 
-      @include media-sm {
-        height: 100vh;
-    }
-}
-.transition_figure:nth-child(2) {
-    left: 0;
-    top: -25vh;
-    width: auto;
-    height: 100vh;
-    @include media-sm {
-        left: 0;
-        top: -5vh;
-        width: auto;
-        height: 60vh;
-    }
-}
-.transition_figure:nth-child(3) {
-    right: -2vh;
-    top: 0;
-    width: auto;
-    height: 90vh;
-    z-index: 1;
-    @include media-sm {
-        height: 60vh;
-    }
-}
-.transition_figure:nth-child(4) {
-    left: 0;
-    bottom: -30vh;
-    width: auto;
-    height: 90vh;
-    @include media-sm {
-        height: 75vh;
-    }
-}
-.transition_figure:nth-child(5) {
-    left: 45vw;
-    bottom: -40vh;
-    width: auto;
-    height: 100vh;
-    @include media-sm {
-        left: 35vw;
-        bottom: -15vh;
-        height: 60vh;
-    }
-}
-.transition_image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
 
 .preload {
     position: fixed;
@@ -154,14 +94,14 @@ body::-webkit-scrollbar-thumb {
     opacity: 0;
     &.hide {
         cursor: none !important;
-        opacity: 0;
+        opacity: 0 !important;
         svg {
             opacity: 0;
         }
     }
     &.show {
         transition: opacity 0.3s;
-        opacity: 1;
+        opacity: 1 !important;
     }
     &.hover-active {
         svg {
@@ -178,3 +118,47 @@ canvas {
     position: fixed;
     top: 0;
 }
+
+#cookie-box {
+    padding: 12px 24px;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: auto;
+    background: $white;
+    z-index: 99;
+    opacity: 0;
+    filter: blur(10px);
+    transition: opacity 0.4s ease;
+    &.show {
+        transition: opacity 0.8s ease, filter 0.8s ease;
+        opacity: 1 !important; 
+        filter: blur(0px);
+    }
+    &.hidden {
+        transition: opacity 0.4s ease, filter 0.4s ease;
+        opacity: 0 !important;
+        filter: blur(10px);
+        pointer-events: none;
+      }
+    @include media-sm {
+        width: 100%;
+        height: auto;
+        padding: 0px 20px;
+    }
+    a,p, button {
+      color: $black;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    a {
+        transition: all 0.3s;
+        &:hover {
+            filter: blur(0.6px);
+            transition: all 0.3s;
+        }  
+    }
+  }

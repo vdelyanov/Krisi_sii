@@ -85,8 +85,6 @@ preloadImages('.item__image-inner').then(() => {
     animateOnScroll();
 });
 
-
-
 // Scroll bar function
 function scrollToMiddle(targetElement) {
     const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY;
@@ -97,19 +95,19 @@ function scrollToMiddle(targetElement) {
       top: offsetPosition,
       behavior: 'smooth'
     });
-  }
+}
   
-  document.querySelectorAll('.scroll-link').forEach(link => {
-    link.addEventListener('click', (e) => {
-      e.preventDefault();
-      const targetId = link.getAttribute('href').substring(1);
-      const targetElement = document.getElementById(targetId);
-  
-      if (targetElement) {
-        scrollToMiddle(targetElement);
-      }
-    });
-  });
+document.querySelectorAll('.scroll-link').forEach(link => {
+link.addEventListener('click', (e) => {
+    e.preventDefault();
+    const targetId = link.getAttribute('href').substring(1);
+    const targetElement = document.getElementById(targetId);
+
+    if (targetElement) {
+    scrollToMiddle(targetElement);
+    }
+});
+});
   
 
   gsap.registerPlugin(ScrollTrigger);
@@ -131,12 +129,3 @@ function scrollToMiddle(targetElement) {
       });
     }
   });
-
-//   import Freezeframe from 'freezeframe';
-
-//   new Freezeframe();
-
-//   const logo = new Freezeframe('.item__image-inner', {
-//   });
-  
-// logo.start(); 
