@@ -5,6 +5,7 @@
   margin-left: auto;
   width: 60%;
   padding-top: 40vh;
+  padding-bottom: 0vh;
   pointer-events: none;
   z-index: 2;
 }
@@ -18,7 +19,6 @@
 	margin: 0 auto 25vh;
   &:last-child {
     margin: 0 auto 0vh;
-    
   }
 }
 
@@ -67,6 +67,7 @@
 	margin: 0;
 	color: $white;
   margin-left: -100px;
+  margin-top: 48px;
   pointer-events: all;
   .oh__inner {
     line-height: 0;
@@ -78,7 +79,6 @@
     grid-template-columns: 0vw 1fr;
     grid-template-areas: 'caption img' ;
 }
-
 
 .scroll-nav {
   position: fixed;
@@ -125,7 +125,6 @@
   border-radius: 2px;
   opacity: 0.65;
   transform: translateY(0);
-  transition: transform 0.3s ease;
 }
 
 .item__image-wrap {
@@ -183,7 +182,7 @@
     transition: background-color 5000s ease-in-out 0s;
   }
 
-  .hover-link:focus-within {
+  label.hover-link:focus-within {
     width: 60%;
     transition: width 0.4s;
     svg {
@@ -222,4 +221,4 @@
     height: 20vh;
     resize: none;
   }
- }
+}

@@ -11,13 +11,17 @@ gsap.registerPlugin(ScrollTrigger, SplitText);
 import CookieBox from "./CookieBox.js";
 const cookieBox = new CookieBox("#cookie-box");
 
-
 import './homepage.js'
 
-
-import Lenis from 'lenis'
 import barba from '@barba/core';
-const lenis = new Lenis()
+import Lenis from 'lenis'
+
+const lenis = new Lenis({
+  duration: 1.5, // Slightly increase duration for smoother easing
+  infinite: false, // Ensure looping is smooth
+  smoothWheel: true, // Smooth scrolling for mouse wheel
+  smoothTouch: false, // Ensure smoothness for touch devices
+});
 
 function raf(time) {
   lenis.raf(time)
@@ -26,12 +30,25 @@ function raf(time) {
 requestAnimationFrame(raf)
 
 
-// Page Transiiton  
+// Workaround - Fix smooth scrolling - Edge case becouse of the gsap animation 
+document.addEventListener("DOMContentLoaded", function () {
+  setTimeout(() => {
+    const newDiv = document.createElement('div');
+    newDiv.className = 'h-[10vh]';
+    const mainElement = document.querySelector('main.homepage');
+    if (mainElement) {
+        mainElement.appendChild(newDiv);
+    } 
+  }, 1000)
+})
 
+
+// Page Transiiton  
 const transition = {
   main: document.querySelector('main'),
   menu: document.querySelector('.menu'),
   header: document.querySelector('header'),
+  cursor: document.querySelectorAll('.cursor-follow svg'),
 };
 
 const enterTransition = () => {
@@ -47,16 +64,19 @@ const enterTransition = () => {
       filter: 'blur(20px)',
       ease: "expo.inOut",
       duration: 1.5,
-    }).to(transition.header, {
+    }, 0).to(transition.header, {
       opacity: 0,
       duration: 1.2,
-    }, 0);
+    }, 0).to(transition.cursor, {
+      opacity: 0,
+      duration: 0.8,
+    });
     } else {
     tl.to(transition.menu, {
       clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
       ease: "expo.inOut",
       duration: 1.2,
-    }).to(transition.main, {
+    }, 0).to(transition.main, {
       opacity: 0,
       filter: 'blur(20px)',
       ease: "expo.inOut",
@@ -64,7 +84,10 @@ const enterTransition = () => {
     }, 0).to(transition.header, {
       opacity: 0,
       duration: 1.2,
-    }, 0);;
+    }, 0).to(transition.cursor, {
+      opacity: 0,
+      duration: 0.8,
+    });
   }
 
   });
@@ -311,7 +334,7 @@ function heroAnim() {
         ease: "power4",
         duration: 1,
         autoAlpha: 1,
-        delay: 1.5,
+        delay: 1.2,
         y: 0,
         filter: "blur(0px)",
     })
@@ -361,13 +384,17 @@ function initHeader() {
       menuCloseText.classList.remove("hide");
       menuOpenText.classList.remove("show");
       menuCopy.classList.remove("move");
-      main.classList.remove("bg-blur");
       isAnimating = true;
-
+      
       gsap.to(menu, {
         clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
         ease: "expo.inOut",
         duration: 1.5,
+        onStart: () => {
+          setTimeout(() => {
+            main.classList.remove("bg-blur");
+          }, 500)
+        },
         onComplete: () => {
           menu.style.pointerEvents = "none";
           gsap.to(menu, {
@@ -393,13 +420,17 @@ function initHeader() {
       menuCloseText.classList.remove("hide");
       menuOpenText.classList.remove("show");
       menuCopy.classList.remove("move");
-      main.classList.remove("bg-blur");
       isAnimating = true;
-
+      
       gsap.to(menu, {
         clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
         ease: "expo.inOut",
         duration: 1.5,
+        onStart: () => {
+          setTimeout(() => {
+            main.classList.remove("bg-blur");
+          }, 500)
+        },
         onComplete: () => {
           menu.style.pointerEvents = "none";
           gsap.to(menu, {
@@ -493,13 +524,18 @@ function initHeader() {
       menuCloseText.classList.remove("hide");
       menuOpenText.classList.remove("show");
       menuCopy.classList.remove("move");
-      main.classList.remove("bg-blur");
+      
       isAnimating = true;
 
       gsap.to(menu, {
         clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
         ease: "expo.inOut",
         duration: 1.5,
+        onStart: () => {
+          setTimeout(() => {
+            main.classList.remove("bg-blur");
+          }, 500)
+        },
         onComplete: () => {
           menu.style.pointerEvents = "none";
           gsap.to(menu, {

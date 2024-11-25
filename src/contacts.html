@@ -43,35 +43,35 @@
     <div style="opacity: 0;" class="menu">
 
       <div class="grid grid-cols-12">
-        <div class="col-span-6 flex flex-col justify-between">
-          <div class="menu-logo">
+          <div class="col-span-6 flex flex-col justify-between">
+            <div class="menu-logo">
+            </div>
+
+            <div class="socials flex flex-col gap-2">
+                <a class="text-[20px] text-blur" href="javascript:;">Instagram</a>
+                <a class="text-[20px] text-blur" href="javascript:;">LinkedIn</a>
+                <div class="flex gap-4 mt-4">
+                  <a class="text-blur" href="tel:+359898373968">+359898373968</a>
+                  <a class="text-blur" href="mailto:kriisiisii@gmail.com">kriisiisii@gmail.com</a>
+                </div>
+            </div>
+
           </div>
 
-          <div class="socials flex flex-col gap-2">
-              <a class="text-[20px] text-blur" href="javascript:;">Instagram</a>
-              <a class="text-[20px] text-blur" href="javascript:;">LinkedIn</a>
-              <div class="flex gap-4 mt-4">
-                <a class="text-blur" href="tel:+359898373968">+359898373968</a>
-                <a class="text-blur" href="mailto:kriisiisii@gmail.com">kriisiisii@gmail.com</a>
-              </div>
+          <div class="col-span-6 flex flex-col justify-between">
+            <nav class="links">
+              <div class="link text-blur"><a href="./index.html">Начало</a></div>
+              <div class="link text-blur"><a href="./gallery.html">Галерия</a></div>
+              <div class="link text-blur"><a href="./about.html">За мен</a></div>
+              <div class="link text-blur"><a href="./contacts.html">Контакти</a></div>
+            </nav>
+
+            <div class="logo-heading flex justify-end">
+              <h2>Photo.sii</h2>
+            </div>
+    
           </div>
-
-        </div>
-
-        <div class="col-span-6 flex flex-col justify-between">
-          <nav class="links">
-            <div class="link text-blur"><a href="./index.html">Начало</a></div>
-            <div class="link text-blur"><a href="./gallery.html">Галерия</a></div>
-            <div class="link text-blur"><a href="./about.html">За мен</a></div>
-            <div class="link text-blur"><a href="./contacts.html">Контакти</a></div>
-          </nav>
-
-          <div class="logo-heading flex justify-end">
-            <h2>Photo.sii</h2>
-          </div>
-  
-        </div>
-    </div>
+      </div>
 
     </div>
 
@@ -80,6 +80,29 @@
     </div>
 
     <main style="opacity: 0;" data-barba="container" data-barba-namespace="contacts" class="flex h-dvh items-center flex-col justify-center">
+
+      <div class="heading show-text-trigger fixed bottom-[0px] p-[20px] left-[0px]">
+        <h1 class="h3 uppercase">Кристиана <br> Симеонова</h1>
+      </div>
+
+      <div class="popup-wrapper">
+        <div class="popup">
+          <svg class="absolute bottom-0 left-0" width="32" height="25" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2 15.6318V23.73L9.73653 23.73" stroke="white" stroke-width="2"/>
+          </svg>        
+          <svg class="absolute top-0 right-0" width="32" height="25" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M30 9.09814L30 0.999995L22.2635 0.999993" stroke="white" stroke-width="2"/>
+          </svg>        
+          <svg class="absolute top-0 left-0" width="32" height="25" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10 1L1.90185 1L1.90185 8.73653" stroke="white" stroke-width="2"/>
+          </svg>        
+          <svg class="absolute bottom-0 right-0" width="32" height="25" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M22 23.73L30.0981 23.73L30.0982 15.9935" stroke="white" stroke-width="2"/>
+          </svg> 
+          <p class="desc-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde corrupti vero magnam hic molestiae enim odit tenetur distinctio debitis perferendis!</p>
+        </div>
+      </div>
+
       <img style="opacity: 0;" src="./assets/images/camera.png" id="logo" alt="Logo"/>
 
       <div class="container pointer-events-none mx-auto z-[2]">
@@ -133,6 +156,7 @@
             </svg>
             <textarea placeholder="Съобщение" name="text" id="message"></textarea>
           </label>
+          <button class="uppercase text-[24px] hover-link text-blur pointer-events-auto" type="submit">Изпрати</button>
         </form>
       </div>
     </main>
@@ -142,7 +166,7 @@
         <p class="md:mr-20 my-4 md:my-0 text-center md:text-left md:mb-0 pt-1">Този сайт използва бисквитки.<br>
       </div>
       <div class="button-container">
-        <button tabindex="-1" id="btn-position" class="primary-btn hover-link" type="click">Окей</button>
+        <button tabindex="-1" id="btn-position" class="primary-btn hover-link text-blur" type="click">Окей</button>
       </div>
     </div>
 

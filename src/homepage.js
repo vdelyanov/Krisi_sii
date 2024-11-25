@@ -29,10 +29,10 @@ const animateOnScroll = () => {
                     scrub: true,
                     markers: false,
                     onLeave: () => {
-                        item.DOM.imageInnerItem.classList.add('show');
+                        // item.DOM.imageInnerItem.classList.add('show');
                     },
                     onEnterBack: () => {
-                        item.DOM.imageInnerItem.classList.remove('show');
+                        // item.DOM.imageInnerItem.classList.remove('show');
                     }
                 }
             },)
@@ -50,10 +50,10 @@ const animateOnScroll = () => {
                 opacity: 0,
                 yPercent: -100,
                 onStart: () => {
-                    item.DOM.imageInnerItem.classList.remove('show');
+                    // item.DOM.imageInnerItem.classList.remove('show');
                 },
                 onReverseComplete: () => {
-                    item.DOM.imageInnerItem.classList.add('show');
+                    // item.DOM.imageInnerItem.classList.add('show');
                 },
                 scrollTrigger: {
                     trigger: item.DOM.el,
@@ -76,7 +76,7 @@ const animateOnScroll = () => {
                filter: "blur(0px)",
                yPercent: 0,
            })  
-    	}
+    }
 
 };
 
@@ -93,7 +93,7 @@ function scrollToMiddle(targetElement) {
   
     window.scrollTo({
       top: offsetPosition,
-      behavior: 'smooth'
+      behavior: 'smooth',
     });
 }
   
@@ -108,24 +108,21 @@ link.addEventListener('click', (e) => {
     }
 });
 });
-  
 
-  gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger);
 
-  const indicator = document.querySelector('.scroll-indicator');
-  
-  ScrollTrigger.create({
+const indicator = document.querySelector('.scroll-indicator');
+
+ScrollTrigger.create({
     trigger: document.body,
     start: "top top",
     end: "bottom bottom",
     onUpdate: (self) => {
-      const scrollPercentage = self.progress * 90;
-  
-      // Apply smooth animation to the indicator
-      gsap.to(indicator, {
+    const scrollPercentage = self.progress * 90;
+
+    // Apply smooth animation to the indicator
+    gsap.to(indicator, {
         y: scrollPercentage, 
-        duration: 0.1,
-        ease: "power1.out"
-      });
+    });
     }
-  });
+});

@@ -15,7 +15,7 @@ export class Item {
         // imageInner (.item__image > .item__image-inner)
         imageInner: null,
         // imageInner (.item__image > .item__image-inner > img)
-        imageInnerItem: null,
+        // imageInnerItem: null,
         // title (.item__caption-title)
         title: null,
         // titleInner (.item__caption-title > .oh__inner)
