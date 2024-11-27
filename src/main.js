@@ -30,6 +30,7 @@ function raf(time) {
 requestAnimationFrame(raf)
 
 
+
 // Workaround - Fix smooth scrolling - Edge case becouse of the gsap animation 
 document.addEventListener("DOMContentLoaded", function () {
   setTimeout(() => {
@@ -56,7 +57,6 @@ const enterTransition = () => {
     const tl = gsap.timeline({
       onComplete: resolve,
     });
-
     const menuToggle = document.querySelector(".menu-toggle");
     if (menuToggle.classList.contains("closed")) {
     tl.to(transition.main, {
@@ -225,17 +225,17 @@ document.addEventListener('mousemove', (e) => {
   cursorElement.classList.add('show')
   const windowWidth = window.innerWidth;
   const windowHeight = window.innerHeight;
-
+  
   gsap.to(cursorElement, {
       duration: 0.3, 
       ease: "power2.out", 
       x: e.clientX - cursorElement.offsetWidth / 2,  
       y: e.clientY - cursorElement.offsetHeight / 2,
+    });
   });
-});
 
-hoverLinks.forEach(link => {
-  link.addEventListener('mouseenter', () => {
+  hoverLinks.forEach(link => {
+    link.addEventListener('mouseenter', () => {
       gsap.to(cursorElement, {
           duration: 0.3,
           width: '68px',
@@ -259,7 +259,6 @@ hoverLinks.forEach(link => {
   });
 });
 
-
 let split = new SplitText(text, {
   type: "lines,words,chars"
 });
@@ -270,6 +269,7 @@ gsap.set(split.chars, {
   autoAlpha: 0,       
 });
 }
+
 
 hoverLinksText.forEach(link => {
   link.addEventListener('mouseenter', () => {
@@ -348,6 +348,7 @@ function initHeader() {
     main: document.querySelector('main'),
     header: document.querySelector('header'),
   };
+  window
   gsap.to(transition.main, {
     opacity: 1,
     ease: "expo.inOut",
@@ -553,5 +554,84 @@ function initHeader() {
     }
     
   });
+
+}
+
+const aboutPage = document.querySelector("#about");
+
+if (aboutPage) {
+
+  var topOffset = 35;
+
+  function animateParagraph(paragraphSelector, imageSelector) {
+    const textDesc = document.querySelector(paragraphSelector);
+  
+    if (!textDesc) return;
+  
+    let splitDesc = new SplitText(textDesc, {
+      type: "words,chars"
+    });
+  
+    gsap.set(splitDesc.words, {     
+      filter: "blur(10px)",  
+      autoAlpha: 0,     
+      opacity: 0 
+    });
+  
+    gsap.to(splitDesc.words, {
+      filter: "blur(5px)",  
+      autoAlpha: 1,
+      opacity: 0.5,   
+      stagger: 0.05,  
+      delay: 0.5,
+    });
+  
+    const timeline = gsap.timeline({
+      scrollTrigger: {
+        trigger: paragraphSelector,
+        start: "top 80%",
+        end: "bottom 80%",
+        pin: false,
+        scrub: 0.5,
+        markers: false
+      }
+    });
+  
+    timeline.to(splitDesc.words, {
+      filter: "blur(0px)",  
+      stagger: 0.1,
+    }).fromTo(splitDesc.chars, {opacity: 0.5}, {
+        opacity: 1,
+        filter: "blur(0px)",  
+        stagger: 0.2,
+      }, 0).to(imageSelector, { 
+        scrollTrigger: {
+          trigger: paragraphSelector,
+          start: "top 80%",
+          end: "bottom 80%",
+          scrub: 0.5, 
+          markers: false, 
+        },
+        top: topOffset + "vh",
+      });
+      topOffset += 5;
+  }
+  
+  animateParagraph(".paragraph-1", ".image-1");
+  animateParagraph(".paragraph-2", ".image-2");
+  animateParagraph(".paragraph-3", ".image-3");
+  animateParagraph(".paragraph-4", ".image-4");
+  
+gsap.to("canvas", { 
+    scrollTrigger: {
+      trigger: ".paragraph-1",
+      start: "top 80%",
+      end: "bottom 80%",
+      scrub: 0.5, 
+      markers: false, 
+    },
+    opacity: 0,
+  });
+
 
 }

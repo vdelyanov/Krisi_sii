@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Krisi.sii</title>
     <link rel="icon" type="image/svg+xml" href="./vite.svg" />
-    <script type="module" crossorigin src="./main.8UzlajBo.js"></script>
-    <link rel="stylesheet" crossorigin href="./css/main.Cua7ibEG.css">
+    <script type="module" crossorigin src="./main.Dm4OcKCC.js"></script>
+    <link rel="stylesheet" crossorigin href="./css/main.BKmPvNdL.css">
     <link rel="stylesheet" crossorigin href="./css/style.DgDAhKUh.css">
   </head>
   <body data-barba="wrapper">
@@ -51,8 +51,8 @@
           </div>
 
           <div class="socials flex flex-col gap-2">
-              <a class="text-[20px] text-blur" href="javascript:;">Instagram</a>
-              <a class="text-[20px] text-blur" href="javascript:;">LinkedIn</a>
+              <a class="text-[20px] text-blur" target="_blank" href="https://www.instagram.com/photo.sii/">Instagram</a>
+              <a class="text-[20px] text-blur" target="_blank" href="https://www.linkedin.com/in/kristiana-simeonova-62a04a213/">LinkedIn</a>
               <div class="flex gap-4 mt-4">
                 <a class="text-blur" href="tel:+359898373968">+359898373968</a>
                 <a class="text-blur" href="mailto:kriisiisii@gmail.com">kriisiisii@gmail.com</a>
@@ -65,7 +65,7 @@
           <nav class="links">
             <div class="link text-blur"><a href="./index.html">Начало</a></div>
             <div class="link text-blur"><a href="./gallery.html">Галерия</a></div>
-            <div class="link text-blur"><a href="./about.html">За мен</a></div>
+            <!-- <div class="link text-blur"><a href="./about.html">За мен</a></div> -->
             <div class="link text-blur"><a href="./contacts.html">Контакти</a></div>
           </nav>
 
@@ -82,8 +82,29 @@
       <div id="name">Photo.sii</div>
     </div>
 
-    <main style="opacity: 0;" data-barba="container" data-barba-namespace="about" class="flex h-dvh items-center flex-col justify-center">
-      <img style="opacity: 0;" src="./images/camera.D3SnV5xs.png" id="logo" alt="Logo" />
+    <main style="opacity: 0;" data-barba="container" id="about" data-barba-namespace="about" class="flex h-dvh items-center flex-col justify-center">
+      <img style="opacity: 0;" src="./images/kr1.MhkKizC_.png" id="logo" alt="Logo" />
+
+      <div class="container h-screen mx-auto">
+        <div class="grid grid-cols-12">
+          <div class="col-span-6">
+            <!-- <img src="./assets/images/kr2.png" class="main-image object-contain w-[100%] h-[65%]" alt=""> -->
+          </div>
+          <div class="col-span-6">
+            <div class="main-desc-text pt-[74vh] pb-[20vh] ">
+              <h1 class="mb-6">Повече за мен</h1>
+              <p class="text-[42px] paragraph paragraph-1 text-left">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore, quia! Atque, quasi!</p>
+              <p class="text-[42px] paragraph paragraph-2 text-left">Lorem ipsum dolor sit amet consectetur adipisicing elit. Et necessitatibus beatae iste labore saepe qui neque ratione laboriosam, impedit dicta?</p>
+              <p class="text-[42px] paragraph paragraph-3 text-left">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ab illum distinctio a dicta quos illo.</p>
+              <p class="text-[42px] paragraph paragraph-4 text-left">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+        <img src="./images/kr2.Cr9kdnG3.png" class="main-image image-1 object-cover fixed left-[0px] top-[120%] w-[45vw] h-[50vh]" alt="">
+        <img src="./images/img-2.Bc9-Qpld.jpg" class="main-image image-2 object-cover fixed left-[0px] top-[120%] w-[45vw] h-[50vh]" alt="">
+        <img src="./images/img-3.CVLWZFMC.jpg" class="main-image image-3 object-cover fixed left-[0px] top-[120%] w-[45vw] h-[50vh]" alt="">
+        <img src="./images/img-4.PgiggmOP.jpg" class="main-image image-4 object-cover fixed left-[0px] top-[120%] w-[45vw] h-[50vh]" alt="">
     </main>
 
     <div id="cookie-box" style="opacity: 0;" class="cookie-consent hidden">
@@ -104,6 +125,7 @@
         maxWidth: window.innerWidth * 0.5,
         particleGap: 2,
         dataNoise: 10,
+        disableInteraction: true,
         mouseForce: 0
       });
       window.onresize = function () {

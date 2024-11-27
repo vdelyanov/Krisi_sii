@@ -222,3 +222,19 @@
     resize: none;
   }
 }
+
+#about {
+  canvas {
+    left: -25%;
+  }
+  .main-image {
+    border-radius: 2px;
+  }
+  .main-desc-text {
+    font-family: 'SofiaSans-Light';
+    .paragraph {
+      font-family: 'SofiaSans-Light';
+      line-height: 112%;
+    }
+  }
+}
