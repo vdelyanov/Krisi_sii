@@ -556,7 +556,7 @@ function initHeader() {
   });
 
 }
-
+document.addEventListener("DOMContentLoaded", function () {
 const aboutPage = document.querySelector("#about");
 
 if (aboutPage) {
@@ -635,3 +635,4 @@ gsap.to("canvas", {
 
 
 }
+})
