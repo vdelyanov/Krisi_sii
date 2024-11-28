@@ -63,7 +63,7 @@
               <div class="link text-blur"><a href="./index.html">Начало</a></div>
               <div class="link text-blur"><a href="./gallery.html">Галерия</a></div>
               <div class="link text-blur"><a href="./about.html">За мен</a></div>
-              <!-- <div class="link text-blur"><a href="./contacts.html">Контакти</a></div> -->
+              <div class="link text-blur"><a href="./contacts.html">Контакти</a></div>
             </nav>
 
             <div class="logo-heading flex justify-end">
@@ -79,7 +79,7 @@
       <div id="name">Photo.sii</div>
     </div>
 
-    <main style="opacity: 0;" data-barba="container" id="contacts" data-barba-namespace="contacts" class="flex h-dvh items-center flex-col justify-center">
+    <main style="opacity: 0;" data-barba="container" id="contacts" data-barba-namespace="contacts" class="flex min-h-dvh pt-32 items-center flex-col justify-center">
 
       <div class="heading show-text-trigger fixed bottom-[0px] p-[20px] left-[0px]">
         <h1 class="h3 uppercase">Кристиана <br> Симеонова</h1>
@@ -105,8 +105,9 @@
 
       <img style="opacity: 0;" src="./assets/images/camera.png" id="logo" alt="Logo"/>
 
-      <div class="container pointer-events-none mx-auto z-[2]">
-        <div class="text-content">
+      <div class="container pointer-events-none mx-auto min-h-[calc(100vh-128px)] z-[2]">
+        <div class="grid grid-cols-12">
+        <div class="text-content col-span-6">
           <h1 class="mb-4">Свържи се с мен</h1>
           <p class="max-w-[420px] text-[24px] mb-6">За повече информация, потенциялна колаборация, други услуги нуждаещи се от кадри</p>
           <div class="socials-wrapper flex gap-6 items-center">
@@ -137,7 +138,7 @@
             </a>
           </div>
         </div>
-        <form class="pointer-events-none" action="">
+        <form class="pointer-events-none col-span-6 pt-2" action="">
           <label class="relative pointer-events-auto hover-link" for="name">
             <svg class="absolute bottom-0 left-0" width="32" height="25" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M2 15.6318V23.73L9.73653 23.73" stroke="white" stroke-width="2"/>
@@ -185,6 +186,8 @@
           </label>
           <button class="uppercase text-[24px] hover-link text-blur pointer-events-auto" type="submit">Изпрати</button>
         </form>
+      </div>
+
       </div>
     </main>
 

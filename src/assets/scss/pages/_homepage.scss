@@ -155,7 +155,7 @@
   align-items: flex-end;
   gap: 5vh;
   label {
-    width: 40%;
+    width: 80%;
     transition: width 0.4s;
     svg {
       transition: transform 0.4s, stroke 0.4s;
@@ -165,7 +165,7 @@
     }
   }
   label:has(input:not(:placeholder-shown)), label:has(textarea:not(:placeholder-shown)) {
-    width: 60%;
+    width: 100%;
   }
 
   input:-webkit-autofill,
@@ -183,7 +183,7 @@
   }
 
   label.hover-link:focus-within {
-    width: 60%;
+    width: 100%;
     transition: width 0.4s;
     svg {
     transition: transform 0.4s, stroke 0.4s;

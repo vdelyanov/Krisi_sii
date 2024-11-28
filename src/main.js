@@ -117,7 +117,6 @@ const enterTransition = () => {
 
 const leaveTransition = () => {
   const menuToggle = document.querySelector(".menu-toggle");
-  const menu = document.querySelector(".menu");
   const menuCopy = document.querySelector(".menu-copy");
   const menuOpenText = document.querySelector(".close-text");
   const menuCloseText = document.querySelector(".open-text");
@@ -664,17 +663,17 @@ if (aboutPage) {
   animateParagraph(".paragraph-3", ".image-3");
   animateParagraph(".paragraph-4", ".image-4");
   
-gsap.to("canvas", { 
-    scrollTrigger: {
-      trigger: ".paragraph-1",
-      start: "top 80%",
-      end: "bottom 80%",
-      scrub: 0.5, 
-      markers: false, 
-    },
-    opacity: 0,
-  });
-
-
+    setTimeout(() => {
+      gsap.to("canvas", { 
+          scrollTrigger: {
+            trigger: ".paragraph-1",
+            start: "top 80%",
+            end: "bottom 80%",
+            scrub: 0.5, 
+            markers: false, 
+          },
+          opacity: 0,
+        });
+    }, 100)
 }
 })
