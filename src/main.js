@@ -116,7 +116,9 @@ const enterTransition = () => {
 }; 
 
 window.addEventListener('beforeunload', () => {
-  window.scrollTo(0, 0);
+  setTimeout(() => {
+    window.scrollTo(0, 0);
+  }, 200)
 });
 
 if ('scrollRestoration' in history) {
