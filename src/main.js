@@ -677,10 +677,14 @@ if (aboutPage) {
       .fromTo(
         imageSelector,
         {
-          top: "120%", // Start slightly below the current offset
+          top: "150%", // Start slightly below the current offset
+          scaleY: 2,
+          filter: "blur(10px)",
         },
         {
           top: `${topOffset}vh`, // Move it all the way up by 50vh
+          scaleY: 1,
+          filter: "blur(0px)",
           ease: "none", // Smooth linear motion
           scrollTrigger: {
             trigger: paragraphSelector,
