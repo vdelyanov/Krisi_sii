@@ -16,6 +16,7 @@ import './homepage.js'
 
 import barba from '@barba/core';
 import Lenis from 'lenis'
+import { mx_fractal_noise_float } from 'three/webgpu';
 
 const lenis = new Lenis({
   duration: 1.5, // Slightly increase duration for smoother easing
@@ -57,6 +58,7 @@ const transition = {
   menu: document.querySelector('.menu'),
   header: document.querySelector('header'),
   cursor: document.querySelectorAll('.cursor-follow svg'),
+
 };
 
 // const enterTransition = () => {
@@ -102,13 +104,16 @@ const transition = {
 
 const enterTransition = () => {
 
+  const childElements = transition.main.querySelectorAll('*');
+
+
   return new Promise((resolve) => {
     const tl = gsap.timeline({
       onComplete: resolve,
     });
     const menuToggle = document.querySelector(".menu-toggle");
     if (menuToggle.classList.contains("closed")) {
-    tl.to(transition.main, {
+    tl.to(childElements, {
       opacity: 0,
       filter: 'blur(20px)',
       ease: "expo.inOut",
@@ -122,7 +127,7 @@ const enterTransition = () => {
       clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
       ease: "expo.inOut",
       duration: 1.2,
-    }, 0).to(transition.main, {
+    }, 0).to(childElements, {
       opacity: 0,
       filter: 'blur(20px)',
       ease: "expo.inOut",
@@ -135,7 +140,6 @@ const enterTransition = () => {
 
   });
 }; 
-
 
 if ('scrollRestoration' in history) {
   history.scrollRestoration = 'manual';
@@ -155,7 +159,6 @@ const leaveTransition = () => {
     window.location.reload();
   }, 200)
 };
-
 
 barba.init({
   transitions: [
@@ -639,7 +642,7 @@ if (aboutPage) {
     gsap.to(splitDesc.words, {
       filter: "blur(5px)",  
       autoAlpha: 1,
-      opacity: 0.5,   
+      opacity: 0,   
       stagger: 0.05,  
       delay: 0.5,
     });
@@ -647,34 +650,53 @@ if (aboutPage) {
     const timeline = gsap.timeline({
       scrollTrigger: {
         trigger: paragraphSelector,
-        start: "top 80%",
-        end: "bottom 80%",
-        pin: false,
-        scrub: 0.5,
+        start: "top 50%",
+        end: "bottom 50%",
+        pin: true,
+        pinSpacing: true,
+        scrub: 0.5, // Smooth scrolling effect
         markers: false
       }
     });
-  
-    timeline.to(splitDesc.words, {
-      filter: "blur(0px)",  
-      stagger: 0.1,
-    }).fromTo(splitDesc.chars, {opacity: 0.5}, {
-        opacity: 1,
-        filter: "blur(0px)",  
-        stagger: 0.2,
-      }, 0).to(imageSelector, { 
-        scrollTrigger: {
-          trigger: paragraphSelector,
-          start: "top 80%",
-          end: "bottom 80%",
-          scrub: 0.5, 
-          markers: false, 
+    
+    timeline
+      .to(splitDesc.words, {
+        filter: "blur(0px)",
+        stagger: 0.1,
+      })
+      .fromTo(
+        splitDesc.chars,
+        { opacity: 0 },
+        {
+          opacity: 1,
+          filter: "blur(0px)",
+          stagger: 0.2,
         },
-        top: topOffset + "vh",
-      });
-      topOffset += 5;
-  }
-  
+        0
+      )
+      .fromTo(
+        imageSelector,
+        {
+          top: "120%", // Start slightly below the current offset
+        },
+        {
+          top: `${topOffset}vh`, // Move it all the way up by 50vh
+          ease: "none", // Smooth linear motion
+          scrollTrigger: {
+            trigger: paragraphSelector,
+            start: "top 50%",
+            end: "bottom 50%",
+            scrub: 0.5, // Ensures it moves with the scroll
+            markers: false, // Debug markers to verify behavior
+          },
+        }
+      );
+    
+      topOffset += 5; // Increment the offset for subsequent animations
+    
+      
+    }
+
   animateParagraph(".paragraph-1", ".image-1");
   animateParagraph(".paragraph-2", ".image-2");
   animateParagraph(".paragraph-3", ".image-3");
@@ -685,7 +707,6 @@ if (aboutPage) {
           scrollTrigger: {
             trigger: ".paragraph-1",
             start: "top 80%",
-            end: "bottom 80%",
             scrub: 0.5, 
             markers: false, 
           },
