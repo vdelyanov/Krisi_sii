@@ -115,6 +115,14 @@ const enterTransition = () => {
   });
 }; 
 
+window.addEventListener('beforeunload', () => {
+  window.scrollTo(0, 0);
+});
+
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
+
 const leaveTransition = () => {
   const menuToggle = document.querySelector(".menu-toggle");
   const menuCopy = document.querySelector(".menu-copy");
@@ -129,6 +137,7 @@ const leaveTransition = () => {
     window.location.reload();
   }, 200)
 };
+
 
 barba.init({
   transitions: [
