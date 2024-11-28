@@ -95,7 +95,7 @@ const enterTransition = () => {
     }, 0).to(transition.cursor, {
       opacity: 0,
       duration: 0.8,
-    });
+    }).to(window, { scrollTo: 0, duration: 0 });
     } else {
     tl.to(transition.menu, {
       clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
@@ -109,16 +109,14 @@ const enterTransition = () => {
     }, 0).to(transition.cursor, {
       opacity: 0,
       duration: 0.8,
-    });
+    }).to(window, { scrollTo: 0, duration: 0 });;
   }
 
   });
 }; 
 
-window.addEventListener('beforeunload', () => {
-  setTimeout(() => {
+window.addEventListener('load', () => {
     window.scrollTo(0, 0);
-  }, 200)
 });
 
 if ('scrollRestoration' in history) {
