@@ -80,6 +80,7 @@ const transition = {
 // }; 
 
 const enterTransition = () => {
+
   return new Promise((resolve) => {
     const tl = gsap.timeline({
       onComplete: resolve,
@@ -115,7 +116,19 @@ const enterTransition = () => {
 }; 
 
 const leaveTransition = () => {
-  window.location.reload();
+  const menuToggle = document.querySelector(".menu-toggle");
+  const menu = document.querySelector(".menu");
+  const menuCopy = document.querySelector(".menu-copy");
+  const menuOpenText = document.querySelector(".close-text");
+  const menuCloseText = document.querySelector(".open-text");
+  menuToggle.classList.remove("opened");
+  menuToggle.classList.add("closed");
+  menuCloseText.classList.remove("hide");
+  menuOpenText.classList.remove("show");
+  menuCopy.classList.remove("move");
+  setTimeout(() => {
+    window.location.reload();
+  }, 200)
 };
 
 barba.init({
