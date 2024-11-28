@@ -35,18 +35,20 @@ requestAnimationFrame(raf)
 
 document.addEventListener("DOMContentLoaded", function () {
 
-  if (window.location.pathname !== '/') {
-    lenis.scrollTo(0, { duration: 0 }); // Scroll to the top
-  }
+  var homepage = document.querySelector("main#homepage");
 
-  setTimeout(() => {
-    const newDiv = document.createElement('div');
-    newDiv.className = 'h-[10vh]';
-    const mainElement = document.querySelector('main.homepage');
-    if (mainElement) {
-        mainElement.appendChild(newDiv);
-    } 
-  }, 1000)
+  if (!homepage) {
+    lenis.scrollTo(0, { duration: 0 });
+  } else {
+    setTimeout(() => {
+      const newDiv = document.createElement('div');
+      newDiv.className = 'h-[10vh]';
+      const mainElement = document.querySelector('main.homepage');
+      if (mainElement) {
+          mainElement.appendChild(newDiv);
+      } 
+    }, 1000)
+  }
 });
 
 // Page Transiiton  
