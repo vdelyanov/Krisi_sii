@@ -5,8 +5,9 @@ import $ from "jquery"
 import { gsap } from "gsap";
 import { SplitText } from 'gsap/SplitText';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 
-gsap.registerPlugin(ScrollTrigger, SplitText);
+gsap.registerPlugin(ScrollTrigger, SplitText, ScrollToPlugin);
 
 import CookieBox from "./CookieBox.js";
 const cookieBox = new CookieBox("#cookie-box");
@@ -29,6 +30,24 @@ function raf(time) {
 }
 requestAnimationFrame(raf)
 
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+
+  if (window.location.pathname !== '/') {
+    lenis.scrollTo(0, { duration: 0 }); // Scroll to the top
+  }
+
+  setTimeout(() => {
+    const newDiv = document.createElement('div');
+    newDiv.className = 'h-[10vh]';
+    const mainElement = document.querySelector('main.homepage');
+    if (mainElement) {
+        mainElement.appendChild(newDiv);
+    } 
+  }, 1000)
+});
 
 // Page Transiiton  
 const transition = {
@@ -115,9 +134,6 @@ const enterTransition = () => {
   });
 }; 
 
-window.addEventListener('load', () => {
-    window.scrollTo(0, 0);
-});
 
 if ('scrollRestoration' in history) {
   history.scrollRestoration = 'manual';
@@ -236,16 +252,6 @@ function shuffleLetters(finalText) {
 
 // Trigger preload animation
 document.addEventListener("DOMContentLoaded", function () {
-// Workaround - Fix smooth scrolling - Edge case becouse of the gsap animation 
-  setTimeout(() => {
-    const newDiv = document.createElement('div');
-    newDiv.className = 'h-[10vh]';
-    const mainElement = document.querySelector('main.homepage');
-    if (mainElement) {
-        mainElement.appendChild(newDiv);
-    } 
-  }, 1000)
-
   const hasVisitedBefore = localStorage.getItem("hasVisitedBefore");
   if (!hasVisitedBefore) {
     const preloader = document.getElementById("preloader")
