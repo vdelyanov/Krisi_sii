@@ -1,7 +1,7 @@
 header {
     position: fixed;
     width: 100%;
-    z-index: 10;
+    z-index: 101;
     .logo {
         position: absolute;
         top: 24px;
@@ -200,7 +200,7 @@ main {
     z-index: 3;
     pointer-events: none;
     div, nav, img {
-      filter: blur(10px);
+      filter: blur(10px) !important;
       pointer-events: none;
       transition: filter 1s;
       .item__image, .item__caption-title {

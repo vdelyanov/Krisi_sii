@@ -36,19 +36,20 @@ requestAnimationFrame(raf)
 
 document.addEventListener("DOMContentLoaded", function () {
 
+      const scrollIcon = document.getElementById('scroll-icon');
+
+        window.addEventListener('scroll', function() {
+          if (window.scrollY > 50) {
+            scrollIcon.classList.add('hide');
+          } else {
+            scrollIcon.classList.remove('hide');
+        }
+      });
+
   var homepage = document.querySelector("main#homepage");
 
   if (!homepage) {
     lenis.scrollTo(0, { duration: 0 });
-  } else {
-    setTimeout(() => {
-      const newDiv = document.createElement('div');
-      newDiv.className = 'h-[10vh]';
-      const mainElement = document.querySelector('main.homepage');
-      if (mainElement) {
-          mainElement.appendChild(newDiv);
-      } 
-    }, 1000)
   }
 });
 
@@ -399,6 +400,14 @@ function heroAnim() {
         y: 0,
         filter: "blur(0px)",
     })
+    setTimeout(() => {
+      const newDiv = document.createElement('div');
+      newDiv.className = 'h-[10vh]';
+      const mainElement = document.querySelector('main.homepage');
+      if (mainElement) {
+          mainElement.appendChild(newDiv);
+      } 
+    }, 1000)
   }
 } 
 // Header anit

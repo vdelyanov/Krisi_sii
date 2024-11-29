@@ -11,12 +11,9 @@
       //     },
       //   },
       // };
-      
-import { sync } from "glob";
 
 import { defineConfig } from 'vite';
-
-import path from 'path';
+import { sync } from "glob";
 
 export default defineConfig({
   base: './',
@@ -33,7 +30,7 @@ export default defineConfig({
         assetFileNames: ({ name }) => {
           if (/\.(css|scss)$/.test(name)) {
             return 'css/[name].[hash][extname]';
-          } else if (/\.(png|jpe?g|svg|gif)$/.test(name)) {
+          } else if (/\.(png|jpe?g|svg|gif|json)$/.test(name)) {
             return 'images/[name].[hash][extname]';
           } else {
             return 'assets/[name].[hash][extname]';
