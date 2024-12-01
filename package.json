@@ -22,12 +22,13 @@
     "@barba/core": "^2.10.3",
     "freezeframe": "^5.0.2",
     "gsap": "npm:@gsap/shockingly@^3.12.5",
+    "hover-effect": "^1.2.1",
     "imagesloaded": "^5.0.0",
     "jquery": "^3.7.1",
     "lenis": "^1.1.14",
     "math-fit": "^1.0.1",
     "pixi.js": "^8.5.2",
-    "three": "^0.170.0",
+    "three": "^0.171.0",
     "virtual-scroller": "^1.13.1"
   }
 }

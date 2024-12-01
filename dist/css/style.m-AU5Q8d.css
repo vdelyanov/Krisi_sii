@@ -1,0 +1,1 @@
+:root{--background-color: #000000}body{background-color:var(--background-color);transition:background-color .3s ease}

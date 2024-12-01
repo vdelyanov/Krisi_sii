@@ -16,10 +16,9 @@ import './homepage.js'
 
 import barba from '@barba/core';
 import Lenis from 'lenis'
-import { mx_fractal_noise_float } from 'three/webgpu';
 
 const lenis = new Lenis({
-  duration: 1.5, // Slightly increase duration for smoother easing
+  duration: 1.2, // Slightly increase duration for smoother easing
   infinite: false, // Ensure looping is smooth
   smoothWheel: true, // Smooth scrolling for mouse wheel
   smoothTouch: false, // Ensure smoothness for touch devices
@@ -33,6 +32,39 @@ requestAnimationFrame(raf)
 
 
 
+// Predefined colors
+const colors = {
+    color1: '#000000', 
+    color2: '#121619', 
+    color3: '#141D29',  
+    color4: '#1F1F1F' 
+};
+
+
+// Function to change background color and store in localStorage
+function changeColor(colorKey) {
+    const color = colors[colorKey];
+    document.body.style.backgroundColor = color;
+    document.documentElement.style.setProperty('--background-color', color); // Update CSS variable
+    localStorage.setItem('selectedColor', color); // Save the selected color
+}
+
+// Restore saved color on page load
+document.addEventListener('DOMContentLoaded', () => {
+    const savedColor = localStorage.getItem('selectedColor');
+    
+    if (savedColor) {
+        document.body.style.backgroundColor = savedColor;
+        document.documentElement.style.setProperty('--background-color', savedColor); // Update CSS variable
+
+    }
+
+    // Add event listeners to buttons
+    document.getElementById('color1').addEventListener('click', () => changeColor('color1'));
+    document.getElementById('color2').addEventListener('click', () => changeColor('color2'));
+    document.getElementById('color3').addEventListener('click', () => changeColor('color3'));
+    document.getElementById('color4').addEventListener('click', () => changeColor('color4'));
+});
 
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -680,6 +712,7 @@ if (aboutPage) {
           opacity: 1,
           filter: "blur(0px)",
           stagger: 0.2,
+          duration: 2.5,
         },
         0
       )
@@ -698,8 +731,9 @@ if (aboutPage) {
           scrollTrigger: {
             trigger: paragraphSelector,
             start: "top 50%",
+            duration: 2.5,
             end: "bottom 50%",
-            scrub: 0.5, // Ensures it moves with the scroll
+            scrub: 1, // Ensures it moves with the scroll
             markers: false, // Debug markers to verify behavior
           },
         }

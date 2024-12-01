@@ -29,20 +29,20 @@
 }
 
 .item__image {
-	width: auto;
+	width: auto ;
   height: 80vh;
 	position: relative;
 	overflow: hidden;
 	will-change: transform;
   pointer-events: all;
 }
-
-.item__image-inner, img {
-	width: 100%;
+.item__image canvas {
+	width: 60vw !important;
 	height: 100%;
 	background-size: cover;
 	will-change: transform;
   display: block;
+  border-radius: 2px;
 }
 .item__image-inner_image {
   opacity: 0;
@@ -236,5 +236,13 @@
       font-family: 'SofiaSans-Light';
       line-height: 112%;
     }
+  }
+}
+
+
+.my-div {
+  canvas {
+      height: 100vh !important;
+      width: 100vw !important;
   }
 }
