@@ -34,7 +34,7 @@ export default defineConfig({
           if (/\.(css|scss)$/.test(name)) {
             return 'css/[name][extname]';
           } else if (/\.(png|jpe?g|svg|gif|json)$/.test(name)) {
-            return 'images/[name][extname]'; // No hash here
+            return 'images/[name][extname]';
           } else {
             return 'assets/[name][extname]';
           }
@@ -64,14 +64,15 @@ export default defineConfig({
         images.forEach((imgPath) => {
           // Resolve the full path to the source image
           const resolvedPath = path.resolve('./src', imgPath);
-        
-          // Preserve the folder structure in the dist folder
-          const relativePath = path.relative('./src/', resolvedPath); // Adjust base folder if needed
-        
+  
+          // Ensure all images are placed in `dist/images/img/`
+          const relativePath = path.basename(imgPath); // Extract just the file name
+          const finalPath = path.join('img', relativePath); // Place in `images/img/`
+  
           this.emitFile({
             type: 'asset',
-            name: relativePath, // Keeps the folder structure intact
-            source: fs.readFileSync(resolvedPath), // Read the file
+            name: finalPath, // Place in `dist/images/img/`
+            source: fs.readFileSync(resolvedPath), // Read the file contents
           });
         });
       }
