@@ -62,10 +62,16 @@ export default defineConfig({
 
         // Add each image to the Rollup asset pipeline
         images.forEach((imgPath) => {
+          // Resolve the full path to the source image
+          const resolvedPath = path.resolve('./src', imgPath);
+        
+          // Preserve the folder structure in the dist folder
+          const relativePath = path.relative('./src/', resolvedPath); // Adjust base folder if needed
+        
           this.emitFile({
             type: 'asset',
-            name: path.basename(imgPath),
-            source: fs.readFileSync(path.resolve('./src', imgPath)) // Adjust the base path if necessary
+            name: relativePath, // Keeps the folder structure intact
+            source: fs.readFileSync(resolvedPath), // Read the file
           });
         });
       }
