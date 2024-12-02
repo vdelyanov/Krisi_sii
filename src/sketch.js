@@ -1,4 +1,3 @@
-
 import * as THREE from 'three';
 import { gsap, Power2 } from 'gsap';
 
@@ -17,7 +16,10 @@ export class Slider {
     this.duration = opts.duration || 1;
     this.easing = opts.easing || 'easeInOut';
     this.container = opts.container;
-    this.images = JSON.parse(this.container.getAttribute('data-images'));
+
+    // Extract image URLs from <img> tags inside the container
+    this.images = Array.from(this.container.querySelectorAll('img')).map(img => img.src);
+
     this.textures = [];
     this.width = this.container.offsetWidth;
     this.height = this.container.offsetHeight;
@@ -99,7 +101,7 @@ export class Slider {
       uniforms: {
         time: { type: "f", value: 0 },
         progress: { type: "f", value: 0 },
-        intensity: { type: "f", value: 0.2 }, // Must match the shader's expected range
+        intensity: { type: "f", value: 0.2 },
         width: { type: "f", value: 0 },
         scaleX: { type: "f", value: 40 },
         scaleY: { type: "f", value: 40 },
@@ -110,8 +112,7 @@ export class Slider {
         texture2: { type: "t", value: this.textures[1] },
         displacement: { type: "t", value: new THREE.TextureLoader().load('./assets/images/disp1.jpg') },
         resolution: { type: "v4", value: new THREE.Vector4() },
-    },
-    
+      },
       vertexShader: this.vertex,
       fragmentShader: this.fragment,
     });
@@ -125,7 +126,7 @@ export class Slider {
     this.container.addEventListener('mouseenter', () => this.next());
     this.container.addEventListener('mouseleave', () => this.previous());
   }
-  
+
   previous() {
     if (this.isRunning) return;
     this.isRunning = true;
@@ -135,24 +136,25 @@ export class Slider {
     this.material.uniforms.texture2.value = prevTexture;
 
     gsap.to(this.material.uniforms.progress, {
-        value: 1,
-        duration: this.duration,
-        ease: Power2[this.easing],
-        onComplete: () => {
-            this.current = (this.current - 1 + len) % len;
-            this.material.uniforms.texture1.value = prevTexture;
-            this.material.uniforms.progress.value = 0;
-            this.isRunning = false;
-        },
+      value: 1,
+      duration: this.duration,
+      ease: Power2[this.easing],
+      onComplete: () => {
+        this.current = (this.current - 1 + len) % len;
+        this.material.uniforms.texture1.value = prevTexture;
+        this.material.uniforms.progress.value = 0;
+        this.isRunning = false;
+      },
     });
-}
+  }
+
   next() {
     if (this.isRunning) return;
     this.isRunning = true;
     let len = this.textures.length;
     let nextTexture = this.textures[(this.current + 1) % len];
     this.material.uniforms.texture2.value = nextTexture;
-    let tl = gsap.timeline()
+    let tl = gsap.timeline();
     tl.to(this.material.uniforms.progress, {
       value: 1,
       duration: this.duration,
