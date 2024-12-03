@@ -91,6 +91,7 @@ const transition = {
   menu: document.querySelector('.menu'),
   header: document.querySelector('header'),
   cursor: document.querySelectorAll('.cursor-follow svg'),
+  body: document.querySelector('body'),
 
 };
 
@@ -154,7 +155,7 @@ const enterTransition = () => {
     }, 0).to(transition.cursor, {
       opacity: 0,
       duration: 0.8,
-    }).to(window, { scrollTo: 0, duration: 0 });
+    }).to(window, { scrollTo: 0, duration: 0 }, 0).to(transition.body, { backgroundColor: "#000000", duration: 0.4, ease: "expo.inOut",});;
     } else {
     tl.to(transition.menu, {
       clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
@@ -168,7 +169,7 @@ const enterTransition = () => {
     }, 0).to(transition.cursor, {
       opacity: 0,
       duration: 0.8,
-    }).to(window, { scrollTo: 0, duration: 0 });;
+    }).to(window, { scrollTo: 0, duration: 0 }, 0).to(transition.body, { backgroundColor: "#000000", duration: 0.4, ease: "expo.inOut",});
   }
 
   });
