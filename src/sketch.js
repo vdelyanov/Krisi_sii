@@ -54,6 +54,12 @@ export class Slider {
         that.textures[i] = new THREE.TextureLoader().load(url, resolve);
       });
       promises.push(promise);
+      if (/Safari/.test(navigator.userAgent) && !/Chrome/.test(navigator.userAgent)) {
+        var canvas = document.querySelectorAll(".item__image");
+        canvas.forEach(item => {
+            item.classList.add('hide');
+        });
+        }
     });
 
     Promise.all(promises).then(() => {
@@ -110,7 +116,8 @@ export class Slider {
         swipe: { type: "f", value: 0 },
         texture1: { type: "t", value: this.textures[0] },
         texture2: { type: "t", value: this.textures[1] },
-        displacement: { type: "t", value: new THREE.TextureLoader().load('./images/disp1.jpg') },
+        // displacement: { type: "t", value: new THREE.TextureLoader().load('./images/disp1.jpg') },
+        displacement: { type: "t", value: new THREE.TextureLoader().load('./assets/images/disp1.jpg') },
         resolution: { type: "v4", value: new THREE.Vector4() },
       },
       vertexShader: this.vertex,

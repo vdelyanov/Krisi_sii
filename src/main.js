@@ -40,7 +40,6 @@ const colors = {
     color4: '#1F1F1F' 
 };
 
-
 // Function to change background color and store in localStorage
 const modalBg = document.querySelector('#popup-wrapper')
 
@@ -223,7 +222,8 @@ function wrapLetters(text) {
   item.innerHTML = '';
   [...text].forEach(letter => {
     const span = document.createElement('span');
-    span.style.filter = 'blur(8px)';
+    span.style.filter = 'blur(2px)';
+    span.style.opacity = '0.8';
     span.textContent = letter;
     item.appendChild(span);
   });
@@ -233,11 +233,12 @@ function fadeanim() {
   gsap.to('#preloader', {
     clipPath: "polygon(0 100%, 100% 100%, 100% 100%, 0 100%)",
     delay: 0.5,
+    diration: 1,
     onComplete: () => {
       setTimeout(() => {
         initHeader()
         heroAnim()
-      }, 500)
+      }, 1000)
     }
   });
 }
@@ -248,7 +249,10 @@ function animateBlurEffect() {
 
   function clearNextLetter() {
     if (index < letters.length) {
-      gsap.to(letters[index], { filter: 'blur(0px)', duration: 0.5 });
+      gsap.to(letters[index], { 
+          filter: 'blur(0px)',
+          opacity: 1,
+          duration: 0.5 });
       index++;
       if (index < letters.length) {
         setTimeout(clearNextLetter, 100);
@@ -290,7 +294,7 @@ function shuffleLetters(finalText) {
       clearInterval(intervalHandles[i]);
     }
     animateBlurEffect();
-  }, 500);
+  }, 2000);
 }
 
 // Trigger preload animation
