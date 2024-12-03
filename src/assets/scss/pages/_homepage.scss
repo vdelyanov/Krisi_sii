@@ -205,8 +205,10 @@
     width: 100%;
     font-size: 48px;
     line-height: 1;
+    transition: background-color 0.4s ease-in-out;
     &:not(:placeholder-shown) {
-      background-color: $black;
+      background-color: var(--background-color);
+      transition: background-color 0.8s ease-in-out;
     }
     &::placeholder {
       font-size: 48px;

@@ -91,7 +91,7 @@ body::-webkit-scrollbar-thumb {
     height: auto !important;
     padding: 16px;
     mix-blend-mode: normal;
-    background: $black !important;
+    background: $black;
     transition: clip-path 0.2s cubic-bezier(0.4, 0, 0.68, 0.06);
     .desc-text {
         cursor: none;

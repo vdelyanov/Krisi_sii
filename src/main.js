@@ -42,9 +42,12 @@ const colors = {
 
 
 // Function to change background color and store in localStorage
+const modalBg = document.querySelector('#popup-wrapper')
+
 function changeColor(colorKey) {
     const color = colors[colorKey];
     document.body.style.backgroundColor = color;
+    modalBg.style.backgroundColor = color;
     document.documentElement.style.setProperty('--background-color', color); // Update CSS variable
     localStorage.setItem('selectedColor', color); // Save the selected color
 }
@@ -55,8 +58,8 @@ document.addEventListener('DOMContentLoaded', () => {
     
     if (savedColor) {
         document.body.style.backgroundColor = savedColor;
+        modalBg.style.backgroundColor = savedColor;
         document.documentElement.style.setProperty('--background-color', savedColor); // Update CSS variable
-
     }
 
     // Add event listeners to buttons
@@ -147,7 +150,7 @@ const enterTransition = () => {
     });
     const menuToggle = document.querySelector(".menu-toggle");
     if (menuToggle.classList.contains("closed")) {
-    tl.to(childElements, {
+    tl.to(transition.body, { backgroundColor: "#000000", duration: 0.4, ease: "expo.inOut",}, 0).to(childElements, {
       opacity: 0,
       filter: 'blur(20px)',
       ease: "expo.inOut",
@@ -155,9 +158,10 @@ const enterTransition = () => {
     }, 0).to(transition.cursor, {
       opacity: 0,
       duration: 0.8,
-    }).to(window, { scrollTo: 0, duration: 0 }, 0).to(transition.body, { backgroundColor: "#000000", duration: 0.4, ease: "expo.inOut",});;
+    }).to(window, { scrollTo: 0, duration: 0 }, 0);
     } else {
-    tl.to(transition.menu, {
+      tl.to(transition.body, { backgroundColor: "#000000", duration: 0.4, ease: "expo.inOut",
+      }, 0).to(transition.menu, {
       clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
       ease: "expo.inOut",
       duration: 1.2,
@@ -169,7 +173,7 @@ const enterTransition = () => {
     }, 0).to(transition.cursor, {
       opacity: 0,
       duration: 0.8,
-    }).to(window, { scrollTo: 0, duration: 0 }, 0).to(transition.body, { backgroundColor: "#000000", duration: 0.4, ease: "expo.inOut",});
+    }).to(window, { scrollTo: 0, duration: 0 }, 0);
   }
 
   });
