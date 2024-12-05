@@ -154,7 +154,7 @@ const enterTransition = () => {
       filter: 'blur(20px)',
       ease: "expo.inOut",
       duration: 1.5,
-    }, 0).to(transition.cursor, {
+    }, 0).to(transition.header, { translateY: -100, duration: 0.6, ease: "expo.inOut",}, 0).to(transition.cursor, {
       opacity: 0,
       duration: 0.8,
     }).to(window, { scrollTo: 0, duration: 0 }, 0);
@@ -169,7 +169,7 @@ const enterTransition = () => {
       filter: 'blur(20px)',
       ease: "expo.inOut",
       duration: 1.2,
-    }, 0).to(transition.cursor, {
+    }, 0).to(transition.header, { translateY: -100, duration: 0.6, ease: "expo.inOut",}, 0).to(transition.cursor, {
       opacity: 0,
       duration: 0.8,
     }).to(window, { scrollTo: 0, duration: 0 }, 0);
@@ -472,6 +472,8 @@ function initHeader() {
   })
   gsap.to(transition.header, {
     opacity: 1,
+    translateY: 0,
+    delay: 0.4,
     ease: "expo.inOut",
     duration: 1.5,
   })
@@ -668,7 +670,9 @@ function initHeader() {
 
 }
 document.addEventListener("DOMContentLoaded", function () {
+
 const aboutPage = document.querySelector("#about");
+const contactPage = document.querySelector("#contacts");
 
 if (aboutPage) {
 
@@ -683,20 +687,6 @@ if (aboutPage) {
       type: "words,chars"
     });
   
-    gsap.set(splitDesc.words, {     
-      filter: "blur(10px)",  
-      autoAlpha: 0,     
-      opacity: 0 
-    });
-  
-    gsap.to(splitDesc.words, {
-      filter: "blur(5px)",  
-      autoAlpha: 1,
-      opacity: 0,   
-      stagger: 0.05,  
-      delay: 0.5,
-    });
-  
     const timeline = gsap.timeline({
       scrollTrigger: {
         trigger: paragraphSelector,
@@ -704,19 +694,15 @@ if (aboutPage) {
         end: "bottom 50%",
         pin: true,
         pinSpacing: true,
-        scrub: 0.5, // Smooth scrolling effect
+        scrub: true, 
         markers: false
       }
     });
     
     timeline
-      .to(splitDesc.words, {
-        filter: "blur(0px)",
-        stagger: 0.1,
-      })
       .fromTo(
         splitDesc.chars,
-        { opacity: 0 },
+        { opacity: 0, filter: "blur(2px)" },
         {
           opacity: 1,
           filter: "blur(0px)",
@@ -742,7 +728,7 @@ if (aboutPage) {
             start: "top 50%",
             duration: 2.5,
             end: "bottom 50%",
-            scrub: 1, // Ensures it moves with the scroll
+            scrub: true, // Ensures it moves with the scroll
             markers: false, // Debug markers to verify behavior
           },
         }
@@ -762,12 +748,34 @@ if (aboutPage) {
       gsap.to("canvas", { 
           scrollTrigger: {
             trigger: ".paragraph-1",
-            start: "top 80%",
-            scrub: 0.5, 
+            start: "top 50%",
+            end: "top 25%",
+            scrub: 1, 
             markers: false, 
           },
           opacity: 0,
         });
     }, 100)
 }
+
+
+  if (contactPage) {
+    const element = document.querySelector('#contacts canvas');
+    document.addEventListener('mousemove', (e) => {
+      const mouseX = e.clientX;
+      const mouseY = e.clientY;
+      const windowWidth = window.innerWidth;
+      const windowHeight = window.innerHeight;
+
+      const moveX = (mouseX / windowWidth) * 20;
+      const moveY = (mouseY / windowHeight) * 20;
+      gsap.to(element, {
+        x: -moveX,  
+        y: -moveY, 
+        duration: 2,
+        ease: "expo.Out",
+      });
+    });
+  }
+
 })
