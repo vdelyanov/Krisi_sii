@@ -115,7 +115,7 @@ header {
     width: 100vw;
     height: auto;
     position: fixed;
-    z-index: 9;
+    z-index: 100;
     background-color: $white;
     bottom: 0;
     clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%);
@@ -203,7 +203,7 @@ main {
     div, nav, img {
       filter: blur(10px) !important;
       pointer-events: none;
-      transition: filter 1s;
+      transition: filter 0.8s;
       .item__image, .item__caption-title {
         pointer-events: none;
       }

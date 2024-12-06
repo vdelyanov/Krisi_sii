@@ -6,8 +6,8 @@
     <title>Krisi.sii</title>
     <link rel="icon" type="image/svg+xml" href="./vite.svg" />
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-    <script type="module" crossorigin src="./index.CJmzrVrk.js"></script>
-    <link rel="modulepreload" crossorigin href="./main.C5BmkBCg.js">
+    <script type="module" crossorigin src="./index.DCxtIbMp.js"></script>
+    <link rel="modulepreload" crossorigin href="./main.ogOUnD4W.js">
     <link rel="stylesheet" crossorigin href="./css/main.css">
     <link rel="stylesheet" crossorigin href="./css/style.css">
   </head>
@@ -165,7 +165,7 @@
     </div>
 
     <main style="opacity: 0;" data-barba="container" id="homepage" class="homepage" data-barba-namespace="home">
-      <lottie-player class="fixed w-[48px] h-[64px] bottom-6 right-6 z-[100] pointer-events-none" id="scroll-icon" src="./scroll.json" speed="1" loop autoplay></lottie-player>
+      <lottie-player class="fixed w-[48px] h-[64px] bottom-6 right-6 z-[99] pointer-events-none" id="scroll-icon" src="./scroll.json" speed="1" loop autoplay></lottie-player>
       
       <nav class="scroll-nav">
         <ul>
@@ -212,35 +212,44 @@
           <p class="desc-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde corrupti vero magnam hic molestiae enim odit tenetur distinctio debitis perferendis!</p>
         </div>
       </div>
-
+      
       <div class="content">
-        <img src="./images/disp1.jpg" style="display: none;" alt="">
+        <img id="shader" src="./images/disp1.jpg" style="display: none;" alt="">
         <figure class="item" id="project-1">
           <figcaption class="item__caption">
             <h2 class="item__caption-title magnet-wrapper oh"><span class="oh__inner">Behind The Scenes</span></h2>
           </figcaption>
-          <div class="item__image-wrap"><div class="item__image"><a href="javascript:;" class="hover-link slider">
-            <img src="./images/1.jpg" alt="Image 1" style="height: 100%; position: absolute; z-index: 2;" />
-            <img src="./images/2.jpg" alt="Image 2" style="height: 100%; position: absolute; z-index: 1;" />
-          </a></div></div>
+          <a href="javascript:;" class="item__image-wrap">
+              <div class="item__image">
+              <div class="h-[100%] slider">
+                <img src="./images/1.jpg" alt="Image 1" style="height: 100%; position: absolute; z-index: 2;" />
+                <img src="./images/2.jpg" alt="Image 2" style="height: 100%; position: absolute; z-index: 1;" />
+              </div>
+            </div>
+          </a>
         </figure>
         <figure class="item" id="project-2">
           <figcaption class="item__caption">
             <h2 class="item__caption-title magnet-wrapper oh"><span class="oh__inner">Портретa <br> Фотография</span></h2>
           </figcaption>
         </figcaption>
-        <div class="item__image-wrap"><div class="item__image"><a href="javascript:;" class="hover-link  slider">
-          <img src="./images/3.jpg" alt="Image 1" style="height: 100%; position: absolute; z-index: 2;" />
-          <img src="./images/4.jpg" alt="Image 2" style="height: 100%; position: absolute; z-index: 1;" />
-        </a></div></div>
+            <a href="javascript:;" class="item__image-wrap">
+              <div class="item__image">
+                <div class="h-[100%] slider">
+                <img src="./images/3.jpg" alt="Image 1" style="height: 100%; position: absolute; z-index: 2;" />
+                <img src="./images/4.jpg" alt="Image 2" style="height: 100%; position: absolute; z-index: 1;" />
+                </div>
+              </div>
+            </a>
         </figure>
-        <figure class="item" id="project-3">
+        
+        <!-- <figure class="item" id="project-3">
           <figcaption class="item__caption">
             <h2 class="item__caption-title magnet-wrapper oh"><span class="oh__inner">Интериорна <br> Фотография</span></h2>
           </figcaption>
           <div class="item__image-wrap"><div class="item__image"><a href="javascript:;" class="hover-link slider">
-            <img src="./images/5.jpg" alt="Image 1" style="height: 100%; position: absolute; z-index: 2;" />
-            <img src="./images/6.jpg" alt="Image 2" style="height: 100%; position: absolute; z-index: 1;" />
+            <img src="./assets/images/img/5.jpg" alt="Image 1" style="height: 100%; position: absolute; z-index: 2;" />
+            <img src="./assets/images/img/6.jpg" alt="Image 2" style="height: 100%; position: absolute; z-index: 1;" />
           </a></div></div>
         </figure>
         <figure class="item" id="project-4">
@@ -248,8 +257,8 @@
             <h2 class="item__caption-title magnet-wrapper oh"><span class="oh__inner">Събитийна <br> Фотография</span></h2>
           </figcaption>
           <div class="item__image-wrap"><div class="item__image"><a href="javascript:;" class="hover-link slider">
-            <img src="./images/7.jpg" alt="Image 1" style="height: 100%; position: absolute; z-index: 2;" />
-            <img src="./images/8.jpg" alt="Image 2" style="height: 100%; position: absolute; z-index: 1;" />
+            <img src="./assets/images/img/7.jpg" alt="Image 1" style="height: 100%; position: absolute; z-index: 2;" />
+            <img src="./assets/images/img/8.jpg" alt="Image 2" style="height: 100%; position: absolute; z-index: 1;" />
           </a></div></div>
         </figure>
         <figure class="item" id="project-5">
@@ -257,8 +266,8 @@
             <h2 class="item__caption-title magnet-wrapper oh"><span class="oh__inner">Артистична <br> Фотография</span></h2>
           </figcaption>
           <div class="item__image-wrap"><div class="item__image"><a href="javascript:;" class="hover-link slider">
-            <img src="./images/9.jpg" alt="Image 1" style="height: 100%; position: absolute; z-index: 2;" />
-            <img src="./images/10.jpg" alt="Image 2" style="height: 100%; position: absolute; z-index: 1;" />
+            <img src="./assets/images/img/9.jpg" alt="Image 1" style="height: 100%; position: absolute; z-index: 2;" />
+            <img src="./assets/images/img/10.jpg" alt="Image 2" style="height: 100%; position: absolute; z-index: 1;" />
           </a></div></div>
         </figure>
         <figure class="item" id="project-6">
@@ -266,10 +275,10 @@
             <h2 class="item__caption-title magnet-wrapper oh"><span class="oh__inner">Black & White</span></h2>
           </figcaption>
           <div class="item__image-wrap"><div class="item__image"><a href="javascript:;" class="hover-link slider">
-            <img src="./images/11.jpg" alt="Image 1" style="height: 100%; position: absolute; z-index: 2;" />
-            <img src="./images/12.jpg" alt="Image 2" style="height: 100%; position: absolute; z-index: 1;" />
+            <img src="./assets/images/img/11.jpg" alt="Image 1" style="height: 100%; position: absolute; z-index: 2;" />
+            <img src="./assets/images/img/12.jpg" alt="Image 2" style="height: 100%; position: absolute; z-index: 1;" />
           </a></div></div>
-        </figure>
+        </figure> -->
       </div>
 
     </main>

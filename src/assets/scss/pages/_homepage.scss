@@ -270,9 +270,14 @@
 }
 
 
-.my-div {
+.anim-title {
+  filter: blur(30px);
+  visibility: hidden
+}
+
+
+#content {
   canvas {
-      height: 100vh !important;
-      width: 100vw !important;
+    pointer-events: all;
   }
 }

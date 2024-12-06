@@ -15,10 +15,10 @@ export class Slider {
     this.renderer.setClearColor(0xeeeeee, 1);
     this.duration = opts.duration || 1;
     this.easing = opts.easing || 'easeInOut';
-    this.container = opts.container;
 
-    // Extract image URLs from <img> tags inside the container
+    this.container = opts.container;
     this.images = Array.from(this.container.querySelectorAll('img')).map(img => img.src);
+    this.shade = document.getElementById("shader");
 
     this.textures = [];
     this.width = this.container.offsetWidth;
@@ -40,6 +40,7 @@ export class Slider {
     this.initiate(() => {
       this.setupResize();
       this.addObjects();
+      this.settings();
       this.resize();
       this.addClickEvent();
       this.play();
@@ -54,17 +55,19 @@ export class Slider {
         that.textures[i] = new THREE.TextureLoader().load(url, resolve);
       });
       promises.push(promise);
-      if (/Safari/.test(navigator.userAgent) && !/Chrome/.test(navigator.userAgent)) {
-        var canvas = document.querySelectorAll(".item__image");
-        canvas.forEach(item => {
-            item.classList.add('hide');
-        });
-        }
     });
 
     Promise.all(promises).then(() => {
       cb();
     });
+  }
+
+  settings() {
+    let that = this;
+    this.settings = {progress:0.5};
+    Object.keys(this.uniforms).forEach((item)=> {
+      this.settings[item] = this.uniforms[item].value;
+    })
   }
 
   setupResize() {
@@ -107,17 +110,17 @@ export class Slider {
       uniforms: {
         time: { type: "f", value: 0 },
         progress: { type: "f", value: 0 },
-        intensity: { type: "f", value: 0.2 },
-        width: { type: "f", value: 0 },
+        border: { type: "f", value: 0 },
+        intensity: { type: "f", value: 0 },
         scaleX: { type: "f", value: 40 },
         scaleY: { type: "f", value: 40 },
         transition: { type: "f", value: 40 },
-        radius: { type: "f", value: 0 },
         swipe: { type: "f", value: 0 },
-        texture1: { type: "t", value: this.textures[0] },
-        texture2: { type: "t", value: this.textures[1] },
-        displacement: { type: "t", value: new THREE.TextureLoader().load('./images/disp1.jpg') },
-        // displacement: { type: "t", value: new THREE.TextureLoader().load('./assets/images/disp1.jpg') },
+        width: { type: "f", value: 0 },
+        radius: { type: "f", value: 0 },
+        texture1: { type: "f", value: this.textures[0] },
+        texture2: { type: "f", value: this.textures[1] },
+        displacement: { type: "f", value: new THREE.TextureLoader().load(this.shade.src) },
         resolution: { type: "v4", value: new THREE.Vector4() },
       },
       vertexShader: this.vertex,
@@ -175,6 +178,10 @@ export class Slider {
     });
   }
 
+  stop() {
+    this.paused = true;
+  }
+
   play() {
     this.paused = false;
     this.render();
@@ -184,7 +191,12 @@ export class Slider {
     if (this.paused) return;
     this.time += 0.05;
     this.material.uniforms.time.value = this.time;
-    this.renderer.render(this.scene, this.camera);
+
+    Object.keys(this.uniforms).forEach((item)=> {
+      this.material.uniforms[item].value = this.settings[item];
+    });
+
     requestAnimationFrame(this.render.bind(this));
+    this.renderer.render(this.scene, this.camera);
   }
 }

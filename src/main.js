@@ -671,10 +671,30 @@ function initHeader() {
 }
 document.addEventListener("DOMContentLoaded", function () {
 
+  const title = document.querySelector(".anim-title");
+  if (title) {
+    const title = document.querySelector(".anim-title");
+    gsap.to(title, {
+      ease: "power4",
+      duration: 1,
+      autoAlpha: 1,
+      delay: 1,
+      filter: "blur(0px)",
+  })
+}
+  
 const aboutPage = document.querySelector("#about");
 const contactPage = document.querySelector("#contacts");
 
 if (aboutPage) {
+  gsap.to(title, {
+    ease: "power4",
+    duration: 1,
+    autoAlpha: 1,
+    delay: 1.2,
+    y: 0,
+    filter: "blur(0px)",
+})
 
   var topOffset = 35;
 

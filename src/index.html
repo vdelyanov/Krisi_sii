@@ -162,7 +162,7 @@
     </div>
 
     <main style="opacity: 0;" data-barba="container" id="homepage" class="homepage" data-barba-namespace="home">
-      <lottie-player class="fixed w-[48px] h-[64px] bottom-6 right-6 z-[100] pointer-events-none" id="scroll-icon" src="./scroll.json" speed="1" loop autoplay></lottie-player>
+      <lottie-player class="fixed w-[48px] h-[64px] bottom-6 right-6 z-[99] pointer-events-none" id="scroll-icon" src="./scroll.json" speed="1" loop autoplay></lottie-player>
       
       <nav class="scroll-nav">
         <ul>
@@ -209,29 +209,38 @@
           <p class="desc-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Unde corrupti vero magnam hic molestiae enim odit tenetur distinctio debitis perferendis!</p>
         </div>
       </div>
-
+      
       <div class="content">
-        <img src="./assets/images/disp1.jpg" style="display: none;" alt="">
+        <img id="shader" src="./assets/images/disp1.jpg" style="display: none;" alt="">
         <figure class="item" id="project-1">
           <figcaption class="item__caption">
             <h2 class="item__caption-title magnet-wrapper oh"><span class="oh__inner">Behind The Scenes</span></h2>
           </figcaption>
-          <div class="item__image-wrap"><div class="item__image"><a href="javascript:;" class="hover-link slider">
-            <img src="./assets/images/img/1.jpg" alt="Image 1" style="height: 100%; position: absolute; z-index: 2;" />
-            <img src="./assets/images/img/2.jpg" alt="Image 2" style="height: 100%; position: absolute; z-index: 1;" />
-          </a></div></div>
+          <a href="javascript:;" class="item__image-wrap">
+              <div class="item__image">
+              <div class="h-[100%] slider">
+                <img src="./assets/images/img/1.jpg" alt="Image 1" style="height: 100%; position: absolute; z-index: 2;" />
+                <img src="./assets/images/img/2.jpg" alt="Image 2" style="height: 100%; position: absolute; z-index: 1;" />
+              </div>
+            </div>
+          </a>
         </figure>
         <figure class="item" id="project-2">
           <figcaption class="item__caption">
             <h2 class="item__caption-title magnet-wrapper oh"><span class="oh__inner">Портретa <br> Фотография</span></h2>
           </figcaption>
         </figcaption>
-        <div class="item__image-wrap"><div class="item__image"><a href="javascript:;" class="hover-link  slider">
-          <img src="./assets/images/img/3.jpg" alt="Image 1" style="height: 100%; position: absolute; z-index: 2;" />
-          <img src="./assets/images/img/4.jpg" alt="Image 2" style="height: 100%; position: absolute; z-index: 1;" />
-        </a></div></div>
+            <a href="javascript:;" class="item__image-wrap">
+              <div class="item__image">
+                <div class="h-[100%] slider">
+                <img src="./assets/images/img/3.jpg" alt="Image 1" style="height: 100%; position: absolute; z-index: 2;" />
+                <img src="./assets/images/img/4.jpg" alt="Image 2" style="height: 100%; position: absolute; z-index: 1;" />
+                </div>
+              </div>
+            </a>
         </figure>
-        <figure class="item" id="project-3">
+        
+        <!-- <figure class="item" id="project-3">
           <figcaption class="item__caption">
             <h2 class="item__caption-title magnet-wrapper oh"><span class="oh__inner">Интериорна <br> Фотография</span></h2>
           </figcaption>
@@ -266,7 +275,7 @@
             <img src="./assets/images/img/11.jpg" alt="Image 1" style="height: 100%; position: absolute; z-index: 2;" />
             <img src="./assets/images/img/12.jpg" alt="Image 2" style="height: 100%; position: absolute; z-index: 1;" />
           </a></div></div>
-        </figure>
+        </figure> -->
       </div>
 
     </main>
