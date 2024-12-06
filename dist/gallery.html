@@ -5,11 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Krisi.sii</title>
     <link rel="icon" type="image/svg+xml" href="./vite.svg" />
-    <script type="module" crossorigin src="./main.ogOUnD4W.js"></script>
+    <script type="module" crossorigin src="./main.YEmOVnjr.js"></script>
     <link rel="stylesheet" crossorigin href="./css/main.css">
     <link rel="stylesheet" crossorigin href="./css/style.css">
   </head>
   <body data-barba="wrapper">
+
+    <div id="preloader" class="preload hidden">
+      <div id="name">Photo.sii</div>
+    </div>
 
     <div style="opacity: 0;" class="cursor-follow">
       <svg class="absolute bottom-0 left-0" width="32" height="25" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -47,6 +51,7 @@
       <div class="grid grid-cols-12">
         <div class="col-span-6 flex flex-col justify-between">
           <div class="menu-logo">
+
           </div>
 
           <div class="socials flex flex-col gap-2">
@@ -64,7 +69,7 @@
           <nav class="links">
             <div class="link text-blur"><a href="./index.html">Начало</a></div>
             <div class="link text-blur"><a href="./gallery.html">Галерия</a></div>
-            <div class="link text-blur"><a href="./about.html">За мен</a></div>
+            <div class="link active text-blur"><a href="./about.html">За мен</a></div>
             <div class="link text-blur"><a href="./contacts.html">Контакти</a></div>
           </nav>
 
@@ -77,12 +82,105 @@
 
     </div>
 
-    <div id="preloader" class="preload hidden">
-      <div id="name">Photo.sii</div>
+    <div style="opacity: 0;" class="flex color-switcher">
+      <button class="scale-75 hover-link" id="color1">
+        <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="13" cy="13" r="13" fill="black"/>
+          <g clip-path="url(#clip0_9_91)">
+          <mask id="mask0_9_91" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="1" y="1" width="24" height="24">
+          <path d="M13 25C19.6274 25 25 19.6274 25 13C25 6.37258 19.6274 1 13 1C6.37258 1 1 6.37258 1 13C1 19.6274 6.37258 25 13 25Z" fill="#D9D9D9"/>
+          </mask>
+          <g mask="url(#mask0_9_91)">
+          <path d="M25 -0.000244141H13V26.9998H25V-0.000244141Z" fill="white"/>
+          <path d="M13 -0.000244141H1V26.9998H13V-0.000244141Z" fill="black"/>
+          </g>
+          </g>
+          <defs>
+          <clipPath id="clip0_9_91">
+          <rect width="24" height="24" fill="white" transform="translate(1 1)"/>
+          </clipPath>
+          </defs>
+        </svg>                         
+      </button>
+      <button class="scale-75 hover-link" id="color2">
+        <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="13" cy="13" r="13" fill="#222A2F"/>
+          <g clip-path="url(#clip0_9_70)">
+          <mask id="mask0_9_70" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="1" y="1" width="24" height="24">
+          <path d="M13 25C19.6274 25 25 19.6274 25 13C25 6.37258 19.6274 1 13 1C6.37258 1 1 6.37258 1 13C1 19.6274 6.37258 25 13 25Z" fill="#D9D9D9"/>
+          </mask>
+          <g mask="url(#mask0_9_70)">
+          <path d="M25 -0.000244141H13V26.9998H25V-0.000244141Z" fill="white"/>
+          <path d="M13 -0.000244141H1V26.9998H13V-0.000244141Z" fill="#222A2F"/>
+          </g>
+          </g>
+          <defs>
+          <clipPath id="clip0_9_70">
+          <rect width="24" height="24" fill="white" transform="translate(1 1)"/>
+          </clipPath>
+          </defs>
+        </svg>          
+        </button>
+      <button class="scale-75 hover-link" id="color4">
+        <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="13" cy="13" r="13" fill="#333333"/>
+          <g clip-path="url(#clip0_9_71)">
+          <mask id="mask0_9_71" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="1" y="1" width="24" height="24">
+          <path d="M13 25C19.6274 25 25 19.6274 25 13C25 6.37258 19.6274 1 13 1C6.37258 1 1 6.37258 1 13C1 19.6274 6.37258 25 13 25Z" fill="#D9D9D9"/>
+          </mask>
+          <g mask="url(#mask0_9_71)">
+          <path d="M25 -0.000244141H13V26.9998H25V-0.000244141Z" fill="white"/>
+          <path d="M13 -0.000244141H1V26.9998H13V-0.000244141Z" fill="#333333"/>
+          </g>
+          </g>
+          <defs>
+          <clipPath id="clip0_9_71">
+          <rect width="24" height="24" fill="white" transform="translate(1 1)"/>
+          </clipPath>
+          </defs>
+        </svg>                      
+      </button>
+      <button class="scale-75 hover-link" id="color3">
+        <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="13" cy="13" r="13" fill="#223144"/>
+          <g clip-path="url(#clip0_9_81)">
+          <mask id="mask0_9_81" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="1" y="1" width="24" height="24">
+          <path d="M13 25C19.6274 25 25 19.6274 25 13C25 6.37258 19.6274 1 13 1C6.37258 1 1 6.37258 1 13C1 19.6274 6.37258 25 13 25Z" fill="#D9D9D9"/>
+          </mask>
+          <g mask="url(#mask0_9_81)">
+          <path d="M25 -0.000244141H13V26.9998H25V-0.000244141Z" fill="white"/>
+          <path d="M13 -0.000244141H1V26.9998H13V-0.000244141Z" fill="#223144"/>
+          </g>
+          </g>
+          <defs>
+          <clipPath id="clip0_9_81">
+          <rect width="24" height="24" fill="white" transform="translate(1 1)"/>
+          </clipPath>
+          </defs>
+        </svg>                                
+      </button>
+      <span class="current-color">
+        <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle  cx="13" cy="13" r="13" fill="#ffffff"/>
+          <g clip-path="url(#clip0_9_70)">
+          <mask id="mask0_9_70" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="1" y="1" width="24" height="24">
+          <path d="M13 25C19.6274 25 25 19.6274 25 13C25 6.37258 19.6274 1 13 1C6.37258 1 1 6.37258 1 13C1 19.6274 6.37258 25 13 25Z" fill="#000000"/>
+          </mask>
+          <g mask="url(#mask0_9_70)">
+          <path d="M25 -0.000244141H13V26.9998H25V-0.000244141Z" fill="white"/>
+          <path id="fill-color" d="M13 -0.000244141H1V26.9998H13V-0.000244141Z" fill="#000000"/>
+          </g>
+          </g>
+          <defs>
+          <clipPath id="clip0_9_70">
+          <rect width="24" height="24" fill="white" transform="translate(1 1)"/>
+          </clipPath>
+          </defs>
+        </svg>     
+      </span>
     </div>
 
     <main style="opacity: 0;" data-barba="container" data-barba-namespace="gallery" class="flex h-dvh items-center flex-col justify-center">
-      <img style="opacity: 0;" src="./images/camera.png" id="logo" alt="Logo" />
     </main>
 
     
@@ -97,24 +195,5 @@
       </div>
     </div>
 
-    <script src="https://nextparticle.nextco.de/nextparticle.min.js"></script>
-    <script>
-      nextParticle = new NextParticle({
-        image: document.all.logo,
-        width: window.innerWidth,
-        height: window.innerHeight,
-        maxWidth: window.innerWidth * 0.5,
-        particleGap: 2,
-        dataNoise: 10,
-        mouseForce: 0
-      });
-      window.onresize = function () {
-        if (window.innerWidth > 600) {
-          nextParticle.width = window.innerWidth - 20;
-          nextParticle.height = window.innerHeight - 20;
-          nextParticle.start();
-        }
-      };
-    </script>
   </body>
 </html>

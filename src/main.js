@@ -30,7 +30,18 @@ function raf(time) {
 }
 requestAnimationFrame(raf)
 
-
+const buttons = $(".color-switcher button")
+$(".color-switcher").mouseenter(function() {
+  if (gsap.isTweening(buttons)) return;
+      gsap.timeline()
+      .to(buttons, { opacity: 1, width: "auto", margin: '0 4px', rotate: -45, filter: "blur(0)", duration: 0.1, stagger: -0.04  }) 
+});
+$(".color-switcher").mouseleave(function() {
+  setTimeout(() => {
+    gsap.timeline()
+    .to(buttons, { opacity: 0, width: "0", rotate: 0, margin: '0 0', filter: "blur(5px)", duration: 0.1, stagger: 0.04 });
+  }, 200)
+});
 
 // Predefined colors
 const colors = {
@@ -42,11 +53,15 @@ const colors = {
 
 // Function to change background color and store in localStorage
 const modalBg = document.querySelector('#popup-wrapper')
+const swither = document.querySelector('#fill-color')
 
 function changeColor(colorKey) {
     const color = colors[colorKey];
     document.body.style.backgroundColor = color;
-    modalBg.style.backgroundColor = color;
+    if (modalBg) {
+      modalBg.style.backgroundColor = color;
+    }
+    swither.setAttribute('fill', color);
     document.documentElement.style.setProperty('--background-color', color); // Update CSS variable
     localStorage.setItem('selectedColor', color); // Save the selected color
 }
@@ -57,7 +72,10 @@ document.addEventListener('DOMContentLoaded', () => {
     
     if (savedColor) {
         document.body.style.backgroundColor = savedColor;
-        modalBg.style.backgroundColor = savedColor;
+        if (modalBg) {
+          modalBg.style.backgroundColor = savedColor;
+        }
+        swither.setAttribute('fill', savedColor);
         document.documentElement.style.setProperty('--background-color', savedColor); // Update CSS variable
     }
 
@@ -93,55 +111,14 @@ const transition = {
   menu: document.querySelector('.menu'),
   header: document.querySelector('header'),
   cursor: document.querySelectorAll('.cursor-follow svg'),
+  swither: document.querySelectorAll('.color-switcher'),
   body: document.querySelector('body'),
 
 };
 
-// const enterTransition = () => {
-//   return new Promise((resolve) => {
-//     const tl = gsap.timeline({
-//       onComplete: resolve,
-//     });
-//     const menuToggle = document.querySelector(".menu-toggle");
-//     if (menuToggle.classList.contains("closed")) {
-//     tl.to(transition.main, {
-//       opacity: 0,
-//       filter: 'blur(20px)',
-//       ease: "expo.inOut",
-//       duration: 1.5,
-//     }, 0).to(transition.header, {
-//       opacity: 0,
-//       duration: 1.2,
-//     }, 0).to(transition.cursor, {
-//       opacity: 0,
-//       duration: 0.8,
-//     });
-//     } else {
-//     tl.to(transition.menu, {
-//       clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
-//       ease: "expo.inOut",
-//       duration: 1.2,
-//     }, 0).to(transition.main, {
-//       opacity: 0,
-//       filter: 'blur(20px)',
-//       ease: "expo.inOut",
-//       duration: 1.2,
-//     }, 0).to(transition.header, {
-//       opacity: 0,
-//       duration: 1.2,
-//     }, 0).to(transition.cursor, {
-//       opacity: 0,
-//       duration: 0.8,
-//     });
-//   }
-
-//   });
-// }; 
-
 const enterTransition = () => {
 
   const childElements = transition.main.querySelectorAll('*');
-
 
   return new Promise((resolve) => {
     const tl = gsap.timeline({
@@ -149,7 +126,13 @@ const enterTransition = () => {
     });
     const menuToggle = document.querySelector(".menu-toggle");
     if (menuToggle.classList.contains("closed")) {
-    tl.to(transition.body, { backgroundColor: "#000000", duration: 0.4, ease: "expo.inOut",}, 0).to(childElements, {
+    tl.to(transition.body, { backgroundColor: "#000000", duration: 0.4, ease: "expo.inOut",}, 0)
+    .to(childElements, {
+      opacity: 0,
+      filter: 'blur(20px)',
+      ease: "expo.inOut",
+      duration: 1.5,
+    }, 0).to(transition.swither, {
       opacity: 0,
       filter: 'blur(20px)',
       ease: "expo.inOut",
@@ -165,6 +148,11 @@ const enterTransition = () => {
       ease: "expo.inOut",
       duration: 1.2,
     }, 0).to(childElements, {
+      opacity: 0,
+      filter: 'blur(20px)',
+      ease: "expo.inOut",
+      duration: 1.2,
+    }, 0).to(transition.swither, {
       opacity: 0,
       filter: 'blur(20px)',
       ease: "expo.inOut",
@@ -318,6 +306,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Cursor animation 
 const cursorElement = document.querySelector('.cursor-follow');
+const switherElement = document.querySelector('.color-switcher');
 const hoverLinks = document.querySelectorAll('.hover-link, a');
 const hoverLinksText = document.querySelectorAll('.show-text-trigger');
 const text = document.querySelector(".desc-text");
@@ -457,10 +446,16 @@ function initHeader() {
   const transition = {
     menu: document.querySelector('.menu'),
     main: document.querySelector('main'),
+    swither: document.querySelector('.color-switcher'),
     header: document.querySelector('header'),
   };
   window
   gsap.to(transition.main, {
+    opacity: 1,
+    ease: "expo.inOut",
+    duration: 1.5,
+  })
+  gsap.to(transition.swither, {
     opacity: 1,
     ease: "expo.inOut",
     duration: 1.5,

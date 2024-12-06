@@ -5,8 +5,8 @@ header {
     transform: translateY(-100px);
     .logo {
         position: absolute;
-        top: 24px;
-        left: 24px;
+        top: 20px;
+        left: 20px;
         font-size: 36px;
         height: 60px;
         display: flex;
@@ -16,8 +16,8 @@ header {
 // Menu button   
 .menu-toggle {
     position: absolute;
-    top: 24px;
-    right: 12px;
+    top: 20px;
+    right: 0px;
     width: 120px;
     height: 60px;
     background-color: transparent;
@@ -160,9 +160,27 @@ header {
         flex-direction: column;
         gap: 4px;
         .link {
-            a {
-                font-size: 36px;
-                color:$black
+          &.active {
+            pointer-events: none;
+            a::before {
+              content: "";
+              position: absolute;
+              left: -60px;
+              top: 50%;
+              transform: translateY(-50%);
+              width: 80px;
+              height: 80px;
+              clip-path: circle(10% at 50% 50%);
+              background-color: #C83030;
+              transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+              overflow: hidden;
+              animation: blink 2s infinite;
+            }
+          }
+          a {
+              position: relative;
+              font-size: 36px;
+              color:$black;
             }
         }
     }

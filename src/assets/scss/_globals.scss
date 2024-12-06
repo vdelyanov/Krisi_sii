@@ -201,3 +201,25 @@ body::-webkit-scrollbar-thumb {
         transition: opacity 0.4s ease, filter 0.4s ease;
     }
 }
+
+.color-switcher {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 99;
+    height: 26px;
+    display: flex; 
+    .current-color {
+        scale: 0.75;
+        svg {
+            height: 26px;
+            width: 26px;
+        }
+    }
+    button {
+        opacity: 0;
+        filter: blur(10px);
+        transform: rotate(45deg) scale(0.75);
+        width: 0;
+    }
+}

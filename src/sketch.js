@@ -134,7 +134,7 @@ export class Slider {
 
   addClickEvent() {
     this.container.addEventListener('mouseenter', () => this.next());
-    this.container.addEventListener('mouseleave', () => this.previous());
+    // this.container.addEventListener('mouseleave', () => this.previous());
   }
 
   previous() {
