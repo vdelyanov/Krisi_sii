@@ -781,9 +781,9 @@ if (aboutPage) {
     setTimeout(() => {
       gsap.to("canvas", { 
           scrollTrigger: {
-            trigger: ".window",
-            start: "top 100%",
-            end: "top 90%",
+            trigger: "window",
+            start: "bottom 100%",
+            end: "bottom 90%",
             scrub: 1, 
             markers: false, 
           },
