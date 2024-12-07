@@ -137,7 +137,7 @@ const enterTransition = () => {
       filter: 'blur(20px)',
       ease: "expo.inOut",
       duration: 1.5,
-    }, 0).to(transition.header, { translateY: -100, duration: 0.6, ease: "expo.inOut",}, 0).to(transition.cursor, {
+    }, 0).to(transition.header, { filter: "blur(10px)",  opacity: 0, duration: 0.6, ease: "expo.inOut",}, 0).to(transition.cursor, {
       opacity: 0,
       duration: 0.8,
     }).to(window, { scrollTo: 0, duration: 0 }, 0);
@@ -157,7 +157,7 @@ const enterTransition = () => {
       filter: 'blur(20px)',
       ease: "expo.inOut",
       duration: 1.2,
-    }, 0).to(transition.header, { translateY: -100, duration: 0.6, ease: "expo.inOut",}, 0).to(transition.cursor, {
+    }, 0).to(transition.header, { filter: "blur(10px)", opacity: 0, duration: 0.6, ease: "expo.inOut",}, 0).to(transition.cursor, {
       opacity: 0,
       duration: 0.8,
     }).to(window, { scrollTo: 0, duration: 0 }, 0);
@@ -467,7 +467,7 @@ function initHeader() {
   })
   gsap.to(transition.header, {
     opacity: 1,
-    translateY: 0,
+    filter: "blur(0px)",
     delay: 0.4,
     ease: "expo.inOut",
     duration: 1.5,
@@ -694,6 +694,7 @@ if (aboutPage) {
   var topOffset = 35;
 
   function animateParagraph(paragraphSelector, imageSelector) {
+
     const textDesc = document.querySelector(paragraphSelector);
   
     if (!textDesc) return;
@@ -701,21 +702,37 @@ if (aboutPage) {
     let splitDesc = new SplitText(textDesc, {
       type: "words,chars"
     });
-  
-    const timeline = gsap.timeline({
-      scrollTrigger: {
-        trigger: paragraphSelector,
-        start: "top 50%",
-        end: "bottom 50%",
-        pin: true,
-        pinSpacing: true,
-        scrub: true, 
-        markers: false
+
+    textDesc.style.opacity = "0";
+
+  // Paragraph
+  const timeline = gsap.timeline({
+    scrollTrigger: {
+      trigger: paragraphSelector,
+      start: "top 34%",
+      end: "bottom 34%",
+      pin: true,
+      pinSpacing: false,
+      scrub: true,
+      markers: false,
+      toggleActions: "restart pause resume pause", 
+      onEnterBack: () => {
+        gsap.to(textDesc, { opacity: 1, filter: "blur(0px)",  duration: 0.2 }); // Reset the opacity before starting the animation
+      },
+      onLeaveBack: () => {
+        gsap.to(textDesc, { opacity: 0, filter: "blur(10px)", duration: 0.2 });
       }
-    });
-    
-    timeline
-      .fromTo(
+    },
+    onStart: () => {
+      gsap.to(textDesc, { opacity: 1, filter: "blur(0px)",  duration: 0.2 }); // Fade in the paragraph
+    },
+    onComplete: () => {
+      gsap.to(textDesc, { opacity: 0, filter: "blur(10px)", duration: 0.2 });
+    }
+  });
+
+    // Characters 
+    timeline.fromTo(
         splitDesc.chars,
         { opacity: 0, filter: "blur(2px)" },
         {
@@ -726,33 +743,35 @@ if (aboutPage) {
         },
         0
       )
+      // Images
       .fromTo(
         imageSelector,
         {
-          top: "150%", // Start slightly below the current offset
+          top: "150%", 
           scaleY: 2,
           filter: "blur(10px)",
         },
         {
-          top: `${topOffset}vh`, // Move it all the way up by 50vh
+          top: `${topOffset}vh`, 
           scaleY: 1,
           filter: "blur(0px)",
-          ease: "none", // Smooth linear motion
+          ease: "none", 
           scrollTrigger: {
             trigger: paragraphSelector,
-            start: "top 50%",
+            start: "top 34%",
+            end: "bottom 34%",
             duration: 2.5,
-            end: "bottom 50%",
-            scrub: true, // Ensures it moves with the scroll
-            markers: false, // Debug markers to verify behavior
+            scrub: true, 
+            markers: false, 
           },
         }
       );
     
-      topOffset += 5; // Increment the offset for subsequent animations
+      topOffset += 5;
     
       
     }
+
 
   animateParagraph(".paragraph-1", ".image-1");
   animateParagraph(".paragraph-2", ".image-2");
@@ -762,13 +781,29 @@ if (aboutPage) {
     setTimeout(() => {
       gsap.to("canvas", { 
           scrollTrigger: {
-            trigger: ".paragraph-1",
-            start: "top 50%",
-            end: "top 25%",
+            trigger: ".image-1",
+            start: "top 100%",
+            end: "top 90%",
             scrub: 1, 
             markers: false, 
           },
+          ease: "power4.out",
           opacity: 0,
+        });
+      gsap.to("#title-wrapper", { 
+          scrollTrigger: {
+            trigger: "window",
+            start: "bottom 100%",
+            end: "bottom 90%",
+            scrub: 1, 
+            markers: false, 
+          },
+          left: "45%",
+          scaleY: 1.2,
+          opacity: 0.2,
+          translateX: "-100%",
+          filter: "blur(2px)",
+          ease: "power4.out",
         });
     }, 100)
 }

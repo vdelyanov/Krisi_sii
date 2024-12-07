@@ -3,7 +3,7 @@
 .content {
 	position: relative;
   margin-left: auto;
-  width: 60%;
+  width: calc(60% + 48px) ;
   padding-top: 40vh;
   padding-bottom: 0vh;
   pointer-events: none;
@@ -23,41 +23,22 @@
 }
 
 .item__image-wrap {
-	grid-area: img;
 	width: 100%;
 	justify-self: center;
+  padding-left: 48px;
 }
 
 .item__image {
 	width: auto ;
   height: 80vh;
 	position: relative;
-	overflow: hidden;
 	will-change: transform;
   pointer-events: all;
-  &.hide {
-    img:nth-child(2) {
-      opacity: 1;
-      transform: scaleX(2);
-      transition: all 0.4s ease-in-out;
-    }
-    img:first-child {
-      transition: all 0.4s ease-in-out;
-      &:hover {
-        opacity: 0;
-        transition: all 0.4s ease-in-out;
-        transform: scaleX(2);
-        filter: blur(20px);
-      }
-      &:hover + img {
-        transform: scaleX(1);
-        transition: all 0.4s ease-in-out;
-      }
-    }
-    canvas {
-      opacity: 0;
-      pointer-events: none;
-    }
+  transition: filter 0s !important;
+  .slider {
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    overflow: hidden;
   }
 }
 .item__image canvas {
@@ -66,7 +47,6 @@
 	background-size: cover;
 	will-change: transform;
   display: block;
-  border-radius: 2px;
   background: #000;
   z-index: 3;
   position: relative;
@@ -93,7 +73,7 @@
 	font-weight: 300;
 	margin: 0;
 	color: $white;
-  margin-left: -100px;
+  margin-left: -52px;
   margin-top: 48px;
   pointer-events: all;
   pointer-events: none;
@@ -258,7 +238,8 @@
     left: -25%;
   }
   .main-image {
-    border-radius: 2px;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
   }
   .main-desc-text {
     font-family: 'SofiaSans-Light';
@@ -280,4 +261,8 @@
   canvas {
     pointer-events: all;
   }
+}
+
+#title-wrapper {
+  transition: filter 0s !important;
 }

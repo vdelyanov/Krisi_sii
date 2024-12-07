@@ -6,7 +6,7 @@
     <title>Krisi.sii</title>
     <link rel="icon" type="image/svg+xml" href="./vite.svg" />
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-    <script type="module" crossorigin src="./main.YEmOVnjr.js"></script>
+    <script type="module" crossorigin src="./main.CilKqxkS.js"></script>
     <link rel="stylesheet" crossorigin href="./css/main.css">
     <link rel="stylesheet" crossorigin href="./css/style.css">
   </head>
@@ -188,9 +188,11 @@
         <div class="grid grid-cols-12">
           <div class="col-span-6">
           </div>
+          <div id="title-wrapper" class="fixed left-[50%] top-[24vh]">
+            <h1 id="about-us-title" class="mb-4 anim-title">Повече за мен</h1>
+          </div>
           <div class="col-span-6">
-            <div class="main-desc-text pt-[45vh] pb-[50vh] ">
-              <h1 class="mb-4 anim-title">Повече за мен</h1>
+            <div class="main-desc-text pt-[30vh] pb-[66vh] ">
               <p class="text-[42px] paragraph paragraph-1 text-left">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore, quia! Atque, quasi!</p>
               <p class="text-[42px] paragraph paragraph-2 text-left">Lorem ipsum dolor sit amet consectetur adipisicing elit. Et necessitatibus beatae iste labore saepe qui neque ratione laboriosam, impedit dicta?</p>
               <p class="text-[42px] paragraph paragraph-3 text-left">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ab illum distinctio a dicta quos illo.</p>
@@ -223,8 +225,8 @@
         maxWidth: window.innerWidth * 0.5,
         particleGap: 2,
         dataNoise: 10,
-        disableInteraction: true,
-        mouseForce: 1
+        disableInteraction: false,
+        mouseForce: -4
       });
       window.onresize = function () {
         if (window.innerWidth > 600) {

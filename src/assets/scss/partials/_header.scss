@@ -2,7 +2,8 @@ header {
     position: fixed;
     width: 100%;
     z-index: 101;
-    transform: translateY(-100px);
+    opacity: 0;
+    filter: blur(10px);
     .logo {
         position: absolute;
         top: 20px;
