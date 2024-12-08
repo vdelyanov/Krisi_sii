@@ -1,1 +1,1 @@
-:root{--background-color: #000000}body{background-color:var(--background-color);transition:background-color .8s ease-in-out}
+:root{--background-color: #000000}body{background-color:var(--background-color);transition:background-color .8s ease-in-out}.footer-fixed,.footer-end{clip-path:polygon(0% 100%,100% 100%,100% 100%,0% 100%)}

@@ -140,7 +140,7 @@ const enterTransition = () => {
     }, 0).to(transition.header, { filter: "blur(10px)",  opacity: 0, duration: 0.6, ease: "expo.inOut",}, 0).to(transition.cursor, {
       opacity: 0,
       duration: 0.8,
-    }).to(window, { scrollTo: 0, duration: 0 }, 0);
+    }).to(window, { scrollTo: 0, duration: 0 }, 0).to("footer", { clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)" });
     } else {
       tl.to(transition.body, { backgroundColor: "#000000", duration: 0.4, ease: "expo.inOut",
       }, 0).to(transition.menu, {
@@ -160,7 +160,7 @@ const enterTransition = () => {
     }, 0).to(transition.header, { filter: "blur(10px)", opacity: 0, duration: 0.6, ease: "expo.inOut",}, 0).to(transition.cursor, {
       opacity: 0,
       duration: 0.8,
-    }).to(window, { scrollTo: 0, duration: 0 }, 0);
+    }).to(window, { scrollTo: 0, duration: 0 }, 0).to("footer", { clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)" });
   }
 
   });
@@ -774,8 +774,10 @@ if (aboutPage) {
     animateParagraph(".paragraph-2", ".image-2");
     animateParagraph(".paragraph-3", ".image-3");
     animateParagraph(".paragraph-4", ".image-4");
-  
-    gsap.set("footer", { clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)" });
+
+    gsap.set(".footer-end", { clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)"});
+    
+    setTimeout(() => {
 
     ScrollTrigger.create({
         trigger: '.image-4',
@@ -790,8 +792,6 @@ if (aboutPage) {
         }
       });
 
-  
-    setTimeout(() => {
       gsap.to("canvas", { 
           scrollTrigger: {
             trigger: document.documentElement,
@@ -842,7 +842,7 @@ if (aboutPage) {
   }
 
 })
-gsap.set("footer", { clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)" });
+
 
 const footer = document.querySelector('.footer-fixed') 
 

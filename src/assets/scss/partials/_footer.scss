@@ -9,6 +9,7 @@ footer {
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
     padding: 0 20px;
+    clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%);
     .socials-wrapper {
         svg {
             width: 20px;
