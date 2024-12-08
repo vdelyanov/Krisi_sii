@@ -705,32 +705,31 @@ if (aboutPage) {
 
     textDesc.style.opacity = "0";
 
-  // Paragraph
-  const timeline = gsap.timeline({
-    scrollTrigger: {
-      trigger: paragraphSelector,
-      start: "top 34%",
-      end: "bottom 34%",
-      pin: true,
-      pinSpacing: false,
-      scrub: true,
-      markers: false,
-      toggleActions: "restart pause resume pause", 
-      onEnterBack: () => {
-        gsap.to(textDesc, { opacity: 1, filter: "blur(0px)",  duration: 0.2 }); // Reset the opacity before starting the animation
+    // Paragraph
+    const timeline = gsap.timeline({
+      scrollTrigger: {
+        trigger: paragraphSelector,
+        start: "top 34%",
+        end: "bottom 32%",
+        pin: true,
+        pinSpacing: false,
+        scrub: true,
+        markers: false,
+        toggleActions: "restart pause resume pause", 
+        onEnterBack: () => {
+          gsap.to(textDesc, { opacity: 1, filter: "blur(0px)",  duration: 0.2 }); // Reset the opacity before starting the animation
+        },
+        onLeaveBack: () => {
+          gsap.to(textDesc, { opacity: 0, filter: "blur(10px)", duration: 0.2 });
+        }
       },
-      onLeaveBack: () => {
+      onStart: () => {
+        gsap.to(textDesc, { opacity: 1, filter: "blur(0px)",  duration: 0.2 }); // Fade in the paragraph
+      },
+      onComplete: () => {
         gsap.to(textDesc, { opacity: 0, filter: "blur(10px)", duration: 0.2 });
       }
-    },
-    onStart: () => {
-      gsap.to(textDesc, { opacity: 1, filter: "blur(0px)",  duration: 0.2 }); // Fade in the paragraph
-    },
-    onComplete: () => {
-      gsap.to(textDesc, { opacity: 0, filter: "blur(10px)", duration: 0.2 });
-    }
-  });
-
+    });
     // Characters 
     timeline.fromTo(
         splitDesc.chars,
@@ -765,23 +764,37 @@ if (aboutPage) {
             markers: false, 
           },
         }
-      );
-    
+      )
+
       topOffset += 5;
     
-      
     }
 
+    animateParagraph(".paragraph-1", ".image-1");
+    animateParagraph(".paragraph-2", ".image-2");
+    animateParagraph(".paragraph-3", ".image-3");
+    animateParagraph(".paragraph-4", ".image-4");
+  
+    gsap.set("footer", { clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)" });
 
-  animateParagraph(".paragraph-1", ".image-1");
-  animateParagraph(".paragraph-2", ".image-2");
-  animateParagraph(".paragraph-3", ".image-3");
-  animateParagraph(".paragraph-4", ".image-4");
+    ScrollTrigger.create({
+        trigger: '.image-4',
+        start: 'center bottom', 
+        end: 'center bottom',
+        markers: true,
+          onEnter: () => {
+          gsap.to(".footer-end", { clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)", scrub: 1,});
+        },
+        onEnterBack: () => {
+          gsap.to(".footer-end", { clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)", scrub: 1, });
+        }
+      });
+
   
     setTimeout(() => {
       gsap.to("canvas", { 
           scrollTrigger: {
-            trigger: "window",
+            trigger: document.documentElement,
             start: "bottom 100%",
             end: "bottom 90%",
             scrub: 1, 
@@ -792,7 +805,7 @@ if (aboutPage) {
         });
       gsap.to("#title-wrapper", { 
           scrollTrigger: {
-            trigger: "window",
+            trigger: document.documentElement,
             start: "bottom 100%",
             end: "bottom 90%",
             scrub: 1, 
@@ -829,3 +842,25 @@ if (aboutPage) {
   }
 
 })
+gsap.set("footer", { clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)" });
+
+const footer = document.querySelector('.footer-fixed') 
+
+if (footer) {
+
+ScrollTrigger.create({
+  trigger: 'body', 
+  start: 'bottom bottom',
+  end: 'bottom+=1 bottom',
+  markers: true,
+  onEnter: () => {
+    gsap.to(".footer-fixed", { clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)", scrub: 1,});
+    gsap.to(".show-text-trigger", { translateY: "60px", scrub: 1,});
+  },
+  onEnterBack: () => {
+    gsap.to(".footer-fixed", { clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)", scrub: 1, });
+    gsap.to(".show-text-trigger", { translateY: "0px", scrub: 1,});
+  }
+});
+
+}
