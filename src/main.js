@@ -87,7 +87,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-
   const scrollIcon = document.getElementById('scroll-icon');
     if (scrollIcon) {
       window.addEventListener('scroll', function() {
@@ -98,9 +97,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       });
     }
-    ScrollTrigger.refresh();
-    lenis.scrollTo(0, { duration: 0 });
-    window.scrollTo(0, 0);
 });
 
 // Page Transiiton  
@@ -160,13 +156,9 @@ const enterTransition = () => {
       duration: 0.8,
     }).to(window, { scrollTo: 0, duration: 0 }, 0).to("footer", { clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)", duration: 1 });
   }
-
   });
 }; 
 
-if ('scrollRestoration' in history) {
-  history.scrollRestoration = 'manual';
-}
 
 const leaveTransition = () => {
   const menuToggle = document.querySelector(".menu-toggle");
@@ -181,7 +173,19 @@ const leaveTransition = () => {
   setTimeout(() => {
     window.location.reload();
   }, 200)
+
 };
+
+// Listen for the page reload event
+window.addEventListener('beforeunload', () => {
+  window.scrollTo(0, 0);  
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  if (performance.navigation.type === 1) {
+    window.scrollTo(0, 0);
+  }
+});
 
 barba.init({
   transitions: [
@@ -190,6 +194,8 @@ barba.init({
         await enterTransition();
       },
       async enter() {
+        window.scrollTo(0, 0);
+        ScrollTrigger.refresh();
         leaveTransition();
       },
     },
@@ -415,14 +421,14 @@ function heroAnim() {
         clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
         ease: "power4",
         duration: 1.2,
-        delay: 0.5,
+        delay: 1,
         scaleY: 1,
     })
     gsap.to('.item__caption', {
         ease: "power4",
         duration: 1,
         autoAlpha: 1,
-        delay: 1.2,
+        delay: 1.5,
         y: 0,
         filter: "blur(0px)",
     })
@@ -433,7 +439,7 @@ function heroAnim() {
       if (mainElement) {
           mainElement.appendChild(newDiv);
       } 
-    }, 1000)
+    }, 1500)
   }
 } 
 
