@@ -109,20 +109,22 @@ link.addEventListener('click', (e) => {
 });
 });
 
-gsap.registerPlugin(ScrollTrigger);
 
 const indicator = document.querySelector('.scroll-indicator');
+if (indicator) {
+    gsap.registerPlugin(ScrollTrigger);
 
-ScrollTrigger.create({
-    trigger: document.body,
-    start: "top top",
-    end: "bottom bottom",
-    onUpdate: (self) => {
-    const scrollPercentage = self.progress * 90;
+    ScrollTrigger.create({
+        trigger: document.body,
+        start: "top top",
+        end: "bottom bottom",
+        onUpdate: (self) => {
+        const scrollPercentage = self.progress * 90;
 
-    // Apply smooth animation to the indicator
-    gsap.to(indicator, {
-        y: scrollPercentage, 
+        gsap.to(indicator, {
+            y: scrollPercentage, 
+        });
+        }
     });
-    }
-});
+
+}
