@@ -107,54 +107,77 @@ const transition = {
   cursor: document.querySelectorAll('.cursor-follow svg'),
   swither: document.querySelectorAll('.color-switcher'),
   body: document.querySelector('body'),
-
+  pageLabel: document.querySelector('.page-transition .current'),
 };
 
-const enterTransition = () => {
+const enterTransition = (data) => {
 
   const childElements = transition.main.querySelectorAll('*');
+
+  const menuToggle = document.querySelector(".menu-toggle");
+
+    // Get the text of the clicked link
+    const clickedLink = data.trigger; // The element that triggered the transition
 
   return new Promise((resolve) => {
     const tl = gsap.timeline({
       onComplete: resolve,
     });
     const menuToggle = document.querySelector(".menu-toggle");
+
     if (menuToggle.classList.contains("closed")) {
-    tl.to(transition.body, { backgroundColor: "#000000", duration: 0.4, ease: "expo.inOut",}, 0)
+
+    tl.to(transition.body, { backgroundColor: "#000000", duration: 0.6, ease: "expo.inOut",})
     .to(childElements, {
       opacity: 0,
       filter: 'blur(20px)',
       ease: "expo.inOut",
-      duration: 1.5,
-    }, 0).to(transition.swither, {
+      duration: 0.8,
+    }, 0)
+    .to(transition.pageLabel, {  opacity: 1, duration: 0.8, filter: "blur(0px)", ease: "expo.inOut",}, ">")
+    .to(transition.swither, {
       opacity: 0,
       filter: 'blur(20px)',
       ease: "expo.inOut",
-      duration: 1.5,
-    }, 0).to(transition.header, { filter: "blur(10px)",  opacity: 0, duration: 0.6, ease: "expo.inOut",}, 0).to(transition.cursor, {
+      duration: 0.8,
+    }, 0)
+    .to(transition.header, { filter: "blur(10px)",  opacity: 0, duration: 0.6, ease: "expo.inOut",}, 0)
+    .to(transition.cursor, {
       opacity: 0,
       duration: 0.8,
-    }).to(window, { scrollTo: 0, duration: 0 }, 0).to("footer", { clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)", duration: 1 });
+    }, 0)
+    .to("footer", { clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)", duration: 0.6 }, 0)
+    .to(transition.pageLabel, {  bottom: "-100px", duration: 0.6, ease: "expo.inOut",})
+    .to(window, { scrollTo: 0, duration: 0 }, ">")
     } else {
       tl.to(transition.body, { backgroundColor: "#000000", duration: 0.4, ease: "expo.inOut",
-      }, 0).to(transition.menu, {
-      clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
-      ease: "expo.inOut",
-      duration: 1.2,
-    }, 0).to(childElements, {
+      }, 0)
+      .to(transition.menu, {
+        clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
+        ease: "expo.inOut",
+        duration: 0.8,
+      }, 0)
+      .to(childElements, {
+        opacity: 0,
+        filter: 'blur(20px)',
+        ease: "expo.inOut",
+        duration: 0.8,
+      }, 0)
+    .to(transition.pageLabel, {  opacity: 1, duration: 0.6, filter: "blur(0px)", ease: "expo.inOut",},  ">")
+    .to(transition.swither, {
       opacity: 0,
       filter: 'blur(20px)',
       ease: "expo.inOut",
-      duration: 1.2,
-    }, 0).to(transition.swither, {
-      opacity: 0,
-      filter: 'blur(20px)',
-      ease: "expo.inOut",
-      duration: 1.2,
-    }, 0).to(transition.header, { filter: "blur(10px)", opacity: 0, duration: 0.6, ease: "expo.inOut",}, 0).to(transition.cursor, {
+      duration: 0.8,
+    }, 0)
+    .to(transition.header, { filter: "blur(10px)", opacity: 0, duration: 0.6, ease: "expo.inOut",}, 0)
+    .to(transition.cursor, {
       opacity: 0,
       duration: 0.8,
-    }).to(window, { scrollTo: 0, duration: 0 }, 0).to("footer", { clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)", duration: 1 });
+    }, 0)
+    .to("footer", { clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)", duration: 0.6 }, 0)
+    .to(transition.pageLabel, {  bottom: "-100px", duration: 0.6, ease: "expo.inOut",})
+    .to(window, { scrollTo: 0, duration: 0 }, ">")
   }
   });
 }; 
@@ -172,7 +195,7 @@ const leaveTransition = () => {
   menuCopy.classList.remove("move");
   setTimeout(() => {
     window.location.reload();
-  }, 200)
+  }, 100)
 
 };
 
@@ -190,8 +213,8 @@ document.addEventListener("DOMContentLoaded", function () {
 barba.init({
   transitions: [
     {
-      async leave() {
-        await enterTransition();
+      async leave(data) {
+        await enterTransition(data);
       },
       async enter() {
         window.scrollTo(0, 0);
@@ -201,7 +224,6 @@ barba.init({
     },
   ],
 });
-
 
 // Preload animation 
 const item = document.querySelector('#name');
@@ -421,14 +443,14 @@ function heroAnim() {
         clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
         ease: "power4",
         duration: 1.2,
-        delay: 1,
+        delay: 2,
         scaleY: 1,
     })
     gsap.to('.item__caption', {
         ease: "power4",
         duration: 1,
         autoAlpha: 1,
-        delay: 1.5,
+        delay: 2.5,
         y: 0,
         filter: "blur(0px)",
     })
@@ -439,7 +461,7 @@ function heroAnim() {
       if (mainElement) {
           mainElement.appendChild(newDiv);
       } 
-    }, 1500)
+    }, 2200)
   }
 } 
 
@@ -451,30 +473,50 @@ function initHeader() {
     main: document.querySelector('main'),
     swither: document.querySelector('.color-switcher'),
     header: document.querySelector('header'),
+    pageLabelInit: document.querySelector('.page-transition .current'),
   };
-  window
-  gsap.to(transition.main, {
+
+  const tlInit = gsap.timeline();
+
+  tlInit.fromTo(transition.pageLabelInit, {
+    opacity: 0,
+    bottom: "100px",
+    filter: "blur(10px)"
+  }, {
+    opacity: 1,
+    bottom: "0px",
+    filter: "blur(0px)",
+    ease: "expo.inOut",
+    duration: 0.8,
+  })
+  .to(transition.pageLabelInit, {
+    bottom: "0px",
+    opacity: 0,
+    filter: "blur(10px)",
+    duration: 0.8,
+  }, 1)
+  .to(transition.main, {
     opacity: 1,
     ease: "expo.inOut",
-    duration: 1.5,
+    duration: 1,
   })
-  gsap.to(transition.swither, {
+  .to(transition.swither, {
     opacity: 1,
     ease: "expo.inOut",
-    duration: 1.5,
-  })
-  gsap.to(transition.menu, {
+    duration: 1,
+  }, 0)
+  .to(transition.menu, {
     opacity: 1,
     ease: "expo.inOut",
-    duration: 1.5,
-  })
-  gsap.to(transition.header, {
+    duration: 1,
+  }, 0)
+  .to(transition.header, {
     opacity: 1,
     filter: "blur(0px)",
     delay: 0.4,
     ease: "expo.inOut",
-    duration: 1.5,
-  })
+    duration: 1,
+  }, 0)
 
   const menuToggle = document.querySelector(".menu-toggle");
   const menu = document.querySelector(".menu");
@@ -685,29 +727,13 @@ const aboutPage = document.querySelector("#about");
 const contactPage = document.querySelector("#contacts");
 
 if (aboutPage) {
-
+ 
   function resetScrollTriggers() {
     ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     ScrollTrigger.refresh();
   }
 
     resetScrollTriggers();
-
-    gsap.set(title, {
-      opacity: 0, 
-      y: -50, 
-      filter: "blur(10px)"
-    });
-
-    // Footer animation
-    gsap.to(title, {
-      ease: "power4",
-      duration: 1,
-      autoAlpha: 1,
-      delay: 1.2,
-      y: 0,
-      filter: "blur(0px)",
-    });
 
   var topOffset = 35;
 
@@ -720,7 +746,6 @@ if (aboutPage) {
 
     textDesc.style.opacity = "0";
 
-    // Paragraph
     const timeline = gsap.timeline({
       scrollTrigger: {
         trigger: paragraphSelector,
@@ -789,8 +814,6 @@ if (aboutPage) {
 
   gsap.set(".footer-end", { clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)" });
 
-  setTimeout(() => {
-    // Footer animation based on scroll
     ScrollTrigger.create({
       trigger: '.image-4',
       start: 'center bottom', 
@@ -833,7 +856,6 @@ if (aboutPage) {
       ease: "power4.out",
     });
 
-  }, 100);
 }
 
 if (contactPage) {
@@ -843,7 +865,6 @@ if (contactPage) {
     const mouseY = e.clientY;
     const windowWidth = window.innerWidth;
     const windowHeight = window.innerHeight;
-
     const moveX = (mouseX / windowWidth) * 20;
     const moveY = (mouseY / windowHeight) * 20;
     gsap.to(element, {

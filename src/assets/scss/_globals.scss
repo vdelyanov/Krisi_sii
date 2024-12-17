@@ -229,3 +229,21 @@ body::-webkit-scrollbar-thumb {
 .gsap-marker-scroller-start, .gsap-marker-scroller-end, .gsap-marker-start, .gsap-marker-end {
     opacity: 0 !important;
 }
+
+.page-transition {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    p {
+        font-size: 64px;
+        position: fixed;
+        bottom: 0;
+        white-space: nowrap;
+        left: -150%;
+        &.current {
+            left: 0;
+            opacity: 0;
+            filter: blur(10px);
+        }
+    }
+}
