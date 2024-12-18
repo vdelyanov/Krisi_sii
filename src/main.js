@@ -127,24 +127,24 @@ const enterTransition = (data) => {
 
     if (menuToggle.classList.contains("closed")) {
 
-    tl.to(transition.body, { backgroundColor: "#000000", duration: 0.6, ease: "expo.inOut",})
+    tl.to(transition.body, { backgroundColor: "#000000", duration: 0.4, ease: "expo.inOut",})
     .to(childElements, {
       opacity: 0,
       filter: 'blur(20px)',
       ease: "expo.inOut",
-      duration: 0.8,
+      duration: 1,
     }, 0)
     .to(transition.pageLabel, {  opacity: 1, duration: 0.8, filter: "blur(0px)", ease: "expo.inOut",}, ">")
     .to(transition.swither, {
       opacity: 0,
       filter: 'blur(20px)',
       ease: "expo.inOut",
-      duration: 0.8,
+      duration: 1,
     }, 0)
     .to(transition.header, { filter: "blur(10px)",  opacity: 0, duration: 0.6, ease: "expo.inOut",}, 0)
     .to(transition.cursor, {
       opacity: 0,
-      duration: 0.8,
+      duration: 1,
     }, 0)
     .to("footer", { clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)", duration: 0.6 }, 0)
     .to(transition.pageLabel, {  bottom: "-100px", duration: 0.6, ease: "expo.inOut",})
@@ -155,25 +155,25 @@ const enterTransition = (data) => {
       .to(transition.menu, {
         clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
         ease: "expo.inOut",
-        duration: 0.8,
+        duration: 1,
       }, 0)
       .to(childElements, {
         opacity: 0,
         filter: 'blur(20px)',
         ease: "expo.inOut",
-        duration: 0.8,
+        duration: 1,
       }, 0)
     .to(transition.pageLabel, {  opacity: 1, duration: 0.6, filter: "blur(0px)", ease: "expo.inOut",},  ">")
     .to(transition.swither, {
       opacity: 0,
       filter: 'blur(20px)',
       ease: "expo.inOut",
-      duration: 0.8,
+      duration: 1,
     }, 0)
     .to(transition.header, { filter: "blur(10px)", opacity: 0, duration: 0.6, ease: "expo.inOut",}, 0)
     .to(transition.cursor, {
       opacity: 0,
-      duration: 0.8,
+      duration: 1,
     }, 0)
     .to("footer", { clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)", duration: 0.6 }, 0)
     .to(transition.pageLabel, {  bottom: "-100px", duration: 0.6, ease: "expo.inOut",})
@@ -727,7 +727,9 @@ const aboutPage = document.querySelector("#about");
 const contactPage = document.querySelector("#contacts");
 
 if (aboutPage) {
- 
+  setTimeout(() => {
+    nextParticle.start();
+  }, 2000)
   function resetScrollTriggers() {
     ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     ScrollTrigger.refresh();
@@ -743,8 +745,6 @@ if (aboutPage) {
     if (!textDesc) return;
 
     let splitDesc = new SplitText(textDesc, { type: "words,chars" });
-
-    textDesc.style.opacity = "0";
 
     const timeline = gsap.timeline({
       scrollTrigger: {
@@ -859,6 +859,9 @@ if (aboutPage) {
 }
 
 if (contactPage) {
+  setTimeout(() => {
+    nextParticle.start();
+  }, 2000)
   const element = document.querySelector('#contacts canvas');
   document.addEventListener('mousemove', (e) => {
     const mouseX = e.clientX;
