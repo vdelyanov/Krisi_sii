@@ -213,15 +213,22 @@ header {
     opacity: 0;
   }
 }
+
 main {
-  div, nav {
-    transition: filter 0.6s;
+  div {
+    transition: filter 0.8s;
+  }
+  &.bg-blur-remove {
+    span, p, a, h1, h2, h3, svg, img, form, canvas, nav, figure  {
+      transition: filter 0.8s;
+    } 
   }
   &.bg-blur {
+    overflow: hidden;
     cursor: pointer;
     z-index: 3;
     pointer-events: none;
-    div, nav, img {
+    span, p, a, h1, h2, h3, svg, img, form, canvas, nav, figure  {
       filter: blur(10px) !important;
       pointer-events: none;
       transition: filter 0.8s;

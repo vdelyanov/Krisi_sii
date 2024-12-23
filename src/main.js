@@ -130,7 +130,7 @@ const enterTransition = (data) => {
     tl.to(transition.body, { backgroundColor: "#000000", duration: 0.4, ease: "expo.inOut",})
     .to(childElements, {
       opacity: 0,
-      filter: 'blur(20px)',
+      // filter: 'blur(20px)',
       ease: "expo.inOut",
       duration: 1,
     }, 0)
@@ -159,7 +159,7 @@ const enterTransition = (data) => {
       }, 0)
       .to(childElements, {
         opacity: 0,
-        filter: 'blur(20px)',
+        // filter: 'blur(20px)',
         ease: "expo.inOut",
         duration: 1,
       }, 0)
@@ -443,14 +443,14 @@ function heroAnim() {
         clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
         ease: "power4",
         duration: 1.2,
-        delay: 2,
+        delay: 2.5,
         scaleY: 1,
     })
     gsap.to('.item__caption', {
         ease: "power4",
         duration: 1,
         autoAlpha: 1,
-        delay: 2.5,
+        delay: 3,
         y: 0,
         filter: "blur(0px)",
     })
@@ -461,7 +461,7 @@ function heroAnim() {
       if (mainElement) {
           mainElement.appendChild(newDiv);
       } 
-    }, 2200)
+    }, 3000)
   }
 } 
 
@@ -487,35 +487,35 @@ function initHeader() {
     bottom: "0px",
     filter: "blur(0px)",
     ease: "expo.inOut",
-    duration: 0.8,
+    duration: 1,
   })
   .to(transition.pageLabelInit, {
     bottom: "0px",
     opacity: 0,
     filter: "blur(10px)",
-    duration: 0.8,
-  }, 1)
+    duration: 0.6,
+  }, 1.2)
   .to(transition.main, {
     opacity: 1,
     ease: "expo.inOut",
-    duration: 1,
+    duration: 1.2,
   })
   .to(transition.swither, {
     opacity: 1,
     ease: "expo.inOut",
-    duration: 1,
+    duration: 1.2,
   }, 0)
   .to(transition.menu, {
     opacity: 1,
     ease: "expo.inOut",
-    duration: 1,
+    duration: 1.2,
   }, 0)
   .to(transition.header, {
     opacity: 1,
     filter: "blur(0px)",
     delay: 0.4,
     ease: "expo.inOut",
-    duration: 1,
+    duration: 1.2,
   }, 0)
 
   const menuToggle = document.querySelector(".menu-toggle");
@@ -561,9 +561,11 @@ function initHeader() {
             scale: 0.8,
           });
           isAnimating = false;
+          main.classList.remove("bg-blur-remove");
         },
       });
     }
+
   });
   
   document.addEventListener('keydown', function(event) {
@@ -597,6 +599,7 @@ function initHeader() {
             scale: 0.8,
           });
           isAnimating = false;
+          main.classList.remove("bg-blur-remove");
         },
       });
 
@@ -631,6 +634,7 @@ function initHeader() {
         onStart: () => {
           menu.style.pointerEvents = "all";
           main.classList.add("bg-blur");
+          main.classList.add("bg-blur-remove");
         },
         onComplete: () => {
           isAnimating = false;
@@ -701,6 +705,7 @@ function initHeader() {
             scale: 0.8,
           });
           isAnimating = false;
+          main.classList.remove("bg-blur-remove");
         },
       });
     }
@@ -708,20 +713,21 @@ function initHeader() {
   });
 
 }
+
 // About / Contact page
 document.addEventListener("DOMContentLoaded", function () {
 
-const title = document.querySelector(".anim-title");
-  if (title) {
-    const title = document.querySelector(".anim-title");
-    gsap.to(title, {
-      ease: "power4",
-      duration: 1,
-      autoAlpha: 1,
-      delay: 1,
-      filter: "blur(0px)",
-  })
-}
+// const title = document.querySelector(".anim-title");
+//   if (title) {
+//     const title = document.querySelector(".anim-title");
+//     gsap.to(title, {
+//       ease: "power4",
+//       duration: 1,
+//       autoAlpha: 1,
+//       delay: 1,
+//       filter: "blur(0px)",
+//   })
+// }
   
 const aboutPage = document.querySelector("#about");
 const contactPage = document.querySelector("#contacts");
@@ -729,7 +735,7 @@ const contactPage = document.querySelector("#contacts");
 if (aboutPage) {
   setTimeout(() => {
     nextParticle.start();
-  }, 2000)
+  }, 2100)
   function resetScrollTriggers() {
     ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     ScrollTrigger.refresh();
@@ -755,6 +761,7 @@ if (aboutPage) {
         pinSpacing: false,
         scrub: true,
         markers: false,
+        stagger: 2,
         toggleActions: "restart pause resume pause", 
         onEnterBack: () => {
           gsap.to(textDesc, { opacity: 1, filter: "blur(0px)", duration: 0.2 });
@@ -767,7 +774,7 @@ if (aboutPage) {
         gsap.to(textDesc, { opacity: 1, filter: "blur(0px)", duration: 0.2 });
       },
       onComplete: () => {
-        gsap.to(textDesc, { opacity: 0, filter: "blur(10px)", duration: 0.2 });
+        gsap.to(textDesc, { opacity: 0, filter: "blur(10px)", duration: 0.1 });
       }
     });
 
@@ -858,10 +865,12 @@ if (aboutPage) {
 
 }
 
+
+
 if (contactPage) {
   setTimeout(() => {
     nextParticle.start();
-  }, 2000)
+  }, 2100)
   const element = document.querySelector('#contacts canvas');
   document.addEventListener('mousemove', (e) => {
     const mouseX = e.clientX;

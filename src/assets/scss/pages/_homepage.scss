@@ -246,16 +246,10 @@
     .paragraph {
       font-family: 'SofiaSans-Light';
       line-height: 112%;
+      transition: filter 0.6s;
     }
   }
 }
-
-
-.anim-title {
-  filter: blur(10px);
-  visibility: hidden
-}
-
 
 #content {
   canvas {
