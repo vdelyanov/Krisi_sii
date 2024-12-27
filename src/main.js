@@ -731,6 +731,7 @@ document.addEventListener("DOMContentLoaded", function () {
   
 const aboutPage = document.querySelector("#about");
 const contactPage = document.querySelector("#contacts");
+const galleryPage = document.querySelector("#gallery-page");
 
 if (aboutPage) {
   setTimeout(() => {
@@ -834,19 +835,20 @@ if (aboutPage) {
         gsap.to(".footer-end", { clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)" });
       }
     });
-
-    gsap.to("canvas", { 
-      scrollTrigger: {
-        trigger: document.documentElement,
-        start: "bottom 100%",
-        end: "bottom 90%",
-        scrub: 1, 
-        markers: false, 
-      },
-      ease: "power4.out",
-      opacity: 0,
-    });
-
+    setTimeout(() => {
+      gsap.to("canvas", { 
+        scrollTrigger: {
+          trigger: document.documentElement,
+          start: "bottom 100%",
+          end: "bottom 70%",
+          scrub: 1, 
+          markers: false, 
+        },
+        ease: "power4.out",
+        opacity: 0,
+      });
+      }, 2100)
+ 
     gsap.to("#title-wrapper", { 
       scrollTrigger: {
         trigger: document.documentElement,
@@ -886,6 +888,29 @@ if (contactPage) {
       ease: "expo.Out",
     });
   });
+}
+
+if (galleryPage) {
+  const column2 = document.querySelector(".column-2");
+
+  const elementHeight = column2.offsetHeight;
+  const viewportHeight = window.innerHeight;
+
+  const totalTranslateY = elementHeight - viewportHeight;
+
+  gsap.to(column2, { 
+    scrollTrigger: {
+        trigger: document.documentElement,
+        start: "top top",
+        end: "bottom bottom",
+        scrub: 0,
+        markers: true,
+    },
+    y: totalTranslateY, 
+    ease: "linear"
+});
+
+
 }
 
 // Footer animation 
