@@ -195,3 +195,13 @@ a, button {
     pointer-events: none;
   }
 }
+
+
+.container {
+  @media (min-width: 1536px) {
+    max-width: 1280px;
+  }
+  @media (min-width: 1640px) {
+    max-width: 1536px;
+  }
+}

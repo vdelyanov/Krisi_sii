@@ -6,8 +6,9 @@ import { gsap } from "gsap";
 import { SplitText } from 'gsap/SplitText';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
+import { Flip } from "gsap/Flip.js";
 
-gsap.registerPlugin(ScrollTrigger, SplitText, ScrollToPlugin);
+gsap.registerPlugin(ScrollTrigger, SplitText, ScrollToPlugin, Flip);
 
 import CookieBox from "./CookieBox.js";
 const cookieBox = new CookieBox("#cookie-box");
@@ -54,12 +55,16 @@ const colors = {
 // Function to change background color and store in localStorage
 const modalBg = document.querySelector('#popup-wrapper')
 const swither = document.querySelector('#fill-color')
+const lightbox = document.querySelector('#lightbox')
 
 function changeColor(colorKey) {
     const color = colors[colorKey];
     document.body.style.backgroundColor = color;
     if (modalBg) {
       modalBg.style.backgroundColor = color;
+    }
+    if (lightbox) {
+      lightbox.style.backgroundColor = color;
     }
     swither.setAttribute('fill', color);
     document.documentElement.style.setProperty('--background-color', color); // Update CSS variable
@@ -74,6 +79,9 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.style.backgroundColor = savedColor;
         if (modalBg) {
           modalBg.style.backgroundColor = savedColor;
+        }
+        if (lightbox) {
+          lightbox.style.backgroundColor = savedColor;
         }
         swither.setAttribute('fill', savedColor);
         document.documentElement.style.setProperty('--background-color', savedColor); // Update CSS variable
@@ -163,7 +171,7 @@ const enterTransition = (data) => {
         ease: "expo.inOut",
         duration: 1,
       }, 0)
-    .to(transition.pageLabel, {  opacity: 1, duration: 0.6, filter: "blur(0px)", ease: "expo.inOut",},  ">")
+    .to(transition.pageLabel, {  opacity: 1, duration: 0.8, filter: "blur(0px)", ease: "expo.inOut",},  ">")
     .to(transition.swither, {
       opacity: 0,
       filter: 'blur(20px)',
@@ -775,7 +783,9 @@ if (aboutPage) {
         gsap.to(textDesc, { opacity: 1, filter: "blur(0px)", duration: 0.2 });
       },
       onComplete: () => {
-        gsap.to(textDesc, { opacity: 0, filter: "blur(10px)", duration: 0.1 });
+        if (!textDesc.classList.contains("last-text-desc")) {
+          gsap.to(textDesc, { opacity: 0, filter: "blur(10px)", duration: 0.1 });
+        }
       }
     });
 
@@ -867,8 +877,6 @@ if (aboutPage) {
 
 }
 
-
-
 if (contactPage) {
   setTimeout(() => {
     nextParticle.start();
@@ -891,12 +899,93 @@ if (contactPage) {
 }
 
 if (galleryPage) {
+
+
+    const gridItems = document.querySelectorAll(".img");
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImage = document.querySelector(".lightbox-image");
+    const closeButton = document.querySelector(".lightbox-close");
+    const prevButton = document.querySelector(".lightbox-prev");
+    const nextButton = document.querySelector(".lightbox-next");
+
+    let currentIndex = 0;
+    let images = [];
+
+    // Populate the images array
+    gridItems.forEach((item, index) => {
+        const imageUrl = item.src
+        images.push(imageUrl);
+
+        // Click event to open the lightbox
+        item.addEventListener("click", () => {
+            currentIndex = index;
+            openLightbox();
+        });
+    });
+
+    function openLightbox() {
+        lightboxImage.src = images[currentIndex];
+        lightbox.classList.add("show");
+        setTimeout(() => {
+          lightbox.classList.add("opened");
+        }, 10)
+        updateLightboxImage();
+    }
+
+    function closeLightbox() {
+        lightbox.classList.remove("show");
+        lightbox.classList.remove("opened");
+    }
+
+    function showPrevImage() {
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        lightboxImage.src = images[currentIndex];
+        updateLightboxImage();
+    }
+
+    function showNextImage() {
+        currentIndex = (currentIndex + 1) % images.length;
+        lightboxImage.src = images[currentIndex];
+        updateLightboxImage();
+    }
+
+    function updateLightboxImage() {
+      lightboxImage.src = images[currentIndex];
+  }
+
+    // Event listeners for controls
+    closeButton.addEventListener("click", closeLightbox);
+    prevButton.addEventListener("click", showPrevImage);
+    nextButton.addEventListener("click", showNextImage);
+    
+
+    document.addEventListener('click', function(event) {
+        if (!lightbox.contains(event.target) && lightbox.classList.contains("opened")) {
+          closeLightbox();
+        }
+      })
+
+    // Keyboard navigation
+    document.addEventListener("keydown", (e) => {
+        if (!lightbox.classList.contains("show")) return;
+        if (e.key === "ArrowLeft") showPrevImage();
+        if (e.key === "ArrowRight") showNextImage();
+        if (e.key === "Escape") closeLightbox();
+    });
+
+
+  gsap.timeline()
   const column2 = document.querySelector(".column-2");
 
   const elementHeight = column2.offsetHeight;
   const viewportHeight = window.innerHeight;
 
-  const totalTranslateY = elementHeight - viewportHeight;
+  const startTranslateY = elementHeight - viewportHeight - 16;
+  const totalTranslateY = elementHeight - viewportHeight - 16;
+
+  gsap.set(column2, { 
+    y: -startTranslateY 
+  })
 
   gsap.to(column2, { 
     scrollTrigger: {
@@ -910,8 +999,8 @@ if (galleryPage) {
     ease: "linear"
 });
 
-
 }
+
 
 // Footer animation 
 const footer = document.querySelector('.footer-fixed') 
@@ -926,11 +1015,17 @@ if (footer) {
     scrub: 1,
     onEnter: () => {
       gsap.to(".footer-fixed", { clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)"});
-      gsap.to(".show-text-trigger", { translateY: "60px"});
+      let textTrigger = document.querySelector(".show-text-trigger")
+      if (textTrigger) {
+        gsap.to(".show-text-trigger", { translateY: "60px"});
+      }
     },
     onEnterBack: () => {
       gsap.to(".footer-fixed", { clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)"});
+      let textTrigger = document.querySelector(".show-text-trigger")
+      if (textTrigger) {
       gsap.to(".show-text-trigger", { translateY: "0px"});
+      }
     }
   });
 

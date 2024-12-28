@@ -249,6 +249,108 @@ body::-webkit-scrollbar-thumb {
 }
 
 #gallery-page {
+    .lightbox {
+        position: fixed; 
+        z-index: 9; 
+        left: 0;
+        top: 0;
+        width: 80.5%; 
+        height: 100vh; 
+        height: 100svh;
+        overflow: visible; 
+        background-color:  rgba(0,0,0,1);
+        scale: 1 !important;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.68, 0.06);
+        opacity: 0;
+        filter: blur(10px);
+        pointer-events: none;
+        .lightbox-content {
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            img {
+                height: 100%;
+                border-top-left-radius: 8px;
+                border-top-right-radius: 8px;
+                border-bottom-right-radius: 8px;
+                border-bottom-left-radius: 8px;
+            }
+        }
+        &.display {
+          filter: blur(0px);
+          pointer-events: all;
+          scale: 1 !important;
+          transition: all 0.6s cubic-bezier(0.4, 0, 0.68, 0.06);
+          opacity: 1;
+        }
+        &.show {
+          filter: blur(0px);
+          pointer-events: all;
+          scale: 1 !important;
+          transition: all 0.6s cubic-bezier(0.4, 0, 0.68, 0.06);
+          opacity: 1;
+        }
+        @media (max-width: 1024px) {
+          overflow-y: scroll;
+          margin-bottom: 48px;
+        }
+      }
+      .lightbox-close {
+        transform: rotate(45deg) scale(1.4);
+        transition: all 0.3s;
+        cursor: pointer;
+        &:hover {
+        transition: all 0.3s;
+          transform: rotate(135deg) scale(1.4);
+        }
+      } 
+
+      .lightbox-close {
+        position: fixed;
+        top: 40px;
+        right: -14px;
+        color: #f1f1f1;
+        font-size: 50px;
+        font-weight: 300 !important;
+        z-index: 99;
+        cursor: pointer;
+        @media (max-width: 1024px) {
+            top: 5vh;
+            right: 20px;
+        }
+      }
+
+    .lightbox-prev,
+    .lightbox-next {
+        position: absolute;
+        background: none;
+        color: white;
+        border: none;
+        font-size: 2rem;
+        cursor: pointer;
+        z-index: 10;
+    }
+        
+    .lightbox-prev {
+        left: 20px;
+        bottom: 20px;
+        @media (max-width: 1024px) {
+          bottom: calc(5vh + 80px) !important;
+          left: auto !important;
+          right: 80px !important;
+        }
+      }
+      
+      .lightbox-next {
+        left: calc(20px + 54px);
+        bottom: 20px;
+        @media (max-width: 1024px) {
+          bottom: calc(5vh + 80px) !important;
+          left: auto !important;
+          right: 20px !important;
+            }
+        }
+
     .images {
         .columns {
             .column {
@@ -256,16 +358,9 @@ body::-webkit-scrollbar-thumb {
                 display: flex;
                 flex-direction: column;
                 gap: 16px;
-                &.column-1 {
-                    transform: translateY(calc(0%));    
-                }
-                &.column-2 {
-                    transform: translateY(calc(-100% + 100vh + 16px));
-                }
+                height: fit-content;
                 img {
-                    aspect-ratio: 16 / 9;
                     object-fit: cover;
-                    width: 100%s;
                 }
             }
 

@@ -50,6 +50,8 @@
   background: #000;
   z-index: 3;
   position: relative;
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
 }
 .item__image-inner_image {
   opacity: 0;
@@ -216,7 +218,7 @@
     transition: background-color 0.4s ease-in-out;
     &:not(:placeholder-shown) {
       background-color: var(--background-color);
-      transition: background-color 0.8s ease-in-out;
+      transition: background-color 0.6s cubic-bezier(0.4, 0, 0.68, 0.06);
     }
     &::placeholder {
       font-size: 48px;
