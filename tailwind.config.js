@@ -10,6 +10,7 @@ export default {
         'yellow': '#F7F86A',
         'cream': '#FFF3D4',
         'gray': '#C4C7C7',
+        'dark-gray': '#d3d3d3',
         'black': '#000000',
         'white': '#ffffff',
     },

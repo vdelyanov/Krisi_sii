@@ -156,7 +156,7 @@ const enterTransition = (data) => {
     }, 0)
     .to("footer", { clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)", duration: 0.6 }, 0)
     .to(transition.pageLabel, {  bottom: "-100px", duration: 0.6, ease: "expo.inOut",})
-    .to(window, { scrollTo: 0, duration: 0 }, ">")
+    .to(window, { scrollTo: 0, duration: 0}, ">")
     } else {
       tl.to(transition.body, { backgroundColor: "#000000", duration: 0.4, ease: "expo.inOut",
       }, 0)
@@ -328,7 +328,11 @@ document.addEventListener("DOMContentLoaded", function () {
     localStorage.setItem("hasVisitedBefore", "true");
   } else {
     initHeader()
-    heroAnim()
+    lenis.scrollTo(0);
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+      heroAnim();
+    }, 500);
   }
 
 });
@@ -439,32 +443,32 @@ hoverLinksText.forEach(link => {
 
 // Hero animation / Homepage
 function heroAnim() {
-  lenis.scrollTo(0) // Scroll to the top of the page
+
   const animEl =  document.querySelector('.item__image-wrap');
   if (animEl) {
     gsap.to('.item__image-wrap', {
         clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
         ease: "power4",
         duration: 1.2,
-        delay: 2.5,
+        delay: 2,
         scaleY: 1,
+        onComplete: () => {
+          const newDiv = document.createElement('div');
+          newDiv.className = 'h-[10vh]';
+          const mainElement = document.querySelector('main.homepage');
+          if (mainElement) {
+              mainElement.appendChild(newDiv);
+          } 
+        }
     })
     gsap.to('.item__caption', {
         ease: "power4",
         duration: 1,
         autoAlpha: 1,
-        delay: 3,
+        delay: 2.5,
         y: 0,
         filter: "blur(0px)",
     })
-    setTimeout(() => {
-      const newDiv = document.createElement('div');
-      newDiv.className = 'h-[10vh]';
-      const mainElement = document.querySelector('main.homepage');
-      if (mainElement) {
-          mainElement.appendChild(newDiv);
-      } 
-    }, 3000)
   }
 } 
 
@@ -497,6 +501,13 @@ function initHeader() {
     opacity: 0,
     filter: "blur(10px)",
     duration: 0.6,
+    onComplete: () => {
+      const aboutPage = document.querySelector("#about");
+      const contactPage = document.querySelector("#contacts");
+      if (aboutPage || contactPage) {
+        nextParticle.start();
+      }
+    }
   }, 1.2)
   .to(transition.main, {
     opacity: 1,
@@ -725,145 +736,143 @@ const contactPage = document.querySelector("#contacts");
 const galleryPage = document.querySelector("#gallery-page");
 
 if (aboutPage) {
-  setTimeout(() => {
-    nextParticle.start();
-  }, 2100)
+
+  const element = document.querySelector('#about canvas');
+  document.addEventListener('mousemove', (e) => {
+    const mouseX = e.clientX;
+    const windowWidth = window.innerWidth;
+    const moveX = (mouseX / windowWidth) * 20;
+    gsap.to(element, {
+      x: -moveX,  
+      duration: 3,
+      ease: "expo.Out",
+    });
+  });
+
   function resetScrollTriggers() {
-    ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     ScrollTrigger.refresh();
   }
+  resetScrollTriggers();
 
-    resetScrollTriggers();
-
-  var topOffset = 35;
+  let topOffset = 35;
 
   function animateParagraph(paragraphSelector, imageSelector) {
+    
     const textDesc = document.querySelector(paragraphSelector);
-
     if (!textDesc) return;
 
-    let splitDesc = new SplitText(textDesc, { type: "words,chars" });
+    const splitDesc = new SplitText(textDesc, { type: "words,chars" });
 
     const timeline = gsap.timeline({
       scrollTrigger: {
         trigger: paragraphSelector,
         start: "top 34%",
-        end: "bottom 32%",
+        end: "bottom 34%",
         pin: true,
         pinSpacing: false,
-        scrub: true,
-        markers: false,
-        stagger: 2,
+        scrub: 2,
         toggleActions: "restart pause resume pause", 
         onEnterBack: () => {
           gsap.to(textDesc, { opacity: 1, filter: "blur(0px)", duration: 0.2 });
         },
         onLeaveBack: () => {
           gsap.to(textDesc, { opacity: 0, filter: "blur(10px)", duration: 0.2 });
-        }
-      },
-      onStart: () => {
-        gsap.to(textDesc, { opacity: 1, filter: "blur(0px)", duration: 0.2 });
-      },
-      onComplete: () => {
-        if (!textDesc.classList.contains("last-text-desc")) {
-          gsap.to(textDesc, { opacity: 0, filter: "blur(10px)", duration: 0.1 });
-        }
-      }
+        },
+        onEnter: () => {
+          gsap.to(textDesc, { opacity: 1, filter: "blur(0px)", duration: 0.2 });
+        },
+        onLeave: () => {
+          if (!textDesc.classList.contains("last-text-desc")) {
+            gsap.to(textDesc, { opacity: 0, filter: "blur(10px)", duration: 0.1, immediateRender: true });
+          }
+        },
+        },
     });
 
-      // Characters animation
+    // Animate text characters
     timeline.fromTo(
       splitDesc.chars,
       { opacity: 0, filter: "blur(2px)" },
-      {
-        opacity: 1,
-        filter: "blur(0px)",
-        stagger: 0.2,
-        duration: 2.5,
-      },
-      0
-    ).fromTo(
+      { opacity: 1, filter: "blur(0px)", stagger: 0.2, duration: 2.5 }
+    );
+
+    // Animate associated image
+    timeline.fromTo(
       imageSelector,
+      { top: "150%", scaleY: 2, filter: "blur(10px)" },
       {
-        top: "150%", 
-        scaleY: 2,
-        filter: "blur(10px)",
-      },
-      {
-        top: `${topOffset}vh`, 
+        top: `${topOffset}vh`,
         scaleY: 1,
         filter: "blur(0px)",
-        ease: "none", 
-      scrollTrigger: {
-        trigger: paragraphSelector,
-        start: "top 34%",
-        end: "bottom 34%",
-        scrub: true, 
-        markers: false, 
+        ease: "none",
+        scrollTrigger: {
+          trigger: paragraphSelector,
+          start: "top 34%",
+          end: "bottom 34%",
+          scrub: true,
         },
       }
     );
 
-    topOffset += 5;
+    topOffset += 5; // Increment for spacing between paragraphs
   }
 
+  // Animate multiple paragraphs and images
   animateParagraph(".paragraph-1", ".image-1");
   animateParagraph(".paragraph-2", ".image-2");
   animateParagraph(".paragraph-3", ".image-3");
   animateParagraph(".paragraph-4", ".image-4");
 
+  // Footer animation
   gsap.set(".footer-end", { clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)" });
 
-    ScrollTrigger.create({
-      trigger: '.image-4',
-      start: 'center bottom', 
-      end: 'center bottom',
-      markers: true,
-      scrub: 1,
-      onEnter: () => {
-        gsap.to(".footer-end", { clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)" });
-      },
-      onEnterBack: () => {
-        gsap.to(".footer-end", { clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)" });
-      }
-    });
-    setTimeout(() => {
-      gsap.to("canvas", { 
-        scrollTrigger: {
-          trigger: document.documentElement,
-          start: "bottom 100%",
-          end: "bottom 70%",
-          scrub: 1, 
-          markers: false, 
-        },
-        ease: "power4.out",
-        opacity: 0,
-      });
-      }, 2100)
- 
-    gsap.to("#title-wrapper", { 
+  ScrollTrigger.create({
+    trigger: ".image-4",
+    start: "center 105%",
+    end: "center 105%",
+    scrub: 1, 
+    onEnter: () => {
+      gsap.to(".footer-end", { clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)" });
+    },
+    onEnterBack: () => {
+      gsap.to(".footer-end", { clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)" });
+    },
+  });
+
+  // Canvas fade-out effect
+  setTimeout(() => {
+    gsap.to("canvas", {
       scrollTrigger: {
         trigger: document.documentElement,
         start: "bottom 100%",
-        end: "bottom 90%",
-        scrub: 1, 
-        markers: false, 
+        end: "bottom 70%",
+        scrub: 1,
       },
-      left: "45%",
-      scaleY: 1.2,
-      opacity: 0.2,
-      translateX: "-100%",
-      filter: "blur(2px)",
       ease: "power4.out",
+      opacity: 0,
     });
+  }, 2200);
 
+  // Title wrapper animation
+  gsap.to("#title-wrapper", {
+    scrollTrigger: {
+      trigger: document.documentElement,
+      start: "bottom 100%",
+      end: "bottom 90%",
+      scrub: 1,
+    },
+    left: "45%",
+    scaleY: 1.2,
+    opacity: 0.2,
+    translateX: "-100%",
+    filter: "blur(2px)",
+    ease: "power4.out",
+  });
 }
 
 if (contactPage) {
-  setTimeout(() => {
-    nextParticle.start();
-  }, 2100)
+
   const element = document.querySelector('#contacts canvas');
   document.addEventListener('mousemove', (e) => {
     const mouseX = e.clientX;
@@ -916,31 +925,27 @@ if (galleryPage) {
     interior: {
       column1: [
         './assets/images/interior/interior-1.webp',
+        './assets/images/interior/interior-2.webp',
         './assets/images/interior/interior-3.webp',
+        './assets/images/interior/interior-4.webp',
         './assets/images/interior/interior-5.webp',
+        './assets/images/interior/interior-6.webp',
         './assets/images/interior/interior-7.webp',
+        './assets/images/interior/interior-8.webp',
         './assets/images/interior/interior-9.webp',
-        './assets/images/interior/interior-11.webp',
-        './assets/images/interior/interior-13.webp',
-        './assets/images/interior/interior-15.webp',
-        './assets/images/interior/interior-17.webp',
-        './assets/images/interior/interior-19.webp',
-        './assets/images/interior/interior-21.webp',
-        './assets/images/interior/interior-13.webp',
+        './assets/images/interior/interior-10.webp',
       ],
       column2: [
-        './assets/images/interior/interior-2.webp',
-        './assets/images/interior/interior-4.webp',
-        './assets/images/interior/interior-6.webp',
-        './assets/images/interior/interior-8.webp',
-        './assets/images/interior/interior-10.webp',
+        './assets/images/interior/interior-11.webp',
         './assets/images/interior/interior-12.webp',
+        './assets/images/interior/interior-13.webp',
         './assets/images/interior/interior-14.webp',
+        './assets/images/interior/interior-15.webp',
         './assets/images/interior/interior-16.webp',
+        './assets/images/interior/interior-17.webp',
         './assets/images/interior/interior-18.webp',
+        './assets/images/interior/interior-19.webp',
         './assets/images/interior/interior-20.webp',
-        './assets/images/interior/interior-22.webp',
-        './assets/images/interior/interior-24.webp',
       ],
     },
     event: {
@@ -990,6 +995,12 @@ if (galleryPage) {
       // Get category from clicked button
       const category = button.dataset.category;
 
+      // Update URL with the selected category
+      const newUrl = new URL(window.location.href);
+      newUrl.searchParams.set('category', category);
+      window.history.pushState({}, '', newUrl);
+
+
       lenis.scrollTo(0) 
       window.scrollTo(0, 0);
 
@@ -1038,11 +1049,12 @@ if (galleryPage) {
         trigger: document.documentElement,
         start: "top top",
         end: "bottom bottom",
-        scrub: 0,
-        markers: true, // For debugging, remove in production
+        scrub: 0.4,
+        markers: false,
       },
       y: totalTranslateY,
-      ease: "linear",
+      ease: "linear", 
+      
     });
 
     // Refresh ScrollTrigger
@@ -1104,8 +1116,20 @@ if (galleryPage) {
     refreshModal();
   }
 
-  reinitializeGSAP();
+  // Check URL for category on page load
+  function loadCategoryFromURL() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const category = urlParams.get('category') || 'behind_scenes'; // Default category
+    const activeButton = [...filterButtons].find(btn => btn.dataset.category === category);
+    
+    if (activeButton) {
+      activeButton.classList.add('active');
+    }
 
+    loadImages(category);
+  }
+
+  // Lightbox funcs 
   function refreshModal() {
     const gridItems = document.querySelectorAll(".img"); // Get updated grid items
     const images = []; // Clear previous images array
@@ -1231,6 +1255,10 @@ if (galleryPage) {
         if (e.key === "ArrowRight") showNextImage();
         if (e.key === "Escape") closeLightbox();
     });
+
+
+    loadCategoryFromURL(); // Load images based on URL parameter on page load
+    reinitializeGSAP(); // Init the scroll animation 
 
 }
 

@@ -357,6 +357,7 @@ body::-webkit-scrollbar-thumb {
     .images {
         .columns {
             overflow: hidden;
+            will-change: transform;
             .column {
                 will-change: transform;
                 display: flex;
@@ -364,6 +365,7 @@ body::-webkit-scrollbar-thumb {
                 gap: 16px;
                 height: fit-content;
                 img {
+                    will-change: transform;
                     object-fit: cover;
                 }
             }
