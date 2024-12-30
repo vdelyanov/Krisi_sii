@@ -106,9 +106,12 @@ body::-webkit-scrollbar-thumb {
     pointer-events: none; 
     width: 34px;
     height: 28px;
-    mix-blend-mode: difference;
     z-index: 999;
     opacity: 0;
+    mix-blend-mode: difference;
+    .eye {
+        mix-blend-mode: normal !important;
+    }
     &.hide {
         cursor: none !important;
         opacity: 0 !important;
@@ -353,6 +356,7 @@ body::-webkit-scrollbar-thumb {
 
     .images {
         .columns {
+            overflow: hidden;
             .column {
                 will-change: transform;
                 display: flex;

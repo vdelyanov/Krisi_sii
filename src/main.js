@@ -207,11 +207,6 @@ const leaveTransition = () => {
 
 };
 
-// Listen for the page reload event
-window.addEventListener('beforeunload', () => {
-  window.scrollTo(0, 0);  
-});
-
 document.addEventListener("DOMContentLoaded", function () {
   if (performance.navigation.type === 1) {
     window.scrollTo(0, 0);
@@ -444,7 +439,7 @@ hoverLinksText.forEach(link => {
 
 // Hero animation / Homepage
 function heroAnim() {
-
+  lenis.scrollTo(0) // Scroll to the top of the page
   const animEl =  document.querySelector('.item__image-wrap');
   if (animEl) {
     gsap.to('.item__image-wrap', {
@@ -724,18 +719,6 @@ function initHeader() {
 
 // About / Contact page
 document.addEventListener("DOMContentLoaded", function () {
-
-// const title = document.querySelector(".anim-title");
-//   if (title) {
-//     const title = document.querySelector(".anim-title");
-//     gsap.to(title, {
-//       ease: "power4",
-//       duration: 1,
-//       autoAlpha: 1,
-//       delay: 1,
-//       filter: "blur(0px)",
-//   })
-// }
   
 const aboutPage = document.querySelector("#about");
 const contactPage = document.querySelector("#contacts");
@@ -900,16 +883,292 @@ if (contactPage) {
 
 if (galleryPage) {
 
+  // Define image categories with two columns
+  const imageCategories = {
+    behind_scenes: {
+      column1: [
+        './assets/images/img/1.jpg',
+        './assets/images/img/2.jpg',
+        './assets/images/img/3.jpg',
+        './assets/images/img/4.jpg',
+        './assets/images/img/5.jpg',
+        './assets/images/img/6.jpg',
+        './assets/images/img/7.jpg',
+        './assets/images/img/8.jpg',
+      ],
+      column2: [
+        './assets/images/img/1.jpg',
+        './assets/images/img/2.jpg',
+        './assets/images/img/3.jpg',
+        './assets/images/img/4.jpg',
+        './assets/images/img/5.jpg',
+        './assets/images/img/6.jpg',
+        './assets/images/img/7.jpg',
+        './assets/images/img/8.jpg',
+      ],
+    },
+    portrait: {
+      column1: [
+      ],
+      column2: [
+      ],
+    },
+    interior: {
+      column1: [
+        './assets/images/interior/interior-1.webp',
+        './assets/images/interior/interior-3.webp',
+        './assets/images/interior/interior-5.webp',
+        './assets/images/interior/interior-7.webp',
+        './assets/images/interior/interior-9.webp',
+        './assets/images/interior/interior-11.webp',
+        './assets/images/interior/interior-13.webp',
+        './assets/images/interior/interior-15.webp',
+        './assets/images/interior/interior-17.webp',
+        './assets/images/interior/interior-19.webp',
+        './assets/images/interior/interior-21.webp',
+        './assets/images/interior/interior-13.webp',
+      ],
+      column2: [
+        './assets/images/interior/interior-2.webp',
+        './assets/images/interior/interior-4.webp',
+        './assets/images/interior/interior-6.webp',
+        './assets/images/interior/interior-8.webp',
+        './assets/images/interior/interior-10.webp',
+        './assets/images/interior/interior-12.webp',
+        './assets/images/interior/interior-14.webp',
+        './assets/images/interior/interior-16.webp',
+        './assets/images/interior/interior-18.webp',
+        './assets/images/interior/interior-20.webp',
+        './assets/images/interior/interior-22.webp',
+        './assets/images/interior/interior-24.webp',
+      ],
+    },
+    event: {
+      column1: [
+        './assets/images/events/events-1.webp',
+        './assets/images/events/events-2.webp',
+        './assets/images/events/events-3.webp',
+        './assets/images/events/events-4.webp',
+        './assets/images/events/events-5.webp',
+        './assets/images/events/events-6.webp',
+      ],
+      column2: [
+        './assets/images/events/events-7.webp',
+        './assets/images/events/events-8.webp',
+        './assets/images/events/events-9.webp',
+        './assets/images/events/events-10.webp',
+        './assets/images/events/events-11.webp',
+        './assets/images/events/events-12.webp',
+      ],
+    },
+    artistic: {
+      column1: [
+      ],
+      column2: [
+      ],
+    },
+    black_white: {
+      column1: [
+      ],
+      column2: [
+      ],
+    },
+  };
 
-    const gridItems = document.querySelectorAll(".img");
-    const lightbox = document.getElementById("lightbox");
-    const lightboxImage = document.querySelector(".lightbox-image");
-    const closeButton = document.querySelector(".lightbox-close");
-    const prevButton = document.querySelector(".lightbox-prev");
-    const nextButton = document.querySelector(".lightbox-next");
+  // Get references to elements
+  const filterButtons = document.querySelectorAll('.filters a');
 
-    let currentIndex = 0;
-    let images = [];
+  // Add click event to filter buttons
+  filterButtons.forEach((button) => {
+    button.addEventListener('click', (e) => {
+      e.preventDefault();
+
+      // Remove active class from all buttons
+      filterButtons.forEach((btn) => btn.classList.remove('active'));
+      button.classList.add('active');
+
+      // Get category from clicked button
+      const category = button.dataset.category;
+
+      lenis.scrollTo(0) 
+      window.scrollTo(0, 0);
+
+      gsap.to('.columns', {
+        filter: "blur(40px)",
+        opacity: 0.1,
+        duration: 0.8,
+        ease: "power4",
+        onComplete: () => {
+          loadImages(category);
+        }
+      }) 
+
+    });
+  });
+
+  // Function to reinitialize GSAP with updated elements
+  function reinitializeGSAP() {
+
+    gsap.fromTo('.columns', {
+      opacity: 0,
+      filter: "blur(40px)",
+    }, {
+      opacity: 1,
+      filter: "blur(0px)",
+      duration: 0.6,
+      ease: "power4",
+    })
+
+    const column2 = document.querySelector(".column-2");
+    if (!column2) return;
+
+    // Calculate heights
+    const elementHeight = column2.offsetHeight;
+    const viewportHeight = window.innerHeight;
+
+    const totalTranslateY = elementHeight - viewportHeight - 16;
+
+    // Kill previous animations
+    gsap.killTweensOf(column2);
+
+    // Set and animate column2 with updated values
+    gsap.set(column2, { y: -totalTranslateY });
+    gsap.to(column2, {
+      scrollTrigger: {
+        trigger: document.documentElement,
+        start: "top top",
+        end: "bottom bottom",
+        scrub: 0,
+        markers: true, // For debugging, remove in production
+      },
+      y: totalTranslateY,
+      ease: "linear",
+    });
+
+    // Refresh ScrollTrigger
+    ScrollTrigger.refresh();
+  }
+
+  // Function to load images dynamically with equal distribution
+  function loadImages(category) {
+    const columns = document.querySelectorAll(".columns .column");
+    if (columns.length < 2) return;
+
+    // Clear existing images
+    columns.forEach((column) => (column.innerHTML = ""));
+
+    // Get images for the selected category
+    const columnData = imageCategories[category];
+    if (!columnData) return;
+
+    // Add images to column-1
+    columnData.column1.forEach((imageSrc) => {
+      const imgWrapper = document.createElement("div");
+      imgWrapper.className = "img-wrapper";
+
+      const wrap = document.createElement("div");
+      wrap.className = "wrap";
+
+      const img = document.createElement("img");
+      img.className = "img hover-link";
+      img.src = imageSrc;
+      img.alt = category;
+
+      wrap.appendChild(img);
+      imgWrapper.appendChild(wrap);
+      columns[0].appendChild(imgWrapper); // Append to column-1
+    });
+
+    // Add images to column-2
+    columnData.column2.forEach((imageSrc) => {
+      const imgWrapper = document.createElement("div");
+      imgWrapper.className = "img-wrapper";
+
+      const wrap = document.createElement("div");
+      wrap.className = "wrap";
+
+      const img = document.createElement("img");
+      img.className = "img hover-link";
+      img.src = imageSrc;
+      img.alt = category;
+
+      wrap.appendChild(img);
+      imgWrapper.appendChild(wrap);
+      columns[1].appendChild(imgWrapper); // Append to column-2
+    });
+
+  // Reinitialize GSAP after updating images
+    setTimeout(() => {
+      reinitializeGSAP();
+      }, 100);
+    refreshModal();
+  }
+
+  reinitializeGSAP();
+
+  function refreshModal() {
+    const gridItems = document.querySelectorAll(".img"); // Get updated grid items
+    const images = []; // Clear previous images array
+
+    // Populate the images array
+    gridItems.forEach((item, index) => {
+      const imageUrl = item.src;
+      images.push(imageUrl);
+
+      // Add click event listener to open the modal
+      item.addEventListener("click", () => {
+        currentIndex = index;
+        openLightbox();
+      });
+    });
+
+    // Update the modal controls
+    function openLightbox() {
+      lightboxImage.src = images[currentIndex];
+      lightbox.classList.add("show");
+      setTimeout(() => {
+        lightbox.classList.add("opened");
+      }, 10);
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove("show");
+      lightbox.classList.remove("opened");
+    }
+
+    function showPrevImage() {
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
+      lightboxImage.src = images[currentIndex];
+    }
+
+    function showNextImage() {
+      currentIndex = (currentIndex + 1) % images.length;
+      lightboxImage.src = images[currentIndex];
+    }
+
+    // Add event listeners for modal controls
+    closeButton.addEventListener("click", closeLightbox);
+    prevButton.addEventListener("click", showPrevImage);
+    nextButton.addEventListener("click", showNextImage);
+
+    document.addEventListener("keydown", (e) => {
+      if (!lightbox.classList.contains("show")) return;
+      if (e.key === "ArrowLeft") showPrevImage();
+      if (e.key === "ArrowRight") showNextImage();
+      if (e.key === "Escape") closeLightbox();
+    });
+  }
+
+  // Modal 
+  const gridItems = document.querySelectorAll(".img");
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImage = document.querySelector(".lightbox-image");
+  const closeButton = document.querySelector(".lightbox-close");
+  const prevButton = document.querySelector(".lightbox-prev");
+  const nextButton = document.querySelector(".lightbox-next");
+
+  let currentIndex = 0;
+  let images = [];
 
     // Populate the images array
     gridItems.forEach((item, index) => {
@@ -972,32 +1231,6 @@ if (galleryPage) {
         if (e.key === "ArrowRight") showNextImage();
         if (e.key === "Escape") closeLightbox();
     });
-
-
-  gsap.timeline()
-  const column2 = document.querySelector(".column-2");
-
-  const elementHeight = column2.offsetHeight;
-  const viewportHeight = window.innerHeight;
-
-  const startTranslateY = elementHeight - viewportHeight - 16;
-  const totalTranslateY = elementHeight - viewportHeight - 16;
-
-  gsap.set(column2, { 
-    y: -startTranslateY 
-  })
-
-  gsap.to(column2, { 
-    scrollTrigger: {
-        trigger: document.documentElement,
-        start: "top top",
-        end: "bottom bottom",
-        scrub: 0,
-        markers: true,
-    },
-    y: totalTranslateY, 
-    ease: "linear"
-});
 
 }
 

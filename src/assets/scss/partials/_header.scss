@@ -192,6 +192,7 @@ header {
         padding: 24px;
     }
     .socials {
+      align-items: flex-start;
        a {
         color: $black;
        }
