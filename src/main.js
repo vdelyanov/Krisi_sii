@@ -737,17 +737,26 @@ const galleryPage = document.querySelector("#gallery-page");
 
 if (aboutPage) {
 
-  const element = document.querySelector('#about canvas');
-  document.addEventListener('mousemove', (e) => {
-    const mouseX = e.clientX;
-    const windowWidth = window.innerWidth;
-    const moveX = (mouseX / windowWidth) * 20;
-    gsap.to(element, {
-      x: -moveX,  
-      duration: 3,
-      ease: "expo.Out",
-    });
-  });
+  const initiateAnimation = () => {
+    const element = document.querySelector('#about canvas');
+    if (element) {
+      const element = document.querySelector('#about canvas');
+      document.addEventListener('mousemove', (e) => {
+        const mouseX = e.clientX;
+        const windowWidth = window.innerWidth;
+        const moveX = (mouseX / windowWidth) * 20;
+        gsap.to(element, {
+          x: -moveX,  
+          duration: 3,
+          ease: "expo.Out",
+        });
+      });
+    } else {
+      setTimeout(initiateAnimation, 100); // Retry after 100ms if the element doesn't exist yet
+    }
+  };
+
+  initiateAnimation(); // Start the initialization process
 
   function resetScrollTriggers() {
     ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
@@ -873,21 +882,30 @@ if (aboutPage) {
 
 if (contactPage) {
 
-  const element = document.querySelector('#contacts canvas');
-  document.addEventListener('mousemove', (e) => {
-    const mouseX = e.clientX;
-    const mouseY = e.clientY;
-    const windowWidth = window.innerWidth;
-    const windowHeight = window.innerHeight;
-    const moveX = (mouseX / windowWidth) * 20;
-    const moveY = (mouseY / windowHeight) * 20;
-    gsap.to(element, {
-      x: -moveX,  
-      y: -moveY, 
-      duration: 2,
-      ease: "expo.Out",
-    });
-  });
+  const initiateAnimation = () => {
+    const element = document.querySelector('#contacts canvas');
+    if (element) {
+      document.addEventListener('mousemove', (e) => {
+        const mouseX = e.clientX;
+        const mouseY = e.clientY;
+        const windowWidth = window.innerWidth;
+        const windowHeight = window.innerHeight;
+        const moveX = (mouseX / windowWidth) * 20;
+        const moveY = (mouseY / windowHeight) * 20;
+        gsap.to(element, {
+          x: -moveX,
+          y: -moveY,
+          duration: 2,
+          ease: "expo.Out",
+        });
+      });
+    } else {
+      setTimeout(initiateAnimation, 100);
+    }
+  };
+
+  initiateAnimation(); 
+
 }
 
 if (galleryPage) {
@@ -1073,6 +1091,23 @@ if (galleryPage) {
     const columnData = imageCategories[category];
     if (!columnData) return;
 
+
+     // Track loaded images
+  let imagesToLoad = 0;
+  let imagesLoaded = 0;
+
+  // Function to check if all images are loaded
+  function checkAllImagesLoaded() {
+    if (imagesLoaded === imagesToLoad) {
+      // All images loaded, reinitialize GSAP and recalculate heights
+      setTimeout(() => {
+        reinitializeGSAP();
+        refreshModal();
+      }, 100);
+    }
+  }
+
+
     // Add images to column-1
     columnData.column1.forEach((imageSrc) => {
       const imgWrapper = document.createElement("div");
@@ -1085,6 +1120,11 @@ if (galleryPage) {
       img.className = "img hover-link";
       img.src = imageSrc;
       img.alt = category;
+
+      img.onload = () => {
+        imagesLoaded++;
+        checkAllImagesLoaded();
+      };
 
       wrap.appendChild(img);
       imgWrapper.appendChild(wrap);
@@ -1103,6 +1143,11 @@ if (galleryPage) {
       img.className = "img hover-link";
       img.src = imageSrc;
       img.alt = category;
+
+      img.onload = () => {
+        imagesLoaded++;
+        checkAllImagesLoaded();
+      };
 
       wrap.appendChild(img);
       imgWrapper.appendChild(wrap);
