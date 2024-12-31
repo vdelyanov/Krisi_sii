@@ -31,6 +31,8 @@ function raf(time) {
 }
 requestAnimationFrame(raf)
 
+
+// Color switcher
 const buttons = $(".color-switcher button")
 $(".color-switcher").mouseenter(function() {
   if (gsap.isTweening(buttons)) return;
@@ -94,6 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('color4').addEventListener('click', () => changeColor('color4'));
 });
 
+// Scroll icon 
 document.addEventListener("DOMContentLoaded", function () {
   const scrollIcon = document.getElementById('scroll-icon');
     if (scrollIcon) {
@@ -118,14 +121,9 @@ const transition = {
   pageLabel: document.querySelector('.page-transition .current'),
 };
 
-const enterTransition = (data) => {
+const enterTransition = () => {
 
   const childElements = transition.main.querySelectorAll('*');
-
-  const menuToggle = document.querySelector(".menu-toggle");
-
-    // Get the text of the clicked link
-    const clickedLink = data.trigger; // The element that triggered the transition
 
   return new Promise((resolve) => {
     const tl = gsap.timeline({
@@ -190,7 +188,6 @@ const enterTransition = (data) => {
   });
 }; 
 
-
 const leaveTransition = () => {
   const menuToggle = document.querySelector(".menu-toggle");
   const menuCopy = document.querySelector(".menu-copy");
@@ -207,12 +204,6 @@ const leaveTransition = () => {
 
 };
 
-document.addEventListener("DOMContentLoaded", function () {
-  if (performance.navigation.type === 1) {
-    window.scrollTo(0, 0);
-  }
-});
-
 barba.init({
   transitions: [
     {
@@ -227,6 +218,13 @@ barba.init({
     },
   ],
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+  if (performance.navigation.type === 1) {
+    window.scrollTo(0, 0);
+  }
+});
+
 
 // Preload animation 
 const item = document.querySelector('#name');
@@ -253,9 +251,9 @@ function fadeanim() {
     diration: 1,
     onComplete: () => {
       setTimeout(() => {
-        initHeader()
-        heroAnim()
-      }, 1000)
+        initialInitHeader()
+        initHeroAnim()
+      }, 500)
     }
   });
 }
@@ -337,6 +335,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
+
 // Cursor animation 
 const cursorElement = document.querySelector('.cursor-follow');
 const hoverLinks = document.querySelectorAll('.hover-link, a');
@@ -356,7 +355,7 @@ document.addEventListener('mousemove', (e) => {
       x: e.clientX - cursorElement.offsetWidth / 2,  
       y: e.clientY - cursorElement.offsetHeight / 2,
     });
-  });
+});
 
 // Cursor hover animation 
   hoverLinks.forEach(link => {
@@ -544,9 +543,10 @@ function initHeader() {
 
   var splitTitle = new SplitText(".logo-heading h2", { type: "chars" });
 
+
+  // Close header events 
   document.addEventListener('click', function(event) {
-    
-  if (!menu.contains(event.target) && !menuToggle.contains(event.target)) {
+    if (!menu.contains(event.target) && !menuToggle.contains(event.target)) {
       menuToggle.classList.remove("opened");
       menuToggle.classList.add("closed");
       menuCloseText.classList.remove("hide");
@@ -579,9 +579,7 @@ function initHeader() {
         },
       });
     }
-
   });
-  
   document.addEventListener('keydown', function(event) {
     if (event.key === 'Escape') {
       
@@ -620,6 +618,7 @@ function initHeader() {
     }
   })
 
+  // Set states of the header's elements 
   gsap.set(menu, {
     clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
   });
@@ -630,6 +629,7 @@ function initHeader() {
     scale: 0.8,
   });
 
+  // Open / close header menu 
   menuToggle.addEventListener("click", () => {
 
     if (isAnimating) return;
@@ -655,7 +655,6 @@ function initHeader() {
         },
       });
 
-      // Animate main links when opening
       gsap.to(links, {
         y: 0,
         opacity: 1,
@@ -665,7 +664,6 @@ function initHeader() {
         ease: "power3.out",
       });
 
-      // Animate social links when opening
       gsap.to(socialLinks, {
         y: 0,
         opacity: 1,
@@ -677,8 +675,6 @@ function initHeader() {
 
       const tl = gsap.timeline();
 
-      // Animate header text rotation
-      
       gsap.to(splitTitle.chars, {
         y: 0,
         rotateY: 0,
@@ -689,6 +685,7 @@ function initHeader() {
         ease: "power4.out",
         
       });
+
     } else {
       menuToggle.classList.remove("opened");
       menuToggle.classList.add("closed");
@@ -728,12 +725,277 @@ function initHeader() {
 
 }
 
-// About / Contact page
+function initHeroAnim() {
+
+  const animEl =  document.querySelector('.item__image-wrap');
+  if (animEl) {
+    gsap.to('.item__image-wrap', {
+        clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+        ease: "power4",
+        duration: 1.5,
+        delay: 0.5,
+        scaleY: 1,
+        onComplete: () => {
+          const newDiv = document.createElement('div');
+          newDiv.className = 'h-[10vh]';
+          const mainElement = document.querySelector('main.homepage');
+          if (mainElement) {
+              mainElement.appendChild(newDiv);
+          } 
+        }
+    })
+    gsap.to('.item__caption', {
+        ease: "power4",
+        duration: 1.5,
+        autoAlpha: 1,
+        delay: 1,
+        y: 0,
+        filter: "blur(0px)",
+    })
+  }
+} 
+function initialInitHeader() {
+
+  const transition = {
+    menu: document.querySelector('.menu'),
+    main: document.querySelector('main'),
+    swither: document.querySelector('.color-switcher'),
+    header: document.querySelector('header'),
+    pageLabelInit: document.querySelector('.page-transition .current'),
+  };
+
+  const tlInit = gsap.timeline();
+
+  const aboutPage = document.querySelector("#about");
+  const contactPage = document.querySelector("#contacts");
+  if (aboutPage || contactPage) {
+    nextParticle.start();
+  }
+
+  tlInit.to(transition.main, {
+    opacity: 1,
+    ease: "expo.inOut",
+    duration: 1.2,
+  })
+  .to(transition.swither, {
+    opacity: 1,
+    ease: "expo.inOut",
+    duration: 1.2,
+  }, 0)
+  .to(transition.menu, {
+    opacity: 1,
+    ease: "expo.inOut",
+    duration: 1.2,
+  }, 0)
+  .to(transition.header, {
+    opacity: 1,
+    filter: "blur(0px)",
+    delay: 0.4,
+    ease: "expo.inOut",
+    duration: 1.2,
+  }, 0)
+
+  const menuToggle = document.querySelector(".menu-toggle");
+  const menu = document.querySelector(".menu");
+  const menuCopy = document.querySelector(".menu-copy");
+  const menuOpenText = document.querySelector(".close-text");
+  const menuCloseText = document.querySelector(".open-text");
+  const links = document.querySelectorAll(".link");
+  const main = document.querySelector("main");
+  const socialLinks = document.querySelectorAll(".socials a");
+  let isAnimating = false;
+
+  var splitTitle = new SplitText(".logo-heading h2", { type: "chars" });
+
+
+  // Close header events 
+  document.addEventListener('click', function(event) {
+    if (!menu.contains(event.target) && !menuToggle.contains(event.target)) {
+      menuToggle.classList.remove("opened");
+      menuToggle.classList.add("closed");
+      menuCloseText.classList.remove("hide");
+      menuOpenText.classList.remove("show");
+      menuCopy.classList.remove("move");
+      isAnimating = true;
+      
+      gsap.to(menu, {
+        clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
+        ease: "expo.inOut",
+        duration: 1.5,
+        onStart: () => {
+          setTimeout(() => {
+            main.classList.remove("bg-blur");
+          }, 500)
+        },
+        onComplete: () => {
+          menu.style.pointerEvents = "none";
+          gsap.to(menu, {
+            clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
+          });
+          gsap.to(links, { y: 30, opacity: 0 });
+          gsap.to(socialLinks, { y: 30, opacity: 0 });
+          gsap.to(splitTitle.chars, {
+            y: 500,
+            scale: 0.8,
+          });
+          isAnimating = false;
+          main.classList.remove("bg-blur-remove");
+        },
+      });
+    }
+  });
+  document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+      
+      menuToggle.classList.remove("opened");
+      menuToggle.classList.add("closed");
+      menuCloseText.classList.remove("hide");
+      menuOpenText.classList.remove("show");
+      menuCopy.classList.remove("move");
+      isAnimating = true;
+      
+      gsap.to(menu, {
+        clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
+        ease: "expo.inOut",
+        duration: 1.5,
+        onStart: () => {
+          setTimeout(() => {
+            main.classList.remove("bg-blur");
+          }, 500)
+        },
+        onComplete: () => {
+          menu.style.pointerEvents = "none";
+          gsap.to(menu, {
+            clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
+          });
+          gsap.to(links, { y: 30, opacity: 0 });
+          gsap.to(socialLinks, { y: 30, opacity: 0 });
+          gsap.to(splitTitle.chars, {
+            y: 500,
+            scale: 0.8,
+          });
+          isAnimating = false;
+          main.classList.remove("bg-blur-remove");
+        },
+      });
+
+    }
+  })
+
+  // Set states of the header's elements 
+  gsap.set(menu, {
+    clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
+  });
+  gsap.set(links, { y: 30, opacity: 0 });
+  gsap.set(socialLinks, { y: 30, opacity: 0 });
+  gsap.set(splitTitle.chars, {
+    y: 500,
+    scale: 0.8,
+  });
+
+  // Open / close header menu 
+  menuToggle.addEventListener("click", () => {
+
+    if (isAnimating) return;
+
+    if (menuToggle.classList.contains("closed")) {
+      menuToggle.classList.remove("closed");
+      menuCloseText.classList.add("hide");
+      menuOpenText.classList.add("show");
+      menuCopy.classList.add("move");
+      isAnimating = true;
+
+      gsap.to(menu, {
+        clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+        ease: "expo.inOut",
+        duration: 1.5,
+        onStart: () => {
+          menu.style.pointerEvents = "all";
+          main.classList.add("bg-blur");
+          main.classList.add("bg-blur-remove");
+        },
+        onComplete: () => {
+          isAnimating = false;
+        },
+      });
+
+      gsap.to(links, {
+        y: 0,
+        opacity: 1,
+        stagger: 0.1,
+        delay: 0.85,
+        duration: 1,
+        ease: "power3.out",
+      });
+
+      gsap.to(socialLinks, {
+        y: 0,
+        opacity: 1,
+        stagger: 0.05,
+        delay: 0.85,
+        duration: 1,
+        ease: "power3.out",
+      });
+
+      const tl = gsap.timeline();
+
+      gsap.to(splitTitle.chars, {
+        y: 0,
+        rotateY: 0,
+        scale: 1,
+        stagger: 0.05,
+        delay: 0.75,
+        duration: 1.5,
+        ease: "power4.out",
+        
+      });
+
+    } else {
+      menuToggle.classList.remove("opened");
+      menuToggle.classList.add("closed");
+      menuCloseText.classList.remove("hide");
+      menuOpenText.classList.remove("show");
+      menuCopy.classList.remove("move");
+      
+      isAnimating = true;
+
+      gsap.to(menu, {
+        clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
+        ease: "expo.inOut",
+        duration: 1.5,
+        onStart: () => {
+          setTimeout(() => {
+            main.classList.remove("bg-blur");
+          }, 500)
+        },
+        onComplete: () => {
+          menu.style.pointerEvents = "none";
+          gsap.to(menu, {
+            clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
+          });
+          gsap.to(links, { y: 30, opacity: 0 });
+          gsap.to(socialLinks, { y: 30, opacity: 0 });
+          gsap.to(splitTitle.chars, {
+            y: 500,
+            scale: 0.8,
+          });
+          isAnimating = false;
+          main.classList.remove("bg-blur-remove");
+        },
+      });
+    }
+    
+  });
+
+}
+
+// Pages
 document.addEventListener("DOMContentLoaded", function () {
   
 const aboutPage = document.querySelector("#about");
 const contactPage = document.querySelector("#contacts");
 const galleryPage = document.querySelector("#gallery-page");
+const footer = document.querySelector('.footer-fixed') 
 
 if (aboutPage) {
 
@@ -1161,7 +1423,6 @@ if (galleryPage) {
     });
   }
   
-
   // Check URL for category on page load
   function loadCategoryFromURL() {
     const urlParams = new URLSearchParams(window.location.search);
@@ -1306,10 +1567,6 @@ if (galleryPage) {
 
 }
 
-
-// Footer animation 
-const footer = document.querySelector('.footer-fixed') 
-
 if (footer) {
 
   ScrollTrigger.create({
@@ -1335,7 +1592,6 @@ if (footer) {
   });
 
 }
-
 
 })
 

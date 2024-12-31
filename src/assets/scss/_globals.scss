@@ -45,15 +45,11 @@ html.lenis, html.lenis body {
     left: 0;
     bottom: 0;
     z-index: 999;
-    background-color: $black;
+    background-color: #121619;
     align-items: center;
     justify-content: center;
     clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
     transition: clip-path 1.2s cubic-bezier(0.87, 0, 0.13, 1);
-    // border-top: 2px solid $white;
-    // border-left: 2px solid $white;
-    // border-right: 2px solid $white;
-    // border-bottom: 2px solid $white;
     #name {
         padding: 48px;
         span {
@@ -332,6 +328,12 @@ body::-webkit-scrollbar-thumb {
         font-size: 2rem;
         cursor: pointer;
         z-index: 10;
+        background-color: rgba($color: #000000, $alpha: 0.1);
+        border-radius: 6px;
+        width: auto;
+        svg {
+            scale: 1.02;
+        }
     }
         
     .lightbox-prev {
