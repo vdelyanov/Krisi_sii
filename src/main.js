@@ -1055,7 +1055,12 @@ if (galleryPage) {
     const elementHeight = column2.offsetHeight;
     const viewportHeight = window.innerHeight;
 
+    console.log(elementHeight)
+    console.log(viewportHeight)
+    
     const totalTranslateY = elementHeight - viewportHeight - 16;
+
+    console.log(totalTranslateY)
 
     // Kill previous animations
     gsap.killTweensOf(column2);
@@ -1083,83 +1088,79 @@ if (galleryPage) {
   function loadImages(category) {
     const columns = document.querySelectorAll(".columns .column");
     if (columns.length < 2) return;
-
+  
     // Clear existing images
     columns.forEach((column) => (column.innerHTML = ""));
-
+  
     // Get images for the selected category
     const columnData = imageCategories[category];
     if (!columnData) return;
-
-
-     // Track loaded images
-  let imagesToLoad = 0;
-  let imagesLoaded = 0;
-
-  // Function to check if all images are loaded
-  function checkAllImagesLoaded() {
-    if (imagesLoaded === imagesToLoad) {
-      // All images loaded, reinitialize GSAP and recalculate heights
-      setTimeout(() => {
+  
+    // Track loaded images
+    let imagesToLoad = 0; // Total images to load
+    let imagesLoaded = 0; // Images that have been loaded
+  
+    // Function to check if all images are loaded
+    function checkAllImagesLoaded() {
+      if (imagesLoaded === imagesToLoad) {
+        // All images loaded, reinitialize GSAP and recalculate heights
         reinitializeGSAP();
         refreshModal();
-      }, 100);
+      }
     }
-  }
-
-
+  
+    // Count the total number of images to load
+    imagesToLoad = columnData.column1.length + columnData.column2.length;
+  
     // Add images to column-1
     columnData.column1.forEach((imageSrc) => {
       const imgWrapper = document.createElement("div");
       imgWrapper.className = "img-wrapper";
-
+  
       const wrap = document.createElement("div");
       wrap.className = "wrap";
-
+  
       const img = document.createElement("img");
       img.className = "img hover-link";
       img.src = imageSrc;
       img.alt = category;
-
+  
+      // Increment loaded images on load
       img.onload = () => {
         imagesLoaded++;
         checkAllImagesLoaded();
       };
-
+  
       wrap.appendChild(img);
       imgWrapper.appendChild(wrap);
       columns[0].appendChild(imgWrapper); // Append to column-1
     });
-
+  
     // Add images to column-2
     columnData.column2.forEach((imageSrc) => {
       const imgWrapper = document.createElement("div");
       imgWrapper.className = "img-wrapper";
-
+  
       const wrap = document.createElement("div");
       wrap.className = "wrap";
-
+  
       const img = document.createElement("img");
       img.className = "img hover-link";
       img.src = imageSrc;
       img.alt = category;
-
+  
+      // Increment loaded images on load
       img.onload = () => {
         imagesLoaded++;
         checkAllImagesLoaded();
       };
-
+  
       wrap.appendChild(img);
       imgWrapper.appendChild(wrap);
       columns[1].appendChild(imgWrapper); // Append to column-2
     });
-
-  // Reinitialize GSAP after updating images
-    setTimeout(() => {
-      reinitializeGSAP();
-      }, 100);
-    refreshModal();
   }
+  
 
   // Check URL for category on page load
   function loadCategoryFromURL() {
@@ -1301,9 +1302,7 @@ if (galleryPage) {
         if (e.key === "Escape") closeLightbox();
     });
 
-
     loadCategoryFromURL(); // Load images based on URL parameter on page load
-    reinitializeGSAP(); // Init the scroll animation 
 
 }
 

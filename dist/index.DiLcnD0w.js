@@ -1,4 +1,4 @@
-import{g as Bs,P as zs}from"./main.zAmX1Mj-.js";/* empty css              *//**
+import{g as Bs,P as zs}from"./main.C28fSpp7.js";/* empty css              *//**
  * @license
  * Copyright 2010-2024 Three.js Authors
  * SPDX-License-Identifier: MIT
