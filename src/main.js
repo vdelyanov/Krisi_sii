@@ -445,6 +445,10 @@ function heroAnim() {
 
   const animEl =  document.querySelector('.item__image-wrap');
   if (animEl) {
+
+    let logo =  document.querySelector("a.logo")
+    logo.style.pointerEvents = "none";
+
     gsap.to('.item__image-wrap', {
         clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
         ease: "power4",
@@ -1071,7 +1075,7 @@ if (aboutPage) {
     // Animate associated image
     timeline.fromTo(
       imageSelector,
-      { top: "150%", scaleY: 2, filter: "blur(10px)" },
+      { top: "160%", scaleY: 2, filter: "blur(10px)" },
       {
         top: `${topOffset}vh`,
         scaleY: 1,
@@ -1174,26 +1178,39 @@ if (galleryPage) {
 
   // Define image categories with two columns
   const imageCategories = {
-    behind_scenes: {
+    bts: {
       column1: [
-        './assets/images/img/1.jpg',
-        './assets/images/img/2.jpg',
-        './assets/images/img/3.jpg',
-        './assets/images/img/4.jpg',
-        './assets/images/img/5.jpg',
-        './assets/images/img/6.jpg',
-        './assets/images/img/7.jpg',
-        './assets/images/img/8.jpg',
+        './assets/images/bts/bts-1.webp',
+        './assets/images/bts/bts-2.webp',
+        './assets/images/bts/bts-3.webp',
+        './assets/images/bts/bts-4.webp',
+        './assets/images/bts/bts-5.webp',
+        './assets/images/bts/bts-8.webp',
+        './assets/images/bts/bts-9.webp',
+        './assets/images/bts/bts-24.webp',
+        './assets/images/bts/bts-25.webp',
+        './assets/images/bts/bts-10.webp',
+        './assets/images/bts/bts-11.webp',
+        './assets/images/bts/bts-12.webp',
+        './assets/images/bts/bts-13.webp',
+        './assets/images/bts/bts-15.webp',
+        './assets/images/bts/bts-16.webp',
+        
       ],
       column2: [
-        './assets/images/img/1.jpg',
-        './assets/images/img/2.jpg',
-        './assets/images/img/3.jpg',
-        './assets/images/img/4.jpg',
-        './assets/images/img/5.jpg',
-        './assets/images/img/6.jpg',
-        './assets/images/img/7.jpg',
-        './assets/images/img/8.jpg',
+        './assets/images/bts/bts-14.webp',
+        './assets/images/bts/bts-17.webp',
+        './assets/images/bts/bts-18.webp',
+        './assets/images/bts/bts-19.webp',
+        './assets/images/bts/bts-20.webp',
+        './assets/images/bts/bts-21.webp',
+        './assets/images/bts/bts-22.webp',
+        './assets/images/bts/bts-23.webp',
+        './assets/images/bts/bts-7.webp',
+        './assets/images/bts/bts-6.webp',
+        './assets/images/bts/bts-26.webp',
+        './assets/images/bts/bts-27.webp',
+        './assets/images/bts/bts-28.webp',
       ],
     },
     portrait: {
@@ -1426,7 +1443,7 @@ if (galleryPage) {
   // Check URL for category on page load
   function loadCategoryFromURL() {
     const urlParams = new URLSearchParams(window.location.search);
-    const category = urlParams.get('category') || 'behind_scenes'; // Default category
+    const category = urlParams.get('category') || 'bts'; // Default category
     const activeButton = [...filterButtons].find(btn => btn.dataset.category === category);
     
     if (activeButton) {
