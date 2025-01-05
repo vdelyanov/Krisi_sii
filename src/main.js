@@ -335,10 +335,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
-
 // Cursor animation 
 const cursorElement = document.querySelector('.cursor-follow');
-const hoverLinks = document.querySelectorAll('.hover-link, a');
 const hoverLinksText = document.querySelectorAll('.show-text-trigger');
 const text = document.querySelector(".desc-text");
 const popup = document.querySelector(".popup-wrapper");
@@ -346,9 +344,6 @@ const popup = document.querySelector(".popup-wrapper");
 // Add mousemove event listener
 document.addEventListener('mousemove', (e) => {
   cursorElement.classList.add('show')
-  const windowWidth = window.innerWidth;
-  const windowHeight = window.innerHeight;
-  
   gsap.to(cursorElement, {
       duration: 0.3, 
       ease: "power2.out", 
@@ -357,7 +352,10 @@ document.addEventListener('mousemove', (e) => {
     });
 });
 
-// Cursor hover animation 
+setTimeout(() => {
+
+const hoverLinks = document.querySelectorAll('.hover-link, a');
+
   hoverLinks.forEach(link => {
     link.addEventListener('mouseenter', () => {
       gsap.to(cursorElement, {
@@ -380,14 +378,18 @@ document.addEventListener('mousemove', (e) => {
       });
       cursorElement.classList.remove('hover-active');
   });
-});
+  });
+
+
+}, 500);
+
 
 let split = new SplitText(text, {
   type: "lines,words,chars"
 });
 
 if (text) {
-  gsap.set(split.chars, {     
+  gsap.set(split.words, {     
     filter: "blur(10px)",  
     autoAlpha: 0,       
   });
@@ -400,13 +402,13 @@ hoverLinksText.forEach(link => {
         ease: "power3.out",
         clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)',
       });
-      gsap.to(split.chars, {
+      gsap.to(split.words, {
         autoAlpha: 1,
-        duration: 0.1,
+        duration: 0.2,
         filter: "blur(0px)",
         ease: "power3",
         scale:1,
-        stagger: 0.01,
+        stagger: 0.02,
         delay: 0.4
       });
       cursorElement.classList.add('hide');
@@ -414,13 +416,13 @@ hoverLinksText.forEach(link => {
     
     link.addEventListener('mouseleave', () => {
       cursorElement.classList.remove('hide');
-      gsap.killTweensOf(split.chars);
+      gsap.killTweensOf(split.words);
       gsap.to(popup, {
         duration: 0.2,
         ease: "power3.out",
         clipPath: 'polygon(0 0, 0 0, 0 100%, 0 100%)',
         onComplete: () => {
-          gsap.to(split.chars, {
+          gsap.to(split.words, {
             autoAlpha: 0,       
             filter: "blur(10px)",  
             duration: 0.1,
@@ -1003,6 +1005,7 @@ const footer = document.querySelector('.footer-fixed')
 
 if (aboutPage) {
 
+
   const initiateAnimation = () => {
     const element = document.querySelector('#about canvas');
     if (element) {
@@ -1022,7 +1025,7 @@ if (aboutPage) {
     }
   };
 
-  initiateAnimation(); // Start the initialization process
+  initiateAnimation();
 
   function resetScrollTriggers() {
     ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
@@ -1213,10 +1216,22 @@ if (galleryPage) {
         './assets/images/bts/bts-28.webp',
       ],
     },
-    portrait: {
+    children: {
       column1: [
+        './assets/images/children/children3.webp',
+        './assets/images/children/children4.webp',
+        './assets/images/children/children5.webp',
+        './assets/images/children/children6.webp',
+        './assets/images/children/children1.webp',
+        './assets/images/children/children7.webp',
       ],
       column2: [
+        './assets/images/children/children2.webp',
+        './assets/images/children/children8.webp',
+        './assets/images/children/children11.webp',
+        './assets/images/children/children12.webp',
+        './assets/images/children/children9.webp',
+        './assets/images/children/children10.webp',
       ],
     },
     interior: {
@@ -1253,8 +1268,14 @@ if (galleryPage) {
         './assets/images/events/events-4.webp',
         './assets/images/events/events-5.webp',
         './assets/images/events/events-6.webp',
+        './assets/images/events/events-13.webp',
+        './assets/images/events/events-14.webp',
+        './assets/images/events/events-15.webp',
       ],
       column2: [
+     
+        './assets/images/events/events-17.webp',
+        './assets/images/events/events-16.webp',
         './assets/images/events/events-7.webp',
         './assets/images/events/events-8.webp',
         './assets/images/events/events-9.webp',
@@ -1263,16 +1284,56 @@ if (galleryPage) {
         './assets/images/events/events-12.webp',
       ],
     },
-    artistic: {
+    black_and_white: {
       column1: [
+        './assets/images/b&w/b&w11.webp',
+        './assets/images/b&w/b&w22.webp',
+        './assets/images/b&w/b&w3.webp',
+        './assets/images/b&w/b&w4.webp',
+        './assets/images/b&w/b&w5.webp',
+        './assets/images/b&w/b&w6.webp',
+        './assets/images/b&w/b&w17.webp',
+        './assets/images/b&w/b&w8.webp',
+        './assets/images/b&w/b&w9.webp',
+        './assets/images/b&w/b&w10.webp',
+        './assets/images/b&w/b&w1.webp',
+        './assets/images/b&w/b&w12.webp',
       ],
       column2: [
+        './assets/images/b&w/b&w14.webp',
+        './assets/images/b&w/b&w15.webp',
+        './assets/images/b&w/b&w13.webp',
+        './assets/images/b&w/b&w7.webp',
+        './assets/images/b&w/b&w18.webp',
+        './assets/images/b&w/b&w19.webp',
+        './assets/images/b&w/b&w20.webp',
+        './assets/images/b&w/b&w21.webp',
+        './assets/images/b&w/b&w22.webp',
+        './assets/images/b&w/b&w23.webp',
+        './assets/images/b&w/b&w24.webp',
+        './assets/images/b&w/b&w16.webp',
       ],
     },
-    black_white: {
+    abstract: {
       column1: [
+        './assets/images/abstract/abstract3.webp',
+        './assets/images/abstract/abstract6.webp',
+        './assets/images/abstract/abstract16.webp',
+        './assets/images/abstract/abstract1.webp',
+        './assets/images/abstract/abstract2.webp',
+        './assets/images/abstract/abstract4.webp',
+        './assets/images/abstract/abstract5.webp',
+        './assets/images/abstract/abstract15.webp',
       ],
       column2: [
+        './assets/images/abstract/abstract9.webp',
+        './assets/images/abstract/abstract7.webp',
+        './assets/images/abstract/abstract13.webp',
+        './assets/images/abstract/abstract11.webp',
+        './assets/images/abstract/abstract10.webp',
+        './assets/images/abstract/abstract14.webp',
+        './assets/images/abstract/abstract8.webp',
+        './assets/images/abstract/abstract12.webp',
       ],
     },
   };
@@ -1418,7 +1479,7 @@ if (galleryPage) {
     // Add images to column-2
     columnData.column2.forEach((imageSrc) => {
       const imgWrapper = document.createElement("div");
-      imgWrapper.className = "img-wrapper";
+      imgWrapper.className = "img-wrapper hover-link";
   
       const wrap = document.createElement("div");
       wrap.className = "wrap";
@@ -1586,6 +1647,9 @@ if (galleryPage) {
 
 if (footer) {
 
+  setTimeout(() => {
+    gsap.timeline()
+
   ScrollTrigger.create({
     trigger: 'body', 
     start: 'bottom bottom',
@@ -1607,6 +1671,9 @@ if (footer) {
       }
     }
   });
+
+}, 200)
+
 
 }
 

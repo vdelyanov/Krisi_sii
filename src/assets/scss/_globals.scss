@@ -89,11 +89,12 @@ body::-webkit-scrollbar-thumb {
     padding: 16px;
     mix-blend-mode: normal;
     background: $black;
+    max-width: 380px;
     transition: clip-path 0.2s cubic-bezier(0.4, 0, 0.68, 0.06);
     .desc-text {
         cursor: none;
-        max-width: 220px;
         display: inline;
+        font-size: 18px;
     }
 }
 
@@ -248,6 +249,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 #gallery-page {
+    min-height: 110vh;
     .lightbox {
         position: fixed; 
         z-index: 9; 
@@ -273,6 +275,7 @@ body::-webkit-scrollbar-thumb {
                 border-top-right-radius: 8px;
                 border-bottom-right-radius: 8px;
                 border-bottom-left-radius: 8px;
+                object-fit: cover;
             }
         }
         &.display {
@@ -363,6 +366,7 @@ body::-webkit-scrollbar-thumb {
             .column {
                 will-change: transform;
                 display: flex;
+                flex: 1;
                 flex-direction: column;
                 gap: 16px;
                 height: fit-content;

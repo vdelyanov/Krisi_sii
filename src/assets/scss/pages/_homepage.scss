@@ -1,5 +1,7 @@
 
-
+#homepage {
+  overflow-x: hidden;
+}
 .content {
 	position: relative;
   margin-left: auto;
@@ -39,11 +41,15 @@
     border-top-left-radius: 8px;
     border-bottom-left-radius: 8px;
     overflow: hidden;
+    aspect-ratio: 4/3;
+    img {
+      background-size: cover;
+      object-fit: cover;
+    }
   }
 }
 .item__image canvas {
-	width: 60vw !important;
-	height: 100% !important;
+  aspect-ratio: 4/3;
 	background-size: cover;
 	will-change: transform;
   display: block;
@@ -52,6 +58,7 @@
   position: relative;
   border-top-left-radius: 8px;
   border-bottom-left-radius: 8px;
+  object-fit: cover;
 }
 .item__image-inner_image {
   opacity: 0;
@@ -96,8 +103,8 @@
   left: 20px;
   z-index: 3;
   transform: translateY(-50%);
-  height: 80px;
-  // height: 100px;
+  height: 100px;
+  // height: 80px;
 }
 
 .scroll-nav ul {

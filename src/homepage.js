@@ -119,8 +119,7 @@ if (indicator) {
         start: "top top",
         end: "bottom bottom",
         onUpdate: (self) => {
-        const scrollPercentage = self.progress * 70;
-
+        const scrollPercentage = self.progress * 90;
         gsap.to(indicator, {
             y: scrollPercentage, 
         });
