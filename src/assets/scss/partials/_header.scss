@@ -12,7 +12,9 @@ header {
         height: 60px;
         display: flex;
         align-items: center;
-     
+        @include media-sm {
+          top: 8px;
+        }
     }
 
 // Menu button   
@@ -28,6 +30,9 @@ header {
     transform-origin: right;
     cursor: pointer;
     z-index: 2;
+    @include media-sm {
+      top: 8px;
+    }
   }
   
   .menu-copy p {

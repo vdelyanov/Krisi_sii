@@ -1516,58 +1516,6 @@ if (galleryPage) {
 
   // Lightbox funcs 
   function refreshModal() {
-    const gridItems = document.querySelectorAll(".img"); // Get updated grid items
-    const images = []; // Clear previous images array
-
-    // Populate the images array
-    gridItems.forEach((item, index) => {
-      const imageUrl = item.src;
-      images.push(imageUrl);
-
-      // Add click event listener to open the modal
-      item.addEventListener("click", () => {
-        currentIndex = index;
-        openLightbox();
-      });
-    });
-
-    // Update the modal controls
-    function openLightbox() {
-      lightboxImage.src = images[currentIndex];
-      lightbox.classList.add("show");
-      setTimeout(() => {
-        lightbox.classList.add("opened");
-      }, 10);
-    }
-
-    function closeLightbox() {
-      lightbox.classList.remove("show");
-      lightbox.classList.remove("opened");
-    }
-
-    function showPrevImage() {
-      currentIndex = (currentIndex - 1 + images.length) % images.length;
-      lightboxImage.src = images[currentIndex];
-    }
-
-    function showNextImage() {
-      currentIndex = (currentIndex + 1) % images.length;
-      lightboxImage.src = images[currentIndex];
-    }
-
-    // Add event listeners for modal controls
-    closeButton.addEventListener("click", closeLightbox);
-    prevButton.addEventListener("click", showPrevImage);
-    nextButton.addEventListener("click", showNextImage);
-
-    document.addEventListener("keydown", (e) => {
-      if (!lightbox.classList.contains("show")) return;
-      if (e.key === "ArrowLeft") showPrevImage();
-      if (e.key === "ArrowRight") showNextImage();
-      if (e.key === "Escape") closeLightbox();
-    });
-  }
-
   // Modal 
   const gridItems = document.querySelectorAll(".img");
   const lightbox = document.getElementById("lightbox");
@@ -1583,7 +1531,6 @@ if (galleryPage) {
     gridItems.forEach((item, index) => {
         const imageUrl = item.src
         images.push(imageUrl);
-
         // Click event to open the lightbox
         item.addEventListener("click", () => {
             currentIndex = index;
@@ -1619,6 +1566,7 @@ if (galleryPage) {
 
     function updateLightboxImage() {
       lightboxImage.src = images[currentIndex];
+      console.log( images[currentIndex])
   }
 
     // Event listeners for controls
@@ -1640,6 +1588,7 @@ if (galleryPage) {
         if (e.key === "ArrowRight") showNextImage();
         if (e.key === "Escape") closeLightbox();
     });
+  }
 
     loadCategoryFromURL(); // Load images based on URL parameter on page load
 

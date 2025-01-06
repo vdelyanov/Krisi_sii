@@ -175,6 +175,9 @@
   label {
     width: 80%;
     transition: width 0.4s;
+    @include media-sm {
+      width: 100%;
+    }
     svg {
       transition: transform 0.4s, stroke 0.4s;
       path {
@@ -224,6 +227,10 @@
     font-size: 48px;
     line-height: 1;
     transition: background-color 0.4s ease-in-out;
+    @include media-sm {
+      font-size: 36px;
+      height: 8vh;
+    }
     &:not(:placeholder-shown) {
       background-color: var(--background-color);
       transition: background-color 0.6s cubic-bezier(0.4, 0, 0.68, 0.06);
@@ -234,12 +241,20 @@
       white-space: nowrap;
       padding: 0;
       color: $white;
+      @include media-sm {
+        font-size: 36px;
+      }
     }
   }
   textarea {
     padding: calc(10vh - 24px)  20px;
     height: 20vh;
     resize: none;
+    @include media-sm {
+      height: 16vh;
+      padding: calc(8vh - 18px)  20px;
+    }
+
   }
 }
 
