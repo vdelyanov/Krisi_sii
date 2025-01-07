@@ -91,10 +91,19 @@ body::-webkit-scrollbar-thumb {
     background: $black;
     max-width: 380px;
     transition: clip-path 0.2s cubic-bezier(0.4, 0, 0.68, 0.06);
+    @include media-sm {
+        right: 0px;
+        left: 0px;
+        bottom: 0px;
+        max-width: 100%;
+      }
     .desc-text {
         cursor: none;
         display: inline;
         font-size: 18px;
+        @include media-sm {
+            font-size: 18px;
+        }
     }
 }
 
@@ -106,6 +115,9 @@ body::-webkit-scrollbar-thumb {
     z-index: 999;
     opacity: 0;
     mix-blend-mode: difference;
+    @include media-tablet {
+        display: none;
+    }
     .eye {
         mix-blend-mode: normal !important;
     }
@@ -144,6 +156,9 @@ body::-webkit-scrollbar-thumb {
         z-index: 1;
         position: fixed;
         top: 0;
+        @include media-sm {
+            top: unset
+        }
     }
 }
 #about {
@@ -216,7 +231,7 @@ body::-webkit-scrollbar-thumb {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    z-index: 99;
+    z-index: 2;
     height: 26px;
     display: flex; 
     .current-color {

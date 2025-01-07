@@ -58,10 +58,12 @@ const colors = {
 const modalBg = document.querySelector('#popup-wrapper')
 const swither = document.querySelector('#fill-color')
 const lightbox = document.querySelector('#lightbox')
+const header = document.querySelector('header')
 
 function changeColor(colorKey) {
     const color = colors[colorKey];
     document.body.style.backgroundColor = color;
+    header.style.backgroundColor = color;
     if (modalBg) {
       modalBg.style.backgroundColor = color;
     }
@@ -79,6 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     if (savedColor) {
         document.body.style.backgroundColor = savedColor;
+        header.style.backgroundColor = savedColor;
         if (modalBg) {
           modalBg.style.backgroundColor = savedColor;
         }
@@ -1589,7 +1592,7 @@ if (galleryPage) {
         if (e.key === "Escape") closeLightbox();
     });
   }
-
+  
     loadCategoryFromURL(); // Load images based on URL parameter on page load
 
 }

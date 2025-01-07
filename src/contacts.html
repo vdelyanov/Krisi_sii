@@ -354,7 +354,16 @@
         particleGap: 2,
         dataNoise: 10,
         mouseForce: 0
-      });
+      }); 
+
+      window.onload = function () {
+        if (window.innerWidth < 600) {
+          nextParticle.width = window.innerWidth * 1.5,
+          nextParticle.height=  window.innerHeight * 1.5,
+          nextParticle.maxWidth = window.innerWidth * 1.5;
+          nextParticle.start();
+        }
+      };
 
     </script>
     <script type="module" src="./main.js"></script>
