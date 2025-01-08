@@ -74,10 +74,27 @@ body::-webkit-scrollbar-thumb {
 }
 
 // cursor and popup
-
+.show-text-trigger-wrapper {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    z-index: 3;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    @include media-tablet-min {
+        background-color: transparent !important;
+        pointer-events: none;
+    }
+    @include media-tablet {
+        padding: 16px 20px;
+    }
+}
 .show-text-trigger {
     cursor: none;
     z-index: 3;
+    width: fit-content;
 }
 .popup-wrapper {
     pointer-events: none;
@@ -231,9 +248,13 @@ body::-webkit-scrollbar-thumb {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    z-index: 2;
+    z-index: 4;
     height: 26px;
-    display: flex; 
+    display: flex;
+    @include media-sm {
+        bottom: 16px;
+        right: 16px;
+    } 
     .current-color {
         scale: 0.75;
         svg {
@@ -263,8 +284,12 @@ body::-webkit-scrollbar-thumb {
         bottom: 0;
         white-space: nowrap;
         left: -150%;
+        @include media-sm {
+            font-size: 56px;
+        }
         &.current {
-            left: 0;
+            left: 20px;
+            bottom: 24px;
             opacity: 0;
             filter: blur(10px);
         }

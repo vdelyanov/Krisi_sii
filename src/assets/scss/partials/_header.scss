@@ -137,10 +137,18 @@ header {
         font-size: 36px;
     }
     .logo-heading {
+      @include media-tablet {
+        position: absolute;
+        left: 8px;
+        bottom: 0;
+      }
         h2 {
             font-size: 172px;
             color: $black;
             line-height: 1;
+            @include media-tablet {
+              font-size: 124px;
+            }
             div {
               color: $black;
               font-family: 'Phenomena-Bold', sans-serif;
@@ -201,6 +209,11 @@ header {
     .grid {
         height: auto;
         padding: 24px;
+        @include media-tablet {
+          padding: 42px;
+          gap: 42px;  
+          padding-bottom: 140px;
+        }
     }
     .socials {
       align-items: flex-start;

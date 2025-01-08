@@ -3,6 +3,8 @@ footer {
     width: 100vw;
     overflow: hidden;
     position: fixed;
+    display: flex;
+    align-items: center;
     bottom: 0;
     z-index: 99;
     background: white;
@@ -10,6 +12,13 @@ footer {
     border-top-right-radius: 8px;
     padding: 0 20px;
     clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%);
+    @include media-sm {
+        height: 150px;
+        padding: 8px 20px;
+        display: flex;
+        align-items: center;
+    }
+    
     .socials-wrapper {
         svg {
             width: 20px;

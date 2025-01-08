@@ -64,4 +64,10 @@ p {
 
 .phenomena {
   font-family: 'Phenomena-Regular', sans-serif;
+  &.bold {
+    font-weight: 700;
+  }
+  &.leading-none {
+    line-height: 1;
+  }
 }

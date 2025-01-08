@@ -58,6 +58,7 @@ const colors = {
 const modalBg = document.querySelector('#popup-wrapper')
 const swither = document.querySelector('#fill-color')
 const lightbox = document.querySelector('#lightbox')
+const sticky = document.querySelector('#show-text-trigger-wrapper')
 const header = document.querySelector('header')
 
 function changeColor(colorKey) {
@@ -66,6 +67,9 @@ function changeColor(colorKey) {
     header.style.backgroundColor = color;
     if (modalBg) {
       modalBg.style.backgroundColor = color;
+    }
+    if (sticky) {
+      sticky.style.backgroundColor = color;
     }
     if (lightbox) {
       lightbox.style.backgroundColor = color;
@@ -84,6 +88,9 @@ document.addEventListener('DOMContentLoaded', () => {
         header.style.backgroundColor = savedColor;
         if (modalBg) {
           modalBg.style.backgroundColor = savedColor;
+        }
+        if (sticky) {
+          sticky.style.backgroundColor = savedColor;
         }
         if (lightbox) {
           lightbox.style.backgroundColor = savedColor;

@@ -6,8 +6,8 @@
     <title>Krisi.sii</title>
     <link rel="icon" type="image/svg+xml" href="./sii.svg" />
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-    <script type="module" crossorigin src="./index.B-zTST0T.js"></script>
-    <link rel="modulepreload" crossorigin href="./main.DciFKWS6.js">
+    <script type="module" crossorigin src="./index.UzNV8as-.js"></script>
+    <link rel="modulepreload" crossorigin href="./main.nz3IdbCu.js">
     <link rel="stylesheet" crossorigin href="./css/main.css">
     <link rel="stylesheet" crossorigin href="./css/style.css">
   </head>
@@ -59,7 +59,7 @@
     <div style="opacity: 0;" class="menu">
 
       <div class="grid grid-cols-12">
-        <div class="col-span-6 flex flex-col justify-between">
+        <div class="col-span-12 md:col-span-6 flex flex-col justify-between">
           <div class="menu-logo">
 
           </div>
@@ -67,7 +67,7 @@
           <div class="socials flex flex-col gap-2">
               <a class="text-[20px] text-blur" target="_blank" href="https://www.instagram.com/photo.sii/">Instagram</a>
               <a class="text-[20px] text-blur" target="_blank" href="https://www.linkedin.com/in/kristiana-simeonova-62a04a213/">LinkedIn</a>
-              <div class="flex gap-4 mt-4">
+              <div class="flex flex-col md:flex-row gap-2 md:gap-4 mt-4">
                 <a class="text-blur" href="tel:+359898373968">+359898373968</a>
                 <a class="text-blur" href="mailto:kriisiisii@gmail.com">kriisiisii@gmail.com</a>
               </div>
@@ -75,7 +75,7 @@
 
         </div>
 
-        <div class="col-span-6 flex flex-col justify-between">
+        <div class="col-span-12 md:col-span-6 flex flex-col justify-between">
           <nav class="links">
             <div class="link active text-blur"><a href="./index.html">Начало</a></div>
             <div class="link text-blur"><a href="./gallery.html">Галерия</a></div>
@@ -191,7 +191,7 @@
     </div>
 
     <main style="opacity: 0;" data-barba="container" id="homepage" class="homepage" data-barba-namespace="Начало">
-      <lottie-player class="fixed w-[48px] h-[64px] bottom-2 left-[50%] translate-x-[-50%] z-[99] pointer-events-none" id="scroll-icon" src="./scroll.json" speed="1" loop autoplay></lottie-player>
+      <lottie-player class="fixed hidden lg:block w-[48px] h-[64px] bottom-2 left-[50%] translate-x-[-50%] z-[99] pointer-events-none" id="scroll-icon" src="./scroll.json" speed="1" loop autoplay></lottie-player>
       
       <nav class="scroll-nav">
         <ul>
@@ -217,8 +217,10 @@
         <div class="scroll-indicator"></div>
       </nav>
 
-      <div class="heading show-text-trigger fixed bottom-[0px] p-[20px] left-[0px]">
-        <h1 class="h3 uppercase">Кристиана <br> Симеонова</h1>
+      <div class="show-text-trigger-wrapper" id="show-text-trigger-wrapper">
+        <div class="heading show-text-trigger pointer-events-auto">
+          <h1 class="h3 uppercase">Кристиана <br> Симеонова</h1>
+        </div>
       </div>
 
       <div id="popup-wrapper" class="popup-wrapper">
@@ -328,40 +330,42 @@
 
     </main>
 
-    <footer class="footer-fixed flex justify-between items-center">
-      <div class="div">
-        <p class="text-black min-w-[120px]">© 2025</p>
-      </div>
-      <div class="socials-wrapper flex gap-8 items-center">
-        <a class="pointer-events-auto text-blur" target="_blank" href="https://www.instagram.com/photo.sii/">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g clip-path="url(#clip0_5_41)">
-            <path d="M17.5 1H6.5C3.46243 1 1 3.46243 1 6.5V17.5C1 20.5376 3.46243 23 6.5 23H17.5C20.5376 23 23 20.5376 23 17.5V6.5C23 3.46243 20.5376 1 17.5 1Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M16 11.3701C16.1234 12.2023 15.9813 13.0523 15.5938 13.7991C15.2063 14.5459 14.5932 15.1515 13.8416 15.5297C13.0901 15.908 12.2385 16.0397 11.4078 15.906C10.5771 15.7723 9.80977 15.3801 9.21485 14.7852C8.61993 14.1903 8.22774 13.4229 8.09408 12.5923C7.96042 11.7616 8.09208 10.91 8.47034 10.1584C8.8486 9.40691 9.4542 8.7938 10.201 8.4063C10.9478 8.0188 11.7978 7.87665 12.63 8.00006C13.4789 8.12594 14.2649 8.52152 14.8717 9.12836C15.4785 9.73521 15.8741 10.5211 16 11.3701Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <circle cx="17.5" cy="6.5" r="1" fill="black"/>
-            </g>
-            <defs>
-            <clipPath id="clip0_5_41">
-            <rect width="24" height="24" fill="black"/>
-            </clipPath>
-            </defs>
-          </svg>                
-        </a>
-        <a class="pointer-events-auto text-blur" target="_blank" href="https://www.linkedin.com/in/kristiana-simeonova-62a04a213/" >
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M6.76616 5C6.23671 5 5.81018 5.16505 5.48607 5.49446C5.16197 5.82421 5 6.24235 5 6.74836C5 7.24282 5.15925 7.65773 5.47808 7.99343C5.79657 8.32896 6.20965 8.49656 6.7175 8.49656H6.73384C7.26295 8.49656 7.68982 8.32896 8.01393 7.99343C8.33803 7.65773 8.5 7.24282 8.5 6.74836C8.48911 6.24235 8.32714 5.82421 8.01393 5.49446C7.70037 5.16505 7.28473 5 6.76616 5ZM5 18.9998H8.5V9.67533H5V18.9998ZM15.4998 9.67533C14.4305 9.67533 13.8471 9.81573 13.1666 10.841V9.67533H9.66678V11.8124V18.9998H13.1668V13.1721C13.1668 12.611 13.1666 12.5875 13.3369 12.2656C13.6449 11.9635 13.8485 11.8124 14.3131 11.8124C14.7883 11.8124 15.4634 11.98 15.4636 12.4235C15.4636 13.2681 15.5 13.6471 15.5 14.3378V19H19V13.5608C19 12.2766 18.6784 11.2757 18.0358 10.5578C17.3929 9.84021 16.5477 9.67533 15.4998 9.67533Z" fill="black"/>
-            <path d="M17.5 1H6.5C3.46243 1 1 3.46243 1 6.5V17.5C1 20.5376 3.46243 23 6.5 23H17.5C20.5376 23 23 20.5376 23 17.5V6.5C23 3.46243 20.5376 1 17.5 1Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>                
-        </a>
-        <a class="pointer-events-auto text-blur" href="tel:+359898373968">
-          <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M23.134 15.5881L19.9783 12.4434C19.7342 12.1994 19.4357 12.0168 19.1073 11.9105C18.7789 11.8042 18.4301 11.7773 18.0893 11.8319C17.7654 11.8856 17.4577 12.0117 17.1893 12.2008C16.9208 12.3898 16.6985 12.637 16.5387 12.9238L15.8617 13.7974C15.8116 13.8607 15.7488 13.9129 15.6774 13.9505C15.6059 13.9881 15.5274 14.0103 15.4468 14.0158C15.3682 14.0208 15.2894 14.0088 15.2159 13.9805C15.1424 13.9522 15.0759 13.9084 15.0209 13.852L10.1727 8.97102C10.1172 8.91319 10.074 8.84462 10.0458 8.76952C10.0177 8.69442 10.0051 8.61437 10.009 8.53425C10.0159 8.45557 10.0388 8.37913 10.0764 8.30965C10.1139 8.24017 10.1653 8.17911 10.2273 8.13023L11.1009 7.45323C11.3877 7.29349 11.6349 7.07112 11.8239 6.80267C12.013 6.53422 12.1391 6.2266 12.1928 5.90269C12.2492 5.56019 12.2232 5.20918 12.1168 4.87876C12.0105 4.54834 11.8269 4.24803 11.5813 4.00272L8.40381 0.857949C7.82521 0.307182 7.05698 0 6.25816 0C5.45933 0 4.6911 0.307182 4.1125 0.857949L0.716588 4.26478C-0.233395 5.20385 -0.244315 6.80899 0.716588 9.04746C1.28629 10.4881 2.10292 11.8184 3.12976 12.9784L11.0572 20.9059C12.2172 21.9327 13.5475 22.7493 14.9882 23.319C15.8837 23.7207 16.8468 23.9503 17.8272 23.996C18.1833 24.0157 18.5396 23.9619 18.874 23.8379C19.2084 23.7139 19.5137 23.5224 19.7708 23.2754L23.1777 19.8794C23.738 19.3031 24.0479 18.5286 24.0397 17.7248C24.0315 16.921 23.706 16.153 23.134 15.5881ZM21.5507 18.2961L18.1439 21.6921C17.4996 22.1616 13.9072 20.6001 12.5968 19.3226L4.66939 11.3951C3.35907 10.0739 1.83036 6.52509 2.29989 5.84809L5.69581 2.44125C5.84483 2.30467 6.03963 2.2289 6.24178 2.2289C6.44392 2.2289 6.63872 2.30467 6.78774 2.44125L9.93252 5.53143L8.84058 6.3613C8.52632 6.60676 8.26684 6.91521 8.0788 7.26685C7.89075 7.61849 7.7783 8.00556 7.74865 8.40322C7.72201 8.80453 7.78129 9.20692 7.92251 9.58351C8.06373 9.9601 8.28365 10.3022 8.5676 10.5871L13.4158 15.4353C13.6989 15.7216 14.0408 15.943 14.4178 16.0844C14.7949 16.2258 15.1981 16.2837 15.5997 16.2542C15.9973 16.2246 16.3844 16.1121 16.736 15.9241C17.0877 15.736 17.3961 15.4766 17.6416 15.1623L18.3732 14.2232V14.1686V14.0704L21.5289 17.2151C21.6654 17.3608 21.7432 17.5518 21.7472 17.7514C21.7513 17.9511 21.6813 18.1451 21.5507 18.2961Z" fill="black"/>
-          </svg>                
-        </a>
-      </div>
-      <div><p class="text-black min-w-[120px]">София, България</p></div>
-      <p class="text-dark-gray absolute bottom-[4px] text-[10px] phenomena">Design & Development by <a class="text-dark-gray phenomena" target="_blank" href="https://www.linkedin.com/in/velizar-delyanov-6b339420b/">Velizar Delyanov</a></p>
+    <footer class="footer-fixed">
+      <div class="flex justify-between gap-4 md:items-center flex-col md:flex-row w-[100%]">
+          <p class="text-black min-w-[120px]">© 2025</p>
+        <div class="socials-wrapper flex gap-8 items-center">
+          <a class="pointer-events-auto text-blur" target="_blank" href="https://www.instagram.com/photo.sii/">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <g clip-path="url(#clip0_5_41)">
+              <path d="M17.5 1H6.5C3.46243 1 1 3.46243 1 6.5V17.5C1 20.5376 3.46243 23 6.5 23H17.5C20.5376 23 23 20.5376 23 17.5V6.5C23 3.46243 20.5376 1 17.5 1Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M16 11.3701C16.1234 12.2023 15.9813 13.0523 15.5938 13.7991C15.2063 14.5459 14.5932 15.1515 13.8416 15.5297C13.0901 15.908 12.2385 16.0397 11.4078 15.906C10.5771 15.7723 9.80977 15.3801 9.21485 14.7852C8.61993 14.1903 8.22774 13.4229 8.09408 12.5923C7.96042 11.7616 8.09208 10.91 8.47034 10.1584C8.8486 9.40691 9.4542 8.7938 10.201 8.4063C10.9478 8.0188 11.7978 7.87665 12.63 8.00006C13.4789 8.12594 14.2649 8.52152 14.8717 9.12836C15.4785 9.73521 15.8741 10.5211 16 11.3701Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="17.5" cy="6.5" r="1" fill="black"/>
+              </g>
+              <defs>
+              <clipPath id="clip0_5_41">
+              <rect width="24" height="24" fill="black"/>
+              </clipPath>
+              </defs>
+            </svg>                
+          </a>
+          <a class="pointer-events-auto text-blur" target="_blank" href="https://www.linkedin.com/in/kristiana-simeonova-62a04a213/" >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6.76616 5C6.23671 5 5.81018 5.16505 5.48607 5.49446C5.16197 5.82421 5 6.24235 5 6.74836C5 7.24282 5.15925 7.65773 5.47808 7.99343C5.79657 8.32896 6.20965 8.49656 6.7175 8.49656H6.73384C7.26295 8.49656 7.68982 8.32896 8.01393 7.99343C8.33803 7.65773 8.5 7.24282 8.5 6.74836C8.48911 6.24235 8.32714 5.82421 8.01393 5.49446C7.70037 5.16505 7.28473 5 6.76616 5ZM5 18.9998H8.5V9.67533H5V18.9998ZM15.4998 9.67533C14.4305 9.67533 13.8471 9.81573 13.1666 10.841V9.67533H9.66678V11.8124V18.9998H13.1668V13.1721C13.1668 12.611 13.1666 12.5875 13.3369 12.2656C13.6449 11.9635 13.8485 11.8124 14.3131 11.8124C14.7883 11.8124 15.4634 11.98 15.4636 12.4235C15.4636 13.2681 15.5 13.6471 15.5 14.3378V19H19V13.5608C19 12.2766 18.6784 11.2757 18.0358 10.5578C17.3929 9.84021 16.5477 9.67533 15.4998 9.67533Z" fill="black"/>
+              <path d="M17.5 1H6.5C3.46243 1 1 3.46243 1 6.5V17.5C1 20.5376 3.46243 23 6.5 23H17.5C20.5376 23 23 20.5376 23 17.5V6.5C23 3.46243 20.5376 1 17.5 1Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>                
+          </a>
+          <a class="pointer-events-auto text-blur" href="tel:+359898373968">
+            <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M23.134 15.5881L19.9783 12.4434C19.7342 12.1994 19.4357 12.0168 19.1073 11.9105C18.7789 11.8042 18.4301 11.7773 18.0893 11.8319C17.7654 11.8856 17.4577 12.0117 17.1893 12.2008C16.9208 12.3898 16.6985 12.637 16.5387 12.9238L15.8617 13.7974C15.8116 13.8607 15.7488 13.9129 15.6774 13.9505C15.6059 13.9881 15.5274 14.0103 15.4468 14.0158C15.3682 14.0208 15.2894 14.0088 15.2159 13.9805C15.1424 13.9522 15.0759 13.9084 15.0209 13.852L10.1727 8.97102C10.1172 8.91319 10.074 8.84462 10.0458 8.76952C10.0177 8.69442 10.0051 8.61437 10.009 8.53425C10.0159 8.45557 10.0388 8.37913 10.0764 8.30965C10.1139 8.24017 10.1653 8.17911 10.2273 8.13023L11.1009 7.45323C11.3877 7.29349 11.6349 7.07112 11.8239 6.80267C12.013 6.53422 12.1391 6.2266 12.1928 5.90269C12.2492 5.56019 12.2232 5.20918 12.1168 4.87876C12.0105 4.54834 11.8269 4.24803 11.5813 4.00272L8.40381 0.857949C7.82521 0.307182 7.05698 0 6.25816 0C5.45933 0 4.6911 0.307182 4.1125 0.857949L0.716588 4.26478C-0.233395 5.20385 -0.244315 6.80899 0.716588 9.04746C1.28629 10.4881 2.10292 11.8184 3.12976 12.9784L11.0572 20.9059C12.2172 21.9327 13.5475 22.7493 14.9882 23.319C15.8837 23.7207 16.8468 23.9503 17.8272 23.996C18.1833 24.0157 18.5396 23.9619 18.874 23.8379C19.2084 23.7139 19.5137 23.5224 19.7708 23.2754L23.1777 19.8794C23.738 19.3031 24.0479 18.5286 24.0397 17.7248C24.0315 16.921 23.706 16.153 23.134 15.5881ZM21.5507 18.2961L18.1439 21.6921C17.4996 22.1616 13.9072 20.6001 12.5968 19.3226L4.66939 11.3951C3.35907 10.0739 1.83036 6.52509 2.29989 5.84809L5.69581 2.44125C5.84483 2.30467 6.03963 2.2289 6.24178 2.2289C6.44392 2.2289 6.63872 2.30467 6.78774 2.44125L9.93252 5.53143L8.84058 6.3613C8.52632 6.60676 8.26684 6.91521 8.0788 7.26685C7.89075 7.61849 7.7783 8.00556 7.74865 8.40322C7.72201 8.80453 7.78129 9.20692 7.92251 9.58351C8.06373 9.9601 8.28365 10.3022 8.5676 10.5871L13.4158 15.4353C13.6989 15.7216 14.0408 15.943 14.4178 16.0844C14.7949 16.2258 15.1981 16.2837 15.5997 16.2542C15.9973 16.2246 16.3844 16.1121 16.736 15.9241C17.0877 15.736 17.3961 15.4766 17.6416 15.1623L18.3732 14.2232V14.1686V14.0704L21.5289 17.2151C21.6654 17.3608 21.7432 17.5518 21.7472 17.7514C21.7513 17.9511 21.6813 18.1451 21.5507 18.2961Z" fill="black"/>
+            </svg>                
+          </a>
+        </div>
+        <p class="text-black min-w-[120px]">София, България</p>
+        <p class="text-dark-gray absolute bottom-[8px] md:bottom-[4px] text-[10px] phenomena">Design & Development by <a class="text-dark-gray phenomena" target="_blank" href="https://www.linkedin.com/in/velizar-delyanov-6b339420b/">Velizar Delyanov</a></p>
+    </div>
+    <p class="text-[164px] text-black phenomena bold bottom-[4px] right-[6px] absolute leading-none lg:hidden">.sii</p>
     </footer>
+
 
     <div id="cookie-box" style="opacity: 0;" class="cookie-consent hidden">
       <div class="flex flex-col md:flex-row items-center">
