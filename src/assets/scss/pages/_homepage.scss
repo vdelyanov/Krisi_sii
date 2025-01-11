@@ -156,22 +156,6 @@
   visibility: hidden;
 }
 
-.popup-wrapper {
-  position: fixed;
-  bottom: 20px;
-  left: 20px;
-  max-width: 240px;
-  padding: 16px;
-  background: $black;
-  cursor: none !important;
-  z-index: 3;
-  @include media-sm {
-    right: 0px;
-    left: 0px;
-    bottom: 0px;
-  }
-}
-
  form {
   display: flex;
   flex-direction: column;

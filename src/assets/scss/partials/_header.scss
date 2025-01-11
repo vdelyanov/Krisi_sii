@@ -17,7 +17,7 @@ header {
         height: 60px;
         display: flex;
         align-items: center;
-        @include media-sm {
+        @include media-tablet {
           top: 8px;
         }
     }
@@ -35,7 +35,7 @@ header {
     transform-origin: right;
     cursor: pointer;
     z-index: 2;
-    @include media-sm {
+    @include media-tablet {
       top: 8px;
     }
   }
@@ -139,6 +139,13 @@ header {
     .logo-heading {
       @include media-tablet {
         position: absolute;
+        right: 8px;
+        left: auto;
+        bottom: 0;
+      }
+      @include media-sm {
+        position: absolute;
+        right: auto;
         left: 8px;
         bottom: 0;
       }
@@ -146,8 +153,12 @@ header {
             font-size: 172px;
             color: $black;
             line-height: 1;
+            filter: blur(0.5px);
             @include media-tablet {
               font-size: 124px;
+            }
+            @include media-sm {
+              font-size: 33.5vw;
             }
             div {
               color: $black;

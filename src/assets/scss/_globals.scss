@@ -88,7 +88,13 @@ body::-webkit-scrollbar-thumb {
         pointer-events: none;
     }
     @include media-tablet {
+        height: 75px;
+        display: flex;
+        align-items: center;
         padding: 16px 20px;
+        h2 {
+            font-size: 24px;
+        }
     }
 }
 .show-text-trigger {
@@ -97,6 +103,8 @@ body::-webkit-scrollbar-thumb {
     width: fit-content;
 }
 .popup-wrapper {
+    position: fixed;
+    z-index: 3;
     pointer-events: none;
     cursor: none;
     transform-origin: left;
@@ -107,20 +115,32 @@ body::-webkit-scrollbar-thumb {
     mix-blend-mode: normal;
     background: $black;
     max-width: 380px;
+    left: 20px;
+    bottom: 20px;
     transition: clip-path 0.2s cubic-bezier(0.4, 0, 0.68, 0.06);
     @include media-sm {
         right: 0px;
         left: 0px;
         bottom: 0px;
         max-width: 100%;
+        background: $white !important;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        display: block;
+        .desc-text {
+            width: 310px !important;
+            color: $black;
+            font-size: 16px !important;
+            display: block !important;
+        }
+        svg {
+            display: none;
+        }
       }
     .desc-text {
         cursor: none;
         display: inline;
         font-size: 18px;
-        @include media-sm {
-            font-size: 18px;
-        }
     }
 }
 
@@ -160,11 +180,11 @@ body::-webkit-scrollbar-thumb {
 
 #contacts {
     height: calc(100vh + 1px);
-    @include media-sm {
+    @include media-tablet {
         height: auto;
     }
     .container {
-        @include media-sm {
+        @include media-tablet {
             padding: 0 20px;
         }
     }
@@ -173,7 +193,7 @@ body::-webkit-scrollbar-thumb {
         z-index: 1;
         position: fixed;
         top: 0;
-        @include media-sm {
+        @include media-tablet {
             top: unset
         }
     }
@@ -252,8 +272,8 @@ body::-webkit-scrollbar-thumb {
     height: 26px;
     display: flex;
     @include media-sm {
-        bottom: 16px;
-        right: 16px;
+        bottom: 24px;
+        right: 20px;
     } 
     .current-color {
         scale: 0.75;

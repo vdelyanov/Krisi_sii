@@ -185,10 +185,10 @@
       </span>
     </div>
 
-    <main style="opacity: 0;" data-barba="container" id="contacts" data-barba-namespace="Контакти" class="flex pb-48 lg:pb-0 pt-24 lg:pt-32 items-center flex-col justify-center">
+    <main style="opacity: 0;" data-barba="container" id="contacts" data-barba-namespace="Контакти" class="flex pb-48 xl:pb-0 pt-24 xl:pt-32 items-center flex-col justify-center">
       <div class="show-text-trigger-wrapper" id="show-text-trigger-wrapper">
           <div class="heading show-text-trigger pointer-events-auto">
-            <h1 class="h3 uppercase">Кристиана <br> Симеонова</h1>
+            <h2 class="h3 uppercase">Кристиана <br> Симеонова</h2>
         </div>
       </div>
 
@@ -214,9 +214,9 @@
 
       <div class="container pointer-events-none mx-auto min-h-[calc(100vh-128px)] z-[2]">
         <div class="grid grid-cols-12">
-        <div class="text-content col-span-12 lg:col-span-6">
+        <div class="text-content col-span-12 xl:col-span-6">
           <h1 class="mb-4 anim-title">Свържи се с мен</h1>
-          <p class="max-w-[420px] text-[18px] lg:text-[24px] mb-6">За повече информация, потенциялна колаборация, други услуги нуждаещи се от кадри</p>
+          <p class="max-w-[420px] text-[18px] xl:text-[24px] mb-6">За повече информация, потенциялна колаборация, други услуги нуждаещи се от кадри</p>
           <div class="socials-wrapper flex gap-6 items-center">
             <a class="pointer-events-auto text-blur" target="_blank" href="https://www.instagram.com/photo.sii/">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -245,8 +245,8 @@
             </a>
           </div>
         </div>
-        <div class="col-span-12 lg:col-span-6">
-          <form class="pointer-events-none pt-[64px] lg:pt-[84px]" action="">
+        <div class="col-span-12 xl:col-span-6">
+          <form class="pointer-events-none pt-[64px] xl:pt-[84px]" action="">
             <label class="relative pointer-events-auto hover-link" for="name">
               <svg class="absolute bottom-0 left-0" width="32" height="25" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M2 15.6318V23.73L9.73653 23.73" stroke="white" stroke-width="2"/>
@@ -301,7 +301,7 @@
     </main>
 
     <footer class="footer-fixed">
-      <div class="flex justify-between gap-4 md:items-center flex-col md:flex-row w-[100%]">
+      <div class="flex justify-between gap-4 xl:items-center flex-col xl:flex-row w-[100%]">
           <p class="text-black min-w-[120px]">© 2025</p>
         <div class="socials-wrapper flex gap-8 items-center">
           <a class="pointer-events-auto text-blur" target="_blank" href="https://www.instagram.com/photo.sii/">
@@ -331,9 +331,9 @@
           </a>
         </div>
         <p class="text-black min-w-[120px]">София, България</p>
-        <p class="text-dark-gray absolute bottom-[8px] md:bottom-[4px] text-[10px] phenomena">Design & Development by <a class="text-dark-gray phenomena" target="_blank" href="https://www.linkedin.com/in/velizar-delyanov-6b339420b/">Velizar Delyanov</a></p>
+        <p class="text-dark-gray absolute bottom-[8px] xl:bottom-[4px] text-[10px] phenomena">Design & Development by <a class="text-dark-gray phenomena" target="_blank" href="https://www.linkedin.com/in/velizar-delyanov-6b339420b/">Velizar Delyanov</a></p>
     </div>
-    <p class="text-[164px] text-black phenomena bold bottom-[4px] right-[6px] absolute leading-none lg:hidden">.sii</p>
+    <p class="text-[164px] text-black phenomena bold bottom-[4px] right-[6px] absolute leading-none xl:hidden">.sii</p>
     </footer>
 
     <div id="cookie-box" style="opacity: 0;" class="cookie-consent hidden">
@@ -355,14 +355,15 @@
         maxWidth: window.innerWidth * 0.5,
         particleGap: 2,
         dataNoise: 10,
-        mouseForce: 0
+        mouseForce: 0,
+        disableInteraction: false
       }); 
 
       window.onload = function () {
-        if (window.innerWidth < 600) {
-          nextParticle.width = window.innerWidth,
-          nextParticle.height=  window.innerHeight,
-          nextParticle.maxWidth = window.innerWidth * 1.5;
+        if (window.innerWidth < 567) {
+          nextParticle.width = window.innerWidth * 2,
+          nextParticle.height=  window.innerHeight * 2,
+          nextParticle.maxWidth = window.innerWidth * 2;
           nextParticle.start();
         }
       };

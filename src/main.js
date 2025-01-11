@@ -506,13 +506,13 @@ function initHeader() {
     filter: "blur(10px)"
   }, {
     opacity: 1,
-    bottom: "0px",
+    bottom: "8px",
     filter: "blur(0px)",
     ease: "expo.inOut",
     duration: 1,
   })
   .to(transition.pageLabelInit, {
-    bottom: "0px",
+    bottom: "8px",
     opacity: 0,
     filter: "blur(10px)",
     duration: 0.6,
