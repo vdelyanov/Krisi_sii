@@ -17,7 +17,7 @@ footer {
         padding: 8px 20px;
         display: flex;
         align-items: center;
-        .phenomena {
+        .phenomena.leading-none {
             filter: blur(0.5px);
         }
     }

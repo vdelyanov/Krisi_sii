@@ -9,7 +9,7 @@ export class Slider {
     this.uniforms = opts.uniforms;
     this.renderer = new THREE.WebGLRenderer();
     this.width = window.innerWidth;
-    this.height = window.innerHeight;
+    this.height = window.innerWidth;
     this.renderer.setPixelRatio(window.devicePixelRatio);
     this.renderer.setSize(this.width, this.height);
     this.renderer.setClearColor(0xeeeeee, 1);
@@ -32,7 +32,7 @@ export class Slider {
       1000
     );
 
-    this.camera.position.set(0, 0, 2);
+    this.camera.position.set(0, 0, 1);
     this.time = 0;
     this.current = 0;
     this.paused = true;
@@ -127,7 +127,8 @@ export class Slider {
       fragmentShader: this.fragment,
     });
 
-    this.geometry = new THREE.PlaneGeometry(1, 1, 2, 2);
+
+    this.geometry = new THREE.PlaneGeometry(1, 1, 1, 1); 
     this.plane = new THREE.Mesh(this.geometry, this.material);
     this.scene.add(this.plane);
   }

@@ -37,6 +37,8 @@
 	will-change: transform;
   pointer-events: all;
   transition: filter 0s !important;
+  display: flex;
+  justify-content: end;
   .slider {
     border-top-left-radius: 8px;
     border-bottom-left-radius: 8px;
