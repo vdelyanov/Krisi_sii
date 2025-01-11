@@ -147,7 +147,7 @@ header {
         position: absolute;
         right: auto;
         left: 8px;
-        bottom: 0;
+        bottom: 2px;
       }
         h2 {
             font-size: 172px;
@@ -158,7 +158,7 @@ header {
               font-size: 124px;
             }
             @include media-sm {
-              font-size: 30vw;
+              font-size: 124px;
             }
             div {
               color: $black;
