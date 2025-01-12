@@ -121,6 +121,10 @@ body::-webkit-scrollbar-thumb {
     left: 20px;
     bottom: 20px;
     transition: clip-path 0.2s cubic-bezier(0.4, 0, 0.68, 0.06);
+    @include media-tablet {
+        left: 0px;
+        bottom: 0px;
+    }
     @include media-sm {
         right: 0px;
         left: 0px;
@@ -308,7 +312,7 @@ body::-webkit-scrollbar-thumb {
         white-space: nowrap;
         left: -150%;
         @include media-sm {
-            font-size: 56px;
+            font-size: 48px;
         }
         &.current {
             left: 20px;
@@ -330,16 +334,26 @@ body::-webkit-scrollbar-thumb {
         height: 100vh; 
         height: 100svh;
         overflow: visible; 
-        background-color:  rgba(0,0,0,1);
+        background-color:  rgba(0,0,0,0.9) !important;
         scale: 1 !important;
         transition: all 0.4s cubic-bezier(0.4, 0, 0.68, 0.06);
         opacity: 0;
         filter: blur(10px);
         pointer-events: none;
+        @include media-tablet {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+        }
         .lightbox-content {
             height: 100%;
             display: flex;
             justify-content: center;
+            @include media-tablet {
+                width: 100%;
+                height: auto;
+            }
             img {
                 height: 100%;
                 border-top-left-radius: 8px;
@@ -347,6 +361,13 @@ body::-webkit-scrollbar-thumb {
                 border-bottom-right-radius: 8px;
                 border-bottom-left-radius: 8px;
                 object-fit: cover;
+                @include media-tablet {
+                    border-top-left-radius: 4px;
+                    border-top-right-radius: 4px;
+                    border-bottom-right-radius: 4px;
+                    border-bottom-left-radius: 4px;
+                    max-height: 60vh;
+                }
             }
         }
         &.display {
@@ -363,7 +384,7 @@ body::-webkit-scrollbar-thumb {
           transition: all 0.6s cubic-bezier(0.4, 0, 0.68, 0.06);
           opacity: 1;
         }
-        @media (max-width: 1024px) {
+        @include media-tablet {
           overflow-y: scroll;
           margin-bottom: 48px;
         }
@@ -387,8 +408,8 @@ body::-webkit-scrollbar-thumb {
         font-weight: 300 !important;
         z-index: 99;
         cursor: pointer;
-        @media (max-width: 1024px) {
-            top: 5vh;
+        @include media-tablet {
+            top: 80px;
             right: 20px;
         }
       }
@@ -413,8 +434,8 @@ body::-webkit-scrollbar-thumb {
     .lightbox-prev {
         left: 20px;
         bottom: 20px;
-        @media (max-width: 1024px) {
-          bottom: calc(5vh + 80px) !important;
+        @include media-tablet {
+          bottom: 36px !important;
           left: auto !important;
           right: 80px !important;
         }
@@ -423,10 +444,10 @@ body::-webkit-scrollbar-thumb {
       .lightbox-next {
         left: calc(20px + 54px);
         bottom: 20px;
-        @media (max-width: 1024px) {
-          bottom: calc(5vh + 80px) !important;
-          left: auto !important;
-          right: 20px !important;
+        @include media-tablet {
+            bottom: 36px !important;
+            left: auto !important;
+            right: 20px !important;
             }
         }
 

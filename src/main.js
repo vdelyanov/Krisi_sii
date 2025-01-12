@@ -1026,7 +1026,7 @@ if (aboutPage) {
         const moveX = (mouseX / windowWidth) * 20;
         gsap.to(element, {
           x: -moveX,  
-          duration: 3,
+          duration: 2,
           ease: "expo.Out",
         });
       });
@@ -1056,13 +1056,16 @@ if (aboutPage) {
       scrollTrigger: {
         trigger: paragraphSelector,
         start: "top 34%",
-        end: "bottom 34%",
+        end: "bottom 34.2%",
         pin: true,
         pinSpacing: false,
-        scrub: 2,
+        scrub: 3,
         toggleActions: "restart pause resume pause", 
         onEnterBack: () => {
           gsap.to(textDesc, { opacity: 1, filter: "blur(0px)", duration: 0.2 });
+          if (textDesc.classList.contains("last-text-desc")) {
+            gsap.to(".footer-end", { clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)" });
+          }
         },
         onLeaveBack: () => {
           gsap.to(textDesc, { opacity: 0, filter: "blur(10px)", duration: 0.2 });
@@ -1072,7 +1075,10 @@ if (aboutPage) {
         },
         onLeave: () => {
           if (!textDesc.classList.contains("last-text-desc")) {
-            gsap.to(textDesc, { opacity: 0, filter: "blur(10px)", duration: 0.1, immediateRender: true });
+            gsap.to(textDesc, { opacity: 0, filter: "blur(10px)", duration: 0.2, immediateRender: true });
+          }
+          else {
+            gsap.to(".footer-end", { clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)" });
           }
         },
         },
@@ -1081,24 +1087,24 @@ if (aboutPage) {
     // Animate text characters
     timeline.fromTo(
       splitDesc.chars,
-      { opacity: 0, filter: "blur(2px)" },
-      { opacity: 1, filter: "blur(0px)", stagger: 0.2, duration: 2.5 }
+      { opacity: 0, filter: "blur(3px)" },
+      { opacity: 1, filter: "blur(0px)", stagger: 0.3}
     );
 
     // Animate associated image
     timeline.fromTo(
       imageSelector,
-      { top: "160%", scaleY: 2, filter: "blur(10px)" },
+      { top: "200%", scaleY: 2, filter: "blur(10px)"},
       {
         top: `${topOffset}vh`,
         scaleY: 1,
         filter: "blur(0px)",
-        ease: "none",
+        ease: "linear",
         scrollTrigger: {
           trigger: paragraphSelector,
           start: "top 34%",
           end: "bottom 34%",
-          scrub: true,
+          scrub: 1,
         },
       }
     );
@@ -1111,22 +1117,7 @@ if (aboutPage) {
   animateParagraph(".paragraph-2", ".image-2");
   animateParagraph(".paragraph-3", ".image-3");
   animateParagraph(".paragraph-4", ".image-4");
-
-  // Footer animation
-  gsap.set(".footer-end", { clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)" });
-
-  ScrollTrigger.create({
-    trigger: ".image-4",
-    start: "center 105%",
-    end: "center 105%",
-    scrub: 1, 
-    onEnter: () => {
-      gsap.to(".footer-end", { clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)" });
-    },
-    onEnterBack: () => {
-      gsap.to(".footer-end", { clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)" });
-    },
-  });
+  animateParagraph(".paragraph-5", ".image-5");
 
   // Canvas fade-out effect
   setTimeout(() => {
