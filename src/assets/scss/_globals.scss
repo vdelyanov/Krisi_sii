@@ -334,7 +334,6 @@ body::-webkit-scrollbar-thumb {
         height: 100vh; 
         height: 100svh;
         overflow: visible; 
-        background-color:  rgba(0,0,0,0.9) !important;
         scale: 1 !important;
         transition: all 0.4s cubic-bezier(0.4, 0, 0.68, 0.06);
         opacity: 0;
@@ -462,6 +461,11 @@ body::-webkit-scrollbar-thumb {
                 flex-direction: column;
                 gap: 16px;
                 height: fit-content;
+                @include media-tablet {
+                &.column-2 {
+                    display: none;
+                } ;
+                }
                 img {
                     will-change: transform;
                     object-fit: cover;
@@ -484,7 +488,7 @@ body::-webkit-scrollbar-thumb {
             font-size: 24px;
             position: relative;
             &.active {
-                pointer-events: none;
+                pointer-events: none;   
                 &::before {
                   content: "";
                   position: absolute;

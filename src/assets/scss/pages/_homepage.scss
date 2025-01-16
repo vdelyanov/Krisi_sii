@@ -10,6 +10,9 @@
   padding-bottom: 0vh;
   pointer-events: none;
   z-index: 2;
+  @include media-tablet {
+    padding-bottom: 30vh;
+  }
 }
 
 .item {
@@ -39,6 +42,10 @@
   transition: filter 0s !important;
   display: flex;
   justify-content: end;
+  @include media-tablet {
+    width: 80vw;
+    height: auto;
+  }
   .slider {
     border-top-left-radius: 8px;
     border-bottom-left-radius: 8px;
@@ -74,6 +81,7 @@
 	grid-area: caption;
 	position: relative;
 	z-index: 10;
+  mix-blend-mode: difference;
 }
 
 .item__caption-title {
@@ -88,6 +96,10 @@
   margin-top: 48px;
   pointer-events: all;
   pointer-events: none;
+  @include media-tablet {
+    margin-left: 0px;
+    font-size: 48px;
+  }
   .oh__inner {
     line-height: 0;
     font-family: 'Phenomena-Regular', sans-serif;
