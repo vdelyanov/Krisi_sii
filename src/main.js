@@ -502,14 +502,14 @@ function initHeader() {
 
   tlInit.fromTo(transition.pageLabelInit, {
     opacity: 0,
-    bottom: "100px",
+    bottom: "50px",
     filter: "blur(10px)"
   }, {
     opacity: 1,
     bottom: "8px",
     filter: "blur(0px)",
     ease: "expo.inOut",
-    duration: 1,
+    duration: 1.2,
   })
   .to(transition.pageLabelInit, {
     bottom: "8px",
@@ -1536,150 +1536,6 @@ if (galleryPage) {
   }
   }
   
-
-
-  // Function to load images dynamically with equal distribution
-// Add all images to column-1 on mobile and distribute on desktop
-// function loadImages(category) {
-
-//   const isMobile = window.innerWidth <= 1025; 
-//   if (isMobile) { 
-
-//     const columns = document.querySelectorAll(".columns .column");
-  
-//     // Clear existing images
-//     columns.forEach((column) => (column.innerHTML = ""));
-  
-//     // Get images for the selected category
-//     const columnData = imageCategories[category];
-//     if (!columnData) return;
-  
-//     // Track loaded images
-//     let imagesToLoad = 0; // Total images to load
-//     let imagesLoaded = 0; // Images that have been loaded
-  
-//     // Function to check if all images are loaded
-//     function checkAllImagesLoaded() {
-//       if (imagesLoaded === imagesToLoad) {
-//         // All images loaded, reinitialize GSAP and recalculate heights
-//         reinitializeGSAP();
-//         refreshModal();
-//       }
-//     }
-  
-//     // Count the total number of images to load
-//     imagesToLoad = columnData.column1.length + columnData.column2.length;
-//     // Combine column1 and column2 data for iteration
-//     const allImages = [...columnData.column1, ...columnData.column2];
-
-//     // Iterate through all images
-//     allImages.forEach((imageSrc, index) => {
-//       const imgWrapper = document.createElement("div");
-//       imgWrapper.className = "img-wrapper";
-
-//       const wrap = document.createElement("div");
-//       wrap.className = "wrap";
-
-//       const img = document.createElement("img");
-//       img.className = "img hover-link";
-//       img.src = imageSrc;
-//       img.alt = category;
-
-//       // Increment loaded images on load
-//       img.onload = () => {
-//         imagesLoaded++;
-//         checkAllImagesLoaded();
-//       };
-
-//       wrap.appendChild(img);
-//       imgWrapper.appendChild(wrap);
-
-//       // Append to column-1 on mobile, otherwise alternate between columns
-//         columns[0].appendChild(imgWrapper); // Append to column-1
-//     });
-
-//   } else {
-
-//     const columns = document.querySelectorAll(".columns .column");
-  
-//     // Clear existing images
-//     columns.forEach((column) => (column.innerHTML = ""));
-  
-//     // Get images for the selected category
-//     const columnData = imageCategories[category];
-//     if (!columnData) return;
-  
-//     // Track loaded images
-//     let imagesToLoad = 0; // Total images to load
-//     let imagesLoaded = 0; // Images that have been loaded
-  
-//     // Function to check if all images are loaded
-//     function checkAllImagesLoaded() {
-//       if (imagesLoaded === imagesToLoad) {
-//         // All images loaded, reinitialize GSAP and recalculate heights
-//         reinitializeGSAP();
-//         refreshModal();
-//       }
-//     }
-  
-//     // Count the total number of images to load
-//     imagesToLoad = columnData.column1.length + columnData.column2.length;
-//     // Combine column1 and column2 data for iteration
-//     const allImages = [...columnData.column1, ...columnData.column2];
-
-//     // Add images to column-1 (for both mobile and desktop)
-//     columnData.column1.forEach((imageSrc) => {
-//       const imgWrapper = document.createElement("div");
-//       imgWrapper.className = "img-wrapper";
-  
-//       const wrap = document.createElement("div");
-//       wrap.className = "wrap";
-  
-//       const img = document.createElement("img");
-//       img.className = "img hover-link";
-//       img.src = imageSrc;
-//       img.alt = category;
-  
-//       // Increment loaded images on load
-//       img.onload = () => {
-//         imagesLoaded++;
-//         checkAllImagesLoaded();
-//       };
-  
-//       wrap.appendChild(img);
-//       imgWrapper.appendChild(wrap);
-//       columns[0].appendChild(imgWrapper); // Append to column-1
-//     });
-//     columnData.column2.forEach((imageSrc) => {
-//       const imgWrapper = document.createElement("div");
-//       imgWrapper.className = "img-wrapper hover-link";
-  
-//       const wrap = document.createElement("div");
-//       wrap.className = "wrap";
-  
-//       const img = document.createElement("img");
-//       img.className = "img hover-link";
-//       img.src = imageSrc;
-//       img.alt = category;
-  
-//       // Increment loaded images on load
-//       img.onload = () => {
-//         imagesLoaded++;
-//         checkAllImagesLoaded();
-//       };
-  
-//       wrap.appendChild(img);
-//       imgWrapper.appendChild(wrap);
-//       columns[1].appendChild(imgWrapper); // Append to column-2
-//     });
-
-
-// }
-
-
-
-
-
   // Check URL for category on page load
   function loadCategoryFromURL() {
     const urlParams = new URLSearchParams(window.location.search);
@@ -1773,8 +1629,9 @@ if (galleryPage) {
 
 }
 
-if (footer) {
 
+if (footer) {
+  
   setTimeout(() => {
     gsap.timeline()
 

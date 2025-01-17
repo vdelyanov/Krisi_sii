@@ -4,7 +4,7 @@ header {
     z-index: 101;
     opacity: 0;
     @include media-tablet {
-      height: 75px;
+      height: 68px;
       border-bottom-left-radius: 8px;
       border-bottom-right-radius: 8px;
     }
@@ -18,7 +18,7 @@ header {
         display: flex;
         align-items: center;
         @include media-tablet {
-          top: 8px;
+          top: 4px;
         }
     }
 
@@ -36,7 +36,7 @@ header {
     cursor: pointer;
     z-index: 2;
     @include media-tablet {
-      top: 8px;
+      top: 4px;
     }
   }
   
@@ -260,6 +260,9 @@ main {
     } 
   }
   &.bg-blur {
+    .columns {
+      overflow: visible !important; 
+    }
     cursor: pointer;
     z-index: 3;
     pointer-events: none;
