@@ -1439,6 +1439,7 @@ gsap.to('.mobile-filter-categories', {
   filter: "blur(10px)",
   opacity: 0,
   duration: 0.6,
+  pointerEvents: "none",
   ease: "power4",
   })
 gsap.to('.filters', {
@@ -1510,6 +1511,7 @@ gsap.to('.filters', {
       opacity: 1,
       duration: 0.6,
       ease: "power4",
+      pointerEvents: "none",
       delay: 1.2
       })
 
