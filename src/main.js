@@ -104,6 +104,31 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('color2').addEventListener('click', () => changeColor('color2'));
     document.getElementById('color3').addEventListener('click', () => changeColor('color3'));
     document.getElementById('color4').addEventListener('click', () => changeColor('color4'));
+
+
+    const initiateAnimation = () => {
+      const element = document.querySelector('#main-desc');
+      if (element) {
+        document.addEventListener('mousemove', (e) => {
+          const mouseX = e.clientX;
+          const mouseY = e.clientY;
+          const windowWidth = window.innerWidth;
+          const windowHeight = window.innerHeight;
+          const moveX = (mouseX / windowWidth) * 20;
+          const moveY = (mouseY / windowHeight) * 20;
+          gsap.to(element, {
+            x: -moveX,
+            y: -moveY,
+            duration: 2,
+            ease: "expo.Out",
+          });
+        });
+      } else {
+        setTimeout(initiateAnimation, 100);
+      }
+    };
+    initiateAnimation(); 
+
 });
 
 // Scroll icon 
