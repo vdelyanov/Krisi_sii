@@ -542,15 +542,6 @@ link.addEventListener('mouseenter', () => {
         stagger: 0.04,
         delay: 0.4
       });
-      gsap.to(cursorElement, {
-        duration: 0.3,
-        scale: 1,  
-        width: '34px',         
-        height: '28px',         
-        rotation: 0,         
-        ease: "power2.out"   
-      });
-  
   }
 
   let lastScrollY = 0; 
@@ -1783,7 +1774,7 @@ if (footer) {
   ScrollTrigger.create({
     trigger: 'body', 
     start: 'bottom bottom',
-    end: 'bottom+=1 bottom',
+    end: 'bottom+=2 bottom',
     markers: true,
     scrub: 1,
     onEnter: () => {
