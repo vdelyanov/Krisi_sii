@@ -1774,7 +1774,7 @@ if (footer) {
   ScrollTrigger.create({
     trigger: 'body', 
     start: 'bottom bottom',
-    end: 'bottom+=2 bottom',
+    end: 'bottom bottom',
     markers: true,
     scrub: 1,
     onEnter: () => {
@@ -1793,7 +1793,7 @@ if (footer) {
     }
   });
 
-}, 200)
+}, 100)
 
 
 }
