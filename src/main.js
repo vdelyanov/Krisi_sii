@@ -388,7 +388,7 @@ const hoverLinks = document.querySelectorAll('.hover-link, a');
         ease: "power2.out"   
       });
       cursorElement.classList.remove('hover-active');
-  });
+    });
   });
 
 
@@ -410,23 +410,32 @@ let mdesc = new SplitText(desc, {
   type: "lines,words,chars"
 });
 
-gsap.to(mdesc.chars, {
-  filter: "blur(8px)",
-  opacity: 0,
-  ease: "power3",
-  stagger: -0.008,
-  scrollTrigger: {
-      trigger: ".content",
-      start: "top top",
-      end: "+=150px",
-      scrub: 1,
-      markers: true
 
-  }
-});
+if (desc) {
+
+  gsap.to(mdesc.chars, {
+    filter: "blur(8px)",
+    opacity: 0,
+    ease: "power3",
+    stagger: -0.008,
+    scrollTrigger: {
+        trigger: ".content",
+        start: "top top",
+        end: "+=150px",
+        scrub: 1,
+        markers: true
+
+    }
+  });
+
+}
+
 
 hoverLinksText.forEach(link => {
-  link.addEventListener('mouseenter', () => {
+
+  const isMobile = window.innerWidth <= 1025; 
+  if (isMobile) { 
+    link.addEventListener('click', () => {
       gsap.to(popup, {
         duration: 0.2,
         ease: "power3.out",
@@ -450,11 +459,40 @@ hoverLinksText.forEach(link => {
         delay: 0.4
       });
       cursorElement.classList.add('hide');
+  });
+   } else {
+
+
+link.addEventListener('mouseenter', () => {
+    gsap.to(popup, {
+      duration: 0.2,
+      ease: "power3.out",
+      clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)',
     });
+    gsap.to(split.words, {
+      autoAlpha: 1,
+      duration: 0.2,
+      filter: "blur(0px)",
+      ease: "power3",
+      scale:1,
+      stagger: 0.02,
+      delay: 0.4
+    });
+    gsap.to(mdesc.words, {
+      duration: 0.6,
+      filter: "blur(8px)",
+      opacity: 0,
+      ease: "power3",
+      stagger: -0.04,
+      delay: 0.4
+    });
+    cursorElement.classList.add('hide');
+});
+
+}
+
 
     function triggerAnimation() {
-      document.body.focus();
-
       cursorElement.classList.remove('hide');
       gsap.killTweensOf(split.words);
       gsap.to(popup, {
@@ -490,10 +528,9 @@ hoverLinksText.forEach(link => {
   
   }
 
-  let lastScrollY = 0; // Tracks the last scroll position
-const scrollTolerance = 50; // Set the tolerance in pixels
+  let lastScrollY = 0; 
+const scrollTolerance = 50; 
 
-    // Add event listener for mouseleave
 link.addEventListener('mouseleave', triggerAnimation);
 
 window.addEventListener('scroll', () => {
@@ -1482,13 +1519,8 @@ gsap.to('.filters', {
     // Calculate heights
     const elementHeight = column2.offsetHeight;
     const viewportHeight = window.innerHeight;
-
-    console.log(elementHeight)
-    console.log(viewportHeight)
     
     const totalTranslateY = elementHeight - viewportHeight - 16;
-
-    console.log(totalTranslateY)
 
     // Kill previous animations
     gsap.killTweensOf(column2);
@@ -1688,7 +1720,6 @@ gsap.to('.filters', {
 
     function updateLightboxImage() {
       lightboxImage.src = images[currentIndex];
-      console.log( images[currentIndex])
   }
 
     // Event listeners for controls

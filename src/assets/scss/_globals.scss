@@ -83,7 +83,7 @@ body::-webkit-scrollbar-thumb {
     left: 10vw;
     font-size: 16px;
     @include media-tablet {
-        max-width: 220px;
+        max-width: 210px;
         top: 20vh;
         position: fixed;
         left: 20px;
