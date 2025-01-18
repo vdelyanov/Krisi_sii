@@ -413,20 +413,20 @@ let mdesc = new SplitText(desc, {
 
 if (desc) {
 
-  gsap.to(mdesc.chars, {
-    filter: "blur(8px)",
-    opacity: 0,
-    ease: "power3",
-    stagger: -0.008,
-    scrollTrigger: {
-        trigger: ".content",
-        start: "top top",
-        end: "+=150px",
-        scrub: 1,
-        markers: true
+  // gsap.to(mdesc.chars, {
+  //   filter: "blur(8px)",
+  //   opacity: 0,
+  //   ease: "power3",
+  //   stagger: -0.008,
+  //   scrollTrigger: {
+  //       trigger: ".content",
+  //       start: "top top",
+  //       end: "+=150px",
+  //       scrub: 1,
+  //       markers: true
 
-    }
-  });
+  //   }
+  // });
 
 }
 
@@ -1514,7 +1514,7 @@ gsap.to('.filters', {
       opacity: 1,
       duration: 0.6,
       ease: "power4",
-      pointerEvents: "none",
+      pointerEvents: "all",
       delay: 1.2
       })
 
