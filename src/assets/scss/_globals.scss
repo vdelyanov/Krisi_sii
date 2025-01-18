@@ -77,13 +77,13 @@ body::-webkit-scrollbar-thumb {
 }
 
 #main-desc{
-    max-width: 384px;
+    max-width: 320px;
     top: 20vh;
     position: fixed;
     left: 10vw;
     font-size: 16px;
     @include media-tablet {
-        max-width: 320px;
+        max-width: 220px;
         top: 20vh;
         position: fixed;
         left: 20px;

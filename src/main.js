@@ -411,7 +411,7 @@ let mdesc = new SplitText(desc, {
 });
 
 gsap.to(mdesc.chars, {
-  filter: "blur(10px)",
+  filter: "blur(8px)",
   opacity: 0,
   ease: "power3",
   stagger: -0.008,
@@ -443,7 +443,7 @@ hoverLinksText.forEach(link => {
       });
       gsap.to(mdesc.words, {
         duration: 0.6,
-        filter: "blur(10px)",
+        filter: "blur(8px)",
         opacity: 0,
         ease: "power3",
         stagger: -0.04,
@@ -453,6 +453,7 @@ hoverLinksText.forEach(link => {
     });
 
     function triggerAnimation() {
+      document.body.focus();
 
       cursorElement.classList.remove('hide');
       gsap.killTweensOf(split.words);
@@ -463,7 +464,7 @@ hoverLinksText.forEach(link => {
         onComplete: () => {
           gsap.to(split.words, {
             autoAlpha: 0,       
-            filter: "blur(10px)",  
+            filter: "blur(8px)",  
             duration: 0.1,
             delay: 0.3
           });
@@ -823,6 +824,7 @@ function initHeroAnim() {
     })
   }
 } 
+
 function initialInitHeader() {
 
   const transition = {
