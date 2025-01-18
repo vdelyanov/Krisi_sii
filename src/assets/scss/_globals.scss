@@ -76,6 +76,22 @@ body::-webkit-scrollbar-thumb {
     }
 }
 
+#main-desc{
+    max-width: 384px;
+    top: 20vh;
+    position: fixed;
+    left: 10vw;
+    font-size: 16px;
+    @include media-tablet {
+        max-width: 320px;
+        top: 20vh;
+        position: fixed;
+        left: 20px;
+        font-size: 16px;
+        right: 20px;
+    }
+}
+
 // cursor and popup
 .show-text-trigger-wrapper {
     position: fixed;
@@ -118,7 +134,6 @@ body::-webkit-scrollbar-thumb {
     height: auto !important;
     padding: 16px;
     mix-blend-mode: normal;
-    background: $black;
     max-width: 380px;
     left: 20px;
     bottom: 20px;
@@ -343,6 +358,8 @@ body::-webkit-scrollbar-thumb {
         pointer-events: none;
         @include media-tablet {
             width: 100%;
+            bottom: 0;
+            height: 100%;
             display: flex;
             align-items: center;
             padding: 0 20px;

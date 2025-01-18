@@ -349,6 +349,7 @@ document.addEventListener("DOMContentLoaded", function () {
 const cursorElement = document.querySelector('.cursor-follow');
 const hoverLinksText = document.querySelectorAll('.show-text-trigger');
 const text = document.querySelector(".desc-text");
+const desc = document.querySelector("#main-desc");
 const popup = document.querySelector(".popup-wrapper");
 
 // Add mousemove event listener
@@ -405,6 +406,25 @@ if (text) {
   });
 }
 
+let mdesc = new SplitText(desc, {
+  type: "lines,words,chars"
+});
+
+gsap.to(mdesc.chars, {
+  filter: "blur(10px)",
+  opacity: 0,
+  ease: "power3",
+  stagger: -0.008,
+  scrollTrigger: {
+      trigger: ".content",
+      start: "top top",
+      end: "+=150px",
+      scrub: 1,
+      markers: true
+
+  }
+});
+
 hoverLinksText.forEach(link => {
   link.addEventListener('mouseenter', () => {
       gsap.to(popup, {
@@ -421,10 +441,19 @@ hoverLinksText.forEach(link => {
         stagger: 0.02,
         delay: 0.4
       });
+      gsap.to(mdesc.words, {
+        duration: 0.6,
+        filter: "blur(10px)",
+        opacity: 0,
+        ease: "power3",
+        stagger: -0.04,
+        delay: 0.4
+      });
       cursorElement.classList.add('hide');
     });
-    
-    link.addEventListener('mouseleave', () => {
+
+    function triggerAnimation() {
+
       cursorElement.classList.remove('hide');
       gsap.killTweensOf(split.words);
       gsap.to(popup, {
@@ -440,6 +469,15 @@ hoverLinksText.forEach(link => {
           });
         }
       });
+      gsap.killTweensOf(mdesc.words);
+      gsap.to(mdesc.words, {
+        duration: 0.6,
+        filter: "blur(0px)",
+        opacity: 1,
+        ease: "power3",
+        stagger: 0.04,
+        delay: 0.4
+      });
       gsap.to(cursorElement, {
         duration: 0.3,
         scale: 1,  
@@ -449,7 +487,22 @@ hoverLinksText.forEach(link => {
         ease: "power2.out"   
       });
   
-    });
+  }
+
+  let lastScrollY = 0; // Tracks the last scroll position
+const scrollTolerance = 50; // Set the tolerance in pixels
+
+    // Add event listener for mouseleave
+link.addEventListener('mouseleave', triggerAnimation);
+
+window.addEventListener('scroll', () => {
+  const currentScrollY = window.scrollY;
+  if (Math.abs(currentScrollY - lastScrollY) > scrollTolerance) {
+    lastScrollY = currentScrollY; 
+    triggerAnimation();
+  }
+});
+
 });
 
 // Hero animation / Homepage
@@ -1339,6 +1392,25 @@ if (galleryPage) {
     },
   };
 
+const triggerFilterMobile = document.getElementById('mobile-filter-categories') 
+    
+    
+triggerFilterMobile.addEventListener('click', () => {
+gsap.to('.mobile-filter-categories', {
+  filter: "blur(10px)",
+  opacity: 0,
+  duration: 0.6,
+  ease: "power4",
+  })
+gsap.to('.filters', {
+  x: 0,
+  duration: 0.6,
+  ease: "power4",
+  delay: 0.2
+})
+
+})
+
   // Get references to elements
   const filterButtons = document.querySelectorAll('.filters a');
 
@@ -1388,6 +1460,19 @@ if (galleryPage) {
       duration: 0.6,
       ease: "power4",
     })
+    gsap.to('.filters', {
+      x: 150,
+      duration: 0.6,
+      ease: "power4",
+      delay: 1
+    })
+    gsap.to('.mobile-filter-categories', {
+      filter: "blur(0px)",
+      opacity: 1,
+      duration: 0.6,
+      ease: "power4",
+      delay: 1.2
+      })
 
     const column2 = document.querySelector(".column-2");
     if (!column2) return;
