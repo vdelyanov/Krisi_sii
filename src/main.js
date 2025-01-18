@@ -413,20 +413,20 @@ let mdesc = new SplitText(desc, {
 
 if (desc) {
 
-  // gsap.to(mdesc.chars, {
-  //   filter: "blur(8px)",
-  //   opacity: 0,
-  //   ease: "power3",
-  //   stagger: -0.008,
-  //   scrollTrigger: {
-  //       trigger: ".content",
-  //       start: "top top",
-  //       end: "+=150px",
-  //       scrub: 1,
-  //       markers: true
+  gsap.to(mdesc.chars, {
+    filter: "blur(8px)",
+    opacity: 0,
+    ease: "power3",
+    stagger: -0.008,
+    scrollTrigger: {
+        trigger: ".content",
+        start: "top top",
+        end: "+=150px",
+        scrub: 1,
+        markers: true
 
-  //   }
-  // });
+    }
+  });
 
 }
 
@@ -558,17 +558,14 @@ function heroAnim() {
         duration: 1.2,
         delay: 2,
         scaleY: 1,
-        onComplete: () => {
-          const isMobile = window.innerWidth <= 1025; 
-          if (!isMobile) { 
-          newDiv.className = 'h-[10vh]';
-          const mainElement = document.querySelector('main.homepage');
-          if (mainElement) {
-            mainElement.appendChild(newDiv);
-          } 
-          const newDiv = document.createElement('div');
-        }
-      }        
+        // onComplete: () => {
+        //   const newDiv = document.createElement('div');
+        //   newDiv.className = 'h-[10vh]';
+        //   const mainElement = document.querySelector('main.homepage');
+        //   if (mainElement) {
+        //       mainElement.appendChild(newDiv);
+        //   } 
+        // }
     })
     gsap.to('.item__caption', {
         ease: "power4",
@@ -845,14 +842,14 @@ function initHeroAnim() {
         duration: 1.5,
         delay: 0.5,
         scaleY: 1,
-        onComplete: () => {
-          const newDiv = document.createElement('div');
-          newDiv.className = 'h-[10vh]';
-          const mainElement = document.querySelector('main.homepage');
-          if (mainElement) {
-              mainElement.appendChild(newDiv);
-          } 
-        }
+        // onComplete: () => {
+          // const newDiv = document.createElement('div');
+          // newDiv.className = 'h-[10vh]';
+          // const mainElement = document.querySelector('main.homepage');
+          // if (mainElement) {
+          //     mainElement.appendChild(newDiv);
+          // } 
+        // }
     })
     gsap.to('.item__caption', {
         ease: "power4",

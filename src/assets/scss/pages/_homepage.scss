@@ -1,13 +1,13 @@
 
 #homepage {
-  overflow-x: hidden;
+  overflow: hidden;
 }
 .content {
 	position: relative;
   margin-left: auto;
   width: calc(60% + 48px) ;
   padding-top: 40vh;
-  padding-bottom: 0vh;
+  padding-bottom: 10vh;
   pointer-events: none;
   z-index: 2;
   @include media-tablet {
