@@ -559,13 +559,16 @@ function heroAnim() {
         delay: 2,
         scaleY: 1,
         onComplete: () => {
-          const newDiv = document.createElement('div');
+          const isMobile = window.innerWidth <= 1025; 
+          if (!isMobile) { 
           newDiv.className = 'h-[10vh]';
           const mainElement = document.querySelector('main.homepage');
           if (mainElement) {
-              mainElement.appendChild(newDiv);
+            mainElement.appendChild(newDiv);
           } 
+          const newDiv = document.createElement('div');
         }
+      }        
     })
     gsap.to('.item__caption', {
         ease: "power4",
