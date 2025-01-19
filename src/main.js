@@ -1893,11 +1893,10 @@ if (isMobile) {
 
 }
 
-
-if (footer)  {
+if (footer && contactPage)  {
   
   setTimeout(() => {
-    gsap.timeline()
+  gsap.timeline()
 
   ScrollTrigger.create({
     trigger: 'body', 
@@ -1921,9 +1920,36 @@ if (footer)  {
     }
   });
 
-}, 0)
+}, 200)
 
 
+} else {
+  setTimeout(() => {
+  gsap.timeline()
+
+  ScrollTrigger.create({
+    trigger: 'body', 
+    start: 'bottom bottom',
+    end: 'bottom+=1 bottom',
+    markers: true,
+    scrub: 1,
+    onEnter: () => {
+      gsap.to(".footer-fixed", { clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)"});
+      let textTrigger = document.querySelector(".show-text-trigger")
+      if (textTrigger) {
+        gsap.to(".show-text-trigger", { translateY: "60px"});
+      }
+    },
+    onEnterBack: () => {
+      gsap.to(".footer-fixed", { clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)"});
+      let textTrigger = document.querySelector(".show-text-trigger")
+      if (textTrigger) {
+      gsap.to(".show-text-trigger", { translateY: "0px"});
+      }
+    }
+  });
+
+  }, 0)
 }
 
 })
