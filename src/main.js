@@ -1567,24 +1567,29 @@ gsap.to('.filters', {
 
 })
 
-document.addEventListener('click', function(event) {
-  if (!filters.contains(event.target)  && !triggerFilterMobile.contains(event.target) ) {
-    gsap.to('.filters', {
-      x: 150,
-      duration: 0.6,
-      ease: "power4",
-      delay: 0
-    })
-    gsap.to('.mobile-filter-categories', {
-      filter: "blur(0px)",
-      opacity: 1,
-      duration: 0.6,
-      ease: "power4",
-      pointerEvents: "all",
-      delay: 0.2
+const isMobile = window.innerWidth <= 1025; 
+if (isMobile) { 
+
+  document.addEventListener('click', function(event) {
+    if (!filters.contains(event.target)  && !triggerFilterMobile.contains(event.target) ) {
+      gsap.to('.filters', {
+        x: 150,
+        duration: 0.6,
+        ease: "power4",
+        delay: 0
       })
-  }
-});
+      gsap.to('.mobile-filter-categories', {
+        filter: "blur(0px)",
+        opacity: 1,
+        duration: 0.6,
+        ease: "power4",
+        pointerEvents: "all",
+        delay: 0.2
+        })
+    }
+  });
+
+}
 
   // Get references to elements
   const filterButtons = document.querySelectorAll('.filters a');
@@ -1635,6 +1640,8 @@ document.addEventListener('click', function(event) {
       duration: 0.6,
       ease: "power4",
     })
+    const isMobile = window.innerWidth <= 1025; 
+    if (isMobile) { 
     gsap.to('.filters', {
       x: 150,
       duration: 0.6,
@@ -1649,6 +1656,8 @@ document.addEventListener('click', function(event) {
       pointerEvents: "all",
       delay: 1.2
     })
+
+    }
 
     const column2 = document.querySelector(".column-2");
     if (!column2) return;
@@ -1893,7 +1902,7 @@ if (footer)  {
   ScrollTrigger.create({
     trigger: 'body', 
     start: 'bottom bottom',
-    end: 'bottom bottom',
+    end: 'bottom+=1 bottom',
     markers: true,
     scrub: 1,
     onEnter: () => {
