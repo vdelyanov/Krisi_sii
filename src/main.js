@@ -574,14 +574,6 @@ function heroAnim() {
         duration: 1.2,
         delay: 2,
         scaleY: 1,
-        // onComplete: () => {
-        //   const newDiv = document.createElement('div');
-        //   newDiv.className = 'h-[10vh]';
-        //   const mainElement = document.querySelector('main.homepage');
-        //   if (mainElement) {
-        //       mainElement.appendChild(newDiv);
-        //   } 
-        // }
     })
     gsap.to('.item__caption', {
         ease: "power4",
@@ -1448,8 +1440,8 @@ if (galleryPage) {
   };
 
 const triggerFilterMobile = document.getElementById('mobile-filter-categories') 
-    
-    
+const filters = document.querySelector('.filters') 
+
 triggerFilterMobile.addEventListener('click', () => {
 gsap.to('.mobile-filter-categories', {
   filter: "blur(10px)",
@@ -1466,6 +1458,25 @@ gsap.to('.filters', {
 })
 
 })
+
+document.addEventListener('click', function(event) {
+  if (!filters.contains(event.target)  && !triggerFilterMobile.contains(event.target) ) {
+    gsap.to('.filters', {
+      x: 150,
+      duration: 0.6,
+      ease: "power4",
+      delay: 0
+    })
+    gsap.to('.mobile-filter-categories', {
+      filter: "blur(0px)",
+      opacity: 1,
+      duration: 0.6,
+      ease: "power4",
+      pointerEvents: "all",
+      delay: 0.2
+      })
+  }
+});
 
   // Get references to elements
   const filterButtons = document.querySelectorAll('.filters a');
@@ -1529,7 +1540,7 @@ gsap.to('.filters', {
       ease: "power4",
       pointerEvents: "all",
       delay: 1.2
-      })
+    })
 
     const column2 = document.querySelector(".column-2");
     if (!column2) return;
@@ -1766,7 +1777,7 @@ gsap.to('.filters', {
 }
 
 
-if (footer) {
+if (footer)  {
   
   setTimeout(() => {
     gsap.timeline()
@@ -1793,7 +1804,7 @@ if (footer) {
     }
   });
 
-}, 100)
+}, 0)
 
 
 }
