@@ -15,3 +15,9 @@ body, header, #show-text-trigger-wrapper {
 #contacts {
     height: calc(100vh + 1px);
 }
+
+@media (min-width: 1024px)  {
+    #contacts {
+        height: auto;
+    }
+}
