@@ -648,7 +648,7 @@ function initHeader() {
   }, 0).to(transition.footer, {
     opacity: 1,
     autoAlpha: 1,
-    delay: 1,
+    delay: 1.2,
     ease: "expo.inOut",
     duration: 0.6,
   }, 0)
