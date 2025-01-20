@@ -1255,9 +1255,9 @@ if (aboutPage) {
 
   } else {
 
-    let topOffset = 35;
-    function animateParagraph(paragraphSelector, imageSelector) {
-      
+      let topOffset = 35;
+      function animateParagraph(paragraphSelector, imageSelector) {
+        
       const textDesc = document.querySelector(paragraphSelector);
       if (!textDesc) return;
 
@@ -1266,12 +1266,11 @@ if (aboutPage) {
       const timeline = gsap.timeline({
         scrollTrigger: {
           trigger: paragraphSelector,
-          start: "top 34%",
-          end: "bottom 34.2%",
+          start: "top 35%",
+          end: "bottom 34%",
           pin: true,
           pinSpacing: false,
           scrub: 3,
-          toggleActions: "restart pause resume pause", 
           onEnterBack: () => {
             gsap.to(textDesc, { opacity: 1, filter: "blur(0px)", duration: 0.2 });
             if (textDesc.classList.contains("last-text-desc")) {
@@ -1305,15 +1304,15 @@ if (aboutPage) {
       // Animate associated image
       timeline.fromTo(
         imageSelector,
-        { top: "200%", scaleY: 2, filter: "blur(10px)"},
+        { top: "250%", scaleY: 2, filter: "blur(10px)"},
         {
           top: `${topOffset}vh`,
           scaleY: 1,
           filter: "blur(0px)",
-          ease: "linear",
+          ease: "power4.out",
           scrollTrigger: {
             trigger: paragraphSelector,
-            start: "top 34%",
+            start: "top 35%",
             end: "bottom 34%",
             scrub: 1,
           },
@@ -1321,6 +1320,7 @@ if (aboutPage) {
       );
 
       topOffset += 5; // Increment for spacing between paragraphs
+      
     }
     
     // Animate multiple paragraphs and images
@@ -1354,7 +1354,7 @@ if (aboutPage) {
       scrollTrigger: {
         trigger: document.documentElement,
         start: "bottom 100%",
-        end: "bottom 70%",
+        end: "bottom 90%",
         scrub: 1,
       },
       ease: "power4.out",
