@@ -1360,6 +1360,9 @@ if (aboutPage) {
 
 if (contactPage) {
 
+  lenis.scrollTo(0) 
+  window.scrollTo(0, 0);
+
   const initiateAnimation = () => {
     const element = document.querySelector('#contacts canvas');
     if (element) {
@@ -1893,7 +1896,7 @@ if (isMobile) {
 
 }
 
-if (footer && contactPage)  {
+if (footer)  {
   
   setTimeout(() => {
   gsap.timeline()
@@ -1920,36 +1923,8 @@ if (footer && contactPage)  {
     }
   });
 
-}, 200)
+}, 0)
 
-
-} else {
-  setTimeout(() => {
-  gsap.timeline()
-
-  ScrollTrigger.create({
-    trigger: 'body', 
-    start: 'bottom bottom',
-    end: 'bottom+=1 bottom',
-    markers: true,
-    scrub: 1,
-    onEnter: () => {
-      gsap.to(".footer-fixed", { clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)"});
-      let textTrigger = document.querySelector(".show-text-trigger")
-      if (textTrigger) {
-        gsap.to(".show-text-trigger", { translateY: "60px"});
-      }
-    },
-    onEnterBack: () => {
-      gsap.to(".footer-fixed", { clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)"});
-      let textTrigger = document.querySelector(".show-text-trigger")
-      if (textTrigger) {
-      gsap.to(".show-text-trigger", { translateY: "0px"});
-      }
-    }
-  });
-
-  }, 0)
 }
 
 })
