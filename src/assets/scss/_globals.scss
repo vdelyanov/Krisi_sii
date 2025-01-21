@@ -205,7 +205,7 @@ body::-webkit-scrollbar-thumb {
 #contacts {
     height: calc(100vh + 1px);
     @include media-tablet {
-        height: auto;
+        height: auto !important;
     }
     .container {
         @include media-tablet {
