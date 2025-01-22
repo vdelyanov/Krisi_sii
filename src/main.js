@@ -175,22 +175,23 @@ const enterTransition = () => {
       ease: "expo.inOut",
       duration: 1,
     }, 0)
-    .to(transition.pageLabel, {  opacity: 1, duration: 0.6, filter: "blur(0px)", ease: "expo.inOut",}, ">")
+    .to(transition.pageLabel, {  opacity: 0, duration: 0, filter: "blur(0px)", ease: "expo.inOut",}, ">")
     .to(transition.swither, {
       opacity: 0,
       filter: 'blur(20px)',
       ease: "expo.inOut",
       duration: 1,
     }, 0)
-    .to(transition.header, { filter: "blur(10px)",  opacity: 0, duration: 0.6, ease: "expo.inOut",}, 0)
+    .to(transition.header, { filter: "blur(10px)",  opacity: 0, duration: 0.8, ease: "expo.inOut",}, 0)
     .to(transition.cursor, {
       opacity: 0,
       duration: 1,
     }, 0)
     .to("footer", { clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)", duration: 0.6 }, 0)
-    .to(transition.pageLabel, {  bottom: "-100px", duration: 0.6, ease: "expo.inOut",})
+    .to(transition.pageLabel, {  bottom: "0px", duration: 0, ease: "expo.inOut",})
     .to(window, { scrollTo: 0, duration: 0}, ">")
-    } else {
+   
+  } else {
       tl.to(transition.body, { backgroundColor: "#000000", duration: 0.4, ease: "expo.inOut",
       }, 0)
       .to(transition.menu, {
@@ -204,20 +205,20 @@ const enterTransition = () => {
         ease: "expo.inOut",
         duration: 1,
       }, 0)
-    .to(transition.pageLabel, {  opacity: 1, duration: 0.6, filter: "blur(0px)", ease: "expo.inOut",},  ">")
+    .to(transition.pageLabel, {  opacity: 0, duration: 0, filter: "blur(0px)", ease: "expo.inOut",},  ">")
     .to(transition.swither, {
       opacity: 0,
       filter: 'blur(20px)',
       ease: "expo.inOut",
       duration: 1,
     }, 0)
-    .to(transition.header, { filter: "blur(10px)", opacity: 0, duration: 0.6, ease: "expo.inOut",}, 0)
+    .to(transition.header, { filter: "blur(10px)", opacity: 0, duration: 0.8, ease: "expo.inOut",}, 0)
     .to(transition.cursor, {
       opacity: 0,
       duration: 1,
     }, 0)
     .to("footer", { clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)", duration: 0.6 }, 0)
-    .to(transition.pageLabel, {  bottom: "-100px", duration: 0.6, ease: "expo.inOut",})
+    .to(transition.pageLabel, {  bottom: "0px", duration: 0, ease: "expo.inOut",})
     .to(window, { scrollTo: 0, duration: 0 }, ">")
   }
   });
@@ -516,7 +517,6 @@ link.addEventListener('mouseenter', () => {
 
 }
 
-
     function triggerAnimation() {
       cursorElement.classList.remove('hide');
       gsap.killTweensOf(split.words);
@@ -602,14 +602,15 @@ function initHeader() {
 
   tlInit.fromTo(transition.pageLabelInit, {
     opacity: 0,
-    bottom: "40px",
-    filter: "blur(10px)"
+    bottom: "42px",
+    filter: "blur(10px)",
+    delay: 0.2
   }, {
     opacity: 1,
     bottom: "8px",
     filter: "blur(0px)",
     ease: "expo.inOut",
-    duration: 1.2,
+    duration: 1,
   })
   .to(transition.pageLabelInit, {
     bottom: "8px",
@@ -1151,8 +1152,6 @@ if (aboutPage) {
     }
     resetScrollTriggers();
 
-
-  
     const isMobile = window.innerWidth <= 1025; 
     if (isMobile) { 
 
@@ -1174,17 +1173,18 @@ if (aboutPage) {
 
       // Animate text characters
       timeline.fromTo(
-        splitDescM.chars,
-        { opacity: 1, filter: "blur(3px)" },
-        { opacity: 1, filter: "blur(0px)", stagger: 0.3}
+        splitDescM.words,
+        { opacity: 0, filter: "blur(3px)" },
+        { opacity: 1, filter: "blur(0px)", stagger: 1}
       );
 
       timeline.fromTo(
         imageSelector,
-        { scaleY: 0.8, filter: "blur(10px)",
+        { opacity: 0, scaleY: 1, filter: "blur(10px)",
           transformOrigin: "top",
         },
         {
+          opacity: 1,
           scaleY: 1,
           filter: "blur(0px)",
           ease: "power4.out",
