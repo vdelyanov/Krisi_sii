@@ -167,8 +167,7 @@ const enterTransition = () => {
     const menuToggle = document.querySelector(".menu-toggle");
 
     if (menuToggle.classList.contains("closed")) {
-
-    tl.to(transition.body, { backgroundColor: "#000000", duration: 0.4, ease: "linear",})
+    tl.to(transition.body, { backgroundColor: "#000000", duration: 0.2, ease: "linear",})
     .to(childElements, {
       opacity: 0,
       // filter: 'blur(20px)',
@@ -192,7 +191,7 @@ const enterTransition = () => {
     .to(window, { scrollTo: 0, duration: 0}, ">")
    
   } else {
-      tl.to(transition.body, { backgroundColor: "#000000", duration: 0.4, ease: "expo.inOut",
+      tl.to(transition.body, { backgroundColor: "#000000", duration: 0.2, ease: "linear",
       }, 0)
       .to(transition.menu, {
         clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
@@ -1123,7 +1122,6 @@ const footer = document.querySelector('.footer-fixed')
 
 if (aboutPage) {
 
-
     const initiateAnimation = () => {
       const element = document.querySelector('#about canvas');
       if (element) {
@@ -1173,7 +1171,7 @@ if (aboutPage) {
 
       // Animate text characters
       timeline.fromTo(
-        splitDescM.words,
+        splitDescM.chars,
         { opacity: 0, filter: "blur(3px)" },
         { opacity: 1, filter: "blur(0px)", stagger: 1}
       );
@@ -1191,7 +1189,7 @@ if (aboutPage) {
           scrollTrigger: {
             trigger: imageSelector,
             start: "top 70%",
-            end: "bottom 75%",
+            end: "bottom 60%",
             scrub: 1,
           },
         }
