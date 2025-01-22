@@ -168,7 +168,7 @@ const enterTransition = () => {
 
     if (menuToggle.classList.contains("closed")) {
 
-    tl.to(transition.body, { backgroundColor: "#000000", duration: 0.4, ease: "expo.inOut",})
+    tl.to(transition.body, { backgroundColor: "#000000", duration: 0.4, ease: "linear",})
     .to(childElements, {
       opacity: 0,
       // filter: 'blur(20px)',
@@ -205,7 +205,7 @@ const enterTransition = () => {
         ease: "expo.inOut",
         duration: 1,
       }, 0)
-    .to(transition.pageLabel, {  opacity: 0, duration: 0, filter: "blur(0px)", ease: "expo.inOut",},  ">")
+    .to(transition.pageLabel, {  opacity: 0, duration: 0, filter: "blur(0px)", ease: "linear",},  ">")
     .to(transition.swither, {
       opacity: 0,
       filter: 'blur(20px)',
