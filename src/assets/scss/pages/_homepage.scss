@@ -283,6 +283,10 @@
   .main-image {
     border-top-right-radius: 8px;
     border-bottom-right-radius: 8px;
+    @include media-tablet {
+      border-top-left-radius: 8px;
+      border-bottom-left-radius: 8px;
+    }
   }
   .main-desc-text {
     font-family: 'SofiaSans-Light';

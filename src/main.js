@@ -175,7 +175,7 @@ const enterTransition = () => {
       ease: "expo.inOut",
       duration: 1,
     }, 0)
-    .to(transition.pageLabel, {  opacity: 1, duration: 0.8, filter: "blur(0px)", ease: "expo.inOut",}, ">")
+    .to(transition.pageLabel, {  opacity: 1, duration: 0.6, filter: "blur(0px)", ease: "expo.inOut",}, ">")
     .to(transition.swither, {
       opacity: 0,
       filter: 'blur(20px)',
@@ -204,7 +204,7 @@ const enterTransition = () => {
         ease: "expo.inOut",
         duration: 1,
       }, 0)
-    .to(transition.pageLabel, {  opacity: 1, duration: 0.8, filter: "blur(0px)", ease: "expo.inOut",},  ">")
+    .to(transition.pageLabel, {  opacity: 1, duration: 0.6, filter: "blur(0px)", ease: "expo.inOut",},  ">")
     .to(transition.swither, {
       opacity: 0,
       filter: 'blur(20px)',
@@ -602,7 +602,7 @@ function initHeader() {
 
   tlInit.fromTo(transition.pageLabelInit, {
     opacity: 0,
-    bottom: "50px",
+    bottom: "40px",
     filter: "blur(10px)"
   }, {
     opacity: 1,
@@ -1155,10 +1155,60 @@ if (aboutPage) {
   
     const isMobile = window.innerWidth <= 1025; 
     if (isMobile) { 
+
+      function animateParagraphMobile(paragraphSelectorM, imageSelector) {
+
+      const textDescM = document.querySelector(paragraphSelectorM);
+      const splitDescM = new SplitText(textDescM, { type: "words,chars" });
+
+      const timeline = gsap.timeline({
+        scrollTrigger: {
+          trigger: paragraphSelectorM,
+          start: "top 70%",
+          end: "bottom 70%",
+          pin: false,
+          pinSpacing: false,
+          scrub: 1,
+          },
+      });
+
+      // Animate text characters
+      timeline.fromTo(
+        splitDescM.chars,
+        { opacity: 1, filter: "blur(3px)" },
+        { opacity: 1, filter: "blur(0px)", stagger: 0.3}
+      );
+
+      timeline.fromTo(
+        imageSelector,
+        { scaleY: 0.8, filter: "blur(10px)",
+          transformOrigin: "top",
+        },
+        {
+          scaleY: 1,
+          filter: "blur(0px)",
+          ease: "power4.out",
+          scrollTrigger: {
+            trigger: imageSelector,
+            start: "top 70%",
+            end: "bottom 75%",
+            scrub: 1,
+          },
+        }
+      );
+
+      }
+
+      animateParagraphMobile(".mobile-paragraph-1", ".mobile-image-1");
+      animateParagraphMobile(".mobile-paragraph-2", ".mobile-image-2");
+      animateParagraphMobile(".mobile-paragraph-3", ".mobile-image-3");
+      animateParagraphMobile(".mobile-paragraph-4", ".mobile-image-4");
+      animateParagraphMobile(".mobile-paragraph-5", ".mobile-image-5");
+
+
         
   setTimeout(() => {
     gsap.timeline()
-  
     ScrollTrigger.create({
       trigger: 'body', 
       start: 'bottom bottom',
@@ -1172,7 +1222,6 @@ if (aboutPage) {
         gsap.to(".footer-end", { clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)"});
       }
     });
-  
   }, 0)
 
 
