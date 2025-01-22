@@ -1162,10 +1162,10 @@ if (aboutPage) {
         scrollTrigger: {
           trigger: paragraphSelectorM,
           start: "top 70%",
-          end: "bottom 70%",
+          end: "bottom 60%",
           pin: false,
           pinSpacing: false,
-          scrub: 1,
+          scrub: 2,
           },
       });
 
@@ -1190,7 +1190,7 @@ if (aboutPage) {
             trigger: imageSelector,
             start: "top 70%",
             end: "bottom 60%",
-            scrub: 1,
+            scrub: 2,
           },
         }
       );
