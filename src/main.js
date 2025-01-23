@@ -883,6 +883,7 @@ function initialInitHeader() {
     main: document.querySelector('main'),
     swither: document.querySelector('.color-switcher'),
     header: document.querySelector('header'),
+    footer: document.querySelector('footer'),
     pageLabelInit: document.querySelector('.page-transition .current'),
   };
 
@@ -915,6 +916,12 @@ function initialInitHeader() {
     delay: 0.4,
     ease: "expo.inOut",
     duration: 1.2,
+  }, 0).to(transition.footer, {
+    opacity: 1,
+    autoAlpha: 1,
+    delay: 1.2,
+    ease: "expo.inOut",
+    duration: 0.6,
   }, 0)
 
   const menuToggle = document.querySelector(".menu-toggle");
@@ -1914,7 +1921,7 @@ if (footer)  {
     }
   });
 
-}, 100)
+}, 0)
 
 }
 
