@@ -234,6 +234,12 @@ body::-webkit-scrollbar-thumb {
             transform: translateY(10%);
         }
     }
+    .mobile-image-1, .mobile-image-2, .mobile-image-3, .mobile-image-4, .mobile-image-5 {
+        opacity: 0;
+        filter: blur(10px);
+        transform: translateY(100px);
+        visibility: hidden;
+    }
 }
 
 

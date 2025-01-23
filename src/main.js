@@ -106,6 +106,10 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('color4').addEventListener('click', () => changeColor('color4'));
 
 
+
+    const isMobile = window.innerWidth <= 1025; 
+    if (!isMobile) { 
+
     const initiateAnimation = () => {
       const element = document.querySelector('#main-desc');
       if (element) {
@@ -128,6 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     };
     initiateAnimation(); 
+  }
 
 });
 
@@ -181,7 +186,7 @@ const enterTransition = () => {
       ease: "expo.inOut",
       duration: 1,
     }, 0)
-    .to(transition.header, { filter: "blur(10px)",  opacity: 0, duration: 0.8, ease: "expo.inOut",}, 0)
+    .to(transition.header, { filter: "blur(10px)",  opacity: 0, duration: 0.6, ease: "expo.inOut",}, 0)
     .to(transition.cursor, {
       opacity: 0,
       duration: 1,
@@ -196,7 +201,7 @@ const enterTransition = () => {
       .to(transition.menu, {
         clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
         ease: "expo.inOut",
-        duration: 1,
+        duration: 1.2,
       }, 0)
       .to(childElements, {
         opacity: 0,
@@ -211,7 +216,7 @@ const enterTransition = () => {
       ease: "expo.inOut",
       duration: 1,
     }, 0)
-    .to(transition.header, { filter: "blur(10px)", opacity: 0, duration: 0.8, ease: "expo.inOut",}, 0)
+    .to(transition.header, { filter: "blur(10px)", opacity: 0, duration: 0.6, ease: "expo.inOut",}, 0)
     .to(transition.cursor, {
       opacity: 0,
       duration: 1,
@@ -224,6 +229,7 @@ const enterTransition = () => {
 }; 
 
 const leaveTransition = () => {
+  
   const menuToggle = document.querySelector(".menu-toggle");
   const menuCopy = document.querySelector(".menu-copy");
   const menuOpenText = document.querySelector(".close-text");
@@ -583,6 +589,7 @@ function heroAnim() {
         filter: "blur(0px)",
     })
   }
+  
 } 
 
 // Header anit
@@ -601,15 +608,15 @@ function initHeader() {
 
   tlInit.fromTo(transition.pageLabelInit, {
     opacity: 0,
-    bottom: "42px",
+    bottom: "0px", 
     filter: "blur(10px)",
-    delay: 0.2
   }, {
     opacity: 1,
     bottom: "8px",
     filter: "blur(0px)",
     ease: "expo.inOut",
-    duration: 1,
+    delay: 0.4,
+    duration: 1.2,
   })
   .to(transition.pageLabelInit, {
     bottom: "8px",
@@ -623,7 +630,7 @@ function initHeader() {
         nextParticle.start();
       }
     }
-  }, 1.2)
+  }, 1.5)
   .to(transition.main, {
     opacity: 1,
     ease: "expo.inOut",
@@ -857,14 +864,6 @@ function initHeroAnim() {
         duration: 1.5,
         delay: 0.5,
         scaleY: 1,
-        // onComplete: () => {
-          // const newDiv = document.createElement('div');
-          // newDiv.className = 'h-[10vh]';
-          // const mainElement = document.querySelector('main.homepage');
-          // if (mainElement) {
-          //     mainElement.appendChild(newDiv);
-          // } 
-        // }
     })
     gsap.to('.item__caption', {
         ease: "power4",
@@ -1167,23 +1166,38 @@ if (aboutPage) {
           pinSpacing: false,
           scrub: 2,
           },
+          // onComplete: () => {
+          //   gsap.to(
+          //     imageSelector,
+          //     {
+          //       opacity: 1,
+          //       y: 0,
+          //       autoAlpha: 1,
+          //       filter: "blur(0px)",
+          //       ease: "power4.out",
+          //       duration: 0.6
+          //     }
+          //   );
+          // }
       });
 
       // Animate text characters
       timeline.fromTo(
         splitDescM.chars,
         { opacity: 0, filter: "blur(3px)" },
-        { opacity: 1, filter: "blur(0px)", stagger: 1}
+        { opacity: 1, filter: "blur(0px)", stagger: 2}
       );
 
       timeline.fromTo(
         imageSelector,
-        { opacity: 0, scaleY: 1, filter: "blur(10px)",
+        { opacity: 0, y: 100,  scaleY: 1, filter: "blur(10px)",
           transformOrigin: "top",
         },
         {
           opacity: 1,
           scaleY: 1,
+          y: 0,
+          autoAlpha: 1,
           filter: "blur(0px)",
           ease: "power4.out",
           scrollTrigger: {
