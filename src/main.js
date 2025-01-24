@@ -178,7 +178,7 @@ const enterTransition = () => {
     const menuToggle = document.querySelector(".menu-toggle");
 
     if (menuToggle.classList.contains("closed")) {
-    tl.to(transition.body, { backgroundColor: "#000000", duration: 0.2, ease: "linear",})
+    tl.to(transition.body, { backgroundColor: "#121619", duration: 0.2, ease: "linear",})
     .to(childElements, {
       opacity: 0,
       // filter: 'blur(20px)',
@@ -202,7 +202,7 @@ const enterTransition = () => {
     .to(window, { scrollTo: 0, duration: 0}, ">")
    
   } else {
-      tl.to(transition.body, { backgroundColor: "#000000", duration: 0.2, ease: "linear",
+      tl.to(transition.body, { backgroundColor: "#121619", duration: 0.2, ease: "linear",
       }, 0)
       .to(transition.menu, {
         clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
