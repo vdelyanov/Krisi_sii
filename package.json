@@ -29,7 +29,7 @@
     "jquery": "^3.7.1",
     "lenis": "^1.1.14",
     "math-fit": "^1.0.1",
-    "pixi.js": "^8.5.2",
+    "pixi.js": "^8.7.2",
     "three": "^0.171.0",
     "virtual-scroller": "^1.13.1"
   }

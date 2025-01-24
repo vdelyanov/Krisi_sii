@@ -8,6 +8,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { Flip } from "gsap/Flip.js";
 
+import { Gradient } from "https://gist.githack.com/jordienr/64bcf75f8b08641f205bd6a1a0d4ce1d/raw/35a5c7c1ddc9f97ec84fe7e1ab388a3b726db85d/Gradient.js";
+
 gsap.registerPlugin(ScrollTrigger, SplitText, ScrollToPlugin, Flip);
 
 import CookieBox from "./CookieBox.js";
@@ -80,7 +82,12 @@ function changeColor(colorKey) {
 }
 
 // Restore saved color on page load
+
 document.addEventListener('DOMContentLoaded', () => {
+
+  const gradient = new Gradient()
+  gradient.initGradient('#gradient-canvas')
+
     const savedColor = localStorage.getItem('selectedColor');
     
     if (savedColor) {
@@ -106,7 +113,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('color4').addEventListener('click', () => changeColor('color4'));
 
 
-
     const isMobile = window.innerWidth <= 1025; 
     if (!isMobile) { 
 
@@ -118,12 +124,12 @@ document.addEventListener('DOMContentLoaded', () => {
           const mouseY = e.clientY;
           const windowWidth = window.innerWidth;
           const windowHeight = window.innerHeight;
-          const moveX = (mouseX / windowWidth) * 20;
-          const moveY = (mouseY / windowHeight) * 20;
+          const moveX = (mouseX / windowWidth) * 10;
+          const moveY = (mouseY / windowHeight) * 10;
           gsap.to(element, {
             x: -moveX,
             y: -moveY,
-            duration: 2,
+            duration: 2.5,
             ease: "expo.Out",
           });
         });
@@ -494,31 +500,38 @@ hoverLinksText.forEach(link => {
    } else {
 
 
-link.addEventListener('mouseenter', () => {
-    gsap.to(popup, {
-      duration: 0.2,
-      ease: "power3.out",
-      clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)',
-    });
-    gsap.to(split.words, {
-      autoAlpha: 1,
-      duration: 0.2,
-      filter: "blur(0px)",
-      ease: "power3",
-      scale:1,
-      stagger: 0.02,
-      delay: 0.4
-    });
-    gsap.to(mdesc.words, {
-      duration: 0.6,
-      filter: "blur(8px)",
-      opacity: 0,
-      ease: "power3",
-      stagger: -0.04,
-      delay: 0.4
-    });
-    cursorElement.classList.add('hide');
-});
+  link.addEventListener('mouseenter', () => {
+      gsap.to(link, {
+        duration: 0.6,
+        ease: "power3.out",
+        opacity: 0,
+        filter: "blur(4px)"
+      });
+      gsap.to(popup, {
+        duration: 0.2,
+        ease: "power3.out",
+        clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)',
+      });
+      gsap.to(split.words, {
+        autoAlpha: 1,
+        duration: 0.2,
+        filter: "blur(0px)",
+        ease: "power3",
+        scale:1,
+        stagger: 0.02,
+        delay: 0.4
+      });
+      gsap.to(mdesc.words, {
+        duration: 0.6,
+        filter: "blur(8px)",
+        opacity: 0,
+        ease: "power3",
+        stagger: -0.04,
+        delay: 0.4
+      });
+      cursorElement.classList.add('hide');
+
+  });
 
 }
 
@@ -546,6 +559,13 @@ link.addEventListener('mouseenter', () => {
         ease: "power3",
         stagger: 0.04,
         delay: 0.4
+      });
+      gsap.to(link, {
+        duration: 0.8,
+        ease: "power3.out",
+        opacity: 1,
+        delay: 0.4,
+        filter: "blur(0px)"
       });
   }
 
@@ -1926,4 +1946,3 @@ if (footer)  {
 }
 
 })
-
