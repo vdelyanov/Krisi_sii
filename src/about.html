@@ -190,20 +190,20 @@
     <canvas id="gradient-canvas">
     </canvas>
 
-    <main style="opacity: 0;" data-barba="container" id="about" data-barba-namespace="За мен" class="flex h-auto xl:h-dvh items-center flex-col justify-center">
+    <main style="opacity: 0;" data-barba="container" id="about" data-barba-namespace="За мен" class="flex h-auto xl:h-dvh items-center flex-col justify-center overflow-x-hidden xl:overflow-x-visible">
       <img style="opacity: 0;" src="./assets/images/kr1.png" id="logo" alt="Logo" />
       <lottie-player class="fixed w-[48px] h-[64px] bottom-2 left-[34px] translate-x-[-50%] z-[99] pointer-events-none" id="scroll-icon" src="./scroll.json" speed="1" loop autoplay></lottie-player>
       <div class="container pl-[20px] pr-[30px] xl:px-0 h-auto xl:h-screen mx-auto">
-        <div class="mobile xl:hidden pt-[calc(100vh-128px)] pb-[196px]">
-          <h1 id="about-us-title-mobile" class="mb-12 px-[2px] w-fit anim-title">Повече за мен</h1>
+        <div class="mobile xl:hidden pt-[100vh] pb-[196px]">
+          <h1 id="about-us-title-mobile" class="mb-12 px-[2px] fixed bottom-[32px] w-fit anim-title">Повече за мен</h1>
           <img src="./assets/images/about-1.webp" class="mobile-image-1 mb-4 main-image w-full object-cover h-auto" alt="">
-          <p class="text-[18px] mobile-paragraph-1 md:text-[36px] mobile-p text-left mb-16">Аз съм Кристиана Сименова, фотограф и оператор с повече от 10 години опит. Със страст и отдаденост се стремя да създавам смислени и вдъхновяващи проекти, които отразяват моята торческа визия.</p>
+          <p class="text-[18px] mobile-paragraph-1 md:text-[36px] mobile-p text-left mb-48">Аз съм Кристиана Сименова, фотограф и оператор с повече от 10 години опит. Със страст и отдаденост се стремя да създавам смислени и вдъхновяващи проекти, които отразяват моята торческа визия.</p>
           <img src="./assets/images/about-2.webp" class="mobile-image-2 mb-4 main-image  w-full object-cover h-auto" alt="">
-          <p class="text-[18px] mobile-paragraph-2 md:text-[36px] mobile-p text-left mb-16">Завърших средното си специално образование по фотография, а по-късно получих диплома за висше образование от НАТФИЗ „Кръстьо Сарафов“. Там задълбочих знанията си и усъвършенствах уменията си. Докоснах се до различни жанрове във фотографията и изградих собствения си стил на работа.</p>
+          <p class="text-[18px] mobile-paragraph-2 md:text-[36px] mobile-p text-left mb-48">Завърших средното си специално образование по фотография, а по-късно получих диплома за висше образование от НАТФИЗ „Кръстьо Сарафов“. Там задълбочих знанията си и усъвършенствах уменията си. Докоснах се до различни жанрове във фотографията и изградих собствения си стил на работа.</p>
           <img src="./assets/images/about-3.webp" class="mobile-image-3 mb-4 main-image w-full object-cover h-auto" alt="">
-          <p class="text-[18px] mobile-paragraph-3 md:text-[36px] mobile-p text-left mb-16">Имам богат опит в заснемането на събития, интериор, продуктова фотография и портрети. Един от любимите ми жанрове е заснемането на процеса зад кадър (behind the scenes). Имам техническите и художествени умения да реализирам идеите си както с фотографии, така и с видео.</p>
+          <p class="text-[18px] mobile-paragraph-3 md:text-[36px] mobile-p text-left mb-48">Имам богат опит в заснемането на събития, интериор, продуктова фотография и портрети. Един от любимите ми жанрове е заснемането на процеса зад кадър (behind the scenes). Имам техническите и художествени умения да реализирам идеите си както с фотографии, така и с видео.</p>
           <img src="./assets/images/about-4.webp" class="mobile-image-4 mb-4 main-image w-full object-cover h-auto" alt="">
-          <p class="text-[18px] mobile-paragraph-4 md:text-[36px] mobile-p text-left mb-16">Прекарах три години като телевизионен оператор в НОВА телевизия. Работила съм на живо, включително и с камера на кран. Опитът ми включва и работа в снимачния екип на различни риалити формати. Това ми позволи да усъвършенствам техническите си умения и адаптивността си в динамична среда.</p>
+          <p class="text-[18px] mobile-paragraph-4 md:text-[36px] mobile-p text-left mb-48">Прекарах три години като телевизионен оператор в НОВА телевизия. Работила съм на живо, включително и с камера на кран. Опитът ми включва и работа в снимачния екип на различни риалити формати. Това ми позволи да усъвършенствам техническите си умения и адаптивността си в динамична среда.</p>
           <img src="./assets/images/about-5.webp" class="mobile-image-5 mb-4 main-image w-full object-cover h-auto" alt="">
           <p class="text-[18px] mobile-paragraph-5 md:text-[36px] mobile-p text-left mb-8">Работата ми е не просто професия, а възможност за постоянен растеж и предизвикателства, в които влагам максимална креативност и внимание към детайла. Приятно ми е да споделя с вас част от моята работа и да ви поканя да се свържете с мен, ако имате интерес или въпроси.</p>
         </div>
@@ -269,7 +269,7 @@
     <p class="text-[164px] text-black phenomena bold bottom-[4px] right-[6px] absolute leading-none xl:hidden">.sii</p>
     </footer>
 
-    <div id="cookie-box" style="opacity: 0;" class="cookie-consent hidden">
+    <div id="cookie-box" style="opacity: 0; bottom: -100px;" class="cookie-consent hidden">
       <div class="flex flex-col md:flex-row items-center">
         <p class="md:mr-20 my-4 md:my-0 text-center md:text-left md:mb-0 pt-1">Този сайт използва бисквитки.<br>
       </div>

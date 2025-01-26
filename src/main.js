@@ -168,6 +168,7 @@ const transition = {
   pageLabel: document.querySelector('.page-transition .current'),
   gradient: document.querySelector('#gradient-canvas'),
   noise: document.querySelector('#noise-bg'),
+  cookieBox: document.querySelector('#cookie-box'),
 };
 
 const enterTransition = () => {
@@ -184,6 +185,7 @@ const enterTransition = () => {
     tl.to(transition.body, { backgroundColor: "#121619", duration: 0.8, ease: "linear",})
     .to(transition.gradient, { opacity: 0, duration: 0.8, ease: "linear",})
     .to(transition.noise, { opacity: 0, duration: 0.8, ease: "linear",})
+    .to(transition.cookieBox, { bottom: -100, duration: 0.4, ease: "linear",})
     .to(childElements, {
       opacity: 0,
       ease: "expo.inOut",
@@ -210,6 +212,7 @@ const enterTransition = () => {
       }, 0)
       .to(transition.gradient, { opacity: 0, duration: 0.8, ease: "linear",})
       .to(transition.noise, { opacity: 0, duration: 0.8, ease: "linear",})
+      .to(transition.cookieBox, { bottom: -100, duration: 0.4, ease: "linear",})
       .to(transition.menu, {
         clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
         ease: "expo.inOut",
@@ -631,6 +634,7 @@ function initHeader() {
     pageLabelInit: document.querySelector('.page-transition .current'),
     gradient: document.querySelector('#gradient-canvas'),
     noise: document.querySelector('#noise-bg'),
+    cookieBox: document.querySelector('#cookie-box'),
   };
 
   const tlInit = gsap.timeline();
@@ -667,6 +671,7 @@ function initHeader() {
   })
   .to(transition.gradient, { opacity: 0.2, duration: 0.8, ease: "linear",}, 0.4)
   .to(transition.noise, { opacity: 0.4, duration: 0.8, ease: "linear",}, 0.4)
+  .to(transition.cookieBox, { bottom: 0, duration: 0.4, ease: "linear",})
   .to(transition.swither, {
     opacity: 1,
     ease: "expo.inOut",
@@ -919,6 +924,7 @@ function initialInitHeader() {
     gradient: document.querySelector('#gradient-canvas'),
     gradient: document.querySelector('#gradient-canvas'),
     noise: document.querySelector('#noise-bg'),
+    cookieBox: document.querySelector('#cookie-box'),
   };
 
   const tlInit = gsap.timeline();
@@ -936,6 +942,7 @@ function initialInitHeader() {
   })
   .to(transition.gradient, { opacity: 0.2, duration: 0.8, ease: "linear"})
   .to(transition.noise, { opacity: 0.4, duration: 0.8, ease: "linear",})
+  .to(transition.cookieBox, { bottom: 0, duration: 0.4, ease: "linear",})
   .to(transition.swither, {
     opacity: 1,
     ease: "expo.inOut",
@@ -1186,6 +1193,20 @@ if (aboutPage) {
               opacity: 0,
             });
           }, 2200);
+
+          gsap.to("#about-us-title-mobile", {
+            scrollTrigger: {
+              trigger: document.documentElement,
+              start: "top top",
+              end: "+=150",
+              scrub: 1,
+            },
+            ease: "power4.out",
+            opacity: 0,
+            filter: "blur(10px)"
+          });
+
+
 
       function animateParagraphMobile(paragraphSelectorM, imageSelector) {
 
