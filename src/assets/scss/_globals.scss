@@ -224,6 +224,11 @@ body::-webkit-scrollbar-thumb {
     }
 }
 #about {
+    .mobile-p {
+        div {
+            white-space: nowrap;
+        }
+    }
     canvas {
         filter: blur(8px) brightness(1);
         z-index: 1;
@@ -352,6 +357,17 @@ body::-webkit-scrollbar-thumb {
     }
 }
 
+.color-switcher {
+    opacity: 1;
+    transition: opacity 0.6s cubic-bezier(0.075, 0.82, 0.165, 1);
+    &.hide {
+        @include media-tablet {
+            opacity: 0 !important;
+            transition: opacity 0.6s cubic-bezier(0.075, 0.82, 0.165, 1);
+        }
+    }
+}
+
 #gallery-page {
     min-height: 110vh;
     .lightbox {
@@ -368,6 +384,7 @@ body::-webkit-scrollbar-thumb {
         opacity: 0;
         filter: blur(10px);
         pointer-events: none;
+        background-color: transparent !important;
         @include media-tablet {
             width: 100%;
             bottom: 0;
@@ -485,6 +502,12 @@ body::-webkit-scrollbar-thumb {
         .columns {
             overflow: hidden;
             will-change: transform;
+            opacity: 1;
+            transition: opacity 0.6s cubic-bezier(0.075, 0.82, 0.165, 1);
+            &.hide {
+                opacity: 0 !important;
+                transition: opacity 0.6s cubic-bezier(0.075, 0.82, 0.165, 1);
+            }
             .column {
                 will-change: transform;
                 display: flex;
@@ -500,12 +523,15 @@ body::-webkit-scrollbar-thumb {
                 img {
                     will-change: transform;
                     object-fit: cover;
+                    @include media-tablet {
+                        border-top-right-radius: 4px;
+                        border-bottom-right-radius: 4px;
+                    }
                 }
             }
 
         }
     }
-
     .mobile-filter-categories {
         position: fixed;
         right: 30px;
@@ -515,10 +541,14 @@ body::-webkit-scrollbar-thumb {
         text-orientation: upright;
         letter-spacing: 0px;
         transform: translateY(-50%);
-        // text-transform: uppercase;
         font-size: 18px;
         line-height: 0;
-    
+        opacity: 1;
+        transition: opacity 0.6s cubic-bezier(0.075, 0.82, 0.165, 1);
+        &.hide {
+            opacity: 0 !important;
+            transition: opacity 0.6s cubic-bezier(0.075, 0.82, 0.165, 1);
+        }
     }
     .filters {
         position: fixed;

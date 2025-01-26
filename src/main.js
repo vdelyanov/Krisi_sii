@@ -52,8 +52,10 @@ $(".color-switcher").mouseleave(function() {
 const colors = {
     color1: '#000000', 
     color2: '#121619', 
-    color3: '#141D29',  
-    color4: '#1F1F1F' 
+    // color3: '#141D29',  
+    color3: '#1B2737',  
+    // color4: '#1F1F1F' 
+    color4: '#292929' 
 };
 
 // Function to change background color and store in localStorage
@@ -107,38 +109,37 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Add event listeners to buttons
-    document.getElementById('color1').addEventListener('click', () => changeColor('color1'));
+    // document.getElementById('color1').addEventListener('click', () => changeColor('color1'));
     document.getElementById('color2').addEventListener('click', () => changeColor('color2'));
     document.getElementById('color3').addEventListener('click', () => changeColor('color3'));
     document.getElementById('color4').addEventListener('click', () => changeColor('color4'));
 
 
-    const isMobile = window.innerWidth <= 1025; 
-    if (!isMobile) { 
-
-    const initiateAnimation = () => {
-      const element = document.querySelector('#main-desc');
-      if (element) {
-        document.addEventListener('mousemove', (e) => {
-          const mouseX = e.clientX;
-          const mouseY = e.clientY;
-          const windowWidth = window.innerWidth;
-          const windowHeight = window.innerHeight;
-          const moveX = (mouseX / windowWidth) * 10;
-          const moveY = (mouseY / windowHeight) * 10;
-          gsap.to(element, {
-            x: -moveX,
-            y: -moveY,
-            duration: 2.5,
-            ease: "expo.Out",
-          });
-        });
-      } else {
-        setTimeout(initiateAnimation, 100);
-      }
-    };
-    initiateAnimation(); 
-  }
+    // const isMobile = window.innerWidth <= 1025; 
+    // if (!isMobile) { 
+    // const initiateAnimation = () => {
+    //   const element = document.querySelector('#main-desc');
+    //   if (element) {
+    //     document.addEventListener('mousemove', (e) => {
+    //       const mouseX = e.clientX;
+    //       const mouseY = e.clientY;
+    //       const windowWidth = window.innerWidth;
+    //       const windowHeight = window.innerHeight;
+    //       const moveX = (mouseX / windowWidth) * 10;
+    //       const moveY = (mouseY / windowHeight) * 10;
+    //       gsap.to(element, {
+    //         x: -moveX,
+    //         y: -moveY,
+    //         duration: 2.5,
+    //         ease: "expo.Out",
+    //       });
+    //     });
+    //   } else {
+    //     setTimeout(initiateAnimation, 100);
+    //   }
+    // };
+    // initiateAnimation(); 
+    // }
 
 });
 
@@ -165,6 +166,8 @@ const transition = {
   swither: document.querySelectorAll('.color-switcher'),
   body: document.querySelector('body'),
   pageLabel: document.querySelector('.page-transition .current'),
+  gradient: document.querySelector('#gradient-canvas'),
+  noise: document.querySelector('#noise-bg'),
 };
 
 const enterTransition = () => {
@@ -179,9 +182,10 @@ const enterTransition = () => {
 
     if (menuToggle.classList.contains("closed")) {
     tl.to(transition.body, { backgroundColor: "#121619", duration: 0.2, ease: "linear",})
+    .to(transition.gradient, { opacity: 0, duration: 0.4, ease: "linear",})
+    .to(transition.noise, { opacity: 0, duration: 0.4, ease: "linear",})
     .to(childElements, {
       opacity: 0,
-      // filter: 'blur(20px)',
       ease: "expo.inOut",
       duration: 1,
     }, 0)
@@ -204,6 +208,8 @@ const enterTransition = () => {
   } else {
       tl.to(transition.body, { backgroundColor: "#121619", duration: 0.2, ease: "linear",
       }, 0)
+      .to(transition.gradient, { opacity: 0, duration: 0.4, ease: "linear",})
+      .to(transition.noise, { opacity: 0, duration: 0.4, ease: "linear",})
       .to(transition.menu, {
         clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
         ease: "expo.inOut",
@@ -535,52 +541,53 @@ hoverLinksText.forEach(link => {
 
 }
 
-    function triggerAnimation() {
-      cursorElement.classList.remove('hide');
-      gsap.killTweensOf(split.words);
-      gsap.to(popup, {
-        duration: 0.2,
-        ease: "power3.out",
-        clipPath: 'polygon(0 0, 0 0, 0 100%, 0 100%)',
-        onComplete: () => {
-          gsap.to(split.words, {
-            autoAlpha: 0,       
-            filter: "blur(8px)",  
-            duration: 0.1,
-            delay: 0.3
-          });
-        }
-      });
-      gsap.killTweensOf(mdesc.words);
-      gsap.to(mdesc.words, {
-        duration: 0.6,
-        filter: "blur(0px)",
-        opacity: 1,
-        ease: "power3",
-        stagger: 0.04,
-        delay: 0.4
-      });
-      gsap.to(link, {
-        duration: 0.8,
-        ease: "power3.out",
-        opacity: 1,
-        delay: 0.4,
-        filter: "blur(0px)"
-      });
-  }
-
-  let lastScrollY = 0; 
-const scrollTolerance = 50; 
+function triggerAnimation() {
+    cursorElement.classList.remove('hide');
+    gsap.killTweensOf(split.words);
+    gsap.to(popup, {
+      duration: 0.2,
+      ease: "power3.out",
+      clipPath: 'polygon(0 0, 0 0, 0 100%, 0 100%)',
+      onComplete: () => {
+        gsap.to(split.words, {
+          autoAlpha: 0,       
+          filter: "blur(8px)",  
+          duration: 0.1,
+          delay: 0.3
+        });
+      }
+    });
+    gsap.killTweensOf(mdesc.words);
+    gsap.to(mdesc.words, {
+      duration: 0.6,
+      filter: "blur(0px)",
+      opacity: 1,
+      ease: "power3",
+      stagger: 0.04,
+      delay: 0.4
+    });
+    gsap.to(link, {
+      duration: 0.8,
+      ease: "power3.out",
+      opacity: 1,
+      delay: 0.4,
+      filter: "blur(0px)"
+    });
+}
 
 link.addEventListener('mouseleave', triggerAnimation);
 
-window.addEventListener('scroll', () => {
-  const currentScrollY = window.scrollY;
-  if (Math.abs(currentScrollY - lastScrollY) > scrollTolerance) {
-    lastScrollY = currentScrollY; 
-    triggerAnimation();
-  }
-});
+if (isMobile) {
+  let lastScrollY = 0; 
+  const scrollTolerance = 50; 
+    window.addEventListener('scroll', () => {
+    const currentScrollY = window.scrollY;
+    if (Math.abs(currentScrollY - lastScrollY) > scrollTolerance) {
+      lastScrollY = currentScrollY; 
+      triggerAnimation();
+    }
+  });
+}
 
 });
 
@@ -622,6 +629,9 @@ function initHeader() {
     header: document.querySelector('header'),
     footer: document.querySelector('footer'),
     pageLabelInit: document.querySelector('.page-transition .current'),
+    pageLabelInit: document.querySelector('.page-transition .current'),
+    gradient: document.querySelector('#gradient-canvas'),
+    noise: document.querySelector('#noise-bg'),
   };
 
   const tlInit = gsap.timeline();
@@ -656,6 +666,8 @@ function initHeader() {
     ease: "expo.inOut",
     duration: 1.2,
   })
+  .to(transition.gradient, { opacity: 0.2, duration: 0.8, ease: "linear",}, 0.4)
+  .to(transition.noise, { opacity: 0.5, duration: 0.8, ease: "linear",}, 0.4)
   .to(transition.swither, {
     opacity: 1,
     ease: "expo.inOut",
@@ -905,6 +917,9 @@ function initialInitHeader() {
     header: document.querySelector('header'),
     footer: document.querySelector('footer'),
     pageLabelInit: document.querySelector('.page-transition .current'),
+    gradient: document.querySelector('#gradient-canvas'),
+    gradient: document.querySelector('#gradient-canvas'),
+    noise: document.querySelector('#noise-bg'),
   };
 
   const tlInit = gsap.timeline();
@@ -920,6 +935,8 @@ function initialInitHeader() {
     ease: "expo.inOut",
     duration: 1.2,
   })
+  .to(transition.gradient, { opacity: 0.2, duration: 0.8, ease: "linear"}, 0.4)
+  .to(transition.noise, { opacity: 0.5, duration: 0.8, ease: "linear",}, 0.4)
   .to(transition.swither, {
     opacity: 1,
     ease: "expo.inOut",
@@ -1148,28 +1165,6 @@ const footer = document.querySelector('.footer-fixed')
 
 if (aboutPage) {
 
-    const initiateAnimation = () => {
-      const element = document.querySelector('#about canvas');
-      if (element) {
-        const element = document.querySelector('#about canvas');
-        document.addEventListener('mousemove', (e) => {
-          const mouseX = e.clientX;
-          const windowWidth = window.innerWidth;
-          const moveX = (mouseX / windowWidth) * 20;
-          gsap.to(element, {
-            x: -moveX,  
-            duration: 2,
-            ease: "expo.Out",
-          });
-        });
-      } else {
-        setTimeout(initiateAnimation, 100); // Retry after 100ms if the element doesn't exist yet
-      }
-    };
-
-    initiateAnimation();
-
-
     function resetScrollTriggers() {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
       ScrollTrigger.refresh();
@@ -1182,42 +1177,30 @@ if (aboutPage) {
       function animateParagraphMobile(paragraphSelectorM, imageSelector) {
 
       const textDescM = document.querySelector(paragraphSelectorM);
-      const splitDescM = new SplitText(textDescM, { type: "words,chars" });
+      const splitDescM = new SplitText(textDescM, { type: "words,chars,lines" });
 
       const timeline = gsap.timeline({
         scrollTrigger: {
           trigger: paragraphSelectorM,
-          start: "top 70%",
-          end: "bottom 60%",
+          start: "top 90%",
+          end: "bottom 80%",
           pin: false,
           pinSpacing: false,
           scrub: 2,
           },
-          // onComplete: () => {
-          //   gsap.to(
-          //     imageSelector,
-          //     {
-          //       opacity: 1,
-          //       y: 0,
-          //       autoAlpha: 1,
-          //       filter: "blur(0px)",
-          //       ease: "power4.out",
-          //       duration: 0.6
-          //     }
-          //   );
-          // }
+
       });
 
       // Animate text characters
       timeline.fromTo(
-        splitDescM.chars,
+        splitDescM.lines,
         { opacity: 0, filter: "blur(3px)" },
-        { opacity: 1, filter: "blur(0px)", stagger: 2}
+        { opacity: 1, filter: "blur(0px)", stagger: 0.1}
       );
 
       timeline.fromTo(
         imageSelector,
-        { opacity: 0, y: 100,  scaleY: 1, filter: "blur(10px)",
+        { opacity: 0, y: 20,  scaleY: 1, filter: "blur(10px)",
           transformOrigin: "top",
         },
         {
@@ -1315,7 +1298,7 @@ if (aboutPage) {
       // Animate associated image
       timeline.fromTo(
         imageSelector,
-        { top: "1000%", scaleY: 2, filter: "blur(10px)"},
+        { top: "1000%", scaleY: 2, filter: "blur(100px)"},
         {
           top: `${topOffset}vh`,
           scaleY: 1,
@@ -1381,29 +1364,28 @@ if (contactPage) {
   lenis.scrollTo(0) 
   window.scrollTo(0, 0);
 
-  const initiateAnimation = () => {
-    const element = document.querySelector('#contacts canvas');
-    if (element) {
-      document.addEventListener('mousemove', (e) => {
-        const mouseX = e.clientX;
-        const mouseY = e.clientY;
-        const windowWidth = window.innerWidth;
-        const windowHeight = window.innerHeight;
-        const moveX = (mouseX / windowWidth) * 20;
-        const moveY = (mouseY / windowHeight) * 20;
-        gsap.to(element, {
-          x: -moveX,
-          y: -moveY,
-          duration: 2,
-          ease: "expo.Out",
-        });
-      });
-    } else {
-      setTimeout(initiateAnimation, 100);
-    }
-  };
-
-  initiateAnimation(); 
+  // const initiateAnimation = () => {
+  //   const element = document.querySelector('#contacts canvas');
+  //   if (element) {
+  //     document.addEventListener('mousemove', (e) => {
+  //       const mouseX = e.clientX;
+  //       const mouseY = e.clientY;
+  //       const windowWidth = window.innerWidth;
+  //       const windowHeight = window.innerHeight;
+  //       const moveX = (mouseX / windowWidth) * 20;
+  //       const moveY = (mouseY / windowHeight) * 20;
+  //       gsap.to(element, {
+  //         x: -moveX,
+  //         y: -moveY,
+  //         duration: 2,
+  //         ease: "expo.Out",
+  //       });
+  //     });
+  //   } else {
+  //     setTimeout(initiateAnimation, 100);
+  //   }
+  // };
+  // initiateAnimation(); 
 
 }
 
@@ -1839,6 +1821,9 @@ if (isMobile) {
   function refreshModal() {
   // Modal 
   const gridItems = document.querySelectorAll(".img");
+  const columns = document.querySelector(".columns");
+  const filterTrigger = document.querySelector("#mobile-filter-categories");
+  const colorSwitcher = document.querySelector(".color-switcher");
   const lightbox = document.getElementById("lightbox");
   const lightboxImage = document.querySelector(".lightbox-image");
   const closeButton = document.querySelector(".lightbox-close");
@@ -1862,6 +1847,9 @@ if (isMobile) {
     function openLightbox() {
         lightboxImage.src = images[currentIndex];
         lightbox.classList.add("show");
+        columns.classList.add("hide");
+        filterTrigger.classList.add("hide");
+        colorSwitcher.classList.add("hide");
         setTimeout(() => {
           lightbox.classList.add("opened");
         }, 10)
@@ -1871,6 +1859,11 @@ if (isMobile) {
     function closeLightbox() {
         lightbox.classList.remove("show");
         lightbox.classList.remove("opened");
+        setTimeout(() => {
+          columns.classList.remove("hide");
+          filterTrigger.classList.remove("hide");
+          colorSwitcher.classList.remove("hide");
+        }, 500)
     }
 
     function showPrevImage() {

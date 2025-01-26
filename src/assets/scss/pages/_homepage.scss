@@ -52,6 +52,10 @@
     border-bottom-left-radius: 8px;
     overflow: hidden;
     aspect-ratio: 4/3;
+    @include media-tablet {
+      border-top-left-radius: 4px;
+      border-bottom-left-radius: 4px;
+    }
     &:after {
       content: '';
       position: absolute;
@@ -65,6 +69,10 @@
       border-top-left-radius: 8px;
       border-bottom-left-radius: 8px;
       background: linear-gradient(275deg, rgba(255,255,255,0) 0%, rgba(0,0,0,0.2) 100%);
+      @include media-tablet {
+        border-top-left-radius: 4px;
+        border-bottom-left-radius: 4px;
+      }
     }
     img {
       background-size: cover;
@@ -83,6 +91,10 @@
   border-top-left-radius: 8px;
   border-bottom-left-radius: 8px;
   object-fit: cover;
+  @include media-tablet {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+  }
 }
 .item__image-inner_image {
   opacity: 0;
@@ -284,8 +296,10 @@
     border-top-right-radius: 8px;
     border-bottom-right-radius: 8px;
     @include media-tablet {
-      border-top-left-radius: 8px;
-      border-bottom-left-radius: 8px;
+      border-top-left-radius: 4px;
+      border-bottom-left-radius: 4px;
+      border-top-right-radius: 4px;
+      border-bottom-right-radius: 4px;
     }
   }
   .main-desc-text {
@@ -317,13 +331,14 @@
   width:100%;
   min-height:100vh;
   height: auto;
-  --gradient-color-1: #C4C7C7;
+  --gradient-color-1: #ffffff;
   --gradient-color-2: #ffffff;
-  --gradient-color-3: #C4C7C7; 
-  --gradient-color-4: #000000;
+  --gradient-color-3: #ffffff; 
+  --gradient-color-4: #0A0A0A;
   mix-blend-mode: darken;
-  opacity: 0.2;
+  filter: blur(10px);
   z-index:-1;
+  opacity: 0;
 }
 
 #noise-bg {
@@ -339,7 +354,7 @@
 	background-repeat: repeat;
 	animation: 2000ms infinite noise;
 	pointer-events: none;
-	opacity: 0.6;
+	opacity: 0;
 }
 
 @keyframes noise {
