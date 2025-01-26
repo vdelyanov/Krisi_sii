@@ -235,9 +235,18 @@ body::-webkit-scrollbar-thumb {
         position: fixed;
         top: 0;
         @include media-tablet {
-            left: -20% !important;
-            top: unset !important;
-            transform: translateY(10%);
+            top: auto !important;
+            bottom: 0;
+            left: auto;
+            transform: translate(5%, 5%);
+            scale: 2;
+        }
+        @include media-md {
+            top: auto !important;
+            bottom: 0;
+            left: auto;
+            transform: translate(8%, 38%);
+            scale: 0.8;
         }
     }
     .mobile-image-1, .mobile-image-2, .mobile-image-3, .mobile-image-4, .mobile-image-5 {

@@ -181,9 +181,9 @@ const enterTransition = () => {
     const menuToggle = document.querySelector(".menu-toggle");
 
     if (menuToggle.classList.contains("closed")) {
-    tl.to(transition.body, { backgroundColor: "#121619", duration: 0.2, ease: "linear",})
-    .to(transition.gradient, { opacity: 0, duration: 0.4, ease: "linear",})
-    .to(transition.noise, { opacity: 0, duration: 0.4, ease: "linear",})
+    tl.to(transition.body, { backgroundColor: "#121619", duration: 0.8, ease: "linear",})
+    .to(transition.gradient, { opacity: 0, duration: 0.8, ease: "linear",})
+    .to(transition.noise, { opacity: 0, duration: 0.8, ease: "linear",})
     .to(childElements, {
       opacity: 0,
       ease: "expo.inOut",
@@ -206,10 +206,10 @@ const enterTransition = () => {
     .to(window, { scrollTo: 0, duration: 0}, ">")
    
   } else {
-      tl.to(transition.body, { backgroundColor: "#121619", duration: 0.2, ease: "linear",
+      tl.to(transition.body, { backgroundColor: "#121619", duration: 0.8, ease: "linear",
       }, 0)
-      .to(transition.gradient, { opacity: 0, duration: 0.4, ease: "linear",})
-      .to(transition.noise, { opacity: 0, duration: 0.4, ease: "linear",})
+      .to(transition.gradient, { opacity: 0, duration: 0.8, ease: "linear",})
+      .to(transition.noise, { opacity: 0, duration: 0.8, ease: "linear",})
       .to(transition.menu, {
         clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
         ease: "expo.inOut",
@@ -505,8 +505,8 @@ hoverLinksText.forEach(link => {
   });
    } else {
 
-
   link.addEventListener('mouseenter', () => {
+    setTimeout(() => {
       gsap.to(link, {
         duration: 0.6,
         ease: "power3.out",
@@ -536,9 +536,8 @@ hoverLinksText.forEach(link => {
         delay: 0.4
       });
       cursorElement.classList.add('hide');
-
   });
-
+}, 100)
 }
 
 function triggerAnimation() {
@@ -553,7 +552,7 @@ function triggerAnimation() {
           autoAlpha: 0,       
           filter: "blur(8px)",  
           duration: 0.1,
-          delay: 0.3
+          delay: 0.3,
         });
       }
     });
@@ -571,9 +570,9 @@ function triggerAnimation() {
       ease: "power3.out",
       opacity: 1,
       delay: 0.4,
-      filter: "blur(0px)"
+      filter: "blur(0px)",
     });
-}
+  }
 
 link.addEventListener('mouseleave', triggerAnimation);
 
@@ -667,7 +666,7 @@ function initHeader() {
     duration: 1.2,
   })
   .to(transition.gradient, { opacity: 0.2, duration: 0.8, ease: "linear",}, 0.4)
-  .to(transition.noise, { opacity: 0.5, duration: 0.8, ease: "linear",}, 0.4)
+  .to(transition.noise, { opacity: 0.4, duration: 0.8, ease: "linear",}, 0.4)
   .to(transition.swither, {
     opacity: 1,
     ease: "expo.inOut",
@@ -935,8 +934,8 @@ function initialInitHeader() {
     ease: "expo.inOut",
     duration: 1.2,
   })
-  .to(transition.gradient, { opacity: 0.2, duration: 0.8, ease: "linear"}, 0.4)
-  .to(transition.noise, { opacity: 0.5, duration: 0.8, ease: "linear",}, 0.4)
+  .to(transition.gradient, { opacity: 0.2, duration: 0.8, ease: "linear"})
+  .to(transition.noise, { opacity: 0.4, duration: 0.8, ease: "linear",})
   .to(transition.swither, {
     opacity: 1,
     ease: "expo.inOut",
@@ -1174,6 +1173,20 @@ if (aboutPage) {
     const isMobile = window.innerWidth <= 1025; 
     if (isMobile) { 
 
+          // Canvas fade-out effect
+          setTimeout(() => {
+            gsap.to("canvas", {
+              scrollTrigger: {
+                trigger: document.documentElement,
+                start: "top top",
+                end: "+=100",
+                scrub: 1,
+              },
+              ease: "power4.out",
+              opacity: 0,
+            });
+          }, 2200);
+
       function animateParagraphMobile(paragraphSelectorM, imageSelector) {
 
       const textDescM = document.querySelector(paragraphSelectorM);
@@ -1182,7 +1195,7 @@ if (aboutPage) {
       const timeline = gsap.timeline({
         scrollTrigger: {
           trigger: paragraphSelectorM,
-          start: "top 90%",
+          start: "top 100%",
           end: "bottom 80%",
           pin: false,
           pinSpacing: false,
@@ -1212,8 +1225,8 @@ if (aboutPage) {
           ease: "power4.out",
           scrollTrigger: {
             trigger: imageSelector,
-            start: "top 70%",
-            end: "bottom 60%",
+            start: "top 100%",
+            end: "bottom 80%",
             scrub: 2,
           },
         }
@@ -1248,6 +1261,20 @@ if (aboutPage) {
 
 
   } else {
+
+      // Canvas fade-out effect
+      setTimeout(() => {
+        gsap.to("canvas", {
+          scrollTrigger: {
+            trigger: document.documentElement,
+            start: "bottom 100%",
+            end: "bottom 90%",
+            scrub: 1,
+          },
+          ease: "power4.out",
+          opacity: 0,
+        });
+      }, 2200);
 
       let topOffset = 35;
       function animateParagraph(paragraphSelector, imageSelector) {
@@ -1341,21 +1368,6 @@ if (aboutPage) {
     });
 
   }
-
-  // Canvas fade-out effect
-  setTimeout(() => {
-    gsap.to("canvas", {
-      scrollTrigger: {
-        trigger: document.documentElement,
-        start: "bottom 100%",
-        end: "bottom 90%",
-        scrub: 1,
-      },
-      ease: "power4.out",
-      opacity: 0,
-    });
-  }, 2200);
-
 
 }
 
