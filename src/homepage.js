@@ -18,9 +18,9 @@ for (const item of items) {
 
         gsap.from(item.DOM.image, {
             ease: 'none',
-            scaleY: 2.4,
+            scaleY: 2.0,
             opacity: 0,
-            yPercent: 100,
+            yPercent: 60,
             filter: "blur(10px)",
             scrollTrigger: {
                 trigger: item.DOM.el,
@@ -46,9 +46,9 @@ for (const item of items) {
         }, {
             ease: 'none',
             filter: "blur(10px)",
-            scaleY: 2.4,
+            scaleY: 2,
             opacity: 0,
-            yPercent: -100,
+            yPercent: -60,
             onStart: () => {
                 // item.DOM.imageInnerItem.classList.remove('show');
             },

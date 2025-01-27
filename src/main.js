@@ -1164,10 +1164,52 @@ function initialInitHeader() {
 // Pages
 document.addEventListener("DOMContentLoaded", function () {
   
+
+const homePage = document.querySelector("#homepage");
 const aboutPage = document.querySelector("#about");
 const contactPage = document.querySelector("#contacts");
 const galleryPage = document.querySelector("#gallery-page");
 const footer = document.querySelector('.footer-fixed') 
+
+
+if (homePage) {
+  gsap.to("#title-name", {
+    scrollTrigger: {
+      trigger: document.documentElement,
+      start: "top top",
+      end: "+=200",
+      scrub: 1,
+    },
+    ease: "power4.out",
+    opacity: 0,
+    filter: "blur(10px)"
+  });
+
+  gsap.to("#desc", {
+    scrollTrigger: {
+      trigger: document.documentElement,
+      start: "top top",
+      end: "+=200",
+      scrub: 1,
+    },
+    ease: "power4.out",
+    opacity: 0,
+    filter: "blur(10px)"
+  });
+
+  gsap.to("#show-text-trigger-wrapper", {
+    scrollTrigger: {
+      trigger: document.documentElement,
+      start: "top top",
+      end: "+=200",
+      scrub: 1,
+    },
+    ease: "power4.out",
+    filter: "blur(0px)"
+  });
+
+
+}
 
 if (aboutPage) {
 

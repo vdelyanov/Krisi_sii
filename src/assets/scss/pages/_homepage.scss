@@ -5,7 +5,7 @@
 .content {
 	position: relative;
   margin-left: auto;
-  width: calc(60% + 48px) ;
+  width: calc(60%);
   padding-top: 40vh;
   padding-bottom: 10vh;
   pointer-events: none;
@@ -22,7 +22,8 @@
 	justify-content: center;
 	display: grid;
 	grid-template-areas: 'caption' 'img';
-	margin: 0 auto 25vh;
+	margin: 0 auto 45vh;
+  aspect-ratio: 4/3;
   &:last-child {
     margin: 0 auto 0vh;
   }
@@ -31,7 +32,6 @@
 .item__image-wrap {
 	width: 100%;
 	justify-self: center;
-  padding-left: 48px;
 }
 
 .item__image {
@@ -116,16 +116,17 @@
 	white-space: nowrap;
 	width: min-content;
 	line-height: 1;
-	font-size: 96px;
+	font-size: 80px;
 	font-weight: 300;
 	margin: 0;
 	color: $white;
-  margin-left: -52px;
+  margin-left: -64px;
   margin-top: 48px;
   pointer-events: all;
   pointer-events: none;
   @include media-tablet {
     margin-left: 0px;
+    margin-left: -32px;
     font-size: 48px;
   }
   .oh__inner {
@@ -392,3 +393,9 @@
 	}
 }
 
+.entry-screen {
+  canvas {
+    filter: blur(4px);
+    transform: translateX(25%);
+  }
+}

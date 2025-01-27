@@ -6,8 +6,8 @@
     <title>Krisi.sii</title>
     <link rel="icon" type="image/svg+xml" href="./sii.svg" />
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-    <script type="module" crossorigin src="./index.434g40YV.js"></script>
-    <link rel="modulepreload" crossorigin href="./main.UaEEM7Zl.js">
+    <script type="module" crossorigin src="./index.Coi9eRkG.js"></script>
+    <link rel="modulepreload" crossorigin href="./main.D8yXZ7Gl.js">
     <link rel="stylesheet" crossorigin href="./css/main.css">
     <link rel="stylesheet" crossorigin href="./css/style.css">
   </head>
@@ -59,36 +59,36 @@
     <div style="opacity: 0;" class="menu">
 
       <div class="grid grid-cols-12">
-        <div class="col-span-12 md:col-span-6 flex flex-col justify-between">
-          <div class="menu-logo">
+          <div class="col-span-12 md:col-span-6 flex flex-col justify-between">
+            <div class="menu-logo">
+
+            </div>
+
+            <div class="socials flex flex-col gap-2">
+                <a class="text-[20px] text-blur" target="_blank" href="https://www.instagram.com/photo.sii/">Instagram</a>
+                <a class="text-[20px] text-blur" target="_blank" href="https://www.linkedin.com/in/kristiana-simeonova-62a04a213/">LinkedIn</a>
+                <div class="flex flex-col md:flex-row gap-2 md:gap-4 mt-4">
+                  <a class="text-blur" href="tel:+359898373968">+359898373968</a>
+                  <a class="text-blur" href="mailto:kriisiisii@gmail.com">kriisiisii@gmail.com</a>
+                </div>
+            </div>
 
           </div>
 
-          <div class="socials flex flex-col gap-2">
-              <a class="text-[20px] text-blur" target="_blank" href="https://www.instagram.com/photo.sii/">Instagram</a>
-              <a class="text-[20px] text-blur" target="_blank" href="https://www.linkedin.com/in/kristiana-simeonova-62a04a213/">LinkedIn</a>
-              <div class="flex flex-col md:flex-row gap-2 md:gap-4 mt-4">
-                <a class="text-blur" href="tel:+359898373968">+359898373968</a>
-                <a class="text-blur" href="mailto:kriisiisii@gmail.com">kriisiisii@gmail.com</a>
-              </div>
+          <div class="col-span-12 md:col-span-6 flex flex-col justify-between">
+            <nav class="links">
+              <div class="link active text-blur"><a href="./index.html">Начало</a></div>
+              <div class="link text-blur"><a href="./gallery.html">Галерия</a></div>
+              <div class="link text-blur"><a href="./about.html">За мен</a></div>
+              <div class="link text-blur"><a href="./contacts.html">Контакти</a></div>
+            </nav>
+
+            <div class="logo-heading flex justify-end">
+              <h2>Photo.sii</h2>
+            </div>
+    
           </div>
-
-        </div>
-
-        <div class="col-span-12 md:col-span-6 flex flex-col justify-between">
-          <nav class="links">
-            <div class="link active text-blur"><a href="./index.html">Начало</a></div>
-            <div class="link text-blur"><a href="./gallery.html">Галерия</a></div>
-            <div class="link text-blur"><a href="./about.html">За мен</a></div>
-            <div class="link text-blur"><a href="./contacts.html">Контакти</a></div>
-          </nav>
-
-          <div class="logo-heading flex justify-end">
-            <h2>Photo.sii</h2>
-          </div>
-  
-        </div>
-    </div>
+      </div>
 
     </div>
 
@@ -197,6 +197,14 @@
     <main style="opacity: 0;" data-barba="container" id="homepage" class="homepage" data-barba-namespace="Начало">
       <lottie-player class="fixed hidden lg:block w-[48px] h-[64px] bottom-2 left-[50%] translate-x-[-50%] z-[99] pointer-events-none" id="scroll-icon" src="./scroll.json" speed="1" loop autoplay></lottie-player>
       
+      <section class="entry-screen hidden xl:block h-screen mb-[10vh]">
+        <div class="slogan fixed top-[50%] translate-y-[-50%] left-[12vw]">
+          <h1 id="title-name"  class="xl:text-[80px] mb-6">Кристиана <br> Симеонова</h1>
+          <p id="desc" class="text-[28px]">Комерсиална и артистична <br> фотография обединени <br> в едно изкуство.</p>
+        </div>
+        <img style="opacity: 0;" src="./images/canvas.png" id="logo" alt="Logo" />
+      </section>
+
       <nav class="scroll-nav">
         <ul>
           <li class="scroll-item group">
@@ -221,7 +229,7 @@
         <div class="scroll-indicator"></div>
       </nav>
 
-      <p id="main-desc">
+      <p id="main-desc" class="xl:opacity-0">
         Комерсиална и артистична фотография обединени в едно изкуство.
       </p>
 
@@ -385,6 +393,30 @@
         <button tabindex="-1" id="btn-position" class="primary-btn hover-link text-blur" type="click">Окей</button>
       </div>
     </div>
+
+    <script src="https://nextparticle.nextco.de/nextparticle.min.js"></script>
+    <script>
+
+      const nextParticle = new NextParticle({
+        image: document.all.logo,
+        width: window.innerWidth,
+        height: window.innerHeight,
+        maxWidth: window.innerWidth * 0.5,
+        particleGap: 4,
+        dataNoise: 20,
+        mouseForce: 0,
+        disableInteraction: false
+      });
+      window.onload = function () {
+        if (window.innerWidth < 1025) {
+          nextParticle.width = window.innerWidth * 2,
+          nextParticle.height=  window.innerHeight * 2,
+          nextParticle.maxWidth = window.innerWidth * 2;
+          nextParticle.start();
+        } 
+      };
+
+    </script>
 
 
   </body>
