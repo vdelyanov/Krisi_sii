@@ -6,8 +6,8 @@
     <title>Krisi.sii</title>
     <link rel="icon" type="image/svg+xml" href="./sii.svg" />
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
-    <script type="module" crossorigin src="./index.Coi9eRkG.js"></script>
-    <link rel="modulepreload" crossorigin href="./main.D8yXZ7Gl.js">
+    <script type="module" crossorigin src="./index.DFlJmi6i.js"></script>
+    <link rel="modulepreload" crossorigin href="./main.BeQX1q33.js">
     <link rel="stylesheet" crossorigin href="./css/main.css">
     <link rel="stylesheet" crossorigin href="./css/style.css">
   </head>
@@ -197,14 +197,6 @@
     <main style="opacity: 0;" data-barba="container" id="homepage" class="homepage" data-barba-namespace="Начало">
       <lottie-player class="fixed hidden lg:block w-[48px] h-[64px] bottom-2 left-[50%] translate-x-[-50%] z-[99] pointer-events-none" id="scroll-icon" src="./scroll.json" speed="1" loop autoplay></lottie-player>
       
-      <section class="entry-screen hidden xl:block h-screen mb-[10vh]">
-        <div class="slogan fixed top-[50%] translate-y-[-50%] left-[12vw]">
-          <h1 id="title-name"  class="xl:text-[80px] mb-6">Кристиана <br> Симеонова</h1>
-          <p id="desc" class="text-[28px]">Комерсиална и артистична <br> фотография обединени <br> в едно изкуство.</p>
-        </div>
-        <img style="opacity: 0;" src="./images/canvas.png" id="logo" alt="Logo" />
-      </section>
-
       <nav class="scroll-nav">
         <ul>
           <li class="scroll-item group">
@@ -229,18 +221,11 @@
         <div class="scroll-indicator"></div>
       </nav>
 
-      <p id="main-desc" class="xl:opacity-0">
-        Комерсиална и артистична фотография обединени в едно изкуство.
-      </p>
-
       <div class="show-text-trigger-wrapper" id="show-text-trigger-wrapper">
         <div class="heading show-text-trigger pointer-events-auto">
           <h2 class="h3 uppercase">Кристиана <br> Симеонова</h2>
         </div>
       </div>
-
-      </div>
-      
       <div id="popup-wrapper" class="popup-wrapper">
         <div class="popup">
           <svg class="absolute bottom-0 left-0" width="32" height="25" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -258,6 +243,14 @@
           <p class="desc-text">Фотограф на свободна практика със страст към черно-бялата фотография, която акцентира върху текстурите и светлосенките. Както и към динамиката на творческия процес чрез behind-the-scenes кадри, които разкриват автентичността на сцената.</p>
         </div>
       </div>
+
+      <section class="entry-screen flex flex-col-reverse h-screen mb-[25vh]">
+        <div class="slogan fixed top-[calc(100%-320px)] xl:top-[50%] xl:translate-y-[-50%] left-[20px] xl:left-[12vw]">
+          <h1 id="title-name" class="xl:text-[80px] mb-4 xl:mb-6">Кристиана <br> Симеонова</h1>
+          <p id="desc" class="text-[20px] xl:text-[28px]">Комерсиална и артистична <br> фотография обединени <br> в едно изкуство.</p>
+        </div>
+        <img style="opacity: 0;" src="./images/canvas.png" id="logo" alt="Logo" />
+      </section>
       
       <div class="content">
         <img id="shader" src="./images/disp1.jpg" style="display: none;" alt="">
@@ -277,7 +270,7 @@
 
         <figure class="item" id="children">
           <figcaption class="item__caption">
-            <h2 class="item__caption-title magnet-wrapper oh"><span class="oh__inner">Детска <br> Фотография</span></h2>
+            <h2 class="item__caption-title magnet-wrapper oh"><span class="oh__inner">Фотосесии</span></h2>
           </figcaption>
         </figcaption>
             <a href="./gallery.html?category=children" class="item__image-wrap">
@@ -292,7 +285,7 @@
         
         <figure class="item" id="interior">
           <figcaption class="item__caption">
-            <h2 class="item__caption-title magnet-wrapper oh"><span class="oh__inner">Интериорна <br> Фотография</span></h2>
+            <h2 class="item__caption-title magnet-wrapper oh"><span class="oh__inner">Интериор</span></h2>
           </figcaption>
           <a href="./gallery.html?category=interior" class="item__image-wrap">
             <div class="item__image">
@@ -305,7 +298,7 @@
         </figure>
         <figure class="item" id="events">
           <figcaption class="item__caption">
-            <h2 class="item__caption-title magnet-wrapper oh"><span class="oh__inner">Събитийна <br> Фотография</span></h2>
+            <h2 class="item__caption-title magnet-wrapper oh"><span class="oh__inner">Събития</span></h2>
           </figcaption>
           <a href="./gallery.html?category=event" class="item__image-wrap">
             <div class="item__image">
@@ -409,9 +402,9 @@
       });
       window.onload = function () {
         if (window.innerWidth < 1025) {
-          nextParticle.width = window.innerWidth * 2,
-          nextParticle.height=  window.innerHeight * 2,
-          nextParticle.maxWidth = window.innerWidth * 2;
+          nextParticle.width = window.innerWidth * 1,
+          nextParticle.height=  window.innerHeight * 1,
+          nextParticle.maxWidth = window.innerWidth * 1;
           nextParticle.start();
         } 
       };

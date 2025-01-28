@@ -66,7 +66,7 @@ for (const item of items) {
 
         gsap.fromTo([item.DOM.title], 
         { filter: "blur(10px)",
-                yPercent: -100}, {
+            yPercent: 100}, {
             scrollTrigger: {
                 trigger: item.DOM.el,
                 top: 'top -50%',
@@ -85,6 +85,9 @@ preloadImages('.item__image-inner').then(() => {
     animateOnScroll();
 });
 
+const isMobile = window.innerWidth <= 1025; 
+if (!isMobile) { 
+
 // Scroll bar function
 function scrollToMiddle(targetElement) {
     const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY;
@@ -96,7 +99,6 @@ function scrollToMiddle(targetElement) {
       behavior: 'smooth',
     });
 }
-  
 document.querySelectorAll('.scroll-link').forEach(link => {
 link.addEventListener('click', (e) => {
     e.preventDefault();
@@ -108,8 +110,6 @@ link.addEventListener('click', (e) => {
     }
 });
 });
-
-
 const indicator = document.querySelector('.scroll-indicator');
 if (indicator) {
     gsap.registerPlugin(ScrollTrigger);
@@ -127,3 +127,5 @@ if (indicator) {
     });
 
 }
+
+}   

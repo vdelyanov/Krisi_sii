@@ -114,33 +114,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('color3').addEventListener('click', () => changeColor('color3'));
     document.getElementById('color4').addEventListener('click', () => changeColor('color4'));
 
-
-    // const isMobile = window.innerWidth <= 1025; 
-    // if (!isMobile) { 
-    // const initiateAnimation = () => {
-    //   const element = document.querySelector('#main-desc');
-    //   if (element) {
-    //     document.addEventListener('mousemove', (e) => {
-    //       const mouseX = e.clientX;
-    //       const mouseY = e.clientY;
-    //       const windowWidth = window.innerWidth;
-    //       const windowHeight = window.innerHeight;
-    //       const moveX = (mouseX / windowWidth) * 10;
-    //       const moveY = (mouseY / windowHeight) * 10;
-    //       gsap.to(element, {
-    //         x: -moveX,
-    //         y: -moveY,
-    //         duration: 2.5,
-    //         ease: "expo.Out",
-    //       });
-    //     });
-    //   } else {
-    //     setTimeout(initiateAnimation, 100);
-    //   }
-    // };
-    // initiateAnimation(); 
-    // }
-
 });
 
 // Scroll icon 
@@ -172,9 +145,7 @@ const transition = {
 };
 
 const enterTransition = () => {
-
   const childElements = transition.main.querySelectorAll('*');
-
   return new Promise((resolve) => {
     const tl = gsap.timeline({
       onComplete: resolve,
@@ -395,7 +366,6 @@ document.addEventListener("DOMContentLoaded", function () {
 const cursorElement = document.querySelector('.cursor-follow');
 const hoverLinksText = document.querySelectorAll('.show-text-trigger');
 const text = document.querySelector(".desc-text");
-const desc = document.querySelector("#main-desc");
 const popup = document.querySelector(".popup-wrapper");
 
 // Add mousemove event listener
@@ -452,31 +422,6 @@ if (text) {
   });
 }
 
-let mdesc = new SplitText(desc, {
-  type: "lines,words,chars"
-});
-
-
-if (desc) {
-
-  gsap.to(mdesc.chars, {
-    filter: "blur(8px)",
-    opacity: 0,
-    ease: "power3",
-    stagger: -0.008,
-    scrollTrigger: {
-        trigger: ".content",
-        start: "top top",
-        end: "+=150px",
-        scrub: 1,
-        markers: true
-
-    }
-  });
-
-}
-
-
 hoverLinksText.forEach(link => {
 
   const isMobile = window.innerWidth <= 1025; 
@@ -494,14 +439,6 @@ hoverLinksText.forEach(link => {
         ease: "power3",
         scale:1,
         stagger: 0.02,
-        delay: 0.4
-      });
-      gsap.to(mdesc.words, {
-        duration: 0.6,
-        filter: "blur(8px)",
-        opacity: 0,
-        ease: "power3",
-        stagger: -0.04,
         delay: 0.4
       });
       cursorElement.classList.add('hide');
@@ -530,14 +467,6 @@ hoverLinksText.forEach(link => {
         stagger: 0.02,
         delay: 0.4
       });
-      gsap.to(mdesc.words, {
-        duration: 0.6,
-        filter: "blur(8px)",
-        opacity: 0,
-        ease: "power3",
-        stagger: -0.04,
-        delay: 0.4
-      });
       cursorElement.classList.add('hide');
   });
 }, 100)
@@ -558,15 +487,6 @@ function triggerAnimation() {
           delay: 0.3,
         });
       }
-    });
-    gsap.killTweensOf(mdesc.words);
-    gsap.to(mdesc.words, {
-      duration: 0.6,
-      filter: "blur(0px)",
-      opacity: 1,
-      ease: "power3",
-      stagger: 0.04,
-      delay: 0.4
     });
     gsap.to(link, {
       duration: 0.8,
@@ -1175,9 +1095,9 @@ const footer = document.querySelector('.footer-fixed')
 if (homePage) {
   gsap.to("#title-name", {
     scrollTrigger: {
-      trigger: document.documentElement,
-      start: "top top",
-      end: "+=200",
+      trigger: ".entry-screen",
+      start: "bottom 50%",
+      end: "bottom 30%",
       scrub: 1,
     },
     ease: "power4.out",
@@ -1187,10 +1107,11 @@ if (homePage) {
 
   gsap.to("#desc", {
     scrollTrigger: {
-      trigger: document.documentElement,
-      start: "top top",
-      end: "+=200",
+      trigger: ".entry-screen",
+      start: "bottom 50%",
+      end: "bottom 30%",
       scrub: 1,
+      markers: true
     },
     ease: "power4.out",
     opacity: 0,
@@ -1199,14 +1120,31 @@ if (homePage) {
 
   gsap.to("#show-text-trigger-wrapper", {
     scrollTrigger: {
-      trigger: document.documentElement,
-      start: "top top",
-      end: "+=200",
+      trigger: ".entry-screen",
+      start: "bottom 50%",
+      end: "bottom 30%",
       scrub: 1,
     },
     ease: "power4.out",
     filter: "blur(0px)"
   });
+
+
+  // gsap.to("#category-title", {
+  //   scrollTrigger: {
+  //     trigger: "#category-title",
+  //     start: "top 100%",
+  //     end: "+=500px",
+  //     scrub: 1,
+  //     markers: true,
+  //   },
+  //   ease: "power4.out",
+  //   filter: "blur(4px)",
+  //   paddingLeft: "40vw",
+  //   opacity: 0.2,
+  //   fontSize: "80px",
+  //   scaleY: 1
+  // });
 
 
 }
