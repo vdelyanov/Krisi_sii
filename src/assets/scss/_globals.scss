@@ -100,8 +100,8 @@ body::-webkit-scrollbar-thumb {
     width: 100%;
     padding: 20px;
     z-index: 3;
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
     @include media-tablet-min {
         background-color: transparent !important;
         pointer-events: none;
@@ -149,8 +149,8 @@ body::-webkit-scrollbar-thumb {
         bottom: 0px;
         max-width: 100%;
         background: $white !important;
-        border-top-left-radius: 8px;
-        border-top-right-radius: 8px;
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
         display: block;
         .desc-text {
             width: 310px !important;
