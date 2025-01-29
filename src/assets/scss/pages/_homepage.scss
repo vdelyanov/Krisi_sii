@@ -20,7 +20,7 @@
 	grid-template-columns: 100%;
 	display: grid;
 	grid-template-areas: 'caption' 'img';
-	margin: 0 auto 35vh;
+	margin: 0 auto 30vh;
   aspect-ratio: 4/3;
   &:last-child {
     margin: 0 auto 0vh;
@@ -38,7 +38,7 @@
 }
 
 .item__image {
-	width: auto ;
+	width: fit-content;
   height: 80vh;
 	position: relative;
 	will-change: transform;

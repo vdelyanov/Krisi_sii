@@ -16,11 +16,14 @@ const animateOnScroll = () => {
 
 for (const item of items) {
 
+    const isMobile = window.innerWidth <= 1025; 
+    if (!isMobile) { 
+
         gsap.from(item.DOM.image, {
             ease: 'none',
-            scaleY: 2.0,
+            scaleY: 1.5,
             opacity: 0,
-            yPercent: 60,
+            yPercent: 40,
             filter: "blur(10px)",
             scrollTrigger: {
                 trigger: item.DOM.el,
@@ -29,10 +32,8 @@ for (const item of items) {
                 scrub: true,
                 markers: false,
                 onLeave: () => {
-                    // item.DOM.imageInnerItem.classList.add('show');
                 },
                 onEnterBack: () => {
-                    // item.DOM.imageInnerItem.classList.remove('show');
                 }
             }
         },)
@@ -46,14 +47,12 @@ for (const item of items) {
         }, {
             ease: 'none',
             filter: "blur(10px)",
-            scaleY: 2,
+            scaleY: 1.5,
             opacity: 0,
-            yPercent: -60,
+            yPercent: -40,
             onStart: () => {
-                // item.DOM.imageInnerItem.classList.remove('show');
             },
             onReverseComplete: () => {
-                // item.DOM.imageInnerItem.classList.add('show');
             },
             scrollTrigger: {
                 trigger: item.DOM.el,
@@ -66,7 +65,7 @@ for (const item of items) {
 
         gsap.fromTo([item.DOM.title], 
         { filter: "blur(10px)",
-            yPercent: 100}, {
+            yPercent: 40}, {
             scrollTrigger: {
                 trigger: item.DOM.el,
                 top: 'top -50%',
@@ -76,6 +75,66 @@ for (const item of items) {
             filter: "blur(0px)",
             yPercent: 0,
         })  
+
+    } else {
+
+        gsap.from(item.DOM.image, {
+            ease: 'none',
+            scaleY: 1,
+            opacity: 0,
+            yPercent: 0,
+            filter: "blur(10px)",
+            scrollTrigger: {
+                trigger: item.DOM.el,
+                start: 'top 120%',
+                end: 'center 80%',
+                scrub: true,
+                markers: false,
+                onLeave: () => {
+                },
+                onEnterBack: () => {
+                }
+            }
+        },)
+
+        gsap.fromTo(item.DOM.image, {
+            scaleY: 1,
+            filter: "blur(0px)",
+            opacity: 1,
+            yPercent: 0,
+        
+        }, {
+            ease: 'none',
+            filter: "blur(10px)",
+            scaleY: 1,
+            opacity: 0,
+            yPercent: 0,
+            onStart: () => {
+            },
+            onReverseComplete: () => {
+            },
+            scrollTrigger: {
+                trigger: item.DOM.el,
+                start: 'center 20%',
+                end: 'bottom 0%',
+                scrub: true,
+                markers: false
+            }
+        },)
+
+        gsap.fromTo([item.DOM.title], 
+        { filter: "blur(10px)",
+            yPercent: 0}, {
+            scrollTrigger: {
+                trigger: item.DOM.el,
+                top: 'top -50%',
+                end: 'top 50%',
+                scrub: true,
+            },
+            filter: "blur(0px)",
+            yPercent: 0,
+        })  
+    }
 }
 
 };
