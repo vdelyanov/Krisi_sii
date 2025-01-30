@@ -3,17 +3,221 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>404 | Multi Page Vite App</title>
-    <link rel="icon" type="image/svg+xml" href="./vite.svg" />
-    <link rel="stylesheet" crossorigin href="./css/style.css">
+    <title>Krisi.sii</title>
+    <link rel="icon" type="image/svg+xml" href="./sii.svg" />
+    <script type="module" crossorigin src="./main.BmpN7yG0.js"></script>
+    <link rel="stylesheet" crossorigin href="./css/main.css">
   </head>
-  <body>
-    <div
-      class="flex h-dvh flex-col items-center justify-center gap-y-4 bg-red-700 text-white">
-      <h1 class="rounded-lg border-2 border-white p-4 text-2xl">
-        404 | Page Not Found
-      </h1>
-      <p>Go to <a href="/" class="underline">Kur bate</a></p>
+  <body data-barba="wrapper">
+
+    <div id="preloader" class="preload hidden">
+      <div id="name">Photo.sii</div>
     </div>
+
+    <div style="opacity: 0;" class="cursor-follow">
+      <svg class="absolute bottom-0 left-0" width="32" height="25" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2 15.6318V23.73L9.73653 23.73" stroke="white" stroke-width="2"/>
+      </svg>        
+      <svg class="absolute top-0 right-0" width="32" height="25" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M30 9.09814L30 0.999995L22.2635 0.999993" stroke="white" stroke-width="2"/>
+      </svg>        
+      <svg class="absolute top-0 left-0" width="32" height="25" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M10 1L1.90185 1L1.90185 8.73653" stroke="white" stroke-width="2"/>
+      </svg>        
+      <svg class="absolute bottom-0 right-0" width="32" height="25" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M22 23.73L30.0981 23.73L30.0982 15.9935" stroke="white" stroke-width="2"/>
+      </svg>        
+    </div>
+
+    <div class="page-transition">
+      <p>Начало</p>
+      <p>Галерия</p>
+      <p>За мен</p> 
+      <p>Контакти</p>
+      <p class="current">404</p>
+    </div>
+
+    <header>  
+      <a class="logo hover-link text-blur" href="./">.sii</a>
+      <div class="menu-toggle hover-link text-blur closed">
+        <div class="menu-toggle-icon">
+          <div class="hamburger">
+            <div class="menu-bar" data-position="top"></div>
+            <div class="menu-bar" data-position="bottom"></div>
+          </div>
+        </div>
+        <div class="menu-copy">
+          <p class="close-text opacity-0">Затвори</p>
+          <p class="open-text absolute top-0">Меню</p>
+        </div>
+      </div>
+    </header>
+
+    <div style="opacity: 0;" class="menu">
+
+      <div class="grid grid-cols-12">
+        <div class="col-span-12 md:col-span-6 flex flex-col justify-between">
+          <div class="menu-logo">
+
+          </div>
+
+          <div class="socials flex flex-col gap-2">
+              <a class="text-[20px] text-blur" target="_blank" href="https://www.instagram.com/photo.sii/">Instagram</a>
+              <a class="text-[20px] text-blur" target="_blank" href="https://www.linkedin.com/in/kristiana-simeonova-62a04a213/">LinkedIn</a>
+              <div class="flex flex-col md:flex-row gap-2 md:gap-4 mt-4">
+                <a class="text-blur" href="tel:+359898373968">+359898373968</a>
+                <a class="text-blur" href="mailto:kriisiisii@gmail.com">kriisiisii@gmail.com</a>
+              </div>
+          </div>
+
+        </div>
+
+        <div class="col-span-12 md:col-span-6 flex flex-col justify-between">
+          <nav class="links">
+            <div class="link text-blur"><a href="./inde">Начало</a></div>
+            <div class="link text-blur"><a href="./gallery">Галерия</a></div>
+            <div class="link text-blur"><a href="./about">За мен</a></div>
+            <div class="link text-blur"><a href="./contacts">Контакти</a></div>
+          </nav>
+
+          <div class="logo-heading flex justify-end">
+            <h2>Photo.sii</h2>
+          </div>
+  
+        </div>
+    </div>
+
+    </div>
+
+    <div style="opacity: 0;" class="flex color-switcher">
+      <button class="scale-75 hover-link" id="color2">
+        <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="13" cy="13" r="13" fill="#222A2F"/>
+          <g clip-path="url(#clip0_9_70)">
+          <mask id="mask0_9_70" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="1" y="1" width="24" height="24">
+          <path d="M13 25C19.6274 25 25 19.6274 25 13C25 6.37258 19.6274 1 13 1C6.37258 1 1 6.37258 1 13C1 19.6274 6.37258 25 13 25Z" fill="#D9D9D9"/>
+          </mask>
+          <g mask="url(#mask0_9_70)">
+          <path d="M25 -0.000244141H13V26.9998H25V-0.000244141Z" fill="white"/>
+          <path d="M13 -0.000244141H1V26.9998H13V-0.000244141Z" fill="#222A2F"/>
+          </g>
+          </g>
+          <defs>
+          <clipPath id="clip0_9_70">
+          <rect width="24" height="24" fill="white" transform="translate(1 1)"/>
+          </clipPath>
+          </defs>
+        </svg>          
+        </button>
+      <button class="scale-75 hover-link" id="color4">
+        <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="13" cy="13" r="13" fill="#333333"/>
+          <g clip-path="url(#clip0_9_71)">
+          <mask id="mask0_9_71" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="1" y="1" width="24" height="24">
+          <path d="M13 25C19.6274 25 25 19.6274 25 13C25 6.37258 19.6274 1 13 1C6.37258 1 1 6.37258 1 13C1 19.6274 6.37258 25 13 25Z" fill="#D9D9D9"/>
+          </mask>
+          <g mask="url(#mask0_9_71)">
+          <path d="M25 -0.000244141H13V26.9998H25V-0.000244141Z" fill="white"/>
+          <path d="M13 -0.000244141H1V26.9998H13V-0.000244141Z" fill="#333333"/>
+          </g>
+          </g>
+          <defs>
+          <clipPath id="clip0_9_71">
+          <rect width="24" height="24" fill="white" transform="translate(1 1)"/>
+          </clipPath>
+          </defs>
+        </svg>                      
+      </button>
+      <button class="scale-75 hover-link" id="color3">
+        <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="13" cy="13" r="13" fill="#223144"/>
+          <g clip-path="url(#clip0_9_81)">
+          <mask id="mask0_9_81" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="1" y="1" width="24" height="24">
+          <path d="M13 25C19.6274 25 25 19.6274 25 13C25 6.37258 19.6274 1 13 1C6.37258 1 1 6.37258 1 13C1 19.6274 6.37258 25 13 25Z" fill="#D9D9D9"/>
+          </mask>
+          <g mask="url(#mask0_9_81)">
+          <path d="M25 -0.000244141H13V26.9998H25V-0.000244141Z" fill="white"/>
+          <path d="M13 -0.000244141H1V26.9998H13V-0.000244141Z" fill="#223144"/>
+          </g>
+          </g>
+          <defs>
+          <clipPath id="clip0_9_81">
+          <rect width="24" height="24" fill="white" transform="translate(1 1)"/>
+          </clipPath>
+          </defs>
+        </svg>                                
+      </button>
+      <span class="current-color">
+        <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle  cx="13" cy="13" r="13" fill="#ffffff"/>
+          <g clip-path="url(#clip0_9_70)">
+          <mask id="mask0_9_70" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="1" y="1" width="24" height="24">
+          <path d="M13 25C19.6274 25 25 19.6274 25 13C25 6.37258 19.6274 1 13 1C6.37258 1 1 6.37258 1 13C1 19.6274 6.37258 25 13 25Z" fill="#000000"/>
+          </mask>
+          <g mask="url(#mask0_9_70)">
+          <path d="M25 -0.000244141H13V26.9998H25V-0.000244141Z" fill="white"/>
+          <path id="fill-color" d="M13 -0.000244141H1V26.9998H13V-0.000244141Z" fill="#000000"/>
+          </g>
+          </g>
+          <defs>
+          <clipPath id="clip0_9_70">
+          <rect width="24" height="24" fill="white" transform="translate(1 1)"/>
+          </clipPath>
+          </defs>
+        </svg>     
+      </span>
+    </div>
+
+    <div id="noise-bg"></div>
+    <canvas id="gradient-canvas">
+    </canvas>
+
+    <main style="opacity: 0;" data-barba="container" id="error-page" data-barba-namespace="Контакти" class="fixed w-full">
+
+      <img style="opacity: 0;" src="./assets/404.png" id="logo" alt="Logo"/>
+
+      <div id="image-wrapper" class="container pointer-events-none mx-auto xl:min-h-[calc(100vh-128px)] z-[2]">
+      </div>
+
+      <div class="content-wrapper fixed bottom-4 left-4 z-[10]">
+        <h1 class="mb-4 h2">Страницата не може <br> да бъде намерена!</h1>
+        <a class="text-[24px] primary-btn hover-link" href="./">Към началото</a>  
+      </div>
+
+    </main>
+
+    <div id="cookie-box" style="opacity: 0; bottom: -100px;" class="cookie-consent hidden">
+      <div class="flex flex-col md:flex-row items-center">
+        <p class="md:mr-20 my-4 md:my-0 text-center md:text-left md:mb-0 pt-1">Този сайт използва бисквитки.<br>
+      </div>
+      <div class="button-container">
+        <button tabindex="-1" id="btn-position" class="primary-btn hover-link text-blur" type="click">Окей</button>
+      </div>
+    </div>
+
+    <script src="https://nextparticle.nextco.de/nextparticle.min.js"></script>
+    <script>
+
+      nextParticle = new NextParticle({
+        image: document.all.logo,
+        width: window.innerWidth,
+        height: window.innerHeight,
+        maxWidth: window.innerWidth * 0.5,
+        particleGap: 2,
+        dataNoise: 10,
+        mouseForce: 0,
+        disableInteraction: false
+      }); 
+
+      window.onload = function () {
+        if (window.innerWidth < 567) {
+          nextParticle.width = window.innerWidth * 1.8,
+          nextParticle.height=  window.innerHeight * 1.8,
+          nextParticle.maxWidth = window.innerWidth * 1.8;
+          nextParticle.start();
+        }
+      };
+
+    </script>
   </body>
 </html>
