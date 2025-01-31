@@ -274,10 +274,10 @@ body::-webkit-scrollbar-thumb {
 #cookie-box {
     padding: 12px 24px;
     position: fixed;
-    bottom: -100;
+    bottom: -100px;
     right: 0;
     display: flex;
-    align-items: center;
+    align-items: baseline;
     justify-content: space-between;
     width: auto;
     background: $white;
@@ -301,6 +301,7 @@ body::-webkit-scrollbar-thumb {
         width: 100%;
         height: auto;
         padding: 0px 20px;
+        align-items: center;
     }
     a,p, button {
       color: $black;
@@ -375,6 +376,12 @@ body::-webkit-scrollbar-thumb {
             bottom: 24px;
             opacity: 0;
             filter: blur(10px);
+            &.small {
+                font-size: 48px;
+                @include media-sm {
+                    font-size: 36px;
+                }
+            }
         }
     }
 }
@@ -621,4 +628,26 @@ body::-webkit-scrollbar-thumb {
     border-radius: 4px;
     overflow: hidden;
     opacity: 0.4;
+}
+
+
+.wysiwyg {
+    width: 60%;
+    @include media-tablet {
+        width: 100%;
+        padding: 100px 20px 180px 20px;
+    }
+    h1 {
+        margin-bottom: 48px;
+    }
+
+    h2, h3 {
+        margin-top: 24px;
+        margin-bottom: 8px;
+    }
+
+    h4 {
+        margin-top: 12px;
+        margin-bottom: 6px;
+    }
 }
