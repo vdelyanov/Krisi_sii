@@ -1,9 +1,9 @@
 
 import { createClient } from 'contentful-management';
 
-const SPACE_ID = "w8jw1fc4jmex"; // Replace with your Contentful Space ID
-const CONTENTFUL_ACCESS_TOKEN = "AouzOmu_wgKEbiDxp6ID_hx7P5_VHcqOwEeDmVjskMY"; // Replace with your Management API Token
-const ENVIRONMENT_ID = 'master'; // Usually "master"
+const SPACE_ID = "w8jw1fc4jmex";
+const CONTENTFUL_ACCESS_TOKEN = "CFPAT-y0B4yrKpAhYrlU7qtqeqjL9saUqiTr_jOFMtsmF5wqc";
+const ENVIRONMENT_ID = 'master'; 
 
 export async function submitContactForm(name, email, message) {
     const client = createClient({
@@ -16,9 +16,9 @@ export async function submitContactForm(name, email, message) {
         
         const entry = await environment.createEntry('contactForm', {
             fields: {
-                name: { 'en-US': name },
-                email: { 'en-US': email },
-                message: { 'en-US': message },
+                name: { 'bg-BG': name },
+                email: { 'bg-BG': email },
+                message: { 'bg-BG': message },
             },
         });
 

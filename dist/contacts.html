@@ -5,7 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Krisi.sii</title>
     <link rel="icon" type="image/svg+xml" href="./sii.svg" />
-    <script type="module" crossorigin src="./main.D_-WMFH3.js"></script>
+
+    <script src="https://www.google.com/recaptcha/enterprise.js?render=6Ldz2skqAAAAAP6nRLbhGK7OhYmp1160NezNVkWw"></script>
+    <script>
+      function onSubmit(token) {
+        document.getElementById("contact-form").submit();
+      }
+    </script>
+    <script type="module" crossorigin src="./main.DtJaNeRJ.js"></script>
     <link rel="stylesheet" crossorigin href="./css/main.css">
   </head>
   <body data-barba="wrapper">
@@ -89,25 +96,6 @@
     </div>
 
     <div style="opacity: 0;" class="flex color-switcher">
-      <!-- <button class="scale-75 hover-link" id="color1">
-        <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="13" cy="13" r="13" fill="black"/>
-          <g clip-path="url(#clip0_9_91)">
-          <mask id="mask0_9_91" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="1" y="1" width="24" height="24">
-          <path d="M13 25C19.6274 25 25 19.6274 25 13C25 6.37258 19.6274 1 13 1C6.37258 1 1 6.37258 1 13C1 19.6274 6.37258 25 13 25Z" fill="#D9D9D9"/>
-          </mask>
-          <g mask="url(#mask0_9_91)">
-          <path d="M25 -0.000244141H13V26.9998H25V-0.000244141Z" fill="white"/>
-          <path d="M13 -0.000244141H1V26.9998H13V-0.000244141Z" fill="black"/>
-          </g>
-          </g>
-          <defs>
-          <clipPath id="clip0_9_91">
-          <rect width="24" height="24" fill="white" transform="translate(1 1)"/>
-          </clipPath>
-          </defs>
-        </svg>                         
-      </button> -->
       <button class="scale-75 hover-link" id="color2">
         <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
           <circle cx="13" cy="13" r="13" fill="#222A2F"/>
@@ -265,7 +253,7 @@
               <svg class="absolute bottom-0 right-0" width="32" height="25" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M22 23.73L30.0981 23.73L30.0982 15.9935" stroke="white" stroke-width="2"/>
               </svg>
-              <input class="dynamic-color" id="name" placeholder="Име" type="text">
+              <input class="dynamic-color" id="names" placeholder="Име" type="text" oninvalid="this.setCustomValidity('Може и псевдоним')" onchange="this.setCustomValidity('')" required>
             </label>
             <label class="relative pointer-events-auto hover-link" for="email">
               <svg class="absolute bottom-0 left-0" width="32" height="25" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -280,7 +268,7 @@
               <svg class="absolute bottom-0 right-0" width="32" height="25" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M22 23.73L30.0981 23.73L30.0982 15.9935" stroke="white" stroke-width="2"/>
               </svg>
-              <input class="dynamic-color" id="email" placeholder="Имейл" type="email">
+              <input class="dynamic-color" id="email" placeholder="Имейл" type="email" oninvalid="this.setCustomValidity('Важно условие, за да влезем в комуникация')" onchange="this.setCustomValidity('')"  required>
             </label>
             <label class="relative pointer-events-auto hover-link" for="message">
               <svg class="absolute bottom-0 left-0" width="32" height="25" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -295,9 +283,12 @@
               <svg class="absolute bottom-0 right-0" width="32" height="25" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M22 23.73L30.0981 23.73L30.0982 15.9935" stroke="white" stroke-width="2"/>
               </svg>
-              <textarea class="dynamic-color" placeholder="Съобщение" name="text" id="message"></textarea>
+              <textarea class="dynamic-color" oninvalid="this.setCustomValidity('Дори едно изрезение би могло да е достатъчно')" onchange="this.setCustomValidity('')" placeholder="Съобщение" name="text" id="message" required></textarea>
             </label>
-            <button class="uppercase text-[24px] hover-link text-blur pointer-events-auto" type="submit">Изпрати</button>
+            <button
+            data-sitekey="6Ldz2skqAAAAAP6nRLbhGK7OhYmp1160NezNVkWw"
+            data-callback='onSubmit'
+            data-action='submit' class="g-recaptcha uppercase text-[24px] hover-link text-blur pointer-events-auto" type="submit">Изпрати</button>
           </form>
         </div>
       </div>
