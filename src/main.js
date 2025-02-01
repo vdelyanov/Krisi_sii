@@ -17,6 +17,8 @@ const cookieBox = new CookieBox("#cookie-box");
 
 import './homepage.js'
 
+import './contentfulClient.js'
+
 import barba from '@barba/core';
 import Lenis from 'lenis'
 
