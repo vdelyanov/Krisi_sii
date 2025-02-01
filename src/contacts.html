@@ -240,7 +240,7 @@
           </div>
         </div>
         <div class="col-span-12 xl:col-span-6">
-          <form id="contact-form" class="pointer-events-none pt-[64px] xl:pt-[84px]">
+          <form id="contact-form" class="pointer-events-none pt-[64px] xl:pt-[84px] relative">
             <label class="relative pointer-events-auto hover-link" for="name">
               <svg class="absolute bottom-0 left-0" width="32" height="25" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M2 15.6318V23.73L9.73653 23.73" stroke="white" stroke-width="2"/>
@@ -286,6 +286,8 @@
               </svg>
               <textarea class="dynamic-color" oninvalid="this.setCustomValidity('Дори едно изрезение би могло да е достатъчно')" onchange="this.setCustomValidity('')" placeholder="Съобщение" name="text" id="message" required></textarea>
             </label>
+            <p class="success-message response-message">Съобщението е изпратено! :)</p>
+            <p class="error-message response-message">Проблем при изпращането, <br> моля презаредете станицата :(</p>
             <button data-sitekey="6Ldz2skqAAAAAP6nRLbhGK7OhYmp1160NezNVkWw"
             data-callback='onSubmit'
             data-action='submit' id="submitBtn" class="uppercase text-[24px] hover-link text-blur pointer-events-auto" type="submit">Изпрати</button>

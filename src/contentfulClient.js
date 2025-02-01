@@ -22,10 +22,19 @@ export async function submitContactForm(name, email, message) {
             },
         });
 
-        console.log('Entry created:', entry);
-        return entry;
+       const button = document.querySelector("#submitBtn")
+       const successmessage = document.querySelector(".success-message")
+       
+        button.classList.add('disabled')
+        successmessage.classList.add('show')
+       
+       return entry;
     } catch (error) {
+        const errormessage = document.querySelector(".error-message")
+
+        errormessage.classList.add('show')
         console.error('Error submitting form:', error);
+       
     }
 }
 

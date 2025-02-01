@@ -655,3 +655,28 @@ body::-webkit-scrollbar-thumb {
 .grecaptcha-badge {
     visibility: hidden;
 }
+
+.response-message {
+    position: absolute;
+    bottom: 6px;
+    left: 0%;
+    opacity: 0;
+    filter: blur(20px);
+    pointer-events: none;
+    @include media-sm {
+        bottom: -40px;
+    }
+    &.show {
+        opacity: 1;
+        filter: blur(0px);
+        transition: opacity 0.4s, filter 0.4s 0.2;
+    }
+}
+
+#submitBtn {
+    &.disabled {
+        opacity: 0.5;
+        filter: blur(5px);
+        transition: opacity 0.4s, filter 0.4s 0.2;
+    }
+}
