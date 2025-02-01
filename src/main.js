@@ -17,7 +17,8 @@ const cookieBox = new CookieBox("#cookie-box");
 
 import './homepage.js'
 
-import './contentfulClient.js'
+import { submitContactForm } from './contentfulClient.js';
+
 
 import barba from '@barba/core';
 import Lenis from 'lenis'
@@ -1375,6 +1376,17 @@ if (aboutPage) {
 }
 
 if (contactPage) {
+
+  document.getElementById('contact-form').addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const message = document.getElementById('message').value;
+
+    await submitContactForm(name, email, message);
+    alert('Form submitted successfully!');
+});
 
   lenis.scrollTo(0) 
   window.scrollTo(0, 0);
