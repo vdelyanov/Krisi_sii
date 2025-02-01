@@ -412,7 +412,7 @@
     filter: blur(4px);
     transform: translateX(25%);
     @include media-tablet {
-      transform: translateX(0) translateY(0%);
+      transform: translateX(0) translateY(-60px);
     }
   }
 }

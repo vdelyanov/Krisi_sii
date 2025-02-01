@@ -1168,7 +1168,7 @@ if (aboutPage) {
               scrollTrigger: {
                 trigger: document.documentElement,
                 start: "top top",
-                end: "+=100",
+                end: "+=550",
                 scrub: 1,
               },
               ease: "power4.out",
