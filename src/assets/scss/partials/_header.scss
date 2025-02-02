@@ -266,7 +266,7 @@ main {
     transition: filter 0.8s;
   }
   &.bg-blur-remove {
-    span, p, a, h1, h2, h3, svg, img, form, canvas, nav, figure  {
+    span, p, a, h1, h2, h3, h4, svg, img, form, canvas, nav, figure  {
       transition: filter 0.8s;
     } 
   }
