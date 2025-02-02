@@ -591,8 +591,8 @@ function initHeader() {
     ease: "expo.inOut",
     duration: 1.2,
   })
-  .to(transition.gradient, { opacity: 0.2, duration: 0.8, ease: "linear",}, 0.4)
-  .to(transition.noise, { opacity: 0.4, duration: 0.8, ease: "linear",}, 0.4)
+  .to(transition.gradient, { opacity: 0.1, duration: 0.8, ease: "linear",}, 0.4)
+  .to(transition.noise, { opacity: 0.3, duration: 0.8, ease: "linear",}, 0.4)
   .to(transition.cookieBox, { bottom: 0, duration: 0.4, ease: "linear",})
   .to(transition.swither, {
     opacity: 1,
@@ -844,7 +844,6 @@ function initialInitHeader() {
     footer: document.querySelector('footer'),
     pageLabelInit: document.querySelector('.page-transition .current'),
     gradient: document.querySelector('#gradient-canvas'),
-    gradient: document.querySelector('#gradient-canvas'),
     noise: document.querySelector('#noise-bg'),
     cookieBox: document.querySelector('#cookie-box'),
   };
@@ -862,8 +861,8 @@ function initialInitHeader() {
     ease: "expo.inOut",
     duration: 1.2,
   })
-  .to(transition.gradient, { opacity: 0.2, duration: 0.8, ease: "linear"})
-  .to(transition.noise, { opacity: 0.4, duration: 0.8, ease: "linear",})
+  .to(transition.gradient, { opacity: 0.1, duration: 0.8, ease: "linear"})
+  .to(transition.noise, { opacity: 0.3, duration: 0.8, ease: "linear",})
   .to(transition.cookieBox, { bottom: 0, duration: 0.4, ease: "linear",})
   .to(transition.swither, {
     opacity: 1,
