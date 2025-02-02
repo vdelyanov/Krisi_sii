@@ -277,7 +277,7 @@ main {
     cursor: pointer;
     z-index: 3;
     pointer-events: none;
-    span, p, a, h1, h2, h3, svg, img, form, canvas, nav, figure  {
+    span, p, a, h1, h2, h3, h4, svg, img, form, canvas, nav, figure  {
       filter: blur(10px) !important;
       pointer-events: none;
       transition: filter 0.8s;
