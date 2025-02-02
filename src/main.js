@@ -1161,7 +1161,6 @@ if (aboutPage) {
     const isMobile = window.innerWidth <= 1025; 
     if (isMobile) { 
 
-          // Canvas fade-out effect
           setTimeout(() => {
             gsap.to("canvas", {
               scrollTrigger: {
