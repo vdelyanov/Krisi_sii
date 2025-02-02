@@ -1263,7 +1263,6 @@ if (aboutPage) {
 
   } else {
 
-      // Canvas fade-out effect
       setTimeout(() => {
         gsap.to("canvas", {
           scrollTrigger: {
@@ -1319,7 +1318,7 @@ if (aboutPage) {
       // Animate text characters
       timeline.fromTo(
         splitDesc.chars,
-        { opacity: 0, filter: "blur(3px)" },
+        { opacity: 1, filter: "blur(3px)" },
         { opacity: 1, filter: "blur(0px)", stagger: 0.3}
       );
 
@@ -1386,35 +1385,11 @@ if (contactPage) {
 
   lenis.scrollTo(0) 
   window.scrollTo(0, 0);
-
-  // const initiateAnimation = () => {
-  //   const element = document.querySelector('#contacts canvas');
-  //   if (element) {
-  //     document.addEventListener('mousemove', (e) => {
-  //       const mouseX = e.clientX;
-  //       const mouseY = e.clientY;
-  //       const windowWidth = window.innerWidth;
-  //       const windowHeight = window.innerHeight;
-  //       const moveX = (mouseX / windowWidth) * 20;
-  //       const moveY = (mouseY / windowHeight) * 20;
-  //       gsap.to(element, {
-  //         x: -moveX,
-  //         y: -moveY,
-  //         duration: 2,
-  //         ease: "expo.Out",
-  //       });
-  //     });
-  //   } else {
-  //     setTimeout(initiateAnimation, 100);
-  //   }
-  // };
-  // initiateAnimation(); 
-
 }
 
 if (galleryPage) {
 
-  // Define image categories with two columns
+
   const imageCategories = {
     bts: {
       column1: [
