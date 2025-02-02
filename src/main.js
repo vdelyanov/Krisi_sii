@@ -1094,6 +1094,19 @@ const footer = document.querySelector('.footer-fixed')
 
 
 if (homePage) {
+
+  const homepageCanvas = document.querySelector('.entry-screen > canvas') 
+  gsap.to(homepageCanvas, {
+    scrollTrigger: {
+      trigger: ".entry-screen",
+      start: "bottom 90%",
+      end: "bottom 0%",
+      scrub: 1,
+    },
+    ease: "power4.out",
+    opacity: 0,
+  });
+
   gsap.to("#title-name", {
     scrollTrigger: {
       trigger: ".entry-screen",
