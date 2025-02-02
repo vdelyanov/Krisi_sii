@@ -261,9 +261,9 @@
       </div>
     </div>
 
-    <script src="./nextparticle.min.js"></script>
+    <script async src="./nextparticle.min.js"></script>
     <script>
-
+    setTimeout(() => {
       const nextParticle = new NextParticle({
         image: document.all.logo,
         width: window.innerWidth,
@@ -282,7 +282,7 @@
           nextParticle.start();
         } 
       };
-
+    }, 1500);
     </script>
   </body>
 </html>

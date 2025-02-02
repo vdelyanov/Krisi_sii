@@ -369,6 +369,7 @@
     <script src="./nextparticle.min.js"></script>
     <script>
 
+      setTimeout(() => {
       const nextParticle = new NextParticle({
         image: document.all.logo,
         width: window.innerWidth,
@@ -384,9 +385,10 @@
           nextParticle.width = window.innerWidth * 1,
           nextParticle.height=  window.innerHeight * 1,
           nextParticle.maxWidth = window.innerWidth * 1;
-          nextParticle.start();
-        } 
-      };
+            nextParticle.start();
+          } 
+        };
+      }, 1500);
 
     </script>
 
