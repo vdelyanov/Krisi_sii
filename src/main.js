@@ -15,8 +15,6 @@ gsap.registerPlugin(ScrollTrigger, SplitText, ScrollToPlugin, Flip);
 import CookieBox from "./CookieBox.js";
 const cookieBox = new CookieBox("#cookie-box");
 
-import './homepage.js'
-
 import barba from '@barba/core';
 import Lenis from 'lenis'
 
