@@ -236,7 +236,7 @@ body::-webkit-scrollbar-thumb {
         }
     }
 }
-#about {
+#about, #about-concept {
     .mobile-p {
         div {
             white-space: nowrap;
@@ -678,5 +678,20 @@ body::-webkit-scrollbar-thumb {
         opacity: 0.4;
         filter: blur(2px);
         transition: opacity 0.4s, filter 0.4s 0.2;
+    }
+}
+
+#about-concept {
+    canvas {
+        position: fixed;
+    }
+    .steps-seciton {
+        height: 100vh;
+        justify-content: flex-start;
+        width: auto;
+        .step {
+            width: 100vw;
+            height: 100vh;
+        }
     }
 }
