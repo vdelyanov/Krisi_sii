@@ -577,7 +577,8 @@ function initHeader() {
     onComplete: () => {
       const aboutPage = document.querySelector("#about");
       const contactPage = document.querySelector("#contacts");
-      if (aboutPage || contactPage) {
+      const homepagePage = document.querySelector("#homepage");
+      if (aboutPage || contactPage || homepagePage) {
         nextParticle.start();
       }
     }
@@ -1098,7 +1099,7 @@ if (homePage) {
     ease: "power4.out",
     opacity: 0,
   });
-  }, 100)
+  }, 2200)
   gsap.to("#title-name", {
     scrollTrigger: {
       trigger: ".entry-screen",

@@ -76,6 +76,16 @@ body::-webkit-scrollbar-thumb {
     }
 }
 
+::-webkit-scrollbar {
+    height: 0px; /* Set the width of the scrollbar */
+    background-color: transparent; /* Hide scrollbar background */
+}
+
+::-webkit-scrollbar {
+    height: 0px; /* Set the width of the scrollbar */
+    background-color: transparent; /* Hide scrollbar background */
+}
+
 #main-desc{
     max-width: 240px;
     top: 20vh;
@@ -355,7 +365,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .gsap-marker-scroller-start, .gsap-marker-scroller-end, .gsap-marker-start, .gsap-marker-end {
-    opacity: 0 !important;
+    // opacity: 0 !important;
 }
 
 .page-transition {
@@ -684,14 +694,69 @@ body::-webkit-scrollbar-thumb {
 #about-concept {
     canvas {
         position: fixed;
+        left: -25%;
+        @include media-tablet {
+            left: -50%;
+        }
     }
     .steps-seciton {
         height: 100vh;
         justify-content: flex-start;
         width: auto;
+        padding-left: 80vw;
         .step {
             width: 100vw;
             height: 100vh;
+            img {
+            }
+            .text-wrapper {
+                height: 50vh;
+                display: flex;
+                align-items: center;
+                width: 50%;
+                margin-left: 25%;
+            }
+        }
+    }
+}
+
+.marquee {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+    .marquee__inner {
+        display: flex;
+        flex-direction: column;
+        gap: 64px;
+        .marquee__part {
+            white-space: nowrap;
+            font-size: 120px;
+            writing-mode: sideways-lr; 
+            // text-orientation: upright;
+            // letter-spacing: -40px;
+            // word-spacing: -80px;
+        }
+    }
+}
+.marquee-end {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+    .marquee__inner {
+        display: flex;
+        flex-direction: column;
+        gap: 64px;
+        .marquee__part {
+            white-space: nowrap;
+            font-size: 120px;
+            writing-mode: sideways-rl; 
+            // text-orientation: upright;
+            // letter-spacing: -40px;
+            // word-spacing: -80px;
         }
     }
 }

@@ -8,6 +8,32 @@ import Lenis from 'lenis'
 
 document.addEventListener("DOMContentLoaded", function () { 
 
+      // Marquee 
+  
+      let tween = gsap
+      .to(".marquee__part", {
+          yPercent: 100,
+          repeat: -1,
+          duration: 25,
+          ease: "linear",
+      })
+      .totalProgress(0.5);
+  
+      gsap.set(".marquee__inner", { yPercent: -50 });
+  
+
+      let tweenEnd = gsap
+      .to(".marquee__part.end", {
+          yPercent: -100,
+          repeat: -1,
+          duration: 35,
+          ease: "linear",
+      })
+      .totalProgress(0.5);
+  
+      gsap.set(".marquee__inner.end", { yPercent: -50 });
+  
+
     function resetScrollTriggers() {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
       ScrollTrigger.refresh();
@@ -119,8 +145,24 @@ document.addEventListener("DOMContentLoaded", function () {
 
     } else {
 
-
     const scrollContainer = document.querySelector(".steps-seciton");
+
+    setTimeout(() => {
+      gsap.to("canvas", {
+        scrollTrigger: {
+          trigger: ".marquee",
+          start: "left 50%",
+          end: "left 0%",
+          scrub: 1,
+          horizontal: true,
+        },
+        ease: "power4.out",
+        opacity: 0,
+      });
+    }, 2200);
+    
+
+
 
     const lenis = new Lenis({
       orientation: 'horizontal',
