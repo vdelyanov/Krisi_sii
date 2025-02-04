@@ -380,6 +380,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const img = document.createElement("img");
         img.className = "img hover-link";
         img.src = imageSrc;
+        img.loading = "lazy";
         img.alt = category;
     
         // Increment loaded images on load
