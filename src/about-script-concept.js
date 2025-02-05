@@ -288,7 +288,7 @@ document.addEventListener("DOMContentLoaded", function () {
     timeline.fromTo(
       splitDesc.chars,
       { opacity: 0, filter: "blur(2px)" },
-      { opacity: 1, filter: "blur(0px)", stagger: 0.005, duration: 1}
+      { opacity: 1, filter: "blur(0px)", stagger: 0.002, duration: 1.5}
     );
 
     }
