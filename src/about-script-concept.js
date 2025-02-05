@@ -12,30 +12,20 @@ document.addEventListener("DOMContentLoaded", function () {
     const isMobile = window.innerWidth <= 1025; 
     if (isMobile) { 
 
-          setTimeout(() => {
-            gsap.to("canvas", {
-              scrollTrigger: {
-                trigger: document.documentElement,
-                start: "top top",
-                end: "+=550",
-                scrub: 1,
-              },
-              ease: "power4.out",
-              opacity: 0,
-            });
-          }, 2200);
 
-          gsap.to("#about-us-title-mobile", {
-            scrollTrigger: {
-              trigger: document.documentElement,
-              start: "top top",
-              end: "+=150",
-              scrub: 1,
-            },
-            ease: "power4.out",
-            opacity: 0,
-            filter: "blur(10px)"
-          });
+
+    // Marquee 
+
+    let tween = gsap
+    .to(".marquee-part", {
+        xPercent: -100,
+        repeat: -1,
+        duration: 10,
+        ease: "linear",
+    })
+    .totalProgress(0.5);
+
+    gsap.set(".marquee-inner", { xPercent: -50 });
 
 
 
@@ -59,26 +49,25 @@ document.addEventListener("DOMContentLoaded", function () {
       // Animate text characters
       timeline.fromTo(
         splitDescM.lines,
-        { opacity: 0, filter: "blur(3px)" },
-        { opacity: 1, filter: "blur(0px)", stagger: 0.1}
+        { opacity: 0, filter: "blur(1px)", y: 10 },
+        { opacity: 1, filter: "blur(0px)", y: 0, stagger: 0.1}
       );
 
       timeline.fromTo(
         imageSelector,
-        { opacity: 0, y: 20,  scaleY: 1, filter: "blur(10px)",
+        { opacity: 0,
           transformOrigin: "top",
+          clipPath: "polygon(0 0, 100% 0, 100% 0, 0 0);",
         },
         {
           opacity: 1,
-          scaleY: 1,
-          y: 0,
+          clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)",
           autoAlpha: 1,
-          filter: "blur(0px)",
           ease: "power4.out",
           scrollTrigger: {
             trigger: imageSelector,
-            start: "top 100%",
-            end: "bottom 80%",
+            start: "top 70%",
+            end: "bottom 50%",
             scrub: 2,
           },
         }
@@ -92,8 +81,6 @@ document.addEventListener("DOMContentLoaded", function () {
       animateParagraphMobile(".mobile-paragraph-4", ".mobile-image-4");
       animateParagraphMobile(".mobile-paragraph-5", ".mobile-image-5");
 
-
-        
   setTimeout(() => {
     gsap.timeline()
     ScrollTrigger.create({
@@ -159,16 +146,24 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 2200);
 
 
-    gsap.to("#scroll-icon", {
+    gsap.fromTo("#scroll-icon",
+      {
+        opacity:1,
+        filter: "blur(0px)",
+        pointerEvents: "none",
+        duration: 0.1,
+      }, {
       scrollTrigger: {
         trigger: ".steps-seciton",
         start: "left 0%",
-        end: "left -10%",
-        scrub: 1,
+        end: "left -1%",
+        toggleActions: "play none none reverse",
         horizontal: true,
+        scrub:1
       },
       ease: "linear",
       opacity: 0,
+      duration: 0.2,
       filter: "blur(20px)",
       pointerEvents: "none"
     });
@@ -179,8 +174,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }, {
       scrollTrigger: {
         trigger: "#marquee-start",
-        start: "left 80%",
-        end: "left 40%",
+        start: "left 10%",
+        end: "left 0%",
         scrub: 1,
         horizontal: true,
       },
@@ -202,70 +197,81 @@ document.addEventListener("DOMContentLoaded", function () {
       filter: "blur(4px)"
     });
 
+    gsap.to("#marquee-end", {
+      scrollTrigger: {
+        trigger: "#marquee-end",
+        start: "right 90%",
+        end: "right 89%",
+        scrub: 1,
+        horizontal: true,
+        onEnter: () => {
+          gsap.to(".footer-end", { clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)"});
+        },
+        onEnterBack: () => {
+          gsap.to(".footer-end", { clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)"});
+        }
+      },
+    });
+
     gsap.to(".image-1", {
       scrollTrigger: {
         trigger: ".image-1",
-        start: "left 60%",
+        start: "left 70%",
         toggleActions: "play none none reverse",
         horizontal: true,
       },
       ease: "power4.out",
       opacity: 1,
       duration: 1,
-      filter: "blur(0px)",
       clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)"
     });
     gsap.to(".image-2", {
       scrollTrigger: {
         trigger: ".image-2",
-        start: "left 60%",
+        start: "left 70%",
         toggleActions: "play none none reverse",
         horizontal: true,
       },
       ease: "power4.out",
       opacity: 1,
       duration: 1,
-      filter: "blur(0px)",
       clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)"
     });
     gsap.to(".image-3", {
       scrollTrigger: {
         trigger: ".image-3",
-        start: "left 60%",
+        start: "left 70%",
         toggleActions: "play none none reverse",
         horizontal: true,
       },
       ease: "power4.out",
       opacity: 1,
       duration: 1,
-      filter: "blur(0px)",
       clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)"
     });
     gsap.to(".image-4", {
       scrollTrigger: {
         trigger: ".image-4",
-        start: "left 60%",
+        start: "left 70%",
         toggleActions: "play none none reverse",
         horizontal: true,
       },
       ease: "power4.out",
       opacity: 1,
       duration: 1,
-      filter: "blur(0px)",
       clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)"
     });
 
     gsap.to(".image-5", {
       scrollTrigger: {
         trigger: ".image-5",
-        start: "left 60%",
+        start: "left 70%",
         toggleActions: "play none none reverse",
         horizontal: true,
       },
       ease: "power4.out",
       opacity: 1,
       duration: 1,
-      filter: "blur(0px)",
       clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)"
     });
 
@@ -287,8 +293,8 @@ document.addEventListener("DOMContentLoaded", function () {
     // Animate text characters
     timeline.fromTo(
       splitDesc.chars,
-      { opacity: 0, filter: "blur(2px)" },
-      { opacity: 1, filter: "blur(0px)", stagger: 0.002, duration: 1.5}
+      { opacity: 0, filter: "blur(1px)", y: 10 },
+      { opacity: 1, filter: "blur(0px)", y: 0, stagger: 0.005,}
     );
 
     }
@@ -302,6 +308,11 @@ document.addEventListener("DOMContentLoaded", function () {
     const scrollContainer = document.querySelector(".steps-seciton");
 
     const lenis = new Lenis({
+      duration: 1.2, // Slightly increase duration for smoother easing
+      infinite: false, // Ensure looping is smooth
+      smoothWheel: true, // Smooth scrolling for mouse wheel
+      smoothTouch: false, // Ensure smoothness for touch devices
+
       orientation: 'horizontal',
       content: scrollContainer,
       gestureOrientation: "both"
