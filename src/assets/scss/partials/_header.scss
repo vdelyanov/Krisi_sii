@@ -266,18 +266,24 @@ main {
     transition: filter 0.8s;
   }
   &.bg-blur-remove {
-    span, p, a, h1, h2, h3, h4, svg, img, form, canvas, nav, figure  {
+    span, p, a, h1, h2, h3, h4, svg, img, form, canvas, nav, figure, .marquee  {
       transition: filter 0.8s;
     } 
   }
   &.bg-blur {
-    .columns {
+    .columns, img {
       overflow: visible !important; 
+    }
+    .step {
+      filter: blur(10px) !important;
+      .main-image {
+        filter: blur(0) !important;
+      }
     }
     cursor: pointer;
     z-index: 3;
     pointer-events: none;
-    span, p, a, h1, h2, h3, h4, svg, img, form, canvas, nav, figure  {
+    span, p, a, h1, h2, h3, h4, svg, img, form, canvas, nav, figure, .marquee  {
       filter: blur(10px) !important;
       pointer-events: none;
       transition: filter 0.8s;

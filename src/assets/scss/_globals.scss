@@ -365,7 +365,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .gsap-marker-scroller-start, .gsap-marker-scroller-end, .gsap-marker-start, .gsap-marker-end {
-    // opacity: 0 !important;
+    opacity: 0 !important;
 }
 
 .page-transition {
@@ -711,7 +711,7 @@ body::-webkit-scrollbar-thumb {
                 opacity: 0.2;
                 filter: blur(4px);
                 clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
-                overflow: hidden;
+                // overflow: hidden;
             }
             .text-wrapper {
                 height: 50vh;

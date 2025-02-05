@@ -136,7 +136,6 @@ document.addEventListener("DOMContentLoaded", function () {
           })
           gsap.set(".marquee__inner.end", { y: "-100vh"  });
       
-    
         function resetScrollTriggers() {
           ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
           ScrollTrigger.refresh();
@@ -158,6 +157,21 @@ document.addEventListener("DOMContentLoaded", function () {
         pointerEvents: "none"
       });
     }, 2200);
+
+
+    gsap.to("#scroll-icon", {
+      scrollTrigger: {
+        trigger: ".steps-seciton",
+        start: "left 0%",
+        end: "left -10%",
+        scrub: 1,
+        horizontal: true,
+      },
+      ease: "linear",
+      opacity: 0,
+      filter: "blur(20px)",
+      pointerEvents: "none"
+    });
 
     gsap.fromTo("#marquee-start", {
       opacity: 0.4, 
@@ -192,7 +206,7 @@ document.addEventListener("DOMContentLoaded", function () {
       scrollTrigger: {
         trigger: ".image-1",
         start: "left 60%",
-        toggleActions: "play reverse play reverse",
+        toggleActions: "play none none reverse",
         horizontal: true,
       },
       ease: "power4.out",
@@ -205,7 +219,7 @@ document.addEventListener("DOMContentLoaded", function () {
       scrollTrigger: {
         trigger: ".image-2",
         start: "left 60%",
-        toggleActions: "play reverse play reverse",
+        toggleActions: "play none none reverse",
         horizontal: true,
       },
       ease: "power4.out",
@@ -218,7 +232,7 @@ document.addEventListener("DOMContentLoaded", function () {
       scrollTrigger: {
         trigger: ".image-3",
         start: "left 60%",
-        toggleActions: "play reverse play reverse",
+        toggleActions: "play none none reverse",
         horizontal: true,
       },
       ease: "power4.out",
@@ -231,7 +245,7 @@ document.addEventListener("DOMContentLoaded", function () {
       scrollTrigger: {
         trigger: ".image-4",
         start: "left 60%",
-        toggleActions: "play reverse play reverse",
+        toggleActions: "play none none reverse",
         horizontal: true,
       },
       ease: "power4.out",
@@ -245,7 +259,7 @@ document.addEventListener("DOMContentLoaded", function () {
       scrollTrigger: {
         trigger: ".image-5",
         start: "left 60%",
-        toggleActions: "play reverse play reverse",
+        toggleActions: "play none none reverse",
         horizontal: true,
       },
       ease: "power4.out",
@@ -264,7 +278,7 @@ document.addEventListener("DOMContentLoaded", function () {
       scrollTrigger: {
         trigger: paragraphSelector,
         start: "left: 75%",
-        toggleActions: "play reverse play reverse",
+        toggleActions: "play none none reverse",
         horizontal: true,
         },
 
@@ -276,7 +290,6 @@ document.addEventListener("DOMContentLoaded", function () {
       { opacity: 0, filter: "blur(2px)" },
       { opacity: 1, filter: "blur(0px)", stagger: 0.005, duration: 1}
     );
-
 
     }
 
