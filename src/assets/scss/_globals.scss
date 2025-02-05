@@ -247,7 +247,7 @@ body::-webkit-scrollbar-thumb {
     }
 }
 #about, #about-concept {
-    .mobile-p {
+    .mobile-p, .desktop-p {
         div {
             white-space: nowrap;
         }
@@ -694,7 +694,7 @@ body::-webkit-scrollbar-thumb {
 #about-concept {
     canvas {
         position: fixed;
-        left: -25%;
+        left: -10%;
         @include media-tablet {
             left: -50%;
         }
@@ -708,13 +708,17 @@ body::-webkit-scrollbar-thumb {
             width: 100vw;
             height: 100vh;
             img {
+                opacity: 0.2;
+                filter: blur(4px);
+                clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+                overflow: hidden;
             }
             .text-wrapper {
                 height: 50vh;
                 display: flex;
                 align-items: center;
                 width: 50%;
-                margin-left: 25%;
+                margin-left: 15%;
             }
         }
     }
@@ -726,13 +730,18 @@ body::-webkit-scrollbar-thumb {
     flex-direction: column;
     height: 100vh;
     overflow: hidden;
+    will-change: transform;
+    opacity: 0.4;
+    filter: blur(4px);
     .marquee__inner {
         display: flex;
         flex-direction: column;
         gap: 64px;
+        will-change: transform;
         .marquee__part {
+            will-change: transform;
             white-space: nowrap;
-            font-size: 120px;
+            font-size: 100px;
             writing-mode: sideways-lr; 
             // text-orientation: upright;
             // letter-spacing: -40px;
@@ -746,13 +755,15 @@ body::-webkit-scrollbar-thumb {
     flex-direction: column;
     height: 100vh;
     overflow: hidden;
+    opacity: 1;
+    filter: blur(0px);
     .marquee__inner {
         display: flex;
         flex-direction: column;
         gap: 64px;
         .marquee__part {
             white-space: nowrap;
-            font-size: 120px;
+            font-size: 100px;
             writing-mode: sideways-rl; 
             // text-orientation: upright;
             // letter-spacing: -40px;

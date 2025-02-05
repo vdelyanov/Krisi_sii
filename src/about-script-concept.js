@@ -8,37 +8,6 @@ import Lenis from 'lenis'
 
 document.addEventListener("DOMContentLoaded", function () { 
 
-      // Marquee 
-  
-      let tween = gsap
-      .to(".marquee__part", {
-          yPercent: 100,
-          repeat: -1,
-          duration: 25,
-          ease: "linear",
-      })
-      .totalProgress(0.5);
-  
-      gsap.set(".marquee__inner", { yPercent: -50 });
-  
-
-      let tweenEnd = gsap
-      .to(".marquee__part.end", {
-          yPercent: -100,
-          repeat: -1,
-          duration: 35,
-          ease: "linear",
-      })
-      .totalProgress(0.5);
-  
-      gsap.set(".marquee__inner.end", { yPercent: -50 });
-  
-
-    function resetScrollTriggers() {
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-      ScrollTrigger.refresh();
-    }
-    resetScrollTriggers();
 
     const isMobile = window.innerWidth <= 1025; 
     if (isMobile) { 
@@ -145,33 +114,184 @@ document.addEventListener("DOMContentLoaded", function () {
 
     } else {
 
-    const scrollContainer = document.querySelector(".steps-seciton");
+          // Marquee 
+  
+          let tween = gsap
+          .to(".marquee__part", {
+              yPercent: 100,
+              repeat: -1,
+              duration: 35,
+              ease: "none",
+          })
+          gsap.set(".marquee__inner", { y: "-100vh" });
+      
+    
+          let tweenEnd = gsap
+          .to(".marquee__part.end", {
+              yPercent: -100,
+              repeat: -1,
+              duration: 35,
+              ease: "linear",
+    
+          })
+          gsap.set(".marquee__inner.end", { y: "-100vh"  });
+      
+    
+        function resetScrollTriggers() {
+          ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+          ScrollTrigger.refresh();
+        }
+        resetScrollTriggers();
+
 
     setTimeout(() => {
       gsap.to("canvas", {
         scrollTrigger: {
           trigger: ".marquee",
-          start: "left 50%",
-          end: "left 0%",
+          start: "left 80%",
+          end: "left 40%",
           scrub: 1,
           horizontal: true,
         },
-        ease: "power4.out",
+        ease: "linear",
         opacity: 0,
+        pointerEvents: "none"
       });
     }, 2200);
-    
+
+    gsap.fromTo("#marquee-start", {
+      opacity: 0.4, 
+      filter: "blur(4px)"
+    }, {
+      scrollTrigger: {
+        trigger: "#marquee-start",
+        start: "left 80%",
+        end: "left 40%",
+        scrub: 1,
+        horizontal: true,
+      },
+      ease: "linear",
+      opacity: 1,
+      filter: "blur(0px)"
+    });
+
+    gsap.to("#marquee-end", {
+      scrollTrigger: {
+        trigger: "#marquee-end",
+        start: "right 100%",
+        end: "left 80%",
+        scrub: 1,
+        horizontal: true,
+      },
+      ease: "linear",
+      opacity: 0.4,
+      filter: "blur(4px)"
+    });
+
+    gsap.to(".image-1", {
+      scrollTrigger: {
+        trigger: ".image-1",
+        start: "left 60%",
+        toggleActions: "play reverse play reverse",
+        horizontal: true,
+      },
+      ease: "power4.out",
+      opacity: 1,
+      duration: 1,
+      filter: "blur(0px)",
+      clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)"
+    });
+    gsap.to(".image-2", {
+      scrollTrigger: {
+        trigger: ".image-2",
+        start: "left 60%",
+        toggleActions: "play reverse play reverse",
+        horizontal: true,
+      },
+      ease: "power4.out",
+      opacity: 1,
+      duration: 1,
+      filter: "blur(0px)",
+      clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)"
+    });
+    gsap.to(".image-3", {
+      scrollTrigger: {
+        trigger: ".image-3",
+        start: "left 60%",
+        toggleActions: "play reverse play reverse",
+        horizontal: true,
+      },
+      ease: "power4.out",
+      opacity: 1,
+      duration: 1,
+      filter: "blur(0px)",
+      clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)"
+    });
+    gsap.to(".image-4", {
+      scrollTrigger: {
+        trigger: ".image-4",
+        start: "left 60%",
+        toggleActions: "play reverse play reverse",
+        horizontal: true,
+      },
+      ease: "power4.out",
+      opacity: 1,
+      duration: 1,
+      filter: "blur(0px)",
+      clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)"
+    });
+
+    gsap.to(".image-5", {
+      scrollTrigger: {
+        trigger: ".image-5",
+        start: "left 60%",
+        toggleActions: "play reverse play reverse",
+        horizontal: true,
+      },
+      ease: "power4.out",
+      opacity: 1,
+      duration: 1,
+      filter: "blur(0px)",
+      clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)"
+    });
+
+    function animateParagraph(paragraphSelector) {
+
+    const textDesc = document.querySelector(paragraphSelector);
+    const splitDesc = new SplitText(textDesc, { type: "words,chars,lines" });
+
+    const timeline = gsap.timeline({
+      scrollTrigger: {
+        trigger: paragraphSelector,
+        start: "left: 75%",
+        toggleActions: "play reverse play reverse",
+        horizontal: true,
+        },
+
+    });
+
+    // Animate text characters
+    timeline.fromTo(
+      splitDesc.chars,
+      { opacity: 0, filter: "blur(2px)" },
+      { opacity: 1, filter: "blur(0px)", stagger: 0.005, duration: 1}
+    );
 
 
+    }
+
+    animateParagraph(".paragraph-1");
+    animateParagraph(".paragraph-2");
+    animateParagraph(".paragraph-3");
+    animateParagraph(".paragraph-4");
+    animateParagraph(".paragraph-5");
+
+    const scrollContainer = document.querySelector(".steps-seciton");
 
     const lenis = new Lenis({
       orientation: 'horizontal',
       content: scrollContainer,
       gestureOrientation: "both"
-    });
-
-    lenis.on('scroll', (e) => {
-      console.log(e);
     });
 
     function raf(time) {
