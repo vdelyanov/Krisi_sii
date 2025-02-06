@@ -274,6 +274,12 @@ main {
     .columns, img {
       overflow: visible !important; 
     }
+    .mobile-steps {
+      filter: blur(10px) !important;
+      .main-image {
+        filter: blur(0) !important;
+      }
+    }
     .step {
       filter: blur(10px) !important;
       .main-image {

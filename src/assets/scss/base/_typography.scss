@@ -63,10 +63,12 @@ p {
 }
 
 .phenomena {
-  font-family: 'Phenomena-Bold', sans-serif;
-  
+  font-family: 'Phenomena-Regular';
   &.bold {
-    font-weight: 700;
+    font-family: 'Phenomena-Bold';
+  }
+  &.light {
+    font-family: 'Phenomena-Light';
   }
   &.leading-none {
     line-height: 1;
