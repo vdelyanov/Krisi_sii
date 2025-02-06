@@ -4,41 +4,28 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
+import Lenis from 'lenis'
+
 document.addEventListener("DOMContentLoaded", function () { 
 
-    function resetScrollTriggers() {
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-      ScrollTrigger.refresh();
-    }
-    resetScrollTriggers();
 
     const isMobile = window.innerWidth <= 1025; 
     if (isMobile) { 
 
-          setTimeout(() => {
-            gsap.to("canvas", {
-              scrollTrigger: {
-                trigger: document.documentElement,
-                start: "top top",
-                end: "+=550",
-                scrub: 1,
-              },
-              ease: "power4.out",
-              opacity: 0,
-            });
-          }, 2200);
 
-          gsap.to("#about-us-title-mobile", {
-            scrollTrigger: {
-              trigger: document.documentElement,
-              start: "top top",
-              end: "+=150",
-              scrub: 1,
-            },
-            ease: "power4.out",
-            opacity: 0,
-            filter: "blur(10px)"
-          });
+
+    // Marquee 
+
+    let tween = gsap
+    .to(".marquee-part", {
+        xPercent: -100,
+        repeat: -1,
+        duration: 10,
+        ease: "linear",
+    })
+    .totalProgress(0.5);
+
+    gsap.set(".marquee-inner", { xPercent: -50 });
 
 
 
@@ -62,26 +49,25 @@ document.addEventListener("DOMContentLoaded", function () {
       // Animate text characters
       timeline.fromTo(
         splitDescM.lines,
-        { opacity: 0, filter: "blur(3px)" },
-        { opacity: 1, filter: "blur(0px)", stagger: 0.1}
+        { opacity: 0, filter: "blur(1px)", y: 10 },
+        { opacity: 1, filter: "blur(0px)", y: 0, stagger: 0.1}
       );
 
       timeline.fromTo(
         imageSelector,
-        { opacity: 0, y: 20,  scaleY: 1, filter: "blur(10px)",
+        { opacity: 0,
           transformOrigin: "top",
+          clipPath: "polygon(0 0, 100% 0, 100% 0, 0 0);",
         },
         {
           opacity: 1,
-          scaleY: 1,
-          y: 0,
+          clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)",
           autoAlpha: 1,
-          filter: "blur(0px)",
           ease: "power4.out",
           scrollTrigger: {
             trigger: imageSelector,
-            start: "top 100%",
-            end: "bottom 80%",
+            start: "top 70%",
+            end: "bottom 50%",
             scrub: 2,
           },
         }
@@ -95,8 +81,6 @@ document.addEventListener("DOMContentLoaded", function () {
       animateParagraphMobile(".mobile-paragraph-4", ".mobile-image-4");
       animateParagraphMobile(".mobile-paragraph-5", ".mobile-image-5");
 
-
-        
   setTimeout(() => {
     gsap.timeline()
     ScrollTrigger.create({
@@ -115,110 +99,234 @@ document.addEventListener("DOMContentLoaded", function () {
   }, 0)
 
 
-  } else {
-
-      setTimeout(() => {
-        gsap.to("canvas", {
-          scrollTrigger: {
-            trigger: document.documentElement,
-            start: "bottom 100%",
-            end: "bottom 90%",
-            scrub: 1,
-          },
-          ease: "power4.out",
-          opacity: 0,
-        });
-      }, 2200);
-
-      let topOffset = 35;
-      function animateParagraph(paragraphSelector, imageSelector) {
-        
-      const textDesc = document.querySelector(paragraphSelector);
-      if (!textDesc) return;
-
-      const splitDesc = new SplitText(textDesc, { type: "words,chars" });
-
-      const timeline = gsap.timeline({
-        scrollTrigger: {
-          trigger: paragraphSelector,
-          start: "top 34%",
-          end: "bottom 34%",
-          pin: true,
-          pinSpacing: false,
-          scrub: 3,
-          onEnterBack: () => {
-            gsap.to(textDesc, { opacity: 1, filter: "blur(0px)", duration: 0.2 });
-            if (textDesc.classList.contains("last-text-desc")) {
-              gsap.to(".footer-end", { clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)" });
-            }
-          },
-          onLeaveBack: () => {
-            gsap.to(textDesc, { opacity: 0, filter: "blur(10px)", duration: 0.2 });
-          },
-          onEnter: () => {
-            gsap.to(textDesc, { opacity: 1, filter: "blur(0px)", duration: 0.2 });
-          },
-          onLeave: () => {
-            if (!textDesc.classList.contains("last-text-desc")) {
-              gsap.to(textDesc, { opacity: 0, filter: "blur(10px)", duration: 0.2, immediateRender: true });
-            }
-            else {
-              gsap.to(".footer-end", { clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)" });
-            }
-          },
-          },
-      });
-
-      // Animate text characters
-      timeline.fromTo(
-        splitDesc.chars,
-        { opacity: 0.2, filter: "blur(2px)" },
-        { opacity: 1, filter: "blur(0px)", stagger: 0.3}
-      );
-
-      // Animate associated image
-      timeline.fromTo(
-        imageSelector,
-        { top: "1000%", scaleY: 2, filter: "blur(100px)"},
-        {
-          top: `${topOffset}vh`,
-          scaleY: 1,
-          filter: "blur(0px)",
-          ease: "power4.out",
-          scrollTrigger: {
-            trigger: paragraphSelector,
-            start: "top 34%",
-            end: "bottom 34%",
-            scrub: 1,
-          },
-        }
-      );
-
-      topOffset += 5; // Increment for spacing between paragraphs
-      
     }
-    
-    // Animate multiple paragraphs and images
-    animateParagraph(".paragraph-1", ".image-1");
-    animateParagraph(".paragraph-2", ".image-2");
-    animateParagraph(".paragraph-3", ".image-3");
-    animateParagraph(".paragraph-4", ".image-4");
-    animateParagraph(".paragraph-5", ".image-5");
 
-    // Title wrapper animation
-    gsap.to("#title-wrapper", {
+     else {
+
+          // Marquee 
+  
+          let tween = gsap
+          .to(".marquee__part", {
+              yPercent: 100,
+              repeat: -1,
+              duration: 35,
+              ease: "none",
+          })
+          gsap.set(".marquee__inner", { y: "-100vh" });
+      
+    
+          let tweenEnd = gsap
+          .to(".marquee__part.end", {
+              yPercent: -100,
+              repeat: -1,
+              duration: 35,
+              ease: "linear",
+    
+          })
+          gsap.set(".marquee__inner.end", { y: "-100vh"  });
+      
+        function resetScrollTriggers() {
+          ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+          ScrollTrigger.refresh();
+        }
+        resetScrollTriggers();
+
+
+    setTimeout(() => {
+      gsap.to("canvas", {
+        scrollTrigger: {
+          trigger: ".marquee",
+          start: "left 80%",
+          end: "left 40%",
+          scrub: 1,
+          horizontal: true,
+        },
+        ease: "linear",
+        opacity: 0,
+        pointerEvents: "none"
+      });
+    }, 2200);
+
+
+    gsap.fromTo("#scroll-icon",
+      {
+        opacity:1,
+        filter: "blur(0px)",
+        pointerEvents: "none",
+        duration: 0.1,
+      }, {
       scrollTrigger: {
-        trigger: document.documentElement,
-        start: "bottom 100%",
-        end: "bottom 90%",
-        scrub: 1,
+        trigger: ".steps-seciton",
+        start: "left 0%",
+        end: "left -1%",
+        toggleActions: "play none none reverse",
+        horizontal: true,
+        scrub:1
       },
-      left: "45%",
-      scaleY: 1.2,
-      opacity: 0.2,
-      translateX: "-100%",
-      filter: "blur(2px)",
+      ease: "linear",
+      opacity: 0,
+      duration: 0.2,
+      filter: "blur(20px)",
+      pointerEvents: "none"
+    });
+
+    gsap.fromTo("#marquee-start", {
+      opacity: 0.4, 
+      filter: "blur(4px)"
+    }, {
+      scrollTrigger: {
+        trigger: "#marquee-start",
+        start: "left 10%",
+        end: "left 0%",
+        scrub: 1,
+        horizontal: true,
+      },
+      ease: "linear",
+      opacity: 1,
+      filter: "blur(0px)"
+    });
+
+    gsap.to("#marquee-end", {
+      scrollTrigger: {
+        trigger: "#marquee-end",
+        start: "right 100%",
+        end: "left 80%",
+        scrub: 1,
+        horizontal: true,
+      },
+      ease: "linear",
+      opacity: 0.4,
+      filter: "blur(4px)"
+    });
+
+    gsap.to("#marquee-end", {
+      scrollTrigger: {
+        trigger: "#marquee-end",
+        start: "right 90%",
+        end: "right 89%",
+        scrub: 1,
+        horizontal: true,
+        onEnter: () => {
+          gsap.to(".footer-end", { clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)"});
+        },
+        onEnterBack: () => {
+          gsap.to(".footer-end", { clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)"});
+        }
+      },
+    });
+
+    gsap.to(".image-1", {
+      scrollTrigger: {
+        trigger: ".image-1",
+        start: "left 70%",
+        toggleActions: "play none none reverse",
+        horizontal: true,
+      },
       ease: "power4.out",
+      opacity: 1,
+      duration: 1,
+      clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)"
+    });
+    gsap.to(".image-2", {
+      scrollTrigger: {
+        trigger: ".image-2",
+        start: "left 70%",
+        toggleActions: "play none none reverse",
+        horizontal: true,
+      },
+      ease: "power4.out",
+      opacity: 1,
+      duration: 1,
+      clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)"
+    });
+    gsap.to(".image-3", {
+      scrollTrigger: {
+        trigger: ".image-3",
+        start: "left 70%",
+        toggleActions: "play none none reverse",
+        horizontal: true,
+      },
+      ease: "power4.out",
+      opacity: 1,
+      duration: 1,
+      clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)"
+    });
+    gsap.to(".image-4", {
+      scrollTrigger: {
+        trigger: ".image-4",
+        start: "left 70%",
+        toggleActions: "play none none reverse",
+        horizontal: true,
+      },
+      ease: "power4.out",
+      opacity: 1,
+      duration: 1,
+      clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)"
+    });
+    gsap.to(".image-5", {
+      scrollTrigger: {
+        trigger: ".image-5",
+        start: "left 70%",
+        toggleActions: "play none none reverse",
+        horizontal: true,
+      },
+      ease: "power4.out",
+      opacity: 1,
+      duration: 1,
+      clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)"
+    });
+
+    function animateParagraph(paragraphSelector) {
+
+    const textDesc = document.querySelector(paragraphSelector);
+    const splitDesc = new SplitText(textDesc, { type: "words,chars,lines" });
+
+    const timeline = gsap.timeline({
+      scrollTrigger: {
+        trigger: paragraphSelector,
+        start: "left: 75%",
+        toggleActions: "play none none reverse",
+        horizontal: true,
+        },
+
+    });
+
+    // Animate text characters
+    timeline.fromTo(
+      splitDesc.chars,
+      { opacity: 0, filter: "blur(1px)", y: 10 },
+      { opacity: 1, filter: "blur(0px)", y: 0, stagger: 0.005,}
+    );
+
+    }
+
+    animateParagraph(".paragraph-1");
+    animateParagraph(".paragraph-2");
+    animateParagraph(".paragraph-3");
+    animateParagraph(".paragraph-4");
+    animateParagraph(".paragraph-5");
+
+    const scrollContainer = document.querySelector(".steps-seciton");
+
+    const lenis = new Lenis({
+      duration: 1.2, // Slightly increase duration for smoother easing
+      infinite: false, // Ensure looping is smooth
+      smoothWheel: true, // Smooth scrolling for mouse wheel
+      smoothTouch: false, // Ensure smoothness for touch devices
+
+      orientation: 'horizontal',
+      content: scrollContainer,
+      gestureOrientation: "both"
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+
+    window.addEventListener('wheel', (e) => {
+      scrollContainer.scrollLeft += e.deltaY;
     });
 
   }

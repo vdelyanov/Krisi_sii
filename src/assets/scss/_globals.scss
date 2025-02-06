@@ -717,8 +717,8 @@ body::-webkit-scrollbar-thumb {
                 height: 44vh;
                 display: flex;
                 align-items: center;
-                width: 50%;
-                margin-left: 15%;
+                width: 50vw;
+                margin-left: 15vw;
                 p {
                     line-height: 136%;
                 }
@@ -745,7 +745,9 @@ body::-webkit-scrollbar-thumb {
             will-change: transform;
             white-space: nowrap;
             font-size: 100px;
-            writing-mode: sideways-lr; 
+            writing-mode: vertical-lr;
+            transform: rotate(180deg);
+            width: max-content;
         }
     }
 }
@@ -764,12 +766,11 @@ body::-webkit-scrollbar-thumb {
         .marquee__part {
             white-space: nowrap;
             font-size: 100px;
-            writing-mode: sideways-rl; 
+            writing-mode: vertical-lr;
+            width: max-content;
         }
     }
 }
-
-
 
 .marquee-mobile {
     position: relative;
