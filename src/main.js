@@ -1166,10 +1166,10 @@ if (footer)  {
     markers: true,
     scrub: 1,
     onEnter: () => {
-      gsap.to(".footer-fixed", {  duration: 0.4,  clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)"});
+      gsap.to(".footer-fixed", {  clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)"});
       let textTrigger = document.querySelector(".show-text-trigger")
       if (textTrigger) {
-        gsap.to(".show-text-trigger", {  duration: 0.4, translateY: "60px"});
+        gsap.to(".show-text-trigger", { translateY: "60px"});
       }
     },
     onEnterBack: () => {
