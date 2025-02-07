@@ -1173,10 +1173,10 @@ if (footer)  {
       }
     },
     onEnterBack: () => {
-      gsap.to(".footer-fixed", {  duration: 0.4,  clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)"});
+      gsap.to(".footer-fixed", { clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)"});
       let textTrigger = document.querySelector(".show-text-trigger")
       if (textTrigger) {
-      gsap.to(".show-text-trigger", { duration: 0.4, translateY: "0px"});
+      gsap.to(".show-text-trigger", { translateY: "0px"});
       }
     }
   });
