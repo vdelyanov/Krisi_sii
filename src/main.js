@@ -19,7 +19,7 @@ import barba from '@barba/core';
 import Lenis from 'lenis'
 
 const lenis = new Lenis({
-  duration: 1.2, // Slightly increase duration for smoother easing
+  duration: 1.6, // Slightly increase duration for smoother easing
   infinite: false, // Ensure looping is smooth
   smoothWheel: true, // Smooth scrolling for mouse wheel
   smoothTouch: false, // Ensure smoothness for touch devices
@@ -158,19 +158,19 @@ const enterTransition = () => {
     .to(childElements, {
       opacity: 0,
       ease: "expo.inOut",
-      duration: 1,
+      duration: 0.8,
     }, 0)
     .to(transition.pageLabel, {  opacity: 0, duration: 0, filter: "blur(0px)", ease: "expo.inOut",}, ">")
     .to(transition.swither, {
       opacity: 0,
       filter: 'blur(20px)',
       ease: "expo.inOut",
-      duration: 1,
+      duration: 0.8,
     }, 0)
     .to(transition.header, { filter: "blur(10px)",  opacity: 0, duration: 0.6, ease: "expo.inOut",}, 0)
     .to(transition.cursor, {
       opacity: 0,
-      duration: 1,
+      duration: 0.8,
     }, 0)
     .to("footer", { clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)", duration: 0.6 }, 0)
     .to(transition.pageLabel, {  bottom: "0px", duration: 0, ease: "expo.inOut",})
@@ -185,25 +185,24 @@ const enterTransition = () => {
       .to(transition.menu, {
         clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
         ease: "expo.inOut",
-        duration: 1.2,
+        duration: 0.8,
       }, 0)
       .to(childElements, {
         opacity: 0,
-        // filter: 'blur(20px)',
         ease: "expo.inOut",
-        duration: 1,
+        duration: 0.8,
       }, 0)
     .to(transition.pageLabel, {  opacity: 0, duration: 0, filter: "blur(0px)", ease: "linear",},  ">")
     .to(transition.swither, {
       opacity: 0,
       filter: 'blur(20px)',
       ease: "expo.inOut",
-      duration: 1,
+      duration: 0.8,
     }, 0)
     .to(transition.header, { filter: "blur(10px)", opacity: 0, duration: 0.6, ease: "expo.inOut",}, 0)
     .to(transition.cursor, {
       opacity: 0,
-      duration: 1,
+      duration: 0.8,
     }, 0)
     .to("footer", { clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)", duration: 0.6 }, 0)
     .to(transition.pageLabel, {  bottom: "0px", duration: 0, ease: "expo.inOut",})
@@ -249,7 +248,6 @@ document.addEventListener("DOMContentLoaded", function () {
     window.scrollTo(0, 0);
   }
 });
-
 
 // Preload animation 
 const item = document.querySelector('#name');
@@ -641,7 +639,7 @@ function initHeader() {
       gsap.to(menu, {
         clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
         ease: "expo.inOut",
-        duration: 1.5,
+        duration: 1.2,
         onStart: () => {
           setTimeout(() => {
             main.classList.remove("bg-blur");
@@ -677,7 +675,7 @@ function initHeader() {
       gsap.to(menu, {
         clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
         ease: "expo.inOut",
-        duration: 1.5,
+        duration: 1.2,
         onStart: () => {
           setTimeout(() => {
             main.classList.remove("bg-blur");
@@ -728,7 +726,7 @@ function initHeader() {
       gsap.to(menu, {
         clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
         ease: "expo.inOut",
-        duration: 1.5,
+        duration: 1.2,
         onStart: () => {
           menu.style.pointerEvents = "all";
           main.classList.add("bg-blur");
@@ -765,7 +763,7 @@ function initHeader() {
         scale: 1,
         stagger: 0.05,
         delay: 0.75,
-        duration: 1.5,
+        duration: 1.2,
         ease: "power4.out",
         
       });
@@ -782,7 +780,7 @@ function initHeader() {
       gsap.to(menu, {
         clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
         ease: "expo.inOut",
-        duration: 1.5,
+        duration: 1.2,
         onStart: () => {
           setTimeout(() => {
             main.classList.remove("bg-blur");
@@ -1168,17 +1166,17 @@ if (footer)  {
     markers: true,
     scrub: 1,
     onEnter: () => {
-      gsap.to(".footer-fixed", { clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)"});
+      gsap.to(".footer-fixed", {  duration: 0.4,  clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)"});
       let textTrigger = document.querySelector(".show-text-trigger")
       if (textTrigger) {
-        gsap.to(".show-text-trigger", { translateY: "60px"});
+        gsap.to(".show-text-trigger", {  duration: 0.4, translateY: "60px"});
       }
     },
     onEnterBack: () => {
-      gsap.to(".footer-fixed", { clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)"});
+      gsap.to(".footer-fixed", {  duration: 0.4,  clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)"});
       let textTrigger = document.querySelector(".show-text-trigger")
       if (textTrigger) {
-      gsap.to(".show-text-trigger", { translateY: "0px"});
+      gsap.to(".show-text-trigger", { duration: 0.4, translateY: "0px"});
       }
     }
   });

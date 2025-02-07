@@ -90,10 +90,10 @@ document.addEventListener("DOMContentLoaded", function () {
       markers: true,
       scrub: 1,
       onEnter: () => {
-        gsap.to(".footer-end", { clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)"});
+        gsap.to(".footer-end", { duration: 0.4, clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)"});
       },
       onEnterBack: () => {
-        gsap.to(".footer-end", { clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)"});
+        gsap.to(".footer-end", { duration: 0.4, clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)"});
       }
     });
   }, 0)
@@ -309,7 +309,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const scrollContainer = document.querySelector(".steps-seciton");
 
     const lenis = new Lenis({
-      duration: 1.2, // Slightly increase duration for smoother easing
+      duration: 2, // Slightly increase duration for smoother easing
       infinite: false, // Ensure looping is smooth
       smoothWheel: true, // Smooth scrolling for mouse wheel
       smoothTouch: false, // Ensure smoothness for touch devices

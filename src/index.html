@@ -381,29 +381,28 @@
       </div>
     </div>
 
-    <!-- <script src="./nextparticle.min.js"></script> -->
-    <script src="./nextparticle.js"></script>
+    <script src="./nextparticle.min.js"></script>
     
     <script>
 
-      const nextParticle = new NextParticle({
-        image: document.all.logo,
-        width: window.innerWidth,
-        height: window.innerHeight,
-        maxWidth: window.innerWidth * 0.5,
-        particleGap: 4,
-        dataNoise: 20,
-        mouseForce: 0,
-        disableInteraction: false
-      });
-      window.onload = function () {
-        if (window.innerWidth < 1025) {
-          nextParticle.width = window.innerWidth * 2,
-          nextParticle.height=  window.innerHeight * 2,
-          nextParticle.maxWidth = window.innerWidth * 2;
-          nextParticle.start();
-          } 
-        };
+        const nextParticle = new NextParticle({
+          image: document.all.logo,
+          width: window.innerWidth,
+          height: window.innerHeight,
+          maxWidth: window.innerWidth * 0.5,
+          particleGap: 4,
+          dataNoise: 20,
+          mouseForce: 0,
+          disableInteraction: false
+        });
+        window.onload = function () {
+          if (window.innerWidth < 1025) {
+            nextParticle.width = window.innerWidth * 2,
+            nextParticle.height=  window.innerHeight * 2,
+            nextParticle.maxWidth = window.innerWidth * 2;
+            nextParticle.start();
+            } 
+          };
 
     </script>
 

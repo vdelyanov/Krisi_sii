@@ -21,7 +21,7 @@ for (const item of items) {
 
         gsap.from(item.DOM.image, {
             ease: 'none',
-            scaleY: 1.5,
+            scaleY: 1.4,
             opacity: 0,
             yPercent: 40,
             filter: "blur(10px)",
@@ -47,9 +47,9 @@ for (const item of items) {
         }, {
             ease: 'none',
             filter: "blur(10px)",
-            scaleY: 1.5,
+            scaleY: 1.4,
             opacity: 0,
-            yPercent: -40,
+            yPercent: -20,
             onStart: () => {
             },
             onReverseComplete: () => {
@@ -65,7 +65,7 @@ for (const item of items) {
 
         gsap.fromTo([item.DOM.title], 
         { filter: "blur(10px)",
-            yPercent: 40}, {
+            yPercent: 20}, {
             scrollTrigger: {
                 trigger: item.DOM.el,
                 top: 'top -50%',
