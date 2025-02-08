@@ -424,9 +424,10 @@
 
 .entry-screen {
   canvas {
-    filter: blur(4px);
+    filter: blur(4px) brightness(1.1);
     transform: translateX(25%);
     @include media-tablet {
+      filter: blur(3px) brightness(1.2);
       transform: translateX(0) translateY(-60px);
     }
   }
