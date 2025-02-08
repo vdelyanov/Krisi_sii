@@ -64,12 +64,14 @@ const header = document.querySelector('header')
 function changeColor(colorKey) {
     const color = colors[colorKey];
     document.body.style.backgroundColor = color;
-    header.style.backgroundColor = color;
+      header.style.backgroundColor = color;
+      header.style.background = `linear-gradient(to bottom, ${color} 0%, transparent 100%)`
     if (modalBg) {
       modalBg.style.backgroundColor = color;
     }
     if (sticky) {
-      sticky.style.backgroundColor = color;
+      // sticky.style.backgroundColor = color;
+      sticky.style.background = `linear-gradient(to top, ${color} 0%, transparent 100%)`
     }
     if (lightbox) {
       lightbox.style.backgroundColor = color;
@@ -91,11 +93,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if (savedColor) {
         document.body.style.backgroundColor = savedColor;
         header.style.backgroundColor = savedColor;
+        header.style.background = `linear-gradient(to bottom, ${savedColor} 0%, transparent 100%)`
         if (modalBg) {
           modalBg.style.backgroundColor = savedColor;
         }
         if (sticky) {
-          sticky.style.backgroundColor = savedColor;
+          // sticky.style.backgroundColor = savedColor;
+          sticky.style.background = `linear-gradient(to top, ${savedColor} 0%, transparent 100%)`
         }
         if (lightbox) {
           lightbox.style.backgroundColor = savedColor;
@@ -150,9 +154,9 @@ const enterTransition = () => {
     const menuToggle = document.querySelector(".menu-toggle");
 
     if (menuToggle.classList.contains("closed")) {
-    tl.to(transition.body, { backgroundColor: "#121619", duration: 0.8, ease: "linear",})
-    .to(transition.gradient, { opacity: 0, duration: 0.8, ease: "linear",})
-    .to(transition.noise, { opacity: 0, duration: 0.8, ease: "linear",})
+    tl.to(transition.body, { backgroundColor: "#121619", duration: 0.6, ease: "linear",})
+    .to(transition.gradient, { opacity: 0, duration: 0.6, ease: "linear",})
+    .to(transition.noise, { opacity: 0, duration: 0.6, ease: "linear",})
     .to(transition.cookieBox, { bottom: -100, duration: 0.4, ease: "linear",})
     .to(childElements, {
       opacity: 0,
@@ -164,22 +168,22 @@ const enterTransition = () => {
       opacity: 0,
       filter: 'blur(20px)',
       ease: "expo.inOut",
-      duration: 0.8,
+      duration: 0.6,
     }, 0)
     .to(transition.header, { filter: "blur(10px)",  opacity: 0, duration: 0.6, ease: "expo.inOut",}, 0)
     .to(transition.cursor, {
       opacity: 0,
-      duration: 0.8,
+      duration: 0.6,
     }, 0)
     .to("footer", { clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)", duration: 0.6 }, 0)
     .to(transition.pageLabel, {  bottom: "0px", duration: 0, ease: "expo.inOut",})
     .to(window, { scrollTo: 0, duration: 0}, ">")
    
   } else {
-      tl.to(transition.body, { backgroundColor: "#121619", duration: 0.8, ease: "linear",
+      tl.to(transition.body, { backgroundColor: "#121619", duration: 0.6, ease: "linear",
       }, 0)
-      .to(transition.gradient, { opacity: 0, duration: 0.8, ease: "linear",})
-      .to(transition.noise, { opacity: 0, duration: 0.8, ease: "linear",})
+      .to(transition.gradient, { opacity: 0, duration: 0.6, ease: "linear",})
+      .to(transition.noise, { opacity: 0, duration: 0.6, ease: "linear",})
       .to(transition.cookieBox, { bottom: -100, duration: 0.4, ease: "linear",})
       .to(transition.menu, {
         clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
@@ -196,12 +200,12 @@ const enterTransition = () => {
       opacity: 0,
       filter: 'blur(20px)',
       ease: "expo.inOut",
-      duration: 0.8,
+      duration: 0.6,
     }, 0)
     .to(transition.header, { filter: "blur(10px)", opacity: 0, duration: 0.6, ease: "expo.inOut",}, 0)
     .to(transition.cursor, {
       opacity: 0,
-      duration: 0.8,
+      duration: 0.6,
     }, 0)
     .to("footer", { clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)", duration: 0.6 }, 0)
     .to(transition.pageLabel, {  bottom: "0px", duration: 0, ease: "expo.inOut",})
