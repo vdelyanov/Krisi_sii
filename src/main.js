@@ -48,12 +48,10 @@ $(".color-switcher").mouseleave(function() {
 
 // Predefined colors
 const colors = {
-    color1: '#000000', 
+    // color1: '#000000', 
     color2: '#121619', 
-    // color3: '#141D29',  
+    color4: '#292929',
     color3: '#1B2737',  
-    // color4: '#1F1F1F' 
-    color4: '#292929' 
 };
 
 // Function to change background color and store in localStorage

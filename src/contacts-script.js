@@ -1,5 +1,20 @@
 import { submitContactForm } from './contentfulClient.js';
 
+import Lenis from 'lenis'
+
+const lenis = new Lenis({
+  duration: 1.6, // Slightly increase duration for smoother easing
+  infinite: false, // Ensure looping is smooth
+  smoothWheel: true, // Smooth scrolling for mouse wheel
+  smoothTouch: false, // Ensure smoothness for touch devices
+});
+
+function raf(time) {
+  lenis.raf(time)
+  requestAnimationFrame(raf)
+}
+requestAnimationFrame(raf)
+
 document.addEventListener("DOMContentLoaded", function () { 
 
     document.getElementById('contact-form').addEventListener('submit', async (event) => {

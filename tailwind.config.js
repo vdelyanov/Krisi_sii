@@ -12,7 +12,7 @@ export default {
         'gray': '#C4C7C7',
         'dark-gray': '#d3d3d3',
         'black': '#000000',
-        'white': '#ffffff',
+        'white': '#f8f8f8',
     },
     corePlugins: {
       preflight: false, // Disables the preflight entirely

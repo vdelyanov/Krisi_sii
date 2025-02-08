@@ -12,8 +12,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const isMobile = window.innerWidth <= 1025; 
     if (isMobile) { 
 
-
-
     // Marquee 
 
     let tween = gsap
