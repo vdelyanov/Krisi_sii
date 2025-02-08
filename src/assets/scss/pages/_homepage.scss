@@ -339,24 +339,39 @@
   transition: filter 0s !important;
 }
 
-// Test 1
+// #gradient-canvas {
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   width:100%;
+//   min-height:100vh;
+//   height: auto;
+//   --gradient-color-4: #0A0A0A;
+//   mix-blend-mode: multiply;
+//   filter: blur(10px);
+//   z-index:-1;
+//   opacity: 1 !important;
+// }
 
-#gradient-canvas {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width:100%;
-  min-height:100vh;
-  height: auto;
-  --gradient-color-1: #ffffff;
-  --gradient-color-2: #ffffff;
-  --gradient-color-3: #ffffff; 
-  --gradient-color-4: #0A0A0A;
-  mix-blend-mode: darken;
-  filter: blur(10px);
-  z-index:-1;
-  opacity: 0;
-}
+  // background: transparent url("https://i.gifer.com/WmZ0.gif");
+  // background: transparent url("https://i.gifer.com/RpdC.gif");
+  // background: transparent url("https://i.gifer.com/9GJy.gif");
+  // background: transparent url("https://i.gifer.com/5zWt.gif");
+
+// #noise-bg {
+// 	position: fixed;
+// 	top: -50%;
+// 	left: -50%;
+// 	right: -50%;
+// 	bottom: -50%;
+// 	width: 200%;
+// 	height: 200vh;
+//    background: transparent url("https://i.gifer.com/WmZ0.gif");
+// 	background-repeat: repeat;
+// 	pointer-events: none;
+// 	opacity: 0;
+//   mix-blend-mode: multiply;
+// }
 
 #noise-bg {
 	position: fixed;
@@ -364,10 +379,9 @@
 	left: -50%;
 	right: -50%;
 	bottom: -50%;
-	width: 400%;
-	height: 400vh;
-	background: transparent
-		url("https://portfolio-v4-abjt14.vercel.app/assets/images/noise/noise.png") repeat 0 0;
+	width: 200%;
+	height: 200vh;
+	background: transparent url("https://portfolio-v4-abjt14.vercel.app/assets/images/noise/noise.png") repeat 0 0;
 	background-repeat: repeat;
 	animation: 2000ms infinite noise;
 	pointer-events: none;

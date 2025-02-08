@@ -85,8 +85,8 @@ function changeColor(colorKey) {
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  const gradient = new Gradient()
-  gradient.initGradient('#gradient-canvas')
+  // const gradient = new Gradient()
+  // gradient.initGradient('#gradient-canvas')
 
     const savedColor = localStorage.getItem('selectedColor');
     
@@ -137,7 +137,8 @@ const transition = {
   swither: document.querySelectorAll('.color-switcher'),
   body: document.querySelector('body'),
   pageLabel: document.querySelector('.page-transition .current'),
-  gradient: document.querySelector('#gradient-canvas'),
+  // gradient: document.querySelector('#gradient-canvas'),
+  gradient: document.querySelector('.gradient-bg'),
   noise: document.querySelector('#noise-bg'),
   cookieBox: document.querySelector('#cookie-box'),
 };
@@ -548,7 +549,8 @@ function initHeader() {
     footer: document.querySelector('footer'),
     pageLabelInit: document.querySelector('.page-transition .current'),
     pageLabelInit: document.querySelector('.page-transition .current'),
-    gradient: document.querySelector('#gradient-canvas'),
+    // gradient: document.querySelector('#gradient-canvas'),
+    gradient: document.querySelector('.gradient-bg'),
     noise: document.querySelector('#noise-bg'),
     cookieBox: document.querySelector('#cookie-box'),
   };
@@ -572,7 +574,7 @@ function initHeader() {
     opacity: 0,
     filter: "blur(10px)",
     duration: 0.6,
-    onComplete: () => {
+    onStart: () => {
       const aboutPage = document.querySelector("#about");
       const contactPage = document.querySelector("#contacts");
       const homepagePage = document.querySelector("#homepage");
@@ -586,7 +588,7 @@ function initHeader() {
     ease: "expo.inOut",
     duration: 1.2,
   })
-  .to(transition.gradient, { opacity: 0.1, duration: 0.8, ease: "linear",}, 0.4)
+  .to(transition.gradient, { opacity: 1, duration: 0.8, ease: "linear",}, 0.4)
   .to(transition.noise, { opacity: 0.3, duration: 0.8, ease: "linear",}, 0.4)
   .to(transition.cookieBox, { bottom: 0, duration: 0.4, ease: "linear",})
   .to(transition.swither, {
