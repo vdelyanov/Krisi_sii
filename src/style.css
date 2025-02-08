@@ -15,8 +15,8 @@ header {
 .footer-fixed, .footer-end  {
     clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%);
     opacity: 0;
-    transition: clip-path 0.1s linear;
     visibility: hidden;
+    will-change: transform;
 }
 
 #contacts {
