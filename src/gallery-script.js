@@ -20,7 +20,7 @@ function raf(time) {
 requestAnimationFrame(raf)
 
 document.addEventListener("DOMContentLoaded", function () { 
-
+  
     const imageCategories = {
       bts: {
         column1: [
@@ -446,6 +446,8 @@ document.addEventListener("DOMContentLoaded", function () {
   
     }
     }
+
+    
     
     // Check URL for category on page load
     function loadCategoryFromURL() {
@@ -462,7 +464,6 @@ document.addEventListener("DOMContentLoaded", function () {
   
     // Lightbox funcs 
     function refreshModal() {
-    // Modal 
     const gridItems = document.querySelectorAll(".img");
     const columns = document.querySelector(".columns");
     const filterTrigger = document.querySelector("#mobile-filter-categories");
@@ -545,7 +546,7 @@ document.addEventListener("DOMContentLoaded", function () {
           if (e.key === "Escape") closeLightbox();
       });
     }
-    
-      loadCategoryFromURL(); // Load images based on URL parameter on page load
+
+      loadCategoryFromURL();
   
 })

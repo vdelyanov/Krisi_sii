@@ -1,7 +1,7 @@
 :root {
     --background-color: #121619;
 }
-body, header, #show-text-trigger-wrapper {
+body, header {
     background-color: var(--background-color);
     transition: background-color 1.2s cubic-bezier(0.4, 0, 0.68, 0.06);
 }
@@ -26,5 +26,4 @@ header {
     #contacts {
         height: auto;
     }
-    
 }
