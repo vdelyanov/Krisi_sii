@@ -22,7 +22,7 @@ const lenis = new Lenis({
   duration: 1.6, // Slightly increase duration for smoother easing
   infinite: false, // Ensure looping is smooth
   smoothWheel: true, // Smooth scrolling for mouse wheel
-  smoothTouch: false, // Ensure smoothness for touch devices
+  smoothTouch: true, // Ensure smoothness for touch devices
 });
 
 function raf(time) {
@@ -590,8 +590,8 @@ function initHeader() {
     ease: "expo.inOut",
     duration: 1.2,
   })
-  .to(transition.gradient, { opacity: 1, duration: 0.8, ease: "linear",}, 0.4)
-  .to(transition.noise, { opacity: 0.3, duration: 0.8, ease: "linear",}, 0.4)
+  .to(transition.gradient, { opacity: 0.2, duration: 0.8, ease: "linear",}, 0.4)
+  .to(transition.noise, { opacity: 0.2, duration: 0.8, ease: "linear",}, 0.4)
   .to(transition.cookieBox, { bottom: 0, duration: 0.4, ease: "linear",})
   .to(transition.swither, {
     opacity: 1,
@@ -860,8 +860,8 @@ function initialInitHeader() {
     ease: "expo.inOut",
     duration: 1.2,
   })
-  .to(transition.gradient, { opacity: 0.1, duration: 0.8, ease: "linear"})
-  .to(transition.noise, { opacity: 0.3, duration: 0.8, ease: "linear",})
+  .to(transition.gradient, { opacity: 0.2, duration: 0.8, ease: "linear"})
+  .to(transition.noise, { opacity: 0.2, duration: 0.8, ease: "linear",})
   .to(transition.cookieBox, { bottom: 0, duration: 0.4, ease: "linear",})
   .to(transition.swither, {
     opacity: 1,

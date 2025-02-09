@@ -310,7 +310,7 @@ document.addEventListener("DOMContentLoaded", function () {
       duration: 2, // Slightly increase duration for smoother easing
       infinite: false, // Ensure looping is smooth
       smoothWheel: true, // Smooth scrolling for mouse wheel
-      smoothTouch: false, // Ensure smoothness for touch devices
+      smoothTouch: true, // Ensure smoothness for touch devices
 
       orientation: 'horizontal',
       content: scrollContainer,

@@ -21,7 +21,7 @@ for (const item of items) {
 
         gsap.from(item.DOM.image, {
             ease: 'none',
-            scaleY: 1.4,
+            scaleY: 1.2,
             opacity: 0,
             yPercent: 40,
             filter: "blur(10px)",
@@ -47,7 +47,7 @@ for (const item of items) {
         }, {
             ease: 'none',
             filter: "blur(10px)",
-            scaleY: 1.4,
+            scaleY: 1.2,
             opacity: 0,
             yPercent: -20,
             onStart: () => {
