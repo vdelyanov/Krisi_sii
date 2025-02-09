@@ -275,13 +275,13 @@ main {
       overflow: visible !important; 
     }
     .mobile-steps {
-      filter: blur(10px) !important;
+      filter: blur(4px) !important;
       .main-image {
         filter: blur(0) !important;
       }
     }
     .step {
-      filter: blur(10px) !important;
+      filter: blur(4px) !important;
       .main-image {
         filter: blur(0) !important;
       }
@@ -290,7 +290,7 @@ main {
     z-index: 3;
     pointer-events: none;
     span, p, a, h1, h2, h3, h4, svg, img, form, canvas, nav, figure, .marquee  {
-      filter: blur(10px) !important;
+      filter: blur(4px) !important;
       pointer-events: none;
       transition: filter 0.8s;
       .item__image, .item__caption-title {

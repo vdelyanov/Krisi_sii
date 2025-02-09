@@ -23,7 +23,7 @@ for (const item of items) {
             ease: 'none',
             scaleY: 1.2,
             opacity: 0,
-            yPercent: 40,
+            yPercent: 20,
             filter: "blur(10px)",
             scrollTrigger: {
                 trigger: item.DOM.el,
