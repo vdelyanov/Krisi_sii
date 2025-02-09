@@ -164,7 +164,7 @@ document.addEventListener("DOMContentLoaded", function () {
       ease: "linear",
       opacity: 0,
       duration: 0.2,
-      filter: "blur(20px)",
+      filter: "blur(10px)",
       pointerEvents: "none"
     });
 

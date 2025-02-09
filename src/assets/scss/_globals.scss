@@ -114,6 +114,7 @@ body::-webkit-scrollbar-thumb {
     border-top-right-radius: 4px;
     @include media-tablet-min {
         background-color: transparent !important;
+        background: none !important;
         pointer-events: none;
     }
     @include media-tablet {
@@ -669,7 +670,7 @@ body::-webkit-scrollbar-thumb {
     bottom: 6px;
     left: 0%;
     opacity: 0;
-    filter: blur(20px);
+    filter: blur(10px);
     pointer-events: none;
     @include media-sm {
         bottom: -40px;

@@ -8,7 +8,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { Flip } from "gsap/Flip.js";
 
-import { Gradient } from "https://gist.githack.com/jordienr/64bcf75f8b08641f205bd6a1a0d4ce1d/raw/35a5c7c1ddc9f97ec84fe7e1ab388a3b726db85d/Gradient.js";
+// import { Gradient } from "https://gist.githack.com/jordienr/64bcf75f8b08641f205bd6a1a0d4ce1d/raw/35a5c7c1ddc9f97ec84fe7e1ab388a3b726db85d/Gradient.js";
 
 gsap.registerPlugin(ScrollTrigger, SplitText, ScrollToPlugin, Flip);
 
@@ -42,7 +42,7 @@ $(".color-switcher").mouseenter(function() {
 $(".color-switcher").mouseleave(function() {
   setTimeout(() => {
     gsap.timeline()
-    .to(buttons, { opacity: 0, width: "0", rotate: 0, margin: '0 0', filter: "blur(5px)", duration: 0.1, stagger: 0.04 });
+    .to(buttons, { opacity: 0, width: "0", rotate: 0, margin: '0 0', filter: "blur(4px)", duration: 0.1, stagger: 0.04 });
   }, 200)
 });
 
@@ -166,7 +166,7 @@ const enterTransition = () => {
     .to(transition.pageLabel, {  opacity: 0, duration: 0, filter: "blur(0px)", ease: "expo.inOut",}, ">")
     .to(transition.swither, {
       opacity: 0,
-      filter: 'blur(20px)',
+      filter: 'blur(10px)',
       ease: "expo.inOut",
       duration: 0.6,
     }, 0)
@@ -198,7 +198,7 @@ const enterTransition = () => {
     .to(transition.pageLabel, {  opacity: 0, duration: 0, filter: "blur(0px)", ease: "linear",},  ">")
     .to(transition.swither, {
       opacity: 0,
-      filter: 'blur(20px)',
+      filter: 'blur(10px)',
       ease: "expo.inOut",
       duration: 0.6,
     }, 0)
@@ -416,7 +416,7 @@ let split = new SplitText(text, {
 
 if (text) {
   gsap.set(split.words, {     
-    filter: "blur(10px)",  
+    filter: "blur(5px)",  
     autoAlpha: 0,       
   });
 }
@@ -1112,7 +1112,7 @@ if (homePage) {
     },
     ease: "power4.out",
     opacity: 0,
-    filter: "blur(10px)"
+    filter: "blur(4px)"
   });
 
   gsap.to("#desc", {
@@ -1125,7 +1125,7 @@ if (homePage) {
     },
     ease: "power4.out",
     opacity: 0,
-    filter: "blur(10px)"
+    filter: "blur(4px)"
   });
 
   gsap.to("#show-text-trigger-wrapper", {
@@ -1138,24 +1138,6 @@ if (homePage) {
     ease: "power4.out",
     filter: "blur(0px)"
   });
-
-
-  // gsap.to("#category-title", {
-  //   scrollTrigger: {
-  //     trigger: "#category-title",
-  //     start: "top 100%",
-  //     end: "+=500px",
-  //     scrub: 1,
-  //     markers: true,
-  //   },
-  //   ease: "power4.out",
-  //   filter: "blur(4px)",
-  //   paddingLeft: "40vw",
-  //   opacity: 0.2,
-  //   fontSize: "80px",
-  //   scaleY: 1
-  // });
-
 
 }
 

@@ -35,7 +35,6 @@
   @include media-tablet {
     display: flex;
     align-items: flex-end;
-    padding-bottom: 12px;
   }
 }
 
@@ -50,9 +49,12 @@
   justify-content: end;
   padding-left: 32px;
   @include media-tablet {
-    padding-left: 20px;
+    padding-left: 0px;
+    padding-top: 8px;
+    padding-bottom: 8px;
     width: 100vw;
-    height: auto;
+    height: 100%;
+    
   }
   .slider {
     border-top-left-radius: 4px;
@@ -212,7 +214,7 @@
   transform: scaleY(2);
 }
 .item__caption {
-  filter: blur(100px);
+  filter: blur(20px);
   transform: translateY(-150px);
   display: block;
   visibility: hidden;
