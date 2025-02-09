@@ -169,6 +169,7 @@ link.addEventListener('click', (e) => {
     }
 });
 });
+
 const indicator = document.querySelector('.scroll-indicator');
 if (indicator) {
     gsap.registerPlugin(ScrollTrigger);

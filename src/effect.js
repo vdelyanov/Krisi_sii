@@ -1,6 +1,8 @@
 import { Slider } from './sketch.js';
+const isMobile = window.innerWidth <= 1025; 
+if (!isMobile) { 
 
-document.querySelectorAll(".slider").forEach((container) => {
+	document.querySelectorAll(".slider").forEach((container) => {
 	new Slider({
 	container: container,	
 	duration: 0.8,
@@ -52,5 +54,7 @@ document.querySelectorAll(".slider").forEach((container) => {
 	});
 });
 
+
+}
 
 
