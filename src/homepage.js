@@ -22,17 +22,15 @@ textDesc.forEach((desc) => {
         scrollTrigger: {
             trigger: desc,
             start: "top 60%",  
-            end: "top 50%",  
-            scrub: 1.6,
-            // toggleActions: "play none none reverse",
+            toggleActions: "play none none reverse",
             markers: false, 
         }
     });
 
     tl.fromTo(
         splitDesc.chars,
-        { opacity: 0, filter: "blur(4px)", y: 10 },
-        { opacity: 1, filter: "blur(0px)", y: 0, stagger: 0.1 }
+        { opacity: 0, filter: "blur(2px)", y: 10 },
+        { opacity: 1, filter: "blur(0px)", y: 0, stagger: 0.05 }
     );
 });
 

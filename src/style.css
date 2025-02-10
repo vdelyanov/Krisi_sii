@@ -5,9 +5,7 @@ body, header, .show-text-trigger-wrapper {
     background-color: var(--background-color);
     transition: background-color 1.2s cubic-bezier(0.4, 0, 0.68, 0.06);
 }
-header {
-    background: linear-gradient(transparent 0%, transparent 100%);
-}
+
 #popup-wrapper {
     background-color: var(--background-color);
 }
@@ -24,5 +22,11 @@ header {
 @media (min-width: 1024px)  {
     #contacts {
         height: auto;
+    }
+}
+@media (max-width: 1024px)  {
+    header, .show-text-trigger-wrapper  {
+        background-color: transparent !important;
+        backdrop-filter: blur(3px);
     }
 }
