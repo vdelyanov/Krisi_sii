@@ -3,13 +3,41 @@ import { Item } from './item';
 
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { SplitText } from 'gsap/SplitText';
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger, SplitText);
 
 const items = [];
 [...document.querySelectorAll('.item')].forEach(item => {
 	items.push(new Item(item));
 });
+
+const textDesc = document.querySelectorAll(".oh__inner");
+const splitDesc = new SplitText(textDesc, { type: "chars" });
+
+textDesc.forEach((desc) => {
+    const splitDesc = new SplitText(desc, { type: "chars" });
+
+    const tl = gsap.timeline({
+        scrollTrigger: {
+            trigger: desc,
+            start: "top 60%",  
+            end: "top 50%",  
+            scrub: 1.6,
+            // toggleActions: "play none none reverse",
+            markers: false, 
+        }
+    });
+
+    tl.fromTo(
+        splitDesc.chars,
+        { opacity: 0, filter: "blur(4px)", y: 10 },
+        { opacity: 1, filter: "blur(0px)", y: 0, stagger: 0.1 }
+    );
+});
+
+
+
 
 // ScrollTrigger animations for scrolling
 const animateOnScroll = () => {
@@ -63,18 +91,18 @@ for (const item of items) {
             }
         },)
 
-        gsap.fromTo([item.DOM.title], 
-        { filter: "blur(10px)",
-            yPercent: 20}, {
-            scrollTrigger: {
-                trigger: item.DOM.el,
-                top: 'top -50%',
-                end: 'top 50%',
-                scrub: true,
-            },
-            filter: "blur(0px)",
-            yPercent: 0,
-        })  
+        // gsap.fromTo([item.DOM.title], 
+        // { filter: "blur(10px)",
+        //     yPercent: 20}, {
+        //     scrollTrigger: {
+        //         trigger: item.DOM.el,
+        //         top: 'top -50%',
+        //         end: 'top 50%',
+        //         scrub: true,
+        //     },
+        //     filter: "blur(0px)",
+        //     yPercent: 0,
+        // })  
 
     } else {
 
