@@ -65,13 +65,13 @@ function changeColor(colorKey) {
     const color = colors[colorKey];
     document.body.style.backgroundColor = color;
       header.style.backgroundColor = color;
-      header.style.background = `linear-gradient(to bottom, ${color} 0%, transparent 100%)`
+      // header.style.background = `linear-gradient(to bottom, ${color} 0%, transparent 100%)`
     if (modalBg) {
       modalBg.style.backgroundColor = color;
     }
     if (sticky) {
-      // sticky.style.backgroundColor = color;
-      sticky.style.background = `linear-gradient(to top, ${color} 0%, transparent 100%)`
+      sticky.style.backgroundColor = color;
+      // sticky.style.background = `linear-gradient(to top, ${color} 0%, transparent 100%)`
     }
     if (lightbox) {
       lightbox.style.backgroundColor = color;
@@ -93,13 +93,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if (savedColor) {
         document.body.style.backgroundColor = savedColor;
         header.style.backgroundColor = savedColor;
-        header.style.background = `linear-gradient(to bottom, ${savedColor} 0%, transparent 100%)`
+        // header.style.background = `linear-gradient(to bottom, ${savedColor} 0%, transparent 100%)`
         if (modalBg) {
           modalBg.style.backgroundColor = savedColor;
         }
         if (sticky) {
-          // sticky.style.backgroundColor = savedColor;
-          sticky.style.background = `linear-gradient(to top, ${savedColor} 0%, transparent 100%)`
+          sticky.style.backgroundColor = savedColor;
+          // sticky.style.background = `linear-gradient(to top, ${savedColor} 0%, transparent 100%)`
         }
         if (lightbox) {
           lightbox.style.backgroundColor = savedColor;

@@ -114,7 +114,7 @@ body::-webkit-scrollbar-thumb {
     border-top-right-radius: 4px;
     @include media-tablet-min {
         background-color: transparent !important;
-        background: none !important;
+        background: transparent !important;
         pointer-events: none;
     }
     @include media-tablet {
