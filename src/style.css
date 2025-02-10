@@ -27,6 +27,5 @@ body, header, .show-text-trigger-wrapper {
 @media (max-width: 1024px)  {
     header, .show-text-trigger-wrapper  {
         background-color: transparent !important;
-        backdrop-filter: blur(3px);
     }
 }

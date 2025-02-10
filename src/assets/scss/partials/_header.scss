@@ -300,3 +300,14 @@ main {
     }
   }
 }
+
+@include media-tablet {
+  header, .show-text-trigger-wrapper  {
+      background-color: transparent !important;
+      backdrop-filter: blur(0px);
+      &.backdrop {
+        backdrop-filter: blur(3px);
+        transition: backdrop-filter 0.3s;
+      }
+  }
+}

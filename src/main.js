@@ -85,6 +85,11 @@ function changeColor(colorKey) {
 
 document.addEventListener('DOMContentLoaded', () => {
 
+  setTimeout(() => {
+    document.querySelector('header').classList.add('backdrop')
+    document.querySelector('#show-text-trigger-wrapper').classList.add('backdrop')
+  }, 3000)
+
   // const gradient = new Gradient()
   // gradient.initGradient('#gradient-canvas')
 
