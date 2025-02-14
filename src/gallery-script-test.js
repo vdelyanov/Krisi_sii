@@ -414,7 +414,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             }
         }
-        
+
       };
     
       // Process entries
@@ -532,6 +532,8 @@ document.addEventListener("DOMContentLoaded", function () {
         lightbox.classList.remove("show");
         lightbox.classList.remove("opened");
         lightboxIframe.src = "";
+        lightboxImage.style.display = 'none';
+        lightboxIframe.style.display = 'none';
         setTimeout(() => {
           columns.classList.remove("hide");
           filterTrigger.classList.remove("hide");
