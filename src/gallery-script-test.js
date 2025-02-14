@@ -20,77 +20,228 @@ function raf(time) {
 requestAnimationFrame(raf)
 
 document.addEventListener("DOMContentLoaded", function () { 
-
-  const imageCategories = {
-    bts: {
-      column1: [
-        { type: "image", src: "./assets/images/bts/bts-1.webp" },
-        { 
-          type: "video", 
-          src: "https://player.vimeo.com/video/123456789", 
-          thumbnail: "./assets/images/bts/bts-2.webp" 
-        },
-        { type: "image", src: "./assets/images/bts/bts-2.webp" },
-      ],
-      column2: [
-        { 
-          type: "video", 
-          src: "https://player.vimeo.com/video/987654321", 
-          thumbnail: "./assets/images/bts/bts-2.webp" 
-        },
-        { type: "image", src: "./assets/images/bts/bts-3.webp" },
-      ],
-    }
-  };
-
-  const triggerFilterMobile = document.getElementById('mobile-filter-categories') 
-  const filters = document.querySelector('.filters') 
   
-  triggerFilterMobile.addEventListener('click', () => {
-  gsap.to('.mobile-filter-categories', {
-    filter: "blur(10px)",
-    opacity: 0,
-    duration: 0.6,
-    pointerEvents: "none",
-    ease: "power4",
+    const imageCategories = {
+      bts: {
+        column1: [
+          { 
+            type: 'vimeo', 
+            id: '1055569761', 
+            thumbnail: './assets/images/bts/bgs.webp'
+          },
+          './assets/images/bts/bts-1.webp',
+          './assets/images/bts/bts-2.webp',
+          './assets/images/bts/bts-3.webp',
+          './assets/images/bts/bts-4.webp',
+          './assets/images/bts/bts-5.webp',
+          './assets/images/bts/bts-8.webp',
+          './assets/images/bts/bts-9.webp',
+          './assets/images/bts/bts-24.webp',
+          './assets/images/bts/bts-25.webp',
+          './assets/images/bts/bts-10.webp',
+          './assets/images/bts/bts-11.webp',
+          './assets/images/bts/bts-12.webp',
+          './assets/images/bts/bts-13.webp',
+          './assets/images/bts/bts-15.webp',
+          './assets/images/bts/bts-16.webp',
+          
+        ],
+        column2: [
+          './assets/images/bts/bts-14.webp',
+          './assets/images/bts/bts-17.webp',
+          './assets/images/bts/bts-18.webp',
+          './assets/images/bts/bts-19.webp',
+          './assets/images/bts/bts-20.webp',
+          './assets/images/bts/bts-21.webp',
+          './assets/images/bts/bts-22.webp',
+          './assets/images/bts/bts-23.webp',
+          './assets/images/bts/bts-7.webp',
+          './assets/images/bts/bts-6.webp',
+          './assets/images/bts/bts-26.webp',
+          './assets/images/bts/bts-27.webp',
+          './assets/images/bts/bts-28.webp',
+        ],
+      },
+      session: {
+        column1: [
+          './assets/images/children/session1.webp',
+          './assets/images/children/session2.webp',
+          './assets/images/children/session3.webp',
+          './assets/images/children/children3.webp',
+          './assets/images/children/children4.webp',
+          './assets/images/children/children5.webp',
+          './assets/images/children/children6.webp',
+          './assets/images/children/children1.webp',
+          './assets/images/children/children7.webp',
+        ],
+        column2: [
+          './assets/images/children/children8.webp',
+          './assets/images/children/children2.webp',
+          './assets/images/children/children11.webp',
+          './assets/images/children/children12.webp',
+          './assets/images/children/children9.webp',
+          './assets/images/children/children10.webp',
+          './assets/images/children/session4.webp',
+          './assets/images/children/session5.webp',
+          './assets/images/children/session6.webp',
+        ],
+      },
+      interior: {
+        column1: [
+          './assets/images/interior/interior-1.webp',
+          './assets/images/interior/interior-2.webp',
+          './assets/images/interior/interior-3.webp',
+          './assets/images/interior/interior-4.webp',
+          './assets/images/interior/interior-5.webp',
+          './assets/images/interior/interior-6.webp',
+          './assets/images/interior/interior-7.webp',
+          './assets/images/interior/interior-8.webp',
+          './assets/images/interior/interior-9.webp',
+          './assets/images/interior/interior-10.webp',
+        ],
+        column2: [
+          './assets/images/interior/interior-11.webp',
+          './assets/images/interior/interior-12.webp',
+          './assets/images/interior/interior-13.webp',
+          './assets/images/interior/interior-14.webp',
+          './assets/images/interior/interior-15.webp',
+          './assets/images/interior/interior-16.webp',
+          './assets/images/interior/interior-17.webp',
+          './assets/images/interior/interior-18.webp',
+          './assets/images/interior/interior-19.webp',
+          './assets/images/interior/interior-20.webp',
+        ],
+      },
+      event: {
+        column1: [
+          './assets/images/events/events-1.webp',
+          './assets/images/events/events-2.webp',
+          './assets/images/events/events-3.webp',
+          './assets/images/events/events-4.webp',
+          './assets/images/events/events-5.webp',
+          './assets/images/events/events-6.webp',
+          './assets/images/events/events-13.webp',
+          './assets/images/events/events-14.webp',
+          './assets/images/events/events-15.webp',
+        ],
+        column2: [
+       
+          './assets/images/events/events-17.webp',
+          './assets/images/events/events-16.webp',
+          './assets/images/events/events-7.webp',
+          './assets/images/events/events-8.webp',
+          './assets/images/events/events-9.webp',
+          './assets/images/events/events-10.webp',
+          './assets/images/events/events-11.webp',
+          './assets/images/events/events-12.webp',
+        ],
+      },
+      black_and_white: {
+        column1: [
+          './assets/images/b&w/b&w11.webp',
+          './assets/images/b&w/b&w22.webp',
+          './assets/images/b&w/b&w3.webp',
+          './assets/images/b&w/b&w4.webp',
+          './assets/images/b&w/b&w5.webp',
+          './assets/images/b&w/b&w6.webp',
+          './assets/images/b&w/b&w17.webp',
+          './assets/images/b&w/b&w8.webp',
+          './assets/images/b&w/b&w9.webp',
+          './assets/images/b&w/b&w10.webp',
+          './assets/images/b&w/b&w1.webp',
+          './assets/images/b&w/b&w12.webp',
+        ],
+        column2: [
+          './assets/images/b&w/b&w14.webp',
+          './assets/images/b&w/b&w15.webp',
+          './assets/images/b&w/b&w13.webp',
+          './assets/images/b&w/b&w7.webp',
+          './assets/images/b&w/b&w18.webp',
+          './assets/images/b&w/b&w19.webp',
+          './assets/images/b&w/b&w20.webp',
+          './assets/images/b&w/b&w21.webp',
+          './assets/images/b&w/b&w22.webp',
+          './assets/images/b&w/b&w23.webp',
+          './assets/images/b&w/b&w24.webp',
+          './assets/images/b&w/b&w16.webp',
+        ],
+      },
+      abstract: {
+        column1: [
+          './assets/images/abstract/abstract3.webp',
+          './assets/images/abstract/abstract6.webp',
+          './assets/images/abstract/abstract16.webp',
+          './assets/images/abstract/abstract1.webp',
+          './assets/images/abstract/abstract5.webp',
+          './assets/images/abstract/abstract15.webp',
+          './assets/images/abstract/abstract18.webp',
+          './assets/images/abstract/abstract19.webp',
+          './assets/images/abstract/abstract22.webp',
+          './assets/images/abstract/abstract24.webp',
+          './assets/images/abstract/abstract23.webp',
+        ],
+        column2: [
+          './assets/images/abstract/abstract20.webp',
+          './assets/images/abstract/abstract21.webp',
+          './assets/images/abstract/abstract7.webp',
+          './assets/images/abstract/abstract13.webp',
+          './assets/images/abstract/abstract2.webp',
+          './assets/images/abstract/abstract4.webp',
+          './assets/images/abstract/abstract9.webp',
+          './assets/images/abstract/abstract11.webp',
+          './assets/images/abstract/abstract10.webp',
+          './assets/images/abstract/abstract14.webp',
+          './assets/images/abstract/abstract8.webp',
+          './assets/images/abstract/abstract12.webp',
+        ],
+      },
+    };
+  
+    const triggerFilterMobile = document.getElementById('mobile-filter-categories') 
+    const filters = document.querySelector('.filters') 
+  
+    triggerFilterMobile.addEventListener('click', () => {
+    gsap.to('.mobile-filter-categories', {
+      filter: "blur(10px)",
+      opacity: 0,
+      duration: 0.6,
+      pointerEvents: "none",
+      ease: "power4",
+      })
+    gsap.to('.filters', {
+      x: 0,
+      duration: 0.6,
+      ease: "power4",
+      delay: 0.2
     })
-  gsap.to('.filters', {
-    x: 0,
-    duration: 0.6,
-    ease: "power4",
-    delay: 0.2
-  })
-  
-  })
-  
-  const isMobile = window.innerWidth <= 1025; 
-  if (isMobile) { 
-  
-    document.addEventListener('click', function(event) {
-      if (!filters.contains(event.target)  && !triggerFilterMobile.contains(event.target) ) {
-        gsap.to('.filters', {
-          x: 150,
-          duration: 0.6,
-          ease: "power4",
-          delay: 0
-        })
-        gsap.to('.mobile-filter-categories', {
-          filter: "blur(0px)",
-          opacity: 1,
-          duration: 0.6,
-          ease: "power4",
-          pointerEvents: "all",
-          delay: 0.2
+    
+    })
+    const isMobile = window.innerWidth <= 1025; 
+    if (isMobile) { 
+    
+      document.addEventListener('click', function(event) {
+        if (!filters.contains(event.target)  && !triggerFilterMobile.contains(event.target) ) {
+          gsap.to('.filters', {
+            x: 150,
+            duration: 0.6,
+            ease: "power4",
+            delay: 0
           })
-      }
-    });
-  
-  }
-  
-    // Get references to elements
+          gsap.to('.mobile-filter-categories', {
+            filter: "blur(0px)",
+            opacity: 1,
+            duration: 0.6,
+            ease: "power4",
+            pointerEvents: "all",
+            delay: 0.2
+            })
+        }
+      });
+    
+    }
     const filterButtons = document.querySelectorAll('.filters a');
   
-    // Add click event to filter buttons
+    // Add click event to mobile filter buttons
     filterButtons.forEach((button) => {
       button.addEventListener('click', (e) => {
         e.preventDefault();
@@ -185,179 +336,242 @@ document.addEventListener("DOMContentLoaded", function () {
       // Refresh ScrollTrigger
       ScrollTrigger.refresh();
     }
-
+  
+    // Function to load images dynamically with equal distribution
     function loadImages(category) {
       const columns = document.querySelectorAll(".columns .column");
-      if (columns.length < 2) return;
-    
-      columns.forEach((column) => (column.innerHTML = "")); // Clear existing content
+      columns.forEach(column => {
+        column.innerHTML = "";
+        column.style.transform = 'translateY(0)'; // Reset scroll position
+      });
     
       const columnData = imageCategories[category];
       if (!columnData) return;
     
-      let imagesToLoad = columnData.column1.length + columnData.column2.length;
+      let imagesToLoad = 0;
       let imagesLoaded = 0;
     
-      function checkAllImagesLoaded() {
+      const processEntry = (entry, column) => {
+        const isVideo = typeof entry === 'object' && entry.type === 'vimeo';
+        const imgSrc = isVideo ? entry.thumbnail : entry;
+    
+        const imgWrapper = document.createElement("div");
+        imgWrapper.className = "img-wrapper";
+    
+        const wrap = document.createElement("div");
+        wrap.className = "wrap";
+    
+        if (isVideo) {
+          wrap.classList.add('video-thumb');
+          wrap.dataset.vimeoId = entry.id;
+        }
+    
+        const img = document.createElement("img");
+        img.className = "img hover-link";
+        img.alt = category;
+        img.loading = "lazy";
+    
+        // Handle image loading
+        img.onload = () => {
+          imagesLoaded++;
+          checkCompletion();
+        };
+    
+        // Handle image errors
+        img.onerror = () => {
+          console.error('Failed to load:', imgSrc);
+          imagesLoaded++;
+          checkCompletion();
+        };
+    
+        // Set source AFTER handlers
+        img.src = imgSrc;
+    
+        wrap.appendChild(img);
+        imgWrapper.appendChild(wrap);
+        column.appendChild(imgWrapper);
+      };
+    
+      const checkCompletion = () => {
         if (imagesLoaded === imagesToLoad) {
           reinitializeGSAP();
           refreshModal();
-        }
-      }
-    
-      function createMediaElement(item) {
-        const wrapper = document.createElement("div");
-        wrapper.className = "media-wrapper";
-    
-        if (item.type === "image") {
-          const img = document.createElement("img");
-          img.className = "img hover-link";
-          img.src = item.src;
-          img.loading = "lazy";
-          img.alt = category;
-          img.onload = () => {
-            imagesLoaded++;
-            checkAllImagesLoaded();
-          };
-          wrapper.appendChild(img);
-        } else if (item.type === "video") {
-          // Create thumbnail preview
-          const thumbnail = document.createElement("img");
-          thumbnail.className = "video-thumbnail hover-link";
-          thumbnail.src = item.thumbnail;
-          thumbnail.alt = "Video Thumbnail";
-          thumbnail.loading = "lazy";
-    
-          // Play button overlay
-          const playButton = document.createElement("div");
-          playButton.className = "play-button";
-          playButton.innerHTML = "▶"; // Play icon
-    
-          wrapper.appendChild(thumbnail);
-          wrapper.appendChild(playButton);
-    
-          // Store video URL in dataset for lightbox
-          wrapper.dataset.videoSrc = item.src;
-          wrapper.classList.add("video-wrapper");
-        }
-    
-        return wrapper;
-      }
-    
-      columnData.column1.forEach((item) => columns[0].appendChild(createMediaElement(item)));
-      columnData.column2.forEach((item) => columns[1].appendChild(createMediaElement(item)));
-    }
-    
-    function loadCategoryFromURL() {
-      const urlParams = new URLSearchParams(window.location.search);
-      const category = urlParams.get('category') || 'bts'; // Default category
-      const activeButton = [...filterButtons].find(btn => btn.dataset.category === category);
+
+
+          if (window.innerWidth <= 1025) {
+          const images = document.querySelectorAll(".img-wrapper");
+
+          const observer = new IntersectionObserver((entries, observer) => {
+              entries.forEach(entry => {
+                  if (entry.isIntersecting) {
+                      entry.target.classList.add("fade-in");
+                      observer.unobserve(entry.target);
+                  }
+              });
+          }, { threshold: 0.1 });
       
+          images.forEach(img => observer.observe(img));
+
+            }
+        }
+        
+      };
+    
+      // Process entries
+      const allEntries = [...columnData.column1, ...columnData.column2];
+      imagesToLoad = allEntries.length;
+    
+      if (window.innerWidth <= 1025) {
+        allEntries.forEach(entry => processEntry(entry, columns[0]));
+      } else {
+        columnData.column1.forEach(entry => processEntry(entry, columns[0]));
+        columnData.column2.forEach(entry => processEntry(entry, columns[1]));
+      }
+    }
+  
+    function loadCategoryFromURL() {
+      // Get category from URL with proper decoding
+      const urlParams = new URLSearchParams(window.location.search);
+      let category = urlParams.get('category');
+      
+      category = category ? decodeURIComponent(category) : 'bts';
+    
+      const activeButton = Array.from(filterButtons).find(btn => 
+        btn.dataset.category.toLowerCase() === category.toLowerCase()
+      );
+    
       if (activeButton) {
+        filterButtons.forEach(btn => btn.classList.remove('active'));
         activeButton.classList.add('active');
       }
-  
-      loadImages(category);
+    
+      try {
+        loadImages(category);
+      } catch (error) {
+        loadImages('bts');
+      }
     }
   
+    // Lightbox funcs 
     function refreshModal() {
-      const gridItems = document.querySelectorAll(".img, .video-wrapper");
-      const lightbox = document.getElementById("lightbox");
-      const lightboxContent = document.querySelector(".lightbox-content");
+      const gridItems = document.querySelectorAll('.img');
+      const lightboxIframe = document.querySelector('.lightbox-iframe');
       const closeButton = document.querySelector(".lightbox-close");
       const prevButton = document.querySelector(".lightbox-prev");
       const nextButton = document.querySelector(".lightbox-next");
+      
       const columns = document.querySelector(".columns");
       const filterTrigger = document.querySelector("#mobile-filter-categories");
       const colorSwitcher = document.querySelector(".color-switcher");
-    
-      let currentIndex = 0;
+      const lightbox = document.getElementById("lightbox");
+      const lightboxImage = document.querySelector(".lightbox-image");
+
+      
       let mediaItems = [];
-    
-      // Populate mediaItems array
+      let currentIndex = 0;
+  
       gridItems.forEach((item, index) => {
-        if (item.classList.contains("video-wrapper")) {
-          mediaItems.push({ type: "video", src: item.dataset.videoSrc });
-        } else {
-          mediaItems.push({ type: "image", src: item.src });
-        }
-    
-        item.addEventListener("click", () => {
+        const wrap = item.closest('.wrap');
+        const isVideo = wrap?.classList.contains('video-thumb');
+        
+        mediaItems.push({
+          type: isVideo ? 'video' : 'image',
+          src: isVideo ? wrap.dataset.vimeoId : item.src
+        });
+  
+        item.addEventListener('click', () => {
           currentIndex = index;
           openLightbox();
         });
       });
-    
+  
       function openLightbox() {
-        lightboxContent.innerHTML = ""; // Clear previous content
-        const currentItem = mediaItems[currentIndex];
-    
-        if (currentItem.type === "image") {
-          const img = document.createElement("img");
-          img.className = "lightbox-image";
-          img.src = currentItem.src;
-          lightboxContent.appendChild(img);
-        } else if (currentItem.type === "video") {
-          const iframe = document.createElement("iframe");
-          iframe.className = "lightbox-video";
-          iframe.src = currentItem.src + "?autoplay=1"; // Autoplay Vimeo videos
-          iframe.setAttribute("frameborder", "0");
-          iframe.setAttribute("allowfullscreen", "true");
-          lightboxContent.appendChild(iframe);
+        const currentMedia = mediaItems[currentIndex];
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImage = document.querySelector('.lightbox-image');
+
+        lightboxImage.style.display = 'none';
+        lightboxIframe.style.display = 'none';
+  
+        if (currentMedia.type === 'image') {
+          lightboxImage.src = currentMedia.src;
+          lightboxImage.style.display = 'block';
+        } else {
+          lightboxIframe.src = `https://player.vimeo.com/video/${currentMedia.src}?autoplay=1&badge=0&title=0&byline=0&portrait=0&dnt=1&transparent=0&badge=0`;
+          lightboxIframe.style.display = 'block';
         }
-    
-        lightbox.classList.add("show");
+  
+        lightbox.classList.add('show');
+        document.body.style.overflow = 'hidden';
+
         columns.classList.add("hide");
         filterTrigger.classList.add("hide");
         colorSwitcher.classList.add("hide");
-    
         setTimeout(() => {
           lightbox.classList.add("opened");
-        }, 10);
+        }, 10)
       }
     
+      function updateLightboxContent() {
+        const currentMedia = mediaItems[currentIndex];
+
+        lightboxIframe.src = "";
+        lightboxImage.style.display = 'none';
+        lightboxIframe.style.display = 'none';
+    
+        if (currentMedia.type === 'image') {
+          lightboxImage.src = currentMedia.src;
+          lightboxImage.style.display = 'block';
+        } else {
+          lightboxIframe.src = `https://player.vimeo.com/video/${currentMedia.src}?autoplay=1&badge=0&title=0&byline=0&portrait=0&dnt=1&transparent=0&badge=0`;
+          lightboxIframe.style.display = 'block';
+        }
+      }
+
       function closeLightbox() {
         lightbox.classList.remove("show");
         lightbox.classList.remove("opened");
-    
+        lightboxIframe.src = "";
         setTimeout(() => {
           columns.classList.remove("hide");
           filterTrigger.classList.remove("hide");
           colorSwitcher.classList.remove("hide");
-        }, 500);
+        }, 500)
+    }
     
-        lightboxContent.innerHTML = ""; // Clear content to stop video playback
-      }
-    
+      // Update navigation functions
       function showPrevImage() {
         currentIndex = (currentIndex - 1 + mediaItems.length) % mediaItems.length;
-        openLightbox();
+        updateLightboxContent();
       }
     
       function showNextImage() {
         currentIndex = (currentIndex + 1) % mediaItems.length;
-        openLightbox();
+        updateLightboxContent();
       }
-    
-      // Event Listeners
+  
+      // Event listeners for controls
       closeButton.addEventListener("click", closeLightbox);
       prevButton.addEventListener("click", showPrevImage);
       nextButton.addEventListener("click", showNextImage);
-    
+      
+  
+      document.addEventListener('click', function(event) {
+          if (!lightbox.contains(event.target) && lightbox.classList.contains("opened")) {
+            closeLightbox();
+          }
+        })
+  
+      // Keyboard navigation
       document.addEventListener("keydown", (e) => {
-        if (!lightbox.classList.contains("show")) return;
-        if (e.key === "ArrowLeft") showPrevImage();
-        if (e.key === "ArrowRight") showNextImage();
-        if (e.key === "Escape") closeLightbox();
-      });
-    
-      document.addEventListener("click", function (event) {
-        if (!lightbox.contains(event.target) && lightbox.classList.contains("opened")) {
-          closeLightbox();
-        }
+          if (!lightbox.classList.contains("show")) return;
+          if (e.key === "ArrowLeft") showPrevImage();
+          if (e.key === "ArrowRight") showNextImage();
+          if (e.key === "Escape") closeLightbox();
       });
     }
 
     loadCategoryFromURL();
   
 })
+

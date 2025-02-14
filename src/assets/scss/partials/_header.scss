@@ -49,6 +49,7 @@ header {
     z-index: 2;
     @include media-tablet {
       top: 4px;
+      right: -2px;
     }
   }
   

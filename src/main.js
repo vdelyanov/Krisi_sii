@@ -85,9 +85,12 @@ function changeColor(colorKey) {
 
 document.addEventListener('DOMContentLoaded', () => {
 
+  const blurElement = document.querySelector('#show-text-trigger-wrapper')
   setTimeout(() => {
     document.querySelector('header').classList.add('backdrop')
-    document.querySelector('#show-text-trigger-wrapper').classList.add('backdrop')
+    if(blurElement) {
+      document.querySelector('#show-text-trigger-wrapper').classList.add('backdrop')
+    }
   }, 3500)
 
   // const gradient = new Gradient()
