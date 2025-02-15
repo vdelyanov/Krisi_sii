@@ -20,16 +20,16 @@ function raf(time) {
 requestAnimationFrame(raf)
 
 document.addEventListener("DOMContentLoaded", function () { 
-  
+
     const imageCategories = {
       bts: {
         column1: [
+          './assets/images/bts/bts-1.webp',
           { 
             type: 'vimeo', 
             id: '1055569761', 
-            thumbnail: './assets/images/bts/bgs.webp'
+            thumbnail: './assets/images/bts/BJs.avif',
           },
-          './assets/images/bts/bts-1.webp',
           './assets/images/bts/bts-2.webp',
           './assets/images/bts/bts-3.webp',
           './assets/images/bts/bts-4.webp',
@@ -59,6 +59,11 @@ document.addEventListener("DOMContentLoaded", function () {
           './assets/images/bts/bts-6.webp',
           './assets/images/bts/bts-26.webp',
           './assets/images/bts/bts-27.webp',
+          { 
+            type: 'vimeo', 
+            id: '1055565746', 
+            thumbnail: './assets/images/bts/EUROWINGS.avif',
+          },
           './assets/images/bts/bts-28.webp',
         ],
       },
@@ -412,7 +417,7 @@ document.addEventListener("DOMContentLoaded", function () {
       
           images.forEach(img => observer.observe(img));
 
-            }
+          }
         }
 
       };
@@ -497,7 +502,7 @@ document.addEventListener("DOMContentLoaded", function () {
           lightboxImage.src = currentMedia.src;
           lightboxImage.style.display = 'block';
         } else {
-          lightboxIframe.src = `https://player.vimeo.com/video/${currentMedia.src}?autoplay=1&badge=0&title=0&byline=0&portrait=0&dnt=1&transparent=0&badge=0`;
+          lightboxIframe.src = `https://player.vimeo.com/video/${currentMedia.src}?autoplay=1&badge=0&muted=1&title=0&byline=0&portrait=0&dnt=1&transparent=0&badge=0`;
           lightboxIframe.style.display = 'block';
         }
   
@@ -523,7 +528,7 @@ document.addEventListener("DOMContentLoaded", function () {
           lightboxImage.src = currentMedia.src;
           lightboxImage.style.display = 'block';
         } else {
-          lightboxIframe.src = `https://player.vimeo.com/video/${currentMedia.src}?autoplay=1&badge=0&title=0&byline=0&portrait=0&dnt=1&transparent=0&badge=0`;
+          lightboxIframe.src = `https://player.vimeo.com/video/${currentMedia.src}?autoplay=1&badge=0&muted=1&title=0&byline=0&portrait=0&dnt=1&transparent=0&badge=0`;
           lightboxIframe.style.display = 'block';
         }
       }
@@ -534,6 +539,7 @@ document.addEventListener("DOMContentLoaded", function () {
         lightboxIframe.src = "";
         lightboxImage.style.display = 'none';
         lightboxIframe.style.display = 'none';
+        document.body.style.overflow = 'visible';
         setTimeout(() => {
           columns.classList.remove("hide");
           filterTrigger.classList.remove("hide");
