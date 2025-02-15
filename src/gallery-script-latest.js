@@ -73,7 +73,6 @@ document.addEventListener("DOMContentLoaded", function () {
           './assets/images/children/session2.webp',
           './assets/images/children/session3.webp',
           './assets/images/children/children3.webp',
-          './assets/images/children/children4.webp',
           './assets/images/children/children5.webp',
           './assets/images/children/children6.webp',
           './assets/images/children/children1.webp',
@@ -88,7 +87,6 @@ document.addEventListener("DOMContentLoaded", function () {
           './assets/images/children/children10.webp',
           './assets/images/children/session4.webp',
           './assets/images/children/session5.webp',
-          './assets/images/children/session6.webp',
         ],
       },
       interior: {
