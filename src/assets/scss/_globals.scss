@@ -134,6 +134,27 @@ body::-webkit-scrollbar-thumb {
     cursor: none;
     z-index: 3;
     width: fit-content;
+    position: relative;
+    &::after {
+        content: "";
+        position: absolute;
+        left: auto;
+        top: 4px;
+        right: -34px;
+        transform: translateY(-50%);
+        width: 54px;
+        height: 54px;
+        clip-path: circle(10% at 50% 50%);
+        background-color: #c83030;
+        transition: all .5scubic-bezier(.075,.82,.165,1);
+        overflow: hidden;
+        animation: blink 2.5s infinite 1s;
+        @include media-sm {
+            right: -32px;
+            width: 48px;
+            height: 48px;
+        }
+    }
 }
 .popup-wrapper {
     position: fixed;

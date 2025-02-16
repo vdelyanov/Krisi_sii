@@ -197,11 +197,12 @@ link.addEventListener('click', (e) => {
 });
 
 const indicator = document.querySelector('.scroll-indicator');
+const indicatorWrapper = document.querySelector('.content');
 if (indicator) {
     gsap.registerPlugin(ScrollTrigger);
 
     ScrollTrigger.create({
-        trigger: document.body,
+        trigger: indicatorWrapper,
         start: "top top",
         end: "bottom bottom",
         onUpdate: (self) => {

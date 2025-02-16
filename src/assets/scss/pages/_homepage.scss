@@ -183,7 +183,27 @@
 
 .scroll-item {
   width: 24px;
-  cursor: pointer;
+  cursor: pointer; 
+  position: relative;
+  &:hover {
+    .cat-l {
+      opacity: 1;
+      filter: blur(0px);
+      transition: all 0.2s;
+    }
+  } 
+  .cat-l {
+    position: absolute;
+    font-size: 12px;
+    left: 28px;
+    top: 50%;
+    transform: translateY(-50%);
+    line-height: 1;
+    white-space: nowrap;
+    transition: all 0.2s;
+    opacity: 0;
+    filter: blur(2px);
+  }
 }
 
 .scroll-link {
