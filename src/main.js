@@ -84,15 +84,6 @@ function changeColor(colorKey) {
 // Restore saved color on page load
 
 document.addEventListener('DOMContentLoaded', () => {
-
-  const blurElement = document.querySelector('#show-text-trigger-wrapper')
-  setTimeout(() => {
-    document.querySelector('header').classList.add('backdrop')
-    if(blurElement) {
-      document.querySelector('#show-text-trigger-wrapper').classList.add('backdrop')
-    }
-  }, 3500)
-
   // const gradient = new Gradient()
   // gradient.initGradient('#gradient-canvas')
 
@@ -169,7 +160,7 @@ const enterTransition = () => {
     .to(childElements, {
       opacity: 0,
       ease: "expo.inOut",
-      duration: 0.8,
+      duration: 0.6,
     }, 0)
     .to(transition.pageLabel, {  opacity: 0, duration: 0, filter: "blur(0px)", ease: "expo.inOut",}, ">")
     .to(transition.swither, {
@@ -188,34 +179,33 @@ const enterTransition = () => {
     .to(window, { scrollTo: 0, duration: 0}, ">")
    
   } else {
-      tl.to(transition.body, { backgroundColor: "#121619", duration: 0.6, ease: "linear",
-      }, 0)
+      tl.to(transition.menu, {
+        clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
+        ease: "expo.inOut",
+        duration: 0.6,
+      }).to(transition.body, { backgroundColor: "#121619", duration: 0.6, ease: "linear",
+      }, 0.2)
       // .to(transition.gradient, { opacity: 0, duration: 0.6, ease: "linear",})
       .to(transition.noise, { opacity: 0, duration: 0.6, ease: "linear",})
       .to(transition.cookieBox, { bottom: -100, duration: 0.4, ease: "linear",})
-      .to(transition.menu, {
-        clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
-        ease: "expo.inOut",
-        duration: 0.8,
-      }, 0)
       .to(childElements, {
         opacity: 0,
         ease: "expo.inOut",
-        duration: 0.8,
-      }, 0)
+        duration: 0.6,
+      }, 0.2)
     .to(transition.pageLabel, {  opacity: 0, duration: 0, filter: "blur(0px)", ease: "linear",},  ">")
     .to(transition.swither, {
       opacity: 0,
       filter: 'blur(10px)',
       ease: "expo.inOut",
       duration: 0.6,
-    }, 0)
+    }, 0.2)
     .to(transition.header, { filter: "blur(10px)", opacity: 0, duration: 0.6, ease: "expo.inOut",}, 0)
     .to(transition.cursor, {
       opacity: 0,
       duration: 0.6,
-    }, 0)
-    .to("footer", { clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)", duration: 0.6 }, 0)
+    }, 0.2)
+    .to("footer", { clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)", duration: 0.6 }, 0.2)
     .to(transition.pageLabel, {  bottom: "0px", duration: 0, ease: "expo.inOut",})
     .to(window, { scrollTo: 0, duration: 0 }, ">")
   }
@@ -551,6 +541,14 @@ function heroAnim() {
 // Header anit
 function initHeader() {
 
+  const blurElement = document.querySelector('#show-text-trigger-wrapper')
+  setTimeout(() => {
+    document.querySelector('header').classList.add('backdrop')
+    if(blurElement) {
+      document.querySelector('#show-text-trigger-wrapper').classList.add('backdrop')
+    }
+  }, 3500)
+
   const transition = {
     menu: document.querySelector('.menu'),
     main: document.querySelector('main'),
@@ -651,7 +649,7 @@ function initHeader() {
       gsap.to(menu, {
         clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
         ease: "expo.inOut",
-        duration: 1.2,
+        duration: 1,
         onStart: () => {
           setTimeout(() => {
             main.classList.remove("bg-blur");
@@ -662,8 +660,8 @@ function initHeader() {
           gsap.to(menu, {
             clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
           });
-          gsap.to(links, { y: 30, opacity: 0 });
-          gsap.to(socialLinks, { y: 30, opacity: 0 });
+          gsap.to(links, { y: 20, opacity: 0 });
+          gsap.to(socialLinks, { y: 20, opacity: 0 });
           gsap.to(splitTitle.chars, {
             y: 500,
             scale: 0.8,
@@ -687,7 +685,7 @@ function initHeader() {
       gsap.to(menu, {
         clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
         ease: "expo.inOut",
-        duration: 1.2,
+        duration: 1,
         onStart: () => {
           setTimeout(() => {
             main.classList.remove("bg-blur");
@@ -698,8 +696,8 @@ function initHeader() {
           gsap.to(menu, {
             clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
           });
-          gsap.to(links, { y: 30, opacity: 0 });
-          gsap.to(socialLinks, { y: 30, opacity: 0 });
+          gsap.to(links, { y: 20, opacity: 0 });
+          gsap.to(socialLinks, { y: 20, opacity: 0 });
           gsap.to(splitTitle.chars, {
             y: 500,
             scale: 0.8,
@@ -716,8 +714,8 @@ function initHeader() {
   gsap.set(menu, {
     clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
   });
-  gsap.set(links, { y: 30, opacity: 0 });
-  gsap.set(socialLinks, { y: 30, opacity: 0 });
+  gsap.set(links, { y: 20, opacity: 0 });
+  gsap.set(socialLinks, { y: 20, opacity: 0 });
   gsap.set(splitTitle.chars, {
     y: 500,
     scale: 0.8,
@@ -738,7 +736,7 @@ function initHeader() {
       gsap.to(menu, {
         clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
         ease: "expo.inOut",
-        duration: 1.2,
+        duration: 1,
         onStart: () => {
           menu.style.pointerEvents = "all";
           main.classList.add("bg-blur");
@@ -792,7 +790,7 @@ function initHeader() {
       gsap.to(menu, {
         clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
         ease: "expo.inOut",
-        duration: 1.2,
+        duration: 1,
         onStart: () => {
           setTimeout(() => {
             main.classList.remove("bg-blur");
@@ -803,8 +801,8 @@ function initHeader() {
           gsap.to(menu, {
             clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
           });
-          gsap.to(links, { y: 30, opacity: 0 });
-          gsap.to(socialLinks, { y: 30, opacity: 0 });
+          gsap.to(links, { y: 20, opacity: 0 });
+          gsap.to(socialLinks, { y: 20, opacity: 0 });
           gsap.to(splitTitle.chars, {
             y: 500,
             scale: 0.8,
@@ -862,6 +860,13 @@ function initialInitHeader() {
   const contactPage = document.querySelector("#contacts");
   if (aboutPage || contactPage) {
     nextParticle.start();
+    setTimeout(() => {
+      document.querySelector('header').classList.add('backdrop')
+      if(blurElement) {
+        document.querySelector('#show-text-trigger-wrapper').classList.add('backdrop')
+      }
+    }, 3500)
+  
   }
 
   tlInit.to(transition.main, {
