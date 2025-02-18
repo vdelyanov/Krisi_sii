@@ -314,7 +314,6 @@ main {
       &.backdrop {
         backdrop-filter: blur(3px);
         opacity: 1;
-        transition: backdrop-filter 0.3s;
         transition: backdrop-filter 0.3s, opacity 0.3s;
       }
   }
