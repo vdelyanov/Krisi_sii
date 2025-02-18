@@ -737,13 +737,6 @@ body::-webkit-scrollbar-thumb {
 }
 
 #about-concept {
-    canvas {
-        position: fixed;
-        left: -10%;
-        @include media-tablet {
-            left: -50%;
-        }
-    }
     .steps-seciton {
         height: 100vh;
         justify-content: flex-start;
@@ -753,6 +746,7 @@ body::-webkit-scrollbar-thumb {
         .step {
             width: 100vw;
             height: 100vh;
+            will-change: transform;
             border-left: 1px solid rgba(255, 255, 255, 0.1);
             img {
                 will-change: transform;
@@ -806,15 +800,18 @@ body::-webkit-scrollbar-thumb {
     overflow: hidden;
     opacity: 1;
     filter: blur(0px);
+    will-change: transform;
     .marquee__inner {
         display: flex;
         flex-direction: column;
         gap: 64px;
+        will-change: transform;
         .marquee__part {
             white-space: nowrap;
             font-size: 100px;
             writing-mode: vertical-lr;
             width: max-content;
+            will-change: transform;
         }
     }
 }
@@ -826,12 +823,14 @@ body::-webkit-scrollbar-thumb {
     font-size: 24px;
     overflow: hidden;
     z-index: 2;
+    will-change: transform;
     .marquee-inner {
         display: flex;
         width: fit-content;
         flex: auto;
         flex-direction: row;
         gap: 4px;
+        will-change: transform;
       }
       .marquee-part {
         display: flex;
@@ -841,6 +840,7 @@ body::-webkit-scrollbar-thumb {
         font-size: 48px;
         opacity: 0.4;
         filter: blur(4px);
+        will-change: transform;
       }
 }
   

@@ -152,6 +152,7 @@ document.addEventListener("DOMContentLoaded", function () {
         filter: "blur(0px)",
         pointerEvents: "none",
         duration: 0.1,
+        overwrite: true
       }, {
       scrollTrigger: {
         trigger: ".steps-seciton",
@@ -159,13 +160,13 @@ document.addEventListener("DOMContentLoaded", function () {
         end: "left -1%",
         toggleActions: "play none none reverse",
         horizontal: true,
-        scrub:1
       },
       ease: "linear",
       opacity: 0,
       duration: 0.2,
       filter: "blur(10px)",
-      pointerEvents: "none"
+      pointerEvents: "none",
+      overwrite: true
     });
 
     gsap.fromTo("#marquee-start", {
@@ -197,112 +198,57 @@ document.addEventListener("DOMContentLoaded", function () {
       filter: "blur(4px)"
     });
 
-    gsap.to("#marquee-end", {
-      scrollTrigger: {
-        trigger: "#marquee-end",
-        start: "right 90%",
-        end: "right 89%",
-        scrub: 1,
-        horizontal: true,
-        onEnter: () => {
-          gsap.to(".footer-end", { clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)"});
-        },
-        onEnterBack: () => {
-          gsap.to(".footer-end", { clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)"});
-        }
-      },
-    });
+// Function to animate images
+function animateImage(imageSelector) {
+  gsap.to(imageSelector, {
+    scrollTrigger: {
+      trigger: imageSelector,
+      start: "left 70%",
+      toggleActions: "play none none reverse",
+      horizontal: true,
+    },
+    ease: "power4.out",
+    opacity: 1,
+    duration: 1,
+    clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)",
+  });
+}
 
-    gsap.to(".image-1", {
-      scrollTrigger: {
-        trigger: ".image-1",
-        start: "left 70%",
-        toggleActions: "play none none reverse",
-        horizontal: true,
-      },
-      ease: "power4.out",
-      opacity: 1,
-      duration: 1,
-      clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)"
-    });
-    gsap.to(".image-2", {
-      scrollTrigger: {
-        trigger: ".image-2",
-        start: "left 70%",
-        toggleActions: "play none none reverse",
-        horizontal: true,
-      },
-      ease: "power4.out",
-      opacity: 1,
-      duration: 1,
-      clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)"
-    });
-    gsap.to(".image-3", {
-      scrollTrigger: {
-        trigger: ".image-3",
-        start: "left 70%",
-        toggleActions: "play none none reverse",
-        horizontal: true,
-      },
-      ease: "power4.out",
-      opacity: 1,
-      duration: 1,
-      clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)"
-    });
-    gsap.to(".image-4", {
-      scrollTrigger: {
-        trigger: ".image-4",
-        start: "left 70%",
-        toggleActions: "play none none reverse",
-        horizontal: true,
-      },
-      ease: "power4.out",
-      opacity: 1,
-      duration: 1,
-      clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)"
-    });
-    gsap.to(".image-5", {
-      scrollTrigger: {
-        trigger: ".image-5",
-        start: "left 70%",
-        toggleActions: "play none none reverse",
-        horizontal: true,
-      },
-      ease: "power4.out",
-      opacity: 1,
-      duration: 1,
-      clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)"
-    });
+// Function to animate paragraphs
+function animateParagraph(paragraphSelector) {
+  const textDesc = document.querySelector(paragraphSelector);
+  const splitDesc = new SplitText(textDesc, { type: "words,chars,lines" });
 
-    function animateParagraph(paragraphSelector) {
+  const timeline = gsap.timeline({
+    scrollTrigger: {
+      trigger: paragraphSelector,
+      start: "left 75%",
+      toggleActions: "play none none reverse",
+      horizontal: true,
+    },
+  });
 
-    const textDesc = document.querySelector(paragraphSelector);
-    const splitDesc = new SplitText(textDesc, { type: "words,chars,lines" });
+  // Animate text characters
+  timeline.fromTo(
+    splitDesc.chars,
+    { opacity: 0, filter: "blur(1px)", y: 10 },
+    { opacity: 1, filter: "blur(0px)", y: 0, stagger: 0.005 }
+  );
+}
 
-    const timeline = gsap.timeline({
-      scrollTrigger: {
-        trigger: paragraphSelector,
-        start: "left: 75%",
-        toggleActions: "play none none reverse",
-        horizontal: true,
-        },
+// Animate images
+animateImage(".image-1");
+animateImage(".image-2");
+animateImage(".image-3");
+animateImage(".image-4");
+animateImage(".image-5");
 
-    });
-
-    // Animate text characters
-    timeline.fromTo(
-      splitDesc.chars,
-      { opacity: 0, filter: "blur(1px)", y: 10 },
-      { opacity: 1, filter: "blur(0px)", y: 0, stagger: 0.005,}
-    );
-
-    }
-
-    animateParagraph(".paragraph-1");
-    animateParagraph(".paragraph-2");
-    animateParagraph(".paragraph-3");
-    animateParagraph(".paragraph-4");
-    animateParagraph(".paragraph-5");
+// Animate paragraphs
+animateParagraph(".paragraph-1");
+animateParagraph(".paragraph-2");
+animateParagraph(".paragraph-3");
+animateParagraph(".paragraph-4");
+animateParagraph(".paragraph-5");
 
     const scrollContainer = document.querySelector(".steps-seciton");
 
@@ -311,7 +257,6 @@ document.addEventListener("DOMContentLoaded", function () {
       infinite: false, // Ensure looping is smooth
       smoothWheel: true, // Smooth scrolling for mouse wheel
       smoothTouch: true, // Ensure smoothness for touch devices
-
       orientation: 'horizontal',
       content: scrollContainer,
       gestureOrientation: "both"

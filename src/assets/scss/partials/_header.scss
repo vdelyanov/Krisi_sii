@@ -269,7 +269,7 @@ main {
   }
   &.bg-blur-remove {
     span, p, a, h1, h2, h3, h4, svg, img, form, canvas, nav, figure, .marquee  {
-      transition: filter 0.8s;
+      transition: filter 0.6s;
     } 
   }
   &.bg-blur {
@@ -295,7 +295,7 @@ main {
     span, p, a, h1, h2, h3, h4, svg, img, form, nav, figure, .marquee  {
       filter: blur(4px) !important;
       pointer-events: none;
-      transition: filter 0.8s;
+      transition: filter 0.6s;
       .item__image, .item__caption-title {
         pointer-events: none;
       }

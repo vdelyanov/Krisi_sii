@@ -547,7 +547,7 @@ function initHeader() {
     if(blurElement) {
       document.querySelector('#show-text-trigger-wrapper').classList.add('backdrop')
     }
-  }, 3500)
+  }, 3800)
 
   const transition = {
     menu: document.querySelector('.menu'),
@@ -865,7 +865,7 @@ function initialInitHeader() {
       if(blurElement) {
         document.querySelector('#show-text-trigger-wrapper').classList.add('backdrop')
       }
-    }, 3500)
+    }, 3800)
   
   }
 
