@@ -310,9 +310,12 @@ main {
   header, .show-text-trigger-wrapper  {
       background-color: transparent !important;
       backdrop-filter: blur(0px);
+      opacity: 0;
       &.backdrop {
         backdrop-filter: blur(3px);
+        opacity: 1;
         transition: backdrop-filter 0.3s;
+        transition: backdrop-filter 0.3s, opacity 0.3s;
       }
   }
 }
