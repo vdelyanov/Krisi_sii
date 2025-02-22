@@ -860,14 +860,13 @@ function initialInitHeader() {
   const contactPage = document.querySelector("#contacts");
   if (aboutPage || contactPage) {
     nextParticle.start();
-    setTimeout(() => {
-      document.querySelector('header').classList.add('backdrop')
-      if(blurElement) {
-        document.querySelector('#show-text-trigger-wrapper').classList.add('backdrop')
-      }
-    }, 3500)
-  
   }
+  setTimeout(() => {
+    document.querySelector('header').classList.add('backdrop')
+    if(blurElement) {
+      document.querySelector('#show-text-trigger-wrapper').classList.add('backdrop')
+    }
+  }, 3500)
 
   tlInit.to(transition.main, {
     opacity: 1,
