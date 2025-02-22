@@ -861,6 +861,7 @@ function initialInitHeader() {
   if (aboutPage || contactPage) {
     nextParticle.start();
   }
+  const blurElement = document.querySelector('#show-text-trigger-wrapper')
   setTimeout(() => {
     document.querySelector('header').classList.add('backdrop')
     if(blurElement) {
