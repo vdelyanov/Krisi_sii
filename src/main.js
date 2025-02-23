@@ -1161,8 +1161,8 @@ if (footer)  {
 
   ScrollTrigger.create({
     trigger: 'body', 
-    start: 'bottom bottom',
-    end: 'bottom+=2 bottom',
+    start: 'bottom 101%',
+    end: 'bottom bottom',
     markers: true,
     scrub: 1,
     onEnter: () => {
