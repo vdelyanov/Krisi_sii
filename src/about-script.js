@@ -26,7 +26,6 @@ document.addEventListener("DOMContentLoaded", function () {
     gsap.set(".marquee-inner", { xPercent: -50 });
 
 
-
       function animateParagraphMobile(paragraphSelectorM, imageSelector) {
 
       const textDescM = document.querySelector(paragraphSelectorM);
@@ -79,14 +78,13 @@ document.addEventListener("DOMContentLoaded", function () {
       animateParagraphMobile(".mobile-paragraph-4", ".mobile-image-4");
       animateParagraphMobile(".mobile-paragraph-5", ".mobile-image-5");
 
-  setTimeout(() => {
     gsap.timeline()
     ScrollTrigger.create({
       trigger: 'body', 
-      start: 'bottom bottom',
-      end: 'bottom+=1 bottom',
+      start: '99% bottom',
+      end: '100% bottom',
       markers: true,
-      scrub: 1,
+      scrub: 1.6,
       onEnter: () => {
         gsap.to(".footer-end", { duration: 0.4, clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)"});
       },
@@ -94,11 +92,8 @@ document.addEventListener("DOMContentLoaded", function () {
         gsap.to(".footer-end", { duration: 0.4, clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)"});
       }
     });
-  }, 0)
-
 
     }
-
      else {
 
           // Marquee 
@@ -213,6 +208,22 @@ function animateImage(imageSelector) {
     clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)",
   });
 }
+
+gsap.timeline()
+ScrollTrigger.create({
+  trigger: ".steps-seciton", 
+  start: '99% bottom',
+  end: '100% bottom',
+  markers: true,
+  horizontal: true,
+  scrub: 2,
+  onEnter: () => {
+    gsap.to(".footer-end", { duration: 0.4, clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)"});
+  },
+  onEnterBack: () => {
+    gsap.to(".footer-end", { duration: 0.4, clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)"});
+  }
+});
 
 // Function to animate paragraphs
 function animateParagraph(paragraphSelector) {

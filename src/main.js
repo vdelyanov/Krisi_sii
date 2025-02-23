@@ -1155,8 +1155,56 @@ if (homePage) {
 }
 
 if (footer)  {
+
+
+  const isMobile = window.innerWidth <= 1025; 
+  if (!isMobile) { 
+    ScrollTrigger.create({
+      trigger: 'body', 
+      start: 'bottom bottom',
+      end: 'bottom bottom',
+      markers: true,
+      scrub: 1,
+      onEnter: () => {
+        gsap.to(".footer-fixed", {  clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)"});
+        let textTrigger = document.querySelector(".show-text-trigger")
+        if (textTrigger) {
+          gsap.to(".show-text-trigger", { translateY: "60px"});
+        }
+      },
+      onEnterBack: () => {
+        gsap.to(".footer-fixed", { clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)"});
+        let textTrigger = document.querySelector(".show-text-trigger")
+        if (textTrigger) {
+        gsap.to(".show-text-trigger", { translateY: "0px"});
+        }
+      }
+    });
+  } else {
+    ScrollTrigger.create({
+      trigger: 'body', 
+      start: '99% bottom',
+      end: '100% bottom',
+      markers: true,
+      scrub: 1.6,
+      onEnter: () => {
+        gsap.to(".footer-fixed", {  clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)"});
+        let textTrigger = document.querySelector(".show-text-trigger")
+        if (textTrigger) {
+          gsap.to(".show-text-trigger", { translateY: "60px"});
+        }
+      },
+      onEnterBack: () => {
+        gsap.to(".footer-fixed", { clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)"});
+        let textTrigger = document.querySelector(".show-text-trigger")
+        if (textTrigger) {
+        gsap.to(".show-text-trigger", { translateY: "0px"});
+        }
+      }
+    });
+  }
   
-  setTimeout(() => {
+
   gsap.timeline()
 
   ScrollTrigger.create({
@@ -1181,7 +1229,7 @@ if (footer)  {
     }
   });
 
-}, 0)
+
 
 }
 
