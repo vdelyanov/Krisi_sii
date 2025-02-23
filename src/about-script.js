@@ -81,8 +81,8 @@ document.addEventListener("DOMContentLoaded", function () {
     gsap.timeline()
     ScrollTrigger.create({
       trigger: 'body', 
-      start: '99% bottom',
-      end: '100% bottom',
+      start: '98% bottom',
+      end: '99% bottom',
       markers: true,
       scrub: 1.6,
       onEnter: () => {
