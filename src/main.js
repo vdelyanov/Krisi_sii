@@ -597,7 +597,7 @@ function initHeader() {
     duration: 1.2,
   })
   // .to(transition.gradient, { opacity: 0.2, duration: 0.8, ease: "linear",}, 0.4)
-  .to(transition.noise, { opacity: 0.2, duration: 0.8, ease: "linear",}, 0.4)
+  .to(transition.noise, { opacity: 0.1, duration: 0.8, ease: "linear",}, 0.4)
   .to(transition.cookieBox, { bottom: 0, duration: 0.4, ease: "linear",})
   .to(transition.swither, {
     opacity: 1,
@@ -875,7 +875,7 @@ function initialInitHeader() {
     duration: 1.2,
   })
   // .to(transition.gradient, { opacity: 0.2, duration: 0.8, ease: "linear"})
-  .to(transition.noise, { opacity: 0.2, duration: 0.8, ease: "linear",})
+  .to(transition.noise, { opacity: 0.1, duration: 0.8, ease: "linear",})
   .to(transition.cookieBox, { bottom: 0, duration: 0.4, ease: "linear",})
   .to(transition.swither, {
     opacity: 1,
@@ -1161,7 +1161,7 @@ if (footer)  {
   if (!isMobile) { 
     ScrollTrigger.create({
       trigger: 'body', 
-      start: 'bottom bottom',
+      start: 'bottom-=1 bottom',
       end: 'bottom bottom',
       markers: true,
       scrub: 1,
@@ -1181,55 +1181,20 @@ if (footer)  {
       }
     });
   } else {
-    ScrollTrigger.create({
-      trigger: 'body', 
-      start: '98% bottom',
-      end: '99% bottom',
-      markers: true,
-      scrub: 1.6,
-      onEnter: () => {
-        gsap.to(".footer-fixed", {  clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)"});
-        let textTrigger = document.querySelector(".show-text-trigger")
-        if (textTrigger) {
-          gsap.to(".show-text-trigger", { translateY: "60px"});
-        }
-      },
-      onEnterBack: () => {
-        gsap.to(".footer-fixed", { clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)"});
-        let textTrigger = document.querySelector(".show-text-trigger")
-        if (textTrigger) {
-        gsap.to(".show-text-trigger", { translateY: "0px"});
-        }
-      }
-    });
-  }
-  
 
-  gsap.timeline()
 
-  ScrollTrigger.create({
-    trigger: 'body', 
-    start: 'bottom bottom',
+gsap.to(".footer-fixed", {
+  scrollTrigger: {
+    trigger: "body",
+    start: 'bottom-=100 bottom',
     end: 'bottom bottom',
+    scrub: true,           
     markers: true,
-    scrub: 1,
-    onEnter: () => {
-      gsap.to(".footer-fixed", {  clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)"});
-      let textTrigger = document.querySelector(".show-text-trigger")
-      if (textTrigger) {
-        gsap.to(".show-text-trigger", { translateY: "60px"});
-      }
-    },
-    onEnterBack: () => {
-      gsap.to(".footer-fixed", { clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)"});
-      let textTrigger = document.querySelector(".show-text-trigger")
-      if (textTrigger) {
-      gsap.to(".show-text-trigger", { translateY: "0px"});
-      }
-    }
-  });
-
-
+  },
+  clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)"
+});
+  
+}
 
 }
 

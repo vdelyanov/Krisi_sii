@@ -78,20 +78,16 @@ document.addEventListener("DOMContentLoaded", function () {
       animateParagraphMobile(".mobile-paragraph-4", ".mobile-image-4");
       animateParagraphMobile(".mobile-paragraph-5", ".mobile-image-5");
 
-    gsap.timeline()
-    ScrollTrigger.create({
-      trigger: 'body', 
-      start: '98% bottom',
-      end: '99% bottom',
-      markers: true,
-      scrub: 1.6,
-      onEnter: () => {
-        gsap.to(".footer-end", { duration: 0.4, clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)"});
-      },
-      onEnterBack: () => {
-        gsap.to(".footer-end", { duration: 0.4, clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)"});
-      }
-    });
+      gsap.to(".footer-end", {
+        scrollTrigger: {
+          trigger: "body",
+          start: 'bottom-=100 bottom',
+          end: 'bottom bottom',
+          scrub: true,           
+          markers: true,
+        },
+        clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)"
+      });
 
     }
      else {
