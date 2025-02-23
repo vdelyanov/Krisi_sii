@@ -12,6 +12,7 @@ footer {
     border-top-right-radius: 8px;
     padding: 0 20px;
     clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%);
+    will-change: transform;
     @include media-tablet {
         height: 150px;
         padding: 8px 20px;

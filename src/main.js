@@ -1186,7 +1186,7 @@ if (footer)  {
 gsap.to(".footer-fixed", {
   scrollTrigger: {
     trigger: "body",
-    start: 'bottom-=100 bottom',
+    start: 'bottom-=140 bottom',
     end: 'bottom bottom',
     scrub: true,           
     markers: true,
