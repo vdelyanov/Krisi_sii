@@ -660,8 +660,8 @@ function initHeader() {
           gsap.to(menu, {
             clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
           });
-          gsap.to(links, { y: 20, opacity: 0 });
-          gsap.to(socialLinks, { y: 20, opacity: 0 });
+          // gsap.to(links, { y: 20, opacity: 0 });
+          // gsap.to(socialLinks, { y: 20, opacity: 0 });
           gsap.to(splitTitle.chars, {
             y: 500,
             scale: 0.8,
@@ -696,8 +696,8 @@ function initHeader() {
           gsap.to(menu, {
             clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
           });
-          gsap.to(links, { y: 20, opacity: 0 });
-          gsap.to(socialLinks, { y: 20, opacity: 0 });
+          // gsap.to(links, { y: 20, opacity: 0 });
+          // gsap.to(socialLinks, { y: 20, opacity: 0 });
           gsap.to(splitTitle.chars, {
             y: 500,
             scale: 0.8,
@@ -714,8 +714,8 @@ function initHeader() {
   gsap.set(menu, {
     clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
   });
-  gsap.set(links, { y: 20, opacity: 0 });
-  gsap.set(socialLinks, { y: 20, opacity: 0 });
+  // gsap.set(links, { y: 20, opacity: 0 });
+  // gsap.set(socialLinks, { y: 20, opacity: 0 });
   gsap.set(splitTitle.chars, {
     y: 500,
     scale: 0.8,
@@ -747,23 +747,23 @@ function initHeader() {
         },
       });
 
-      gsap.to(links, {
-        y: 0,
-        opacity: 1,
-        stagger: 0.1,
-        delay: 0.85,
-        duration: 1,
-        ease: "power3.out",
-      });
+      // gsap.to(links, {
+      //   y: 0,
+      //   opacity: 1,
+      //   stagger: 0.1,
+      //   delay: 0.85,
+      //   duration: 1,
+      //   ease: "power3.out",
+      // });
 
-      gsap.to(socialLinks, {
-        y: 0,
-        opacity: 1,
-        stagger: 0.05,
-        delay: 0.85,
-        duration: 1,
-        ease: "power3.out",
-      });
+      // gsap.to(socialLinks, {
+      //   y: 0,
+      //   opacity: 1,
+      //   stagger: 0.05,
+      //   delay: 0.85,
+      //   duration: 1,
+      //   ease: "power3.out",
+      // });
 
       const tl = gsap.timeline();
 
@@ -772,7 +772,7 @@ function initHeader() {
         rotateY: 0,
         scale: 1,
         stagger: 0.05,
-        delay: 0.75,
+        delay: 0.25,
         duration: 1.2,
         ease: "power4.out",
         
@@ -801,8 +801,8 @@ function initHeader() {
           gsap.to(menu, {
             clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
           });
-          gsap.to(links, { y: 20, opacity: 0 });
-          gsap.to(socialLinks, { y: 20, opacity: 0 });
+          // gsap.to(links, { y: 20, opacity: 0 });
+          // gsap.to(socialLinks, { y: 20, opacity: 0 });
           gsap.to(splitTitle.chars, {
             y: 500,
             scale: 0.8,
@@ -1050,7 +1050,7 @@ function initialInitHeader() {
         rotateY: 0,
         scale: 1,
         stagger: 0.05,
-        delay: 0.75,
+        delay: 0.25,
         duration: 1.5,
         ease: "power4.out",
         
