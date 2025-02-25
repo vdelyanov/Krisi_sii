@@ -279,17 +279,9 @@ main {
     .columns, img {
       overflow: visible !important; 
     }
-    .mobile-steps {
-      filter: blur(4px) !important;
-      .main-image {
-        filter: blur(0) !important;
-      }
-    }
-    .step {
-      filter: blur(4px) !important;
-      .main-image {
-        filter: blur(0) !important;
-      }
+    &#about-concept {
+      filter: blur(6px) !important;
+      transition: filter 0.6s;
     }
     #marquee-start, #marquee-end, .marquee-mobile {
       opacity: 0 !important;

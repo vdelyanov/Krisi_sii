@@ -1183,15 +1183,18 @@ if (footer)  {
   } else {
 
 
-gsap.to(".footer-fixed", {
+gsap.fromTo(".footer-fixed", {
+   clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)"
+  },
+  {
+  clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
   scrollTrigger: {
     trigger: "body",
     start: 'bottom-=140 bottom',
     end: 'bottom bottom',
-    scrub: true,           
+    scrub: 1,           
     markers: true,
-  },
-  clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)"
+  }
 });
   
 }
