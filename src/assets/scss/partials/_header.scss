@@ -280,13 +280,18 @@ main {
       overflow: visible !important; 
     }
     &#about-concept {
-      filter: blur(6px) !important;
+      filter: blur(4px) !important;
       transition: filter 0.6s;
+      p, a {
+        filter: blur(0px) !important;
+      }
     }
-    #marquee-start, #marquee-end, .marquee-mobile {
-      opacity: 0 !important;
-      transition: opacity 0.6s;
-    }
+    
+    // #marquee-start, #marquee-end, .marquee-mobile {
+    //   opacity: 0 !important;
+    //   transition: opacity 0.6s;
+    // }
+
     cursor: pointer;
     z-index: 3;
     pointer-events: none;

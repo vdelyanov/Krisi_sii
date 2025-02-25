@@ -23,8 +23,34 @@ document.addEventListener("DOMContentLoaded", function () {
     })
     .totalProgress(0.5);
 
-    gsap.set(".marquee-inner", { xPercent: -50 });
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+        setTimeout(() => {
+          let menu = document.querySelector("main"); 
+  
+          if (menu.classList.contains("bg-blur")) {
+              tween.pause();
+          } else {
+              tween.resume();
+          }
+      }, 1000);
+      }
+    })
 
+    document.addEventListener("click", () => {
+      setTimeout(() => {
+          let menu = document.querySelector("main"); 
+  
+          if (menu.classList.contains("bg-blur")) {
+              tween.pause();
+          } else {
+              tween.resume();
+          }
+      }, 1000);
+
+  });
+
+    gsap.set(".marquee-inner", { xPercent: -50 });
 
       function animateParagraphMobile(paragraphSelectorM, imageSelector) {
 
@@ -110,31 +136,45 @@ document.addEventListener("DOMContentLoaded", function () {
               repeat: -1,
               duration: 35,
               ease: "linear",
-    
           })
           gsap.set(".marquee__inner.end", { y: "-100vh"  });
+
+          document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+              setTimeout(() => {
+                let menu = document.querySelector("main"); 
+        
+                if (menu.classList.contains("bg-blur")) {
+                    tween.pause();
+                    tweenEnd.pause();
+                } else {
+                    tween.resume();
+                    tweenEnd.resume();
+                }
+            }, 1000);
+            }
+          })
+
+          document.addEventListener("click", () => {
+            setTimeout(() => {
+                let menu = document.querySelector("main"); 
+        
+                if (menu.classList.contains("bg-blur")) {
+                    tween.pause();
+                    tweenEnd.pause();
+                } else {
+                    tween.resume();
+                    tweenEnd.resume();
+                }
+            }, 1000);
+
+        });
       
         function resetScrollTriggers() {
           ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
           ScrollTrigger.refresh();
         }
         resetScrollTriggers();
-
-
-    setTimeout(() => {
-      gsap.to("canvas", {
-        scrollTrigger: {
-          trigger: ".marquee",
-          start: "left 80%",
-          end: "left 40%",
-          scrub: 1,
-          horizontal: true,
-        },
-        ease: "linear",
-        opacity: 0,
-        pointerEvents: "none"
-      });
-    }, 2200);
 
 
     gsap.fromTo("#scroll-icon",
