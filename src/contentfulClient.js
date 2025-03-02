@@ -2,7 +2,7 @@
 import { createClient } from 'contentful-management';
 
 const SPACE_ID = "w8jw1fc4jmex";
-const CONTENTFUL_ACCESS_TOKEN = "CFPAT-y0B4yrKpAhYrlU7qtqeqjL9saUqiTr_jOFMtsmF5wqc";
+const CONTENTFUL_ACCESS_TOKEN = "CFPAT-WlqfdJBz9fTYJ9xTackRqXizW5GW5_HanGnWLn19evw";
 const ENVIRONMENT_ID = 'master'; 
 
 export async function submitContactForm(name, email, message) {
