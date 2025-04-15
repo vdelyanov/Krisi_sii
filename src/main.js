@@ -476,6 +476,11 @@ function triggerAnimation() {
       duration: 0.2,
       ease: "power3.out",
       clipPath: 'polygon(0 0, 0 0, 0 100%, 0 100%)',
+      onStart: () => {
+        gsap.to(link, {
+          pointerEvents: "none"
+        })
+      },
       onComplete: () => {
         gsap.to(split.words, {
           autoAlpha: 0,       
@@ -491,6 +496,11 @@ function triggerAnimation() {
       opacity: 1,
       delay: 0.4,
       filter: "blur(0px)",
+      onComplete: () => {
+        gsap.to(link, {
+           pointerEvents: "all"
+        })
+      }
     });
   }
 
