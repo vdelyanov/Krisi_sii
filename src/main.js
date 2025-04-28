@@ -948,8 +948,8 @@ function initialInitHeader() {
           gsap.to(menu, {
             clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
           });
-          gsap.to(links, { y: 30, opacity: 0 });
-          gsap.to(socialLinks, { y: 30, opacity: 0 });
+          // gsap.to(links, { y: 30, opacity: 0 });
+          // gsap.to(socialLinks, { y: 30, opacity: 0 });
           gsap.to(splitTitle.chars, {
             y: 500,
             scale: 0.8,
@@ -984,8 +984,8 @@ function initialInitHeader() {
           gsap.to(menu, {
             clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
           });
-          gsap.to(links, { y: 30, opacity: 0 });
-          gsap.to(socialLinks, { y: 30, opacity: 0 });
+          // gsap.to(links, { y: 30, opacity: 0 });
+          // gsap.to(socialLinks, { y: 30, opacity: 0 });
           gsap.to(splitTitle.chars, {
             y: 500,
             scale: 0.8,
@@ -1002,8 +1002,8 @@ function initialInitHeader() {
   gsap.set(menu, {
     clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
   });
-  gsap.set(links, { y: 30, opacity: 0 });
-  gsap.set(socialLinks, { y: 30, opacity: 0 });
+  // gsap.set(links, { y: 30, opacity: 0 });
+  // gsap.set(socialLinks, { y: 30, opacity: 0 });
   gsap.set(splitTitle.chars, {
     y: 500,
     scale: 0.8,
@@ -1024,7 +1024,7 @@ function initialInitHeader() {
       gsap.to(menu, {
         clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
         ease: "expo.inOut",
-        duration: 1.5,
+        duration: 1,
         onStart: () => {
           menu.style.pointerEvents = "all";
           main.classList.add("bg-blur");
@@ -1035,23 +1035,23 @@ function initialInitHeader() {
         },
       });
 
-      gsap.to(links, {
-        y: 0,
-        opacity: 1,
-        stagger: 0.1,
-        delay: 0.85,
-        duration: 1,
-        ease: "power3.out",
-      });
+      // gsap.to(links, {
+      //   y: 0,
+      //   opacity: 1,
+      //   stagger: 0.1,
+      //   delay: 0.85,
+      //   duration: 1,
+      //   ease: "power3.out",
+      // });
 
-      gsap.to(socialLinks, {
-        y: 0,
-        opacity: 1,
-        stagger: 0.05,
-        delay: 0.85,
-        duration: 1,
-        ease: "power3.out",
-      });
+      // gsap.to(socialLinks, {
+      //   y: 0,
+      //   opacity: 1,
+      //   stagger: 0.05,
+      //   delay: 0.85,
+      //   duration: 1,
+      //   ease: "power3.out",
+      // });
 
       const tl = gsap.timeline();
 
@@ -1061,7 +1061,7 @@ function initialInitHeader() {
         scale: 1,
         stagger: 0.05,
         delay: 0.25,
-        duration: 1.5,
+        duration: 1.2,
         ease: "power4.out",
         
       });
@@ -1078,7 +1078,7 @@ function initialInitHeader() {
       gsap.to(menu, {
         clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
         ease: "expo.inOut",
-        duration: 1.5,
+        duration: 1,
         onStart: () => {
           setTimeout(() => {
             main.classList.remove("bg-blur");
@@ -1089,8 +1089,8 @@ function initialInitHeader() {
           gsap.to(menu, {
             clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
           });
-          gsap.to(links, { y: 30, opacity: 0 });
-          gsap.to(socialLinks, { y: 30, opacity: 0 });
+          // gsap.to(links, { y: 30, opacity: 0 });
+          // gsap.to(socialLinks, { y: 30, opacity: 0 });
           gsap.to(splitTitle.chars, {
             y: 500,
             scale: 0.8,
