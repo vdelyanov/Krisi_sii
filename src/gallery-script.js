@@ -301,6 +301,15 @@ document.addEventListener("DOMContentLoaded", function () {
         pointerEvents: "all",
         delay: 1.2
       })
+      gsap.fromTo('footer', {
+        opacity: 0,
+        filter: "blur(20px)",
+      }, {
+        filter: "blur(20px)",
+        opacity: 1,
+        duration: 0.6,
+        ease: "power4",
+      })
   
       }
   
