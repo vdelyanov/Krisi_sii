@@ -301,16 +301,7 @@ document.addEventListener("DOMContentLoaded", function () {
         pointerEvents: "all",
         delay: 1.2
       })
-      gsap.fromTo('footer', {
-        opacity: 0,
-        filter: "blur(20px)",
-      }, {
-        filter: "blur(20px)",
-        opacity: 1,
-        duration: 0.6,
-        ease: "power4",
-      })
-  
+
       }
   
       const column2 = document.querySelector(".column-2");
@@ -366,6 +357,17 @@ document.addEventListener("DOMContentLoaded", function () {
           // All images loaded, reinitialize GSAP and recalculate heights
           reinitializeGSAP();
           refreshModal();
+
+          gsap.fromTo('footer', {
+            opacity: 0,
+            filter: "blur(20px)",
+          }, {
+            filter: "blur(20px)",
+            opacity: 1,
+            duration: 0.6,
+            ease: "power4",
+          })
+          
         }
       }
     
