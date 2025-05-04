@@ -77,6 +77,8 @@ function changeColor(colorKey) {
       lightbox.style.backgroundColor = color;
     }
     swither.setAttribute('fill', color);
+    
+    document.documentElement.style.removeProperty('background-color');
     document.documentElement.style.setProperty('--background-color', color); // Update CSS variable
     localStorage.setItem('selectedColor', color); // Save the selected color
 }
@@ -104,6 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
           lightbox.style.backgroundColor = savedColor;
         }
         swither.setAttribute('fill', savedColor);
+        document.documentElement.style.removeProperty('background-color');
         document.documentElement.style.setProperty('--background-color', savedColor); // Update CSS variable
     }
 
@@ -269,6 +272,7 @@ function wrapLetters(text) {
 }
 
 function fadeanim() {
+  
   gsap.to('#preloader', {
     clipPath: "polygon(0 100%, 100% 100%, 100% 100%, 0 100%)",
     delay: 0.5,
@@ -559,13 +563,14 @@ function initHeader() {
     }
   }, 3500)
 
+  document.querySelector('.page-transition').style.display = "flex";
+
   const transition = {
     menu: document.querySelector('.menu'),
     main: document.querySelector('main'),
     swither: document.querySelector('.color-switcher'),
     header: document.querySelector('header'),
     footer: document.querySelector('footer'),
-    pageLabelInit: document.querySelector('.page-transition .current'),
     pageLabelInit: document.querySelector('.page-transition .current'),
     // gradient: document.querySelector('#gradient-canvas'),
     // gradient: document.querySelector('.gradient-bg'),
@@ -851,6 +856,8 @@ function initHeroAnim() {
 
 function initialInitHeader() {
 
+  document.querySelector('.page-transition').style.display = "flex";
+
   const transition = {
     menu: document.querySelector('.menu'),
     main: document.querySelector('main'),
@@ -937,7 +944,7 @@ function initialInitHeader() {
       gsap.to(menu, {
         clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)",
         ease: "expo.inOut",
-        duration: 1.5,
+        duration: 1,
         onStart: () => {
           setTimeout(() => {
             main.classList.remove("bg-blur");

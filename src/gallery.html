@@ -24,6 +24,7 @@
 
     <link rel="stylesheet" href="./style.css" />
   </head>
+
 <body style="min-height: 110vh" data-barba="wrapper">
 
     <div style="opacity: 0;" class="cursor-follow">
@@ -41,7 +42,7 @@
       </svg>        
     </div>
 
-    <div id="preloader" class="preload hidden">
+    <div id="preloader" style="display: none;" class="preload hidden">
       <div id="name">Photo.sii</div>
     </div>
 
@@ -124,14 +125,14 @@
       </span>
     </div>
 
-    <div class="page-transition">
+    <div style="display: none;" class="page-transition">
       <p>Начало</p>
       <p class="current">Галерия</p>
       <p>За мен</p>
       <p>Контакти</p>
     </div>
 
-    <header> 
+    <header style="opacity: 0;"> 
       <a aria-label="Homepage" class="logo hover-link text-blur" href="./">.sii</a>
       <div class="menu-toggle hover-link text-blur closed">
         <div class="menu-toggle-icon">
