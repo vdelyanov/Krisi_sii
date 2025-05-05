@@ -27,7 +27,7 @@
     "contentful": "^11.4.4",
     "contentful-management": "^11.45.1",
     "freezeframe": "^5.0.2",
-    "gsap": "npm:@gsap/shockingly@^3.12.5",
+    "gsap": "npm:@gsap/shockingly@^3.13.0",
     "hover-effect": "^1.2.1",
     "imagesloaded": "^5.0.0",
     "jquery": "^3.7.1",
