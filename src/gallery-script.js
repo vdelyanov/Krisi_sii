@@ -271,7 +271,9 @@ document.addEventListener("DOMContentLoaded", function () {
           duration: 0.8,
           ease: "power4",
           onComplete: () => {
-            loadImages(category);
+            requestAnimationFrame(() => {
+              loadImages(category);
+            })
           }
         }) 
   
@@ -396,10 +398,9 @@ document.addEventListener("DOMContentLoaded", function () {
       };
     
       const checkCompletion = () => {
-        if (imagesLoaded === imagesToLoad) {
+        if (imagesLoaded === imagesToLoad || imagesLoaded === 0) {
           reinitializeGSAP();
           refreshModal();
-
 
           if (window.innerWidth <= 1025) {
           const images = document.querySelectorAll(".img-wrapper");
