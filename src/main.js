@@ -89,6 +89,33 @@ document.addEventListener('DOMContentLoaded', () => {
   // const gradient = new Gradient()
   // gradient.initGradient('#gradient-canvas')
 
+    function handleOrientation() {
+        const orientation = screen.orientation.angle;
+          const landscapeWrapper = document.querySelector('.landscape-fallback')
+            landscapeWrapper.style.display = "none"
+            if (orientation === 90 || orientation === -90 || orientation === 270) {
+              landscapeWrapper.style.display = "flex"
+        } else {
+        }
+    }
+
+    function handleOrientationChange() {
+        const orientation = screen.orientation.angle;
+          const landscapeWrapper = document.querySelector('.landscape-fallback')
+            landscapeWrapper.style.display = "none"
+            window.location.reload()
+            if (orientation === 90 || orientation === -90 || orientation === 270) {
+              landscapeWrapper.style.display = "flex"
+        } else {
+        }
+    }
+
+    // Listen for orientation changes
+    screen.orientation.addEventListener('change', handleOrientationChange);
+
+    // Check initial orientation
+    handleOrientation();
+
     const savedColor = localStorage.getItem('selectedColor');
     
     if (savedColor) {
@@ -143,7 +170,7 @@ const transition = {
   pageLabel: document.querySelector('.page-transition .current'),
   // gradient: document.querySelector('#gradient-canvas'),
   // gradient: document.querySelector('.gradient-bg'),
-  noise: document.querySelector('#noise-bg'),
+  // noise: document.querySelector('#noise-bg'),
   cookieBox: document.querySelector('#cookie-box'),
 };
 
@@ -158,7 +185,7 @@ const enterTransition = () => {
     if (menuToggle.classList.contains("closed")) {
     tl.to(transition.body, { backgroundColor: "#121619", duration: 0.6, ease: "linear",})
     // .to(transition.gradient, { opacity: 0, duration: 0.6, ease: "linear",})
-    .to(transition.noise, { opacity: 0, duration: 0.6, ease: "linear",})
+    // .to(transition.noise, { opacity: 0, duration: 0.6, ease: "linear",})
     .to(transition.cookieBox, { bottom: -100, duration: 0.4, ease: "linear",})
     .to(childElements, {
       opacity: 0,
@@ -189,7 +216,7 @@ const enterTransition = () => {
       }).to(transition.body, { backgroundColor: "#121619", duration: 0.6, ease: "linear",
       }, 0.2)
       // .to(transition.gradient, { opacity: 0, duration: 0.6, ease: "linear",})
-      .to(transition.noise, { opacity: 0, duration: 0.6, ease: "linear",})
+      // .to(transition.noise, { opacity: 0, duration: 0.6, ease: "linear",})
       .to(transition.cookieBox, { bottom: -100, duration: 0.4, ease: "linear",})
       .to(childElements, {
         opacity: 0,
@@ -574,7 +601,7 @@ function initHeader() {
     pageLabelInit: document.querySelector('.page-transition .current'),
     // gradient: document.querySelector('#gradient-canvas'),
     // gradient: document.querySelector('.gradient-bg'),
-    noise: document.querySelector('#noise-bg'),
+    // noise: document.querySelector('#noise-bg'),
     cookieBox: document.querySelector('#cookie-box'),
   };
 
@@ -612,7 +639,7 @@ function initHeader() {
     duration: 1.2,
   })
   // .to(transition.gradient, { opacity: 0.2, duration: 0.8, ease: "linear",}, 0.4)
-  .to(transition.noise, { opacity: 0.1, duration: 0.8, ease: "linear",}, 0.4)
+  // .to(transition.noise, { opacity: 0.1, duration: 0.8, ease: "linear",}, 0.4)
   .to(transition.cookieBox, { bottom: 0, duration: 0.4, ease: "linear",})
   .to(transition.swither, {
     opacity: 1,
@@ -867,7 +894,7 @@ function initialInitHeader() {
     pageLabelInit: document.querySelector('.page-transition .current'),
     // gradient: document.querySelector('#gradient-canvas'),
     // gradient: document.querySelector('.gradient-bg'),
-    noise: document.querySelector('#noise-bg'),
+    // noise: document.querySelector('#noise-bg'),
     cookieBox: document.querySelector('#cookie-box'),
   };
 
@@ -892,7 +919,7 @@ function initialInitHeader() {
     duration: 1.2,
   })
   // .to(transition.gradient, { opacity: 0.2, duration: 0.8, ease: "linear"})
-  .to(transition.noise, { opacity: 0.1, duration: 0.8, ease: "linear",})
+  // .to(transition.noise, { opacity: 0.1, duration: 0.8, ease: "linear",})
   .to(transition.cookieBox, { bottom: 0, duration: 0.4, ease: "linear",})
   .to(transition.swither, {
     opacity: 1,
@@ -1178,7 +1205,7 @@ if (footer)  {
   if (!isMobile) { 
     ScrollTrigger.create({
       trigger: 'body', 
-      start: 'bottom-=1 bottom',
+      start: '99% bottom',
       end: 'bottom bottom',
       markers: true,
       scrub: 1,
@@ -1207,7 +1234,7 @@ gsap.fromTo(".footer-fixed", {
   clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
   scrollTrigger: {
     trigger: "body",
-    start: 'bottom-=140 bottom',
+    start: '99% bottom',
     end: 'bottom bottom',
     scrub: 1,           
     markers: true,
