@@ -250,9 +250,9 @@ body::-webkit-scrollbar-thumb {
 }
 
 #contacts {
-    height: 104vh;
+    height: 102vh;
     @include media-tablet {
-        min-height: 104vh; 
+        min-height: 102vh; 
         height: auto !important;
     }
     .container {
@@ -272,6 +272,15 @@ body::-webkit-scrollbar-thumb {
 }
 #about, #about-concept {
     .mobile-p, .desktop-p {
+        width: 40%;
+        margin-left: auto;
+        margin-top: -100px;
+        font-size: clamp(28px, 3.2vh, 36px);
+        @include media-tablet {
+            margin-top: 0px;
+            width: 100%;
+            font-size: 18px;
+        }
         div {
             white-space: nowrap;
         }
@@ -298,7 +307,18 @@ body::-webkit-scrollbar-thumb {
     }
 
     .mobile-image-wrapper {
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        width: 60%;
+        img {    
+            border-bottom-right-radius: 8px;
+            border-top-right-radius: 8px;
+            @include media-tablet {
+                border-top-right-radius: 0px;
+            }
+        }
+        @include media-tablet {
+            width: 100%;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
     }
 }
 
@@ -817,14 +837,17 @@ body::-webkit-scrollbar-thumb {
     }
 }
 
-.marquee-mobile {
+.marquee {
     position: relative;
     color: $white;
     padding: 0px 0px;
-    font-size: 24px;
     overflow: hidden;
     z-index: 2;
     will-change: transform;
+    font-size: 64px;
+    @include media-tablet {
+        font-size: 24px;
+    }
     .marquee-inner {
         display: flex;
         width: fit-content;
@@ -838,10 +861,13 @@ body::-webkit-scrollbar-thumb {
         align-items: center;
         flex-shrink: 0;
         padding: 0 12px;
-        font-size: 48px;
         opacity: 0.4;
         filter: blur(4px);
         will-change: transform;
+        font-size: 96px;
+        @include media-tablet {
+            font-size: 48px;
+        }
       }
 }
   

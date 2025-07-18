@@ -272,7 +272,7 @@ main {
       transition: filter 0.6s;
     } 
   }
-  #marquee-start, #marquee-end, .marquee-mobile {
+  #marquee-start, #marquee-end, .marquee {
     transition: opacity 0.6s;
   }
   &.bg-blur {
@@ -286,12 +286,6 @@ main {
         filter: blur(0px) !important;
       }
     }
-    
-    // #marquee-start, #marquee-end, .marquee-mobile {
-    //   opacity: 0 !important;
-    //   transition: opacity 0.6s;
-    // }
-
     cursor: pointer;
     z-index: 3;
     pointer-events: none;

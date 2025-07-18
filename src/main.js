@@ -1205,7 +1205,7 @@ if (footer)  {
   if (!isMobile) { 
     ScrollTrigger.create({
       trigger: 'body', 
-      start: '99% bottom',
+      start: '99.9% bottom',
       end: 'bottom bottom',
       markers: true,
       scrub: 1,
@@ -1234,7 +1234,7 @@ gsap.fromTo(".footer-fixed", {
   clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
   scrollTrigger: {
     trigger: "body",
-    start: '99% bottom',
+    start: '99.9% bottom',
     end: 'bottom bottom',
     scrub: 1,           
     markers: true,

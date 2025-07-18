@@ -4,15 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
-import Lenis from 'lenis'
-
 document.addEventListener("DOMContentLoaded", function () { 
-
-
-    const isMobile = window.innerWidth <= 1025; 
-    if (isMobile) { 
-
-    // Marquee 
 
     let tween = gsap
     .to(".marquee-part", {
@@ -64,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function () {
           end: "bottom 80%",
           pin: false,
           pinSpacing: false,
-          scrub: 2,
+          scrub: 1.6,
           },
 
       });
@@ -76,13 +68,31 @@ document.addEventListener("DOMContentLoaded", function () {
         { opacity: 1, filter: "blur(0px)", y: 0, stagger: 0.1}
       );
 
+      const isMobile = window.innerWidth <= 1025; 
+      if (!isMobile) { 
+          timeline.fromTo(
+            paragraphSelectorM,
+            {  y: 0 },
+            { y: '-100%',
+                scrollTrigger: {
+                trigger: imageSelector,
+                start: "top 70%",
+                end: "bottom 50%",
+                scrub: 1.6,
+              },
+            }
+          );
+      }
+      
       timeline.fromTo(
         imageSelector,
         { opacity: 0,
+          filter: "blur(4px)",
           transformOrigin: "top",
           clipPath: "polygon(0 0, 100% 0, 100% 0, 0 0);",
         },
         {
+          filter: "blur(0px)",
           opacity: 1,
           clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)",
           autoAlpha: 1,
@@ -91,7 +101,7 @@ document.addEventListener("DOMContentLoaded", function () {
             trigger: imageSelector,
             start: "top 70%",
             end: "bottom 50%",
-            scrub: 2,
+            scrub: 1.6,
           },
         }
       );
@@ -104,221 +114,4 @@ document.addEventListener("DOMContentLoaded", function () {
       animateParagraphMobile(".mobile-paragraph-4", ".mobile-image-4");
       animateParagraphMobile(".mobile-paragraph-5", ".mobile-image-5");
 
-      gsap.to(".footer-end", {
-        scrollTrigger: {
-          trigger: "body",
-          start: 'bottom-=140 bottom',
-          end: 'bottom bottom',
-          scrub: true,           
-          markers: true,
-        },
-        clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)"
-      });
-
-    }
-     else {
-
-          // Marquee 
-  
-          let tween = gsap
-          .to(".marquee__part", {
-              yPercent: 100,
-              repeat: -1,
-              duration: 35,
-              ease: "none",
-          })
-          gsap.set(".marquee__inner", { y: "-100vh" });
-      
-    
-          let tweenEnd = gsap
-          .to(".marquee__part.end", {
-              yPercent: -100,
-              repeat: -1,
-              duration: 35,
-              ease: "linear",
-          })
-          gsap.set(".marquee__inner.end", { y: "-100vh"  });
-
-          document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape') {
-              setTimeout(() => {
-                let menu = document.querySelector("main"); 
-        
-                if (menu.classList.contains("bg-blur")) {
-                    tween.pause();
-                    tweenEnd.pause();
-                } else {
-                    tween.resume();
-                    tweenEnd.resume();
-                }
-            }, 1000);
-            }
-          })
-
-          document.addEventListener("click", () => {
-            setTimeout(() => {
-                let menu = document.querySelector("main"); 
-        
-                if (menu.classList.contains("bg-blur")) {
-                    tween.pause();
-                    tweenEnd.pause();
-                } else {
-                    tween.resume();
-                    tweenEnd.resume();
-                }
-            }, 1000);
-
-        });
-      
-        function resetScrollTriggers() {
-          ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-          ScrollTrigger.refresh();
-        }
-        resetScrollTriggers();
-
-
-    gsap.fromTo("#scroll-icon",
-      {
-        opacity:1,
-        filter: "blur(0px)",
-        pointerEvents: "none",
-        duration: 0.1,
-        overwrite: true
-      }, {
-      scrollTrigger: {
-        trigger: ".steps-seciton",
-        start: "left 0%",
-        end: "left -1%",
-        toggleActions: "play none none reverse",
-        horizontal: true,
-      },
-      ease: "linear",
-      opacity: 0,
-      duration: 0.2,
-      filter: "blur(10px)",
-      pointerEvents: "none",
-      overwrite: true
-    });
-
-    gsap.fromTo("#marquee-start", {
-      opacity: 0.4, 
-      filter: "blur(4px)"
-    }, {
-      scrollTrigger: {
-        trigger: "#marquee-start",
-        start: "left 10%",
-        end: "left 0%",
-        scrub: 1,
-        horizontal: true,
-      },
-      ease: "linear",
-      opacity: 1,
-      filter: "blur(0px)"
-    });
-
-    gsap.to("#marquee-end", {
-      scrollTrigger: {
-        trigger: "#marquee-end",
-        start: "right 100%",
-        end: "left 80%",
-        scrub: 1,
-        horizontal: true,
-      },
-      ease: "linear",
-      opacity: 0.4,
-      filter: "blur(4px)"
-    });
-
-// Function to animate images
-function animateImage(imageSelector) {
-  gsap.to(imageSelector, {
-    scrollTrigger: {
-      trigger: imageSelector,
-      start: "left 70%",
-      toggleActions: "play none none reverse",
-      horizontal: true,
-    },
-    ease: "power4.out",
-    opacity: 1,
-    duration: 1,
-    clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)",
-  });
-}
-
-gsap.timeline()
-ScrollTrigger.create({
-  trigger: ".steps-seciton", 
-  start: '99% bottom',
-  end: '100% bottom',
-  markers: true,
-  horizontal: true,
-  scrub: 2,
-  onEnter: () => {
-    gsap.to(".footer-end", { duration: 0.4, clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)"});
-  },
-  onEnterBack: () => {
-    gsap.to(".footer-end", { duration: 0.4, clipPath: "polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%)"});
-  }
-});
-
-// Function to animate paragraphs
-function animateParagraph(paragraphSelector) {
-  const textDesc = document.querySelector(paragraphSelector);
-  const splitDesc = new SplitText(textDesc, { type: "words,chars,lines" });
-
-  const timeline = gsap.timeline({
-    scrollTrigger: {
-      trigger: paragraphSelector,
-      start: "left 75%",
-      toggleActions: "play none none reverse",
-      horizontal: true,
-    },
-  });
-
-  // Animate text characters
-  timeline.fromTo(
-    splitDesc.chars,
-    { opacity: 0, filter: "blur(1px)", y: 10 },
-    { opacity: 1, filter: "blur(0px)", y: 0, stagger: 0.005 }
-  );
-}
-
-// Animate images
-animateImage(".image-1");
-animateImage(".image-2");
-animateImage(".image-3");
-animateImage(".image-4");
-animateImage(".image-5");
-
-// Animate paragraphs
-animateParagraph(".paragraph-1");
-animateParagraph(".paragraph-2");
-animateParagraph(".paragraph-3");
-animateParagraph(".paragraph-4");
-animateParagraph(".paragraph-5");
-
-    const scrollContainer = document.querySelector(".steps-seciton");
-
-    const lenis = new Lenis({
-      duration: 2, // Slightly increase duration for smoother easing
-      infinite: false, // Ensure looping is smooth
-      smoothWheel: true, // Smooth scrolling for mouse wheel
-      smoothTouch: true, // Ensure smoothness for touch devices
-      orientation: 'horizontal',
-      content: scrollContainer,
-      gestureOrientation: "both"
-    });
-
-    function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
-
-    window.addEventListener('wheel', (e) => {
-      scrollContainer.scrollLeft += e.deltaY;
-    });
-
-  }
-
-})
+    })
