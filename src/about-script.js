@@ -64,42 +64,25 @@ document.addEventListener("DOMContentLoaded", function () {
       // Animate text characters
       timeline.fromTo(
         splitDescM.lines,
-        { opacity: 0, filter: "blur(1px)", y: 10 },
-        { opacity: 1, filter: "blur(0px)", y: 0, stagger: 0.1}
+        { opacity: 0, filter: "blur(1px)", y: 20 },
+        { opacity: 1, filter: "blur(0px)", y: 0, stagger: 0.08}
       );
 
-      const isMobile = window.innerWidth <= 1025; 
-      if (!isMobile) { 
-          timeline.fromTo(
-            paragraphSelectorM,
-            {  y: 0 },
-            { y: '-100%',
-                scrollTrigger: {
-                trigger: imageSelector,
-                start: "top 70%",
-                end: "bottom 50%",
-                scrub: 1.6,
-              },
-            }
-          );
-      }
-      
       timeline.fromTo(
         imageSelector,
-        { opacity: 0,
+        { 
           filter: "blur(4px)",
           transformOrigin: "top",
-          clipPath: "polygon(0 0, 100% 0, 100% 0, 0 0);",
+         clipPath: "polygon(50% 50%, 50% 50%, 50% 50%, 50% 50%)"
         },
         {
           filter: "blur(0px)",
-          opacity: 1,
-          clipPath: "polygon(0 0, 100% 0, 100% 100%, 0% 100%)",
+          clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
           autoAlpha: 1,
           ease: "power4.out",
           scrollTrigger: {
             trigger: imageSelector,
-            start: "top 70%",
+            start: "top 80%",
             end: "bottom 50%",
             scrub: 1.6,
           },
